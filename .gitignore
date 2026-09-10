@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.kicad_prl
+*-backups/
+~*.lck
+electrical/erc.json
+electrical/netlist.xml
