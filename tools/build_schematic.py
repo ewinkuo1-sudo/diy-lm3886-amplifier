@@ -1,4 +1,4 @@
-"""Generate the editable V0.1 schematic; standard-library Python only.
+"""Generate the editable amplifier schematic; standard-library Python only.
 
 Embedded project symbols have LM3886 pin numbers checked against TI SNAS091C.
 Footprints remain deliberately unset pending actual component selection.
@@ -64,7 +64,8 @@ define('LM3886', [('10', '+', 'input', -7.62, 2.54, 0), ('9', '-', 'input', -7.6
 
 
 class Drawing:
-    def __init__(self):
+    def __init__(self, project=PROJECT, title='LM3886 stereo AB power amplifier'):
+        self.project, self.title = project, title
         self.items, self.parts, self.pins = [], [], {}
         self.seq = 0
 
@@ -92,11 +93,13 @@ class Drawing:
         properties += prop('Value', value, x + (13 if vertical else 0), y + (1 if vertical else -4.5), flag)
         if kind == 'LM3886':
             properties = prop('Reference', ref, x + 17.78, y - 15.24) + prop('Value', value, x + 17.78, y - 12.7)
+        if kind == 'Bridge':
+            properties = prop('Reference', ref, x, y - 17.78) + prop('Value', value, x, y - 15.24)
         properties += prop('Footprint', '', x, y, True)
         properties += prop('Datasheet', 'https://www.ti.com/lit/ds/symlink/lm3886.pdf' if kind == 'LM3886' else '', x, y, True)
         self.items.append(f'(symbol(lib_id {q("Project:" + kind)})(at {x} {y} {90 if vertical else 0})(unit 1)'
                           f'(in_bom {"no" if flag else "yes"})(on_board {"no" if flag else "yes"})(dnp no)(uuid {uid(ref)})'
-                          + properties + f'(instances(project {q(PROJECT)}(path {q("/" + uid(PROJECT))}(reference {q(ref)})(unit 1)))))')
+                          + properties + f'(instances(project {q(self.project)}(path {q("/" + uid(self.project))}(reference {q(ref)})(unit 1)))))')
         for num, _, pin_type, px, py, _ in PINS[kind]:
             if vertical:
                 px, py = -py, px
@@ -121,18 +124,18 @@ class Drawing:
 
     def save(self):
         lib = ''.join(v.replace('(symbol ' + q(k), '(symbol ' + q('Project:' + k), 1) for k, v in LIB.items())
-        header = f'(kicad_sch(version 20250114)(generator "diy_lm3886")(uuid {uid(PROJECT)})(paper "A3")'
-        header += '(title_block(title "LM3886 stereo AB power amplifier")(date "2026-09-11")(rev "0.1 DRAFT")(comment 1 "Bench prototype / no PCB / no hardware measurements"))'
-        (DEST / (PROJECT + '.kicad_sch')).write_text(header + f'(lib_symbols {lib})' + ''.join(self.items) + '(sheet_instances(path "/"(page "1"))))\n')
+        header = f'(kicad_sch(version 20250114)(generator "diy_lm3886")(uuid {uid(self.project)})(paper "A3")'
+        header += f'(title_block(title {q(self.title)})(date "2026-09-11")(rev "0.2 DRAFT")(comment 1 "Internal PSU system / no PCB / no hardware measurements"))'
+        (DEST / (self.project + '.kicad_sch')).write_text(header + f'(lib_symbols {lib})' + ''.join(self.items) + '(sheet_instances(path "/"(page "1"))))\n')
         (DEST / 'Project.kicad_sym').write_text('(kicad_symbol_lib(version 20231120)(generator "diy_lm3886")' + ''.join(LIB.values()) + ')\n')
         (DEST / 'sym-lib-table').write_text('(sym_lib_table\n  (version 7)\n  (lib (name "Project")(type "KiCad")(uri "${KIPRJMOD}/Project.kicad_sym")(options "")(descr "Project symbols"))\n)\n')
-        (DEST / (PROJECT + '.kicad_pro')).write_text('{}\n')
+        (DEST / (self.project + '.kicad_pro')).write_text('{}\n')
 
 
 def build():
     d = Drawing()
-    d.text(15, 16, 'LM3886 / SIMPLE STEREO CLASS AB / V0.1', 2.8)
-    d.text(15, 25, 'Target: 2 x 40 W into 8 ohms, nominal +/-35 V DC. Draft for review and dummy-load testing.', 1.7)
+    d.text(15, 16, 'LM3886 / STEREO POWER AMP / EXTERNAL PREAMP / V0.2', 2.5)
+    d.text(15, 25, 'Target: 2 x 40 W / 8 ohms. Internal unregulated PSU: approx. +/-33 V loaded; verify actual rails.', 1.6)
     for index, ch in enumerate(('L', 'R')):
         base, y = index * 100, 71.12 + index * 101.6
         r = lambda n: 'R' + str(base + n)
@@ -205,10 +208,10 @@ def build():
         d.part('Conn2', jp, ch + ' RUN LINK', 358.14, y + 68.58)
         d.terminal(jp, 1, ch + '_RUN', dx=-7.62)
         d.terminal(jp, 2, 'VEE', dx=-7.62)
-    d.text(15, 258, 'POWER INPUT: external tracking, current-limited dual supply.', 1.5)
+    d.text(15, 258, 'J5: internal PSU harness. Bench current-limited supply for first amplifier-only tests.', 1.5)
     d.text(15, 265, 'Tab = VEE: insulate from grounded chassis / heatsink.', 1.5)
     d.text(15, 272, 'GND is a net name; route input, feedback and load returns separately.', 1.5)
-    d.part('Conn3', 'J5', 'DC +/-35V', 35.56, 215.9)
+    d.part('Conn3', 'J5', 'INTERNAL PSU', 35.56, 215.9)
     for n, name in [(1, 'VCC'), (2, 'GND'), (3, 'VEE')]:
         d.terminal('J5', n, name, dx=-7.62)
         ref = '#FLG' + str(n)

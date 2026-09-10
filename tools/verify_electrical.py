@@ -70,7 +70,7 @@ def verify():
         'CP': 'Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating',
         'L': 'Air core; DCR <=0.05 ohm target; >=4A peak; thermal validation required',
         'Conn2': 'Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted',
-        'Conn3': 'DC power input; pin1 VCC, pin2 GND, pin3 VEE; current rating TBD',
+        'Conn3': 'Internal PSU harness; pin1 VCC, pin2 GND, pin3 VEE; current rating TBD',
     }
     with (ELECTRICAL / 'bom-draft.csv').open('w', newline='') as f:
         w = csv.writer(f, lineterminator='\n')
@@ -81,7 +81,7 @@ def verify():
                         component.findtext('footprint', ''), requirements[kind]])
     count = sum(len(v) for v in actual.values())
     version = subprocess.check_output(['kicad-cli', 'version'], text=True).strip()
-    report = f'''# V0.1 電氣驗證紀錄
+    report = f'''# V0.2 電氣驗證紀錄
 
 本報告由 `python3 tools/rebuild.py` 在 KiCad {version} 完成檢查後產生。
 

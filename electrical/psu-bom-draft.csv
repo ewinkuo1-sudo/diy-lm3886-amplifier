@@ -1,0 +1,16 @@
+reference,quantity,value,symbol,footprint,note
+BR1,1,>=15A / >=200V TBD,Bridge,,Logical pin IDs; map to selected MPN before PCB; cooling/IFSM TBD
+BR2,1,>=15A / >=200V TBD,Bridge,,Logical pin IDs; map to selected MPN before PCB; cooling/IFSM TBD
+C201,1,10000u / 63V,CP,,Pin1 positive; ripple rating and dimensions TBD
+C202,1,10000u / 63V,CP,,Pin1 positive; ripple rating and dimensions TBD
+C203,1,10000u / 63V,CP,,Pin1 positive; ripple rating and dimensions TBD
+C204,1,10000u / 63V,CP,,Pin1 positive; ripple rating and dimensions TBD
+C205,1,100n / 100V film,C,,Component selection/footprint TBD
+C206,1,100n / 100V film,C,,Component selection/footprint TBD
+F201,1,TBD per transformer,Fuse,,Rating and breaking capacity TBD; this is not a selected fuse
+F202,1,TBD per transformer,Fuse,,Rating and breaking capacity TBD; this is not a selected fuse
+J201,1,T1 SEC 1,Conn2,,Component selection/footprint TBD
+J202,1,T1 SEC 2,Conn2,,Component selection/footprint TBD
+J203,1,TO AMP J5,Conn3,,Component selection/footprint TBD
+R201,1,2.2k / 2W BLEED,R,,Component selection/footprint TBD
+R202,1,2.2k / 2W BLEED,R,,Component selection/footprint TBD

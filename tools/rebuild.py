@@ -17,14 +17,23 @@ def main():
         if not shutil.which(tool):
             raise SystemExit(f'Missing prerequisite: {tool}')
     run(sys.executable, 'tools/build_schematic.py')
+    run(sys.executable, 'tools/build_power_supply.py')
     run('kicad-cli', 'sch', 'erc', '--format', 'json', '--exit-code-violations', '-o', 'electrical/erc.json', SCH)
     run('kicad-cli', 'sch', 'export', 'netlist', '--format', 'kicadxml', '-o', 'electrical/netlist.xml', SCH)
     run('kicad-cli', 'sch', 'export', 'pdf', '-o', 'electrical/preview/lm3886-v01.pdf', SCH)
     run('pdftoppm', '-scale-to', '2400', '-png', '-singlefile', 'electrical/preview/lm3886-v01.pdf', 'electrical/preview/lm3886-v01')
     run(sys.executable, 'tools/verify_electrical.py')
+    psu = 'electrical/internal-psu-v02.kicad_sch'
+    run('kicad-cli', 'sch', 'erc', '--format', 'json', '--exit-code-violations', '-o', 'electrical/psu-erc.json', psu)
+    run('kicad-cli', 'sch', 'export', 'netlist', '--format', 'kicadxml', '-o', 'electrical/psu-netlist.xml', psu)
+    run('kicad-cli', 'sch', 'export', 'pdf', '-o', 'electrical/preview/internal-psu-v02.pdf', psu)
+    run('pdftoppm', '-scale-to', '2400', '-png', '-singlefile', 'electrical/preview/internal-psu-v02.pdf', 'electrical/preview/internal-psu-v02')
+    run(sys.executable, 'tools/verify_power_supply.py')
     output = subprocess.check_output([sys.executable, 'tools/power_budget.py'], cwd=ROOT, text=True)
     (ROOT / 'docs/02-calculations.md').write_text(output)
-    print('All V0.1 deliverables rebuilt and electrical checks passed.')
+    mains = subprocess.check_output([sys.executable, 'tools/mains_budget.py'], cwd=ROOT, text=True)
+    (ROOT / 'docs/06-mains-calculations.md').write_text(mains)
+    print('All V0.2 deliverables rebuilt and electrical checks passed.')
 
 
 if __name__ == '__main__':

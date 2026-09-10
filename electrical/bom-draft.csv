@@ -19,7 +19,7 @@ J1,1,L RCA,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if 
 J2,1,L TEST OUT,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted
 J3,1,R RCA,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted
 J4,1,R TEST OUT,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted
-J5,1,DC +/-35V,Conn3,,"DC power input; pin1 VCC, pin2 GND, pin3 VEE; current rating TBD"
+J5,1,INTERNAL PSU,Conn3,,"Internal PSU harness; pin1 VCC, pin2 GND, pin3 VEE; current rating TBD"
 JP1,1,L RUN LINK,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted
 JP2,1,R RUN LINK,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted
 L1,1,0.7uH / air core,L,,Air core; DCR <=0.05 ohm target; >=4A peak; thermal validation required

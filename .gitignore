@@ -5,3 +5,5 @@ __pycache__/
 ~*.lck
 electrical/erc.json
 electrical/netlist.xml
+electrical/psu-erc.json
+electrical/psu-netlist.xml
