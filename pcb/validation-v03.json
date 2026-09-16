@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "limits": "Draft only. Footprints, heating, stability, enclosure and harness remain unverified.",
+  "boards": {
+    "mono": {
+      "pad_net_count": 54,
+      "native_DRC_violations": 0,
+      "native_DRC_unconnected": 0,
+      "tracks": 100,
+      "vias": 3,
+      "ground_families": [
+        "local-decoupling",
+        "mute-return",
+        "signal",
+        "speaker-return",
+        "supply-return",
+        "zobel-return"
+      ],
+      "ground_join_region_mm": {
+        "center": [
+          43,
+          50
+        ],
+        "radius": 4
+      },
+      "ground_check": "No cross-family copper contact found outside join region; 0.1 mm centerline sampling with trace radii."
+    },
+    "psu": {
+      "pad_net_count": 35,
+      "native_DRC_violations": 0,
+      "native_DRC_unconnected": 0,
+      "tracks": 59,
+      "vias": 0
+    }
+  },
+  "baseline_commit": "d39b62360c13417d566d6ab0d0b95fe969c4c5b0",
+  "checked_on": "2026-09-17",
+  "kicad_version": "10.0.6",
+  "minimum_copper_clearance_mm": 0.3,
+  "sha256": {
+    "pcb/mono-layout-v03.kicad_pcb": "b60dc7ad6b2b30e708d3764dd421a8c767193a2354e4e1694b6e5f543a786601",
+    "pcb/psu-layout-v03.kicad_pcb": "405e2c6045d675e8ea73d2985765992b002c39716e740b18862af4f778c636e8",
+    "pcb/mono-layout-v03.kicad_pro": "f124f35407c4949f95884dd2d512d28ca8b928a726441f5e4ee4d084de3f6c41",
+    "pcb/psu-layout-v03.kicad_pro": "d36c962a47c0292b7e63130960958eb0497c617e3a0f109dd27906f6b8666a00",
+    "electrical/lm3886-v01.kicad_sch": "9642e9b9ec37028f43060689c28cc1c1361111a708172ff8a8303a0f947b5d9e",
+    "electrical/internal-psu-v02.kicad_sch": "ef19b3a0d6705669c1796a92c1deac0c1c34b6bf9b9eac4dc13f7affb1f3d024"
+  }
+}

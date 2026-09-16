@@ -1,0 +1,1948 @@
+{
+  "assumptions": {
+    "Vrail": 30,
+    "load_ohm": 8,
+    "sizing_output_W": 40,
+    "Iq_per_rail_A": 0.085,
+    "rho25_ohm_mm": 1.7e-05,
+    "alpha_per_C": 0.0039,
+    "copper_thickness_mm": [
+      0.0348,
+      0.0696
+    ],
+    "temperature_C": [
+      25,
+      85
+    ],
+    "note": "85 C is an input sensitivity case, not a predicted temperature. No thermal rise solved."
+  },
+  "current_cases": {
+    "output": {
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795
+    },
+    "rail1": {
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795
+    },
+    "rail2": {
+      "rms_A": 3.2731295856750044,
+      "peak_A": 6.494555320336759
+    },
+    "ground2": {
+      "rms_A": 4.47213595499958,
+      "peak_A": 6.324555320336759
+    },
+    "charge": {
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545
+    }
+  },
+  "charge_duty_sensitivity": [
+    {
+      "duty": 0.15,
+      "average_A": 2.1831684841794816,
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545
+    },
+    {
+      "duty": 0.25,
+      "average_A": 2.1831684841794816,
+      "rms_A": 4.366336968358963,
+      "peak_A": 8.732673936717926
+    },
+    {
+      "duty": 0.35,
+      "average_A": 2.1831684841794816,
+      "rms_A": 3.69022826638699,
+      "peak_A": 6.237624240512805
+    }
+  ],
+  "bypass_external_trace_lengths": [
+    {
+      "name": "C3→U1.1",
+      "versions": {
+        "02": {
+          "rail_trace_mm": 7.615773105863909,
+          "ground_to_U1_7_mm": 102.93917133008227,
+          "external_trace_sum_mm": 110.55494443594618
+        },
+        "03": {
+          "rail_trace_mm": 8.602325267042627,
+          "ground_to_U1_7_mm": 24.1540659228538,
+          "external_trace_sum_mm": 32.756391189896426
+        }
+      }
+    },
+    {
+      "name": "C3→U1.5",
+      "versions": {
+        "02": {
+          "rail_trace_mm": 18.415773105863906,
+          "ground_to_U1_7_mm": 102.93917133008227,
+          "external_trace_sum_mm": 121.35494443594618
+        },
+        "03": {
+          "rail_trace_mm": 19.402325267042624,
+          "ground_to_U1_7_mm": 24.1540659228538,
+          "external_trace_sum_mm": 43.556391189896424
+        }
+      }
+    },
+    {
+      "name": "C4→U1.4",
+      "versions": {
+        "02": {
+          "rail_trace_mm": 21.020000000000003,
+          "ground_to_U1_7_mm": 126.16204717936446,
+          "external_trace_sum_mm": 147.18204717936447
+        },
+        "03": {
+          "rail_trace_mm": 17.020000000000003,
+          "ground_to_U1_7_mm": 33.1540659228538,
+          "external_trace_sum_mm": 50.174065922853806
+        }
+      }
+    }
+  ],
+  "feedback": {
+    "02": {
+      "sense_mm": 7.142128534267639,
+      "inverting_mm": 5.546169849544818
+    },
+    "03": {
+      "sense_mm": 7.142128534267639,
+      "inverting_mm": 5.546169849544818
+    }
+  },
+  "projected_coupling_screen": {
+    "02": {
+      "load": {
+        "minimum_projected_trace_edge_gap_mm": 8.542188417113826,
+        "closest": {
+          "quiet_net": "L_INV",
+          "power_net": "L_OUT",
+          "quiet_layer": "F.Cu",
+          "power_layer": "F.Cu"
+        }
+      },
+      "supply": {
+        "minimum_projected_trace_edge_gap_mm": 5.015098649200421,
+        "closest": {
+          "quiet_net": "L_INV",
+          "power_net": "VEE",
+          "quiet_layer": "F.Cu",
+          "power_layer": "B.Cu"
+        }
+      }
+    },
+    "03": {
+      "load": {
+        "minimum_projected_trace_edge_gap_mm": 9.21922916814903,
+        "closest": {
+          "quiet_net": "L_INV",
+          "power_net": "L_OUT",
+          "quiet_layer": "F.Cu",
+          "power_layer": "B.Cu"
+        }
+      },
+      "supply": {
+        "minimum_projected_trace_edge_gap_mm": 5.015098649200421,
+        "closest": {
+          "quiet_net": "L_INV",
+          "power_net": "VEE",
+          "quiet_layer": "F.Cu",
+          "power_layer": "B.Cu"
+        }
+      }
+    }
+  },
+  "paths": [
+    {
+      "name": "IC 輸出至 L1",
+      "board": "mono",
+      "net": "L_OUT",
+      "from": "U1.3",
+      "to": "L1.1",
+      "current_model": "output",
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 51.41158041454684,
+            "sum_length_over_width": 42.84298367878903,
+            "min_width_mm": 1.2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.020929043751132574,
+              "peak_drop_V": 0.06618344750289316,
+              "heat_W": 0.10464521875566289
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.025826439988897595,
+              "peak_drop_V": 0.08167037421857015,
+              "heat_W": 0.129132199944488
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.010464521875566287,
+              "peak_drop_V": 0.03309172375144658,
+              "heat_W": 0.052322609377831446
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.012913219994448798,
+              "peak_drop_V": 0.040835187109285076,
+              "heat_W": 0.064566099972244
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 48.7898591769129,
+            "sum_length_over_width": 18.933004026395032,
+            "min_width_mm": 1.2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.009248881277261941,
+              "peak_drop_V": 0.029247530644635027,
+              "heat_W": 0.046244406386309715
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.011413119496141235,
+              "peak_drop_V": 0.03609145281547962,
+              "heat_W": 0.057065597480706186
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.004624440638630971,
+              "peak_drop_V": 0.014623765322317513,
+              "heat_W": 0.023122203193154858
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0057065597480706175,
+              "peak_drop_V": 0.01804572640773981,
+              "heat_W": 0.028532798740353093
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "L1 至喇叭端子",
+      "board": "mono",
+      "net": "L_SPK",
+      "from": "L1.2",
+      "to": "J2.1",
+      "current_model": "output",
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 11.0,
+            "sum_length_over_width": 5.5,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0026867816091954025,
+              "peak_drop_V": 0.008496349460509872,
+              "heat_W": 0.013433908045977015
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0033154885057471266,
+              "peak_drop_V": 0.01048449523426918,
+              "heat_W": 0.016577442528735636
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0013433908045977013,
+              "peak_drop_V": 0.004248174730254936,
+              "heat_W": 0.006716954022988508
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0016577442528735633,
+              "peak_drop_V": 0.00524224761713459,
+              "heat_W": 0.008288721264367818
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 11.0,
+            "sum_length_over_width": 3.6666666666666665,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0017911877394636018,
+              "peak_drop_V": 0.005664232973673248,
+              "heat_W": 0.00895593869731801
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0022103256704980845,
+              "peak_drop_V": 0.006989663489512787,
+              "heat_W": 0.011051628352490425
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0008955938697318009,
+              "peak_drop_V": 0.002832116486836624,
+              "heat_W": 0.004477969348659005
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0011051628352490423,
+              "peak_drop_V": 0.0034948317447563936,
+              "heat_W": 0.005525814176245212
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "喇叭回地至匯流區",
+      "board": "mono",
+      "net": "GND",
+      "from": "J2.2",
+      "to": "STAR",
+      "current_model": "output",
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 43.69132232948902,
+            "sum_length_over_width": 21.84566116474451,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0106717310287545,
+              "peak_drop_V": 0.033746976627556075,
+              "heat_W": 0.05335865514377251
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.013168916089483054,
+              "peak_drop_V": 0.0416437691584042,
+              "heat_W": 0.06584458044741529
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00533586551437725,
+              "peak_drop_V": 0.016873488313778037,
+              "heat_W": 0.026679327571886256
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.006584458044741527,
+              "peak_drop_V": 0.0208218845792021,
+              "heat_W": 0.03292229022370764
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 43.69132232948902,
+            "sum_length_over_width": 14.563774109829673,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.007114487352503002,
+              "peak_drop_V": 0.022497984418370722,
+              "heat_W": 0.035572436762515015
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.008779277392988704,
+              "peak_drop_V": 0.02776251277226947,
+              "heat_W": 0.04389638696494353
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.003557243676251501,
+              "peak_drop_V": 0.011248992209185361,
+              "heat_W": 0.017786218381257508
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.004389638696494352,
+              "peak_drop_V": 0.013881256386134735,
+              "heat_W": 0.021948193482471765
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "放大板匯流區至電源地",
+      "board": "mono",
+      "net": "GND",
+      "from": "STAR",
+      "to": "J5.2",
+      "current_model": "output",
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 27.350307079189164,
+            "sum_length_over_width": 13.675153539594582,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.006680391096928388,
+              "peak_drop_V": 0.021125251527004375,
+              "heat_W": 0.03340195548464195
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.008243602613609631,
+              "peak_drop_V": 0.0260685603843234,
+              "heat_W": 0.04121801306804816
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.003340195548464194,
+              "peak_drop_V": 0.010562625763502188,
+              "heat_W": 0.016700977742320974
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0041218013068048155,
+              "peak_drop_V": 0.0130342801921617,
+              "heat_W": 0.02060900653402408
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 27.350307079189164,
+            "sum_length_over_width": 9.116769026396387,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.004453594064618925,
+              "peak_drop_V": 0.014083501018002917,
+              "heat_W": 0.02226797032309463
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005495735075739753,
+              "peak_drop_V": 0.0173790402562156,
+              "heat_W": 0.027478675378698768
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0022267970323094624,
+              "peak_drop_V": 0.0070417505090014584,
+              "heat_W": 0.011133985161547314
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0027478675378698764,
+              "peak_drop_V": 0.0086895201281078,
+              "heat_W": 0.013739337689349384
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "正電源端子至 U1.1",
+      "board": "mono",
+      "net": "VCC",
+      "from": "J5.1",
+      "to": "U1.1",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 68.58633585434106,
+            "sum_length_over_width": 50.397187967175874,
+            "min_width_mm": 0.6,
+            "via_transitions": 2
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.02461931596097672,
+              "peak_drop_V": 0.07994575472870652,
+              "heat_W": 0.06593900509480898
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.030380235895845275,
+              "peak_drop_V": 0.09865306133522386,
+              "heat_W": 0.08136873228699427
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.01230965798048836,
+              "peak_drop_V": 0.03997287736435326,
+              "heat_W": 0.03296950254740449
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.015190117947922637,
+              "peak_drop_V": 0.04932653066761193,
+              "heat_W": 0.04068436614349714
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 76.98710157789286,
+            "sum_length_over_width": 36.242428672636954,
+            "min_width_mm": 1.0,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.01770463469640311,
+              "peak_drop_V": 0.0574918647310718,
+              "heat_W": 0.04741910779723959
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.021847519215361436,
+              "peak_drop_V": 0.07094496107814259,
+              "heat_W": 0.05851517902179365
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.008852317348201555,
+              "peak_drop_V": 0.0287459323655359,
+              "heat_W": 0.023709553898619794
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.010923759607680718,
+              "peak_drop_V": 0.035472480539071295,
+              "heat_W": 0.029257589510896825
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "正電源端子至 U1.5",
+      "board": "mono",
+      "net": "VCC",
+      "from": "J5.1",
+      "to": "U1.5",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 79.38633585434106,
+            "sum_length_over_width": 68.39718796717588,
+            "min_width_mm": 0.6,
+            "via_transitions": 2
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.03341241940925259,
+              "peak_drop_V": 0.1084994031198423,
+              "heat_W": 0.08948996378082935
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.04123092555101769,
+              "peak_drop_V": 0.1338882634498854,
+              "heat_W": 0.1104306153055434
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.016706209704626294,
+              "peak_drop_V": 0.05424970155992115,
+              "heat_W": 0.044744981890414676
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.020615462775508846,
+              "peak_drop_V": 0.0669441317249427,
+              "heat_W": 0.0552153076527717
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 87.78710157789286,
+            "sum_length_over_width": 47.04242867263696,
+            "min_width_mm": 1.0,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.022980496765368633,
+              "peak_drop_V": 0.07462405376575326,
+              "heat_W": 0.06154968300885182
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.028357933008464894,
+              "peak_drop_V": 0.09208608234693953,
+              "heat_W": 0.07595230883292316
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.011490248382684316,
+              "peak_drop_V": 0.03731202688287663,
+              "heat_W": 0.03077484150442591
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.014178966504232447,
+              "peak_drop_V": 0.046043041173469766,
+              "heat_W": 0.03797615441646158
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "負電源端子至 U1.4",
+      "board": "mono",
+      "net": "VEE",
+      "from": "J5.3",
+      "to": "U1.4",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 75.8341719575368,
+            "sum_length_over_width": 62.078374987907644,
+            "min_width_mm": 0.8,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.03032564295386293,
+              "peak_drop_V": 0.09847578289432171,
+              "heat_W": 0.0812225135908607
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.03742184340506685,
+              "peak_drop_V": 0.121519116091593,
+              "heat_W": 0.1002285817711221
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.015162821476931465,
+              "peak_drop_V": 0.049237891447160856,
+              "heat_W": 0.04061125679543035
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.018710921702533426,
+              "peak_drop_V": 0.0607595580457965,
+              "heat_W": 0.05011429088556105
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 75.8341719575368,
+            "sum_length_over_width": 54.808521663682455,
+            "min_width_mm": 0.8,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.026774277824212694,
+              "peak_drop_V": 0.08694351424570752,
+              "heat_W": 0.07171073496351318
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.033039458835078465,
+              "peak_drop_V": 0.1072882965792031,
+              "heat_W": 0.08849104694497528
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.013387138912106347,
+              "peak_drop_V": 0.04347175712285376,
+              "heat_W": 0.03585536748175659
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.016519729417539233,
+              "peak_drop_V": 0.05364414828960155,
+              "heat_W": 0.04424552347248764
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "共用電源正軌輸出",
+      "board": "psu",
+      "net": "VCC",
+      "from": "C202.1",
+      "to": "J203.1",
+      "current_model": "rail2",
+      "rms_A": 3.2731295856750044,
+      "peak_A": 6.494555320336759,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 57.6619037896906,
+            "sum_length_over_width": 19.220634596563535,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00938939046383851,
+              "peak_drop_V": 0.06097991579164162,
+              "heat_W": 0.10059208251172479
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.01158650783237672,
+              "peak_drop_V": 0.07524921608688576,
+              "heat_W": 0.12413062981946837
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.004694695231919255,
+              "peak_drop_V": 0.03048995789582081,
+              "heat_W": 0.05029604125586239
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.00579325391618836,
+              "peak_drop_V": 0.03762460804344288,
+              "heat_W": 0.06206531490973419
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 57.6619037896906,
+            "sum_length_over_width": 14.41547594742265,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.007042042847878881,
+              "peak_drop_V": 0.04573493684373121,
+              "heat_W": 0.07544406188379357
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.00868988087428254,
+              "peak_drop_V": 0.05643691206516431,
+              "heat_W": 0.09309797236460127
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0035210214239394405,
+              "peak_drop_V": 0.022867468421865603,
+              "heat_W": 0.037722030941896786
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.00434494043714127,
+              "peak_drop_V": 0.028218456032582155,
+              "heat_W": 0.04654898618230063
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "共用電源負軌輸出",
+      "board": "psu",
+      "net": "VEE",
+      "from": "C204.2",
+      "to": "J203.3",
+      "current_model": "rail2",
+      "rms_A": 3.2731295856750044,
+      "peak_A": 6.494555320336759,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 57.273492381434515,
+            "sum_length_over_width": 19.091164127144836,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.009326143395444318,
+              "peak_drop_V": 0.06056915420710642,
+              "heat_W": 0.09991449280587157
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.011508460949978289,
+              "peak_drop_V": 0.07474233629156933,
+              "heat_W": 0.12329448412244552
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.004663071697722159,
+              "peak_drop_V": 0.03028457710355321,
+              "heat_W": 0.049957246402935786
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005754230474989144,
+              "peak_drop_V": 0.037371168145784665,
+              "heat_W": 0.06164724206122276
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 57.273492381434515,
+            "sum_length_over_width": 14.318373095358629,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.006994607546583239,
+              "peak_drop_V": 0.045426865655329815,
+              "heat_W": 0.07493586960440368
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.008631345712483716,
+              "peak_drop_V": 0.056056752218676995,
+              "heat_W": 0.09247086309183414
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0034973037732916193,
+              "peak_drop_V": 0.022713432827664908,
+              "heat_W": 0.03746793480220184
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.004315672856241858,
+              "peak_drop_V": 0.028028376109338497,
+              "heat_W": 0.04623543154591707
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "共用電源輸出地",
+      "board": "psu",
+      "net": "GND",
+      "from": "STAR",
+      "to": "J203.2",
+      "current_model": "ground2",
+      "rms_A": 4.47213595499958,
+      "peak_A": 6.324555320336759,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 41.0,
+            "sum_length_over_width": 13.666666666666666,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00667624521072797,
+              "peak_drop_V": 0.04222428216738239,
+              "heat_W": 0.13352490421455943
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.008238486590038315,
+              "peak_drop_V": 0.05210476419454987,
+              "heat_W": 0.16476973180076632
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.003338122605363985,
+              "peak_drop_V": 0.021112141083691194,
+              "heat_W": 0.06676245210727971
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.004119243295019157,
+              "peak_drop_V": 0.026052382097274934,
+              "heat_W": 0.08238486590038316
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 41.0,
+            "sum_length_over_width": 10.25,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.005007183908045978,
+              "peak_drop_V": 0.0316682116255368,
+              "heat_W": 0.10014367816091958
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0061788649425287365,
+              "peak_drop_V": 0.039078573145912406,
+              "heat_W": 0.12357729885057475
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.002503591954022989,
+              "peak_drop_V": 0.0158341058127684,
+              "heat_W": 0.05007183908045979
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0030894324712643683,
+              "peak_drop_V": 0.019539286572956203,
+              "heat_W": 0.061788649425287376
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "正橋至第一顆濾波電容",
+      "board": "psu",
+      "net": "VCC",
+      "from": "BR1.P",
+      "to": "C201.1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 34.380613017821105,
+            "sum_length_over_width": 11.460204339273702,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.005598375682978533,
+              "peak_drop_V": 0.0814813156911701,
+              "heat_W": 0.1778874404664416
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.00690839559279551,
+              "peak_drop_V": 0.1005479435629039,
+              "heat_W": 0.21951310153558892
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0027991878414892666,
+              "peak_drop_V": 0.04074065784558505,
+              "heat_W": 0.0889437202332208
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.003454197796397755,
+              "peak_drop_V": 0.05027397178145195,
+              "heat_W": 0.10975655076779446
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 34.380613017821105,
+            "sum_length_over_width": 8.595153254455276,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0041987817622339,
+              "peak_drop_V": 0.061110986768377576,
+              "heat_W": 0.13341558034983117
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005181296694596632,
+              "peak_drop_V": 0.07541095767217793,
+              "heat_W": 0.16463482615169167
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00209939088111695,
+              "peak_drop_V": 0.030555493384188788,
+              "heat_W": 0.06670779017491558
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.002590648347298316,
+              "peak_drop_V": 0.03770547883608896,
+              "heat_W": 0.08231741307584584
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "正橋充電回地",
+      "board": "psu",
+      "net": "GND",
+      "from": "C201.2",
+      "to": "BR1.N",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 38.0,
+            "sum_length_over_width": 12.666666666666668,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.006187739463601533,
+              "peak_drop_V": 0.09005918523499012,
+              "heat_W": 0.1966143749159125
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.007635670498084292,
+              "peak_drop_V": 0.11113303457997782,
+              "heat_W": 0.24262213864623602
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0030938697318007666,
+              "peak_drop_V": 0.04502959261749506,
+              "heat_W": 0.09830718745795625
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.003817835249042146,
+              "peak_drop_V": 0.05556651728998891,
+              "heat_W": 0.12131106932311801
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 38.0,
+            "sum_length_over_width": 9.5,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00464080459770115,
+              "peak_drop_V": 0.0675443889262426,
+              "heat_W": 0.14746078118693437
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005726752873563219,
+              "peak_drop_V": 0.08334977593498337,
+              "heat_W": 0.181966603984677
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.002320402298850575,
+              "peak_drop_V": 0.0337721944631213,
+              "heat_W": 0.07373039059346718
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0028633764367816095,
+              "peak_drop_V": 0.041674887967491685,
+              "heat_W": 0.0909833019923385
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "正 AC 端子至保險絲",
+      "board": "psu",
+      "net": "POS_AC1",
+      "from": "J201.1",
+      "to": "F201.1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 20.0,
+            "sum_length_over_width": 10.0,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.004885057471264369,
+              "peak_drop_V": 0.0710993567644659,
+              "heat_W": 0.15522187493361514
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.006028160919540231,
+              "peak_drop_V": 0.08773660624735091,
+              "heat_W": 0.19154379366808105
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0024425287356321843,
+              "peak_drop_V": 0.03554967838223295,
+              "heat_W": 0.07761093746680757
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0030140804597701154,
+              "peak_drop_V": 0.043868303123675456,
+              "heat_W": 0.09577189683404053
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 20.0,
+            "sum_length_over_width": 5.0,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0024425287356321843,
+              "peak_drop_V": 0.03554967838223295,
+              "heat_W": 0.07761093746680757
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0030140804597701154,
+              "peak_drop_V": 0.043868303123675456,
+              "heat_W": 0.09577189683404053
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0012212643678160922,
+              "peak_drop_V": 0.017774839191116474,
+              "heat_W": 0.038805468733403785
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0015070402298850577,
+              "peak_drop_V": 0.021934151561837728,
+              "heat_W": 0.04788594841702026
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "正保險絲至整流橋",
+      "board": "psu",
+      "net": "POS_AC_FUSED",
+      "from": "F201.2",
+      "to": "BR1.AC1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 50.0,
+            "sum_length_over_width": 25.0,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.01221264367816092,
+              "peak_drop_V": 0.1777483919111647,
+              "heat_W": 0.38805468733403775
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.015070402298850575,
+              "peak_drop_V": 0.21934151561837725,
+              "heat_W": 0.4788594841702026
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00610632183908046,
+              "peak_drop_V": 0.08887419595558235,
+              "heat_W": 0.19402734366701888
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.007535201149425287,
+              "peak_drop_V": 0.10967075780918863,
+              "heat_W": 0.2394297420851013
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 50.0,
+            "sum_length_over_width": 12.5,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00610632183908046,
+              "peak_drop_V": 0.08887419595558235,
+              "heat_W": 0.19402734366701888
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.007535201149425287,
+              "peak_drop_V": 0.10967075780918863,
+              "heat_W": 0.2394297420851013
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00305316091954023,
+              "peak_drop_V": 0.044437097977791176,
+              "heat_W": 0.09701367183350944
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0037676005747126436,
+              "peak_drop_V": 0.05483537890459431,
+              "heat_W": 0.11971487104255064
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "正 AC 回線",
+      "board": "psu",
+      "net": "POS_AC2",
+      "from": "BR1.AC2",
+      "to": "J201.2",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 35.100571399419884,
+            "sum_length_over_width": 17.550285699709942,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.008573415428019225,
+              "peak_drop_V": 0.1247814024281981,
+              "heat_W": 0.27241882519295907
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.010579594638175724,
+              "peak_drop_V": 0.15398025059639645,
+              "heat_W": 0.33616483028811145
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0042867077140096126,
+              "peak_drop_V": 0.06239070121409905,
+              "heat_W": 0.13620941259647953
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005289797319087862,
+              "peak_drop_V": 0.07699012529819822,
+              "heat_W": 0.16808241514405572
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 35.100571399419884,
+            "sum_length_over_width": 8.775142849854971,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0042867077140096126,
+              "peak_drop_V": 0.06239070121409905,
+              "heat_W": 0.13620941259647953
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005289797319087862,
+              "peak_drop_V": 0.07699012529819822,
+              "heat_W": 0.16808241514405572
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0021433538570048063,
+              "peak_drop_V": 0.031195350607049525,
+              "heat_W": 0.06810470629823977
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.002644898659543931,
+              "peak_drop_V": 0.03849506264909911,
+              "heat_W": 0.08404120757202786
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "負橋至第一顆濾波電容",
+      "board": "psu",
+      "net": "VEE",
+      "from": "BR2.N",
+      "to": "C203.2",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 37.80772404161333,
+            "sum_length_over_width": 12.602574680537776,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.006156430160032822,
+              "peak_drop_V": 0.089603495336238,
+              "heat_W": 0.19561952709039793
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0075970348174805025,
+              "peak_drop_V": 0.1105707132449177,
+              "heat_W": 0.24139449642955102
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.003078215080016411,
+              "peak_drop_V": 0.044801747668119,
+              "heat_W": 0.09780976354519896
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0037985174087402512,
+              "peak_drop_V": 0.05528535662245885,
+              "heat_W": 0.12069724821477551
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 37.80772404161333,
+            "sum_length_over_width": 9.451931010403332,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.004617322620024616,
+              "peak_drop_V": 0.0672026215021785,
+              "heat_W": 0.1467146453177984
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005697776113110376,
+              "peak_drop_V": 0.08292803493368826,
+              "heat_W": 0.18104587232216324
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.002308661310012308,
+              "peak_drop_V": 0.03360131075108925,
+              "heat_W": 0.0733573226588992
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.002848888056555188,
+              "peak_drop_V": 0.04146401746684413,
+              "heat_W": 0.09052293616108162
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "負橋充電回地",
+      "board": "psu",
+      "net": "GND",
+      "from": "C203.1",
+      "to": "BR2.P",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 34.34032966784156,
+            "sum_length_over_width": 11.446776555947185,
+            "min_width_mm": 3,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.005591816133652361,
+              "peak_drop_V": 0.08138584501544131,
+              "heat_W": 0.17767901189602717
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.006900301108927013,
+              "peak_drop_V": 0.10043013274905457,
+              "heat_W": 0.2192559006796975
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0027959080668261806,
+              "peak_drop_V": 0.04069292250772066,
+              "heat_W": 0.08883950594801358
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0034501505544635067,
+              "peak_drop_V": 0.05021506637452729,
+              "heat_W": 0.10962795033984875
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 34.34032966784156,
+            "sum_length_over_width": 8.58508241696039,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.004193862100239271,
+              "peak_drop_V": 0.06103938376158099,
+              "heat_W": 0.1332592589220204
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005175225831695261,
+              "peak_drop_V": 0.07532259956179094,
+              "heat_W": 0.16444192550977316
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0020969310501196357,
+              "peak_drop_V": 0.030519691880790494,
+              "heat_W": 0.0666296294610102
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0025876129158476304,
+              "peak_drop_V": 0.03766129978089547,
+              "heat_W": 0.08222096275488658
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "負 AC 端子至保險絲",
+      "board": "psu",
+      "net": "NEG_AC1",
+      "from": "J202.1",
+      "to": "F202.1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 20.0,
+            "sum_length_over_width": 10.0,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.004885057471264369,
+              "peak_drop_V": 0.0710993567644659,
+              "heat_W": 0.15522187493361514
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.006028160919540231,
+              "peak_drop_V": 0.08773660624735091,
+              "heat_W": 0.19154379366808105
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0024425287356321843,
+              "peak_drop_V": 0.03554967838223295,
+              "heat_W": 0.07761093746680757
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0030140804597701154,
+              "peak_drop_V": 0.043868303123675456,
+              "heat_W": 0.09577189683404053
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 20.0,
+            "sum_length_over_width": 5.0,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0024425287356321843,
+              "peak_drop_V": 0.03554967838223295,
+              "heat_W": 0.07761093746680757
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0030140804597701154,
+              "peak_drop_V": 0.043868303123675456,
+              "heat_W": 0.09577189683404053
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0012212643678160922,
+              "peak_drop_V": 0.017774839191116474,
+              "heat_W": 0.038805468733403785
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0015070402298850577,
+              "peak_drop_V": 0.021934151561837728,
+              "heat_W": 0.04788594841702026
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "負保險絲至整流橋",
+      "board": "psu",
+      "net": "NEG_AC_FUSED",
+      "from": "F202.2",
+      "to": "BR2.AC1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 50.0,
+            "sum_length_over_width": 25.0,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.01221264367816092,
+              "peak_drop_V": 0.1777483919111647,
+              "heat_W": 0.38805468733403775
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.015070402298850575,
+              "peak_drop_V": 0.21934151561837725,
+              "heat_W": 0.4788594841702026
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00610632183908046,
+              "peak_drop_V": 0.08887419595558235,
+              "heat_W": 0.19402734366701888
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.007535201149425287,
+              "peak_drop_V": 0.10967075780918863,
+              "heat_W": 0.2394297420851013
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 50.0,
+            "sum_length_over_width": 12.5,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00610632183908046,
+              "peak_drop_V": 0.08887419595558235,
+              "heat_W": 0.19402734366701888
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.007535201149425287,
+              "peak_drop_V": 0.10967075780918863,
+              "heat_W": 0.2394297420851013
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.00305316091954023,
+              "peak_drop_V": 0.044437097977791176,
+              "heat_W": 0.09701367183350944
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.0037676005747126436,
+              "peak_drop_V": 0.05483537890459431,
+              "heat_W": 0.11971487104255064
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "負 AC 回線",
+      "board": "psu",
+      "net": "NEG_AC2",
+      "from": "BR2.AC2",
+      "to": "J202.2",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "02": {
+          "geometry": {
+            "length_mm": 35.100571399419884,
+            "sum_length_over_width": 17.550285699709942,
+            "min_width_mm": 2,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.008573415428019225,
+              "peak_drop_V": 0.1247814024281981,
+              "heat_W": 0.27241882519295907
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.010579594638175724,
+              "peak_drop_V": 0.15398025059639645,
+              "heat_W": 0.33616483028811145
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0042867077140096126,
+              "peak_drop_V": 0.06239070121409905,
+              "heat_W": 0.13620941259647953
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005289797319087862,
+              "peak_drop_V": 0.07699012529819822,
+              "heat_W": 0.16808241514405572
+            }
+          ]
+        },
+        "03": {
+          "geometry": {
+            "length_mm": 35.100571399419884,
+            "sum_length_over_width": 8.775142849854971,
+            "min_width_mm": 4,
+            "via_transitions": 0
+          },
+          "cases": [
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0042867077140096126,
+              "peak_drop_V": 0.06239070121409905,
+              "heat_W": 0.13620941259647953
+            },
+            {
+              "copper_mm": 0.0348,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.005289797319087862,
+              "peak_drop_V": 0.07699012529819822,
+              "heat_W": 0.16808241514405572
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 25,
+              "R_ohm": 0.0021433538570048063,
+              "peak_drop_V": 0.031195350607049525,
+              "heat_W": 0.06810470629823977
+            },
+            {
+              "copper_mm": 0.0696,
+              "assumed_copper_C": 85,
+              "R_ohm": 0.002644898659543931,
+              "peak_drop_V": 0.03849506264909911,
+              "heat_W": 0.08404120757202786
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "former_power_via_barrel_sensitivity": [
+    {
+      "finished_hole_mm": 0.8,
+      "plating_mm": 0.015,
+      "length_mm": 1.6,
+      "R25_mohm": 0.7215024086832589
+    },
+    {
+      "finished_hole_mm": 0.8,
+      "plating_mm": 0.02,
+      "length_mm": 1.6,
+      "R25_mohm": 0.5411268065124442
+    },
+    {
+      "finished_hole_mm": 0.8,
+      "plating_mm": 0.025,
+      "length_mm": 1.6,
+      "R25_mohm": 0.4329014452099553
+    }
+  ],
+  "sha256": {
+    "pcb/mono-layout-v02.json": "9b84bc50105e93fdb46ffaf82654fec954146c5ee7833c521fe6423acf0204f7",
+    "pcb/mono-layout-v03.json": "7b4d7077e552f301d78591df5c2e4943e348fb63ca5e27c1dd19302ab246fcd9",
+    "pcb/psu-layout-v02.json": "d2889fbd8e6ff5157feb988c7fead968ec53e50a17b3c196e3d7db4eef304b78",
+    "pcb/psu-layout-v03.json": "83ad01fc262e1d7e48bf926ceffe728bcd750f47861f263f1faf7a6ae2401f0b"
+  }
+}
