@@ -7,3 +7,6 @@ electrical/erc.json
 electrical/netlist.xml
 electrical/psu-erc.json
 electrical/psu-netlist.xml
+
+# PDF build and visual review intermediates
+tmp/pdfs/

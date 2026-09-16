@@ -11,12 +11,12 @@ def build():
                       ('N', '-', 'passive', 12.7, -5.08, 180)],
            '(rectangle(start -10.16 10.16)(end 10.16 -10.16)(stroke(width 0.254)(type default))(fill(type background)))', 'BR')
     d = Drawing('internal-psu-v02', 'LM3886 internal PSU - isolated secondaries only')
-    d.text(15, 16, 'INTERNAL LINEAR PSU / V0.2 / SECONDARY-SIDE DRAFT', 2.6)
-    d.text(15, 25, 'T1 candidate: 300 VA, 2 x 25 VAC INDEPENDENT windings. Primary / soft start shown only in system documentation.', 1.5)
+    d.text(15, 16, 'INTERNAL LINEAR PSU / V0.3 / PLAN C / SECONDARY-SIDE DRAFT', 2.6)
+    d.text(15, 25, 'T1 ordered: 110 VAC primary; 2 x 22 VAC independent + 12 VAC auxiliary. Seller: 200 W; VA / currents TBD.', 1.5)
     d.text(15, 33, 'Two bridges; connect BR1 negative to BR2 positive at the reservoir star point. Do not pre-join the AC windings.', 1.5)
     for i, (ch, y, positive, negative) in enumerate([('POS', 76.2, 'VCC', 'GND'), ('NEG', 177.8, 'GND', 'VEE')]):
         j, fuse, br = 'J'+str(201+i), 'F'+str(201+i), 'BR'+str(i+1)
-        d.text(15, y-22, ch + ' RAIL / floating 25 VAC secondary', 1.8)
+        d.text(15, y-22, ch + ' RAIL / floating 22 VAC secondary', 1.8)
         d.part('Conn2', j, 'T1 SEC '+str(i+1), 40.64, y-5.08)
         d.terminal(j, 1, ch+'_AC1', dx=-10.16)
         d.terminal(j, 2, ch+'_AC2', dx=-10.16)
@@ -36,9 +36,9 @@ def build():
     for n, net in ((1, 'VCC'), (2, 'GND'), (3, 'VEE')):
         d.terminal('J203', n, net, dx=-10.16)
     d.text(15, 238, 'C201/C202: positive lead to VCC. C203/C204: positive lead to GND.', 1.6)
-    d.text(15, 247, '20,000 uF per rail. GND star is not a substitute for the protective-earth chassis bond.', 1.5)
-    d.text(15, 256, 'Bridge pin IDs AC1/AC2/P/N are logical terminals; map to the selected part before assigning any footprint.', 1.4)
-    d.text(15, 265, 'F201/F202 ratings, transformer, bridge cooling, primary fuse, inrush control and speaker protection remain TBD.', 1.4)
+    d.text(15, 247, 'C plan: 20,000 uF per rail. Both bridges and all four reservoir capacitors NOT purchased.', 1.5)
+    d.text(15, 256, 'Fuse ratings / bridge cooling / inrush / PE chassis bond / speaker protection: design and verify before assembly.', 1.4)
+    d.text(15, 265, '12 VAC auxiliary: reserved for control / speaker protection; AC vs DC module input and current rating TBD.', 1.4)
     d.text(15, 274, 'Separate schematic projects: J203 pin 1/2/3 wires to amplifier J5 pin 1/2/3. Same-label text does not wire the two files.', 1.35)
     d.save()
     print(f'Generated internal PSU secondary draft: {len(d.parts)} components')

@@ -81,7 +81,7 @@ def verify():
                         component.findtext('footprint', ''), requirements[kind]])
     count = sum(len(v) for v in actual.values())
     version = subprocess.check_output(['kicad-cli', 'version'], text=True).strip()
-    report = f'''# V0.2 電氣驗證紀錄
+    report = f'''# V0.3 電氣驗證紀錄
 
 本報告由 `python3 tools/rebuild.py` 在 KiCad {version} 完成檢查後產生。
 

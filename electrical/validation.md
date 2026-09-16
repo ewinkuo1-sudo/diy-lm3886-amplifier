@@ -1,4 +1,4 @@
-# V0.2 電氣驗證紀錄
+# V0.3 電氣驗證紀錄
 
 本報告由 `python3 tools/rebuild.py` 在 KiCad 10.0.6 完成檢查後產生。
 

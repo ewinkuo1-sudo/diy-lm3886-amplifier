@@ -29,11 +29,11 @@ def main():
     run('kicad-cli', 'sch', 'export', 'pdf', '-o', 'electrical/preview/internal-psu-v02.pdf', psu)
     run('pdftoppm', '-scale-to', '2400', '-png', '-singlefile', 'electrical/preview/internal-psu-v02.pdf', 'electrical/preview/internal-psu-v02')
     run(sys.executable, 'tools/verify_power_supply.py')
-    output = subprocess.check_output([sys.executable, 'tools/power_budget.py'], cwd=ROOT, text=True)
-    (ROOT / 'docs/02-calculations.md').write_text(output)
-    mains = subprocess.check_output([sys.executable, 'tools/mains_budget.py'], cwd=ROOT, text=True)
-    (ROOT / 'docs/06-mains-calculations.md').write_text(mains)
-    print('All V0.2 deliverables rebuilt and electrical checks passed.')
+    output = subprocess.check_output([sys.executable, 'tools/power_budget.py'], cwd=ROOT, text=True, encoding="utf-8")
+    (ROOT / 'docs/02-calculations.md').write_text(output, encoding="utf-8")
+    mains = subprocess.check_output([sys.executable, 'tools/mains_budget.py'], cwd=ROOT, text=True, encoding="utf-8")
+    (ROOT / 'docs/06-mains-calculations.md').write_text(mains, encoding="utf-8")
+    print('All V0.3 deliverables rebuilt and electrical checks passed.')
 
 
 if __name__ == '__main__':

@@ -125,7 +125,7 @@ class Drawing:
     def save(self):
         lib = ''.join(v.replace('(symbol ' + q(k), '(symbol ' + q('Project:' + k), 1) for k, v in LIB.items())
         header = f'(kicad_sch(version 20250114)(generator "diy_lm3886")(uuid {uid(self.project)})(paper "A3")'
-        header += f'(title_block(title {q(self.title)})(date "2026-09-11")(rev "0.2 DRAFT")(comment 1 "Internal PSU system / no PCB / no hardware measurements"))'
+        header += f'(title_block(title {q(self.title)})(date "2026-09-16")(rev "0.3 DRAFT")(comment 1 "Internal PSU system / no PCB / no hardware measurements"))'
         (DEST / (self.project + '.kicad_sch')).write_text(header + f'(lib_symbols {lib})' + ''.join(self.items) + '(sheet_instances(path "/"(page "1"))))\n')
         (DEST / 'Project.kicad_sym').write_text('(kicad_symbol_lib(version 20231120)(generator "diy_lm3886")' + ''.join(LIB.values()) + ')\n')
         (DEST / 'sym-lib-table').write_text('(sym_lib_table\n  (version 7)\n  (lib (name "Project")(type "KiCad")(uri "${KIPRJMOD}/Project.kicad_sym")(options "")(descr "Project symbols"))\n)\n')
@@ -134,8 +134,8 @@ class Drawing:
 
 def build():
     d = Drawing()
-    d.text(15, 16, 'LM3886 / STEREO POWER AMP / EXTERNAL PREAMP / V0.2', 2.5)
-    d.text(15, 25, 'Target: 2 x 40 W / 8 ohms. Internal unregulated PSU: approx. +/-33 V loaded; verify actual rails.', 1.6)
+    d.text(15, 16, 'LM3886 / STEREO POWER AMP / EXTERNAL PREAMP / V0.3 / PLAN C', 2.5)
+    d.text(15, 25, 'Plan C: stereo / 8 ohms / 2 x 22 VAC supply. Output rating TBD by clipping and thermal tests.', 1.6)
     for index, ch in enumerate(('L', 'R')):
         base, y = index * 100, 71.12 + index * 101.6
         r = lambda n: 'R' + str(base + n)
