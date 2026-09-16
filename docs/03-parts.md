@@ -1,5 +1,7 @@
 # BOM 與整機配件
 
+> 2026-09-16 採購更新：已下單雙 22Vac＋單 12Vac 變壓器及 LM3886T 拆機品，均待到貨。現行規劃以 [採購後修訂計畫](09-purchased-plan.md) 為準；本頁 V0.2 的 300VA／25Vac、40W／50W 及相關計算保留為舊版參考，不代表已購硬體的性能或驗收要求。
+
 [電路 BOM](../electrical/bom-draft.csv) 由 KiCad 匯出的 netlist 產生，涵蓋 43 個放大板元件；另有[電源次級 BOM](../electrical/psu-bom-draft.csv) 的 15 個元件。`footprint` 留空代表尚未核對實際尺寸，不能據此直接下單 PCB。沒有價格欄：本次未查供應商即時庫存與報價。
 
 ## 放大板選材

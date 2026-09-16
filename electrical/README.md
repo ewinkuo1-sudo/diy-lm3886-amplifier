@@ -1,5 +1,7 @@
 # V0.2 放大板與內建電源次級圖
 
+> 2026-09-16：本目錄圖面、BOM 與驗證仍為舊版 V0.2。已下單零件與最新電源／功率方向見 [修訂計畫](../docs/09-purchased-plan.md)。本次未修改網路或重跑 ERC。
+
 ![原理圖預覽](preview/lm3886-v01.png)
 
 [下載 PDF](preview/lm3886-v01.pdf)。以 KiCad 10 開啟 [lm3886-v01.kicad_pro](lm3886-v01.kicad_pro)，即可編輯原理圖；自有符號庫已隨附。未指派 footprint，尚無 PCB。
