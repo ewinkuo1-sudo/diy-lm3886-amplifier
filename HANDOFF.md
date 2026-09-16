@@ -50,4 +50,6 @@
 ## V0.3 重建
 
 新版設計與採購 PDF 在 output/pdf/，由 tools/build_project_pdf.py 生成（reportlab、pypdf、中文字型）；先跑 tools/rebuild.py。舊 PDF 與 docs/diagrams 六張圖保留為歷史，不作現行供電／採購依據。
-`n本次完成檢查：KiCad 10.0.6，兩份 ERC 均 0 violations；放大板 43 元件／29 網路／105 腳位，主電源 15 元件／9 網路／35 腳位，獨立網路、電解極性與線束檢查通過。新版彙整 PDF 17 頁（含兩張 A3 向量圖），採購 PDF 3 頁，已逐頁渲染檢查。
+
+本次完成檢查：KiCad 10.0.6，兩份 ERC 均 0 violations；放大板 43 元件／29 網路／105 腳位，主電源 15 元件／9 網路／35 腳位，獨立網路、電解極性與線束檢查通過。新版彙整 PDF 17 頁（含兩張 A3 向量圖），採購 PDF 3 頁，已逐頁渲染檢查。
+
