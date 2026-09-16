@@ -1,0 +1,38 @@
+board,reference,value,draft_footprint,status
+mono-placement-v01,U1,LM3886T,LM3886T_UNVERIFIED,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,J1,L RCA,Terminal2_P5.08,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,J2,L TEST OUT,Terminal2_P5.08,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,J5,INTERNAL PSU,Terminal3_P5.08,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,C1,2.2u / 63V film,Film_P15,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,R1,1M,R_P7.5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,R6,1k,R_P7.5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,R2,22k,R_P7.5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,R4,20k / 1%,R_P7.5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,R3,1k / 1%,R_P7.5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,C2,47u / 63V BP,BP_D10_P5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,C3,100n / 63V,Film_P5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,C4,100n / 63V,Film_P5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,C7,470u / 63V,CP_D12.5_P5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,C6,470u / 63V,CP_D12.5_P5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,R5,2.7R / 2W,R_2W_P20,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,C5,100n / 100V film,Film_P5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,L1,0.7uH / air core,AirCoil_P20,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,R7,10R / 2W,R_2W_P20,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,R8,22k / 0.25W,R_P7.5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,C8,100u / 63V,CP_D8_P3.5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+mono-placement-v01,JP1,L RUN LINK,Header2_P2.54,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,J201,T1 SEC 1,Terminal2_P5.08,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,J202,T1 SEC 2,Terminal2_P5.08,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,F201,TBD per transformer,Fuse5x20_P25,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,F202,TBD per transformer,Fuse5x20_P25,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,BR1,>=15A / >=200V TBD,Bridge_LOGICAL_UNVERIFIED,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,BR2,>=15A / >=200V TBD,Bridge_LOGICAL_UNVERIFIED,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,C201,10000u / 63V,CP_D35_P10,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,C202,10000u / 63V,CP_D35_P10,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,C203,10000u / 63V,CP_D35_P10,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,C204,10000u / 63V,CP_D35_P10,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,C205,100n / 100V film,Film_P5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,C206,100n / 100V film,Film_P5,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,R201,2.2k / 2W BLEED,R_2W_P20,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,R202,2.2k / 2W BLEED,R_2W_P20,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication
+psu-placement-v01,J203,TO AMP J5,Terminal3_P5.08,UNVERIFIED dimensional placeholder; verify actual MPN before fabrication

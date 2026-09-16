@@ -1,0 +1,23 @@
+mono_board_ref,left_schematic_ref,right_schematic_ref
+U1,U1,U2
+J1,J1,J3
+J2,J2,J4
+J5,J5,J5 (shared PSU split into two harnesses)
+C1,C1,C101
+R1,R1,R101
+R6,R6,R106
+R2,R2,R102
+R4,R4,R104
+R3,R3,R103
+C2,C2,C102
+C3,C3,C103
+C4,C4,C104
+C7,C7,C107
+C6,C6,C106
+R5,R5,R105
+C5,C5,C105
+L1,L1,L2
+R7,R7,R107
+R8,R8,R108
+C8,C8,C108
+JP1,JP1,JP2
