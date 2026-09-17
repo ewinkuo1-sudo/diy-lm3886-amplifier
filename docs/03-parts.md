@@ -1,5 +1,7 @@
 # BOM 與整機配件
 
+最新[露天商品直達連結](11-ruten-shopping-links.md)已另列2026-09-18查價、包裝與待確認條件；以下保留設計需求。
+
 > V0.3／2026-09-16：採用 C 方案，只有變壓器與 LM3886T 已購；額定電流、保護與實際功率待確認。
 
 [電路 BOM](../electrical/bom-draft.csv) 由 KiCad 匯出的 netlist 產生，涵蓋 43 個放大板元件；另有[電源次級 BOM](../electrical/psu-bom-draft.csv) 的 15 個元件。`footprint` 留空代表尚未核對實際尺寸，不能據此直接下單 PCB。沒有價格欄：本次未查供應商即時庫存與報價。
