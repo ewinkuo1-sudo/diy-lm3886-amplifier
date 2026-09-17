@@ -34,6 +34,10 @@
 
 ## 電路圖
 
+**2026-09-17：六張中文導讀圖已同步方案 C V0.3。** 更新雙 22Vac／雙橋四電容、回授串聯關係、元件編號與靜音極性，補上 PCB V0.3 回流說明。[導讀圖索引與重建方式](docs/diagrams/README.md)。
+
+![V0.3 單聲道完整電路導讀](docs/diagrams/lm3886_complete.png)
+
 ![LM3886 放大板電路草案](electrical/preview/lm3886-v01.png)
 
 [下載 PDF](electrical/preview/lm3886-v01.pdf) · [KiCad 原理圖](electrical/lm3886-v01.kicad_sch) · [看圖與重建方式](electrical/README.md)
