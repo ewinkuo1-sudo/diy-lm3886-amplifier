@@ -26,6 +26,14 @@
 
 [新版 PCB 與驗證](pcb/README-v03.md)／[本輪審查](pcb/review-v03.md)／[計算表](pcb/current-budget-v03.md)。V0.1／V0.2 板檔保留；V0.2 規則文字有更正，本輪已修復重建還原設定的問題。原理圖和既有 V0.3 PDF 未修改，PDF 未收錄本版 PCB。
 
+## PCB 看圖與選料資料（2026-09-18）
+
+已完成正反面銅箔圖、極性／組裝圖、兩板三種角度的 3D 預覽、可旋轉的 KiCad 預覽板，以及 37 項零件／封裝核對表。**元件模型採暫定外框與假設高度，尚非可製造裝配模型。** 原理圖與 PCB V0.3 走線保持不變。
+
+[正反面、組裝與 3D 圖索引](pcb/inspection-v03/README.md) · [零件與封裝核對表](pcb/inspection-v03/parts-audit.md)
+
+![PCB 3D 工程預覽](pcb/inspection-v03/3d/overview.png)
+
 ## 最新 PDF（V0.3／2026-09-16）
 
 - [C 方案設計與電路彙整](output/pdf/LM3886_Plan_C_V03.pdf)：現行設計、整機方塊圖、估算、採購與兩張向量電路圖。

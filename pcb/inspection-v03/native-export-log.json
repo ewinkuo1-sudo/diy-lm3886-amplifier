@@ -1,0 +1,212 @@
+[
+  {
+    "args": [
+      "pcb",
+      "export",
+      "svg",
+      "--layers",
+      "F.Cu,Edge.Cuts",
+      "--mode-single",
+      "--fit-page-to-board",
+      "--exclude-drawing-sheet",
+      "-o",
+      "pcb/inspection-v03/native/mono-top.svg",
+      "pcb/mono-layout-v03.kicad_pcb"
+    ],
+    "stdout": "已繪製到 'pcb/inspection-v03/native/mono-top.svg'。\n完成。\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "export",
+      "svg",
+      "--layers",
+      "B.Cu,Edge.Cuts",
+      "--mode-single",
+      "--fit-page-to-board",
+      "--exclude-drawing-sheet",
+      "-o",
+      "pcb/inspection-v03/native/mono-bottom.svg",
+      "--mirror",
+      "pcb/mono-layout-v03.kicad_pcb"
+    ],
+    "stdout": "已繪製到 'pcb/inspection-v03/native/mono-bottom.svg'。\n完成。\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "render",
+      "--width",
+      "1500",
+      "--height",
+      "1100",
+      "--background",
+      "opaque",
+      "--zoom",
+      "0.8",
+      "--side",
+      "top",
+      "-o",
+      "pcb/inspection-v03/3d/raw-mono-top.png",
+      "pcb/inspection-v03/3d/mono-layout-v03-preview.kicad_pcb"
+    ],
+    "stdout": "載入中...\n建置電路板邊框\n\n建立板層\n生成走線和貫孔\n建立區域\n建置疊層\n建置疊層 11\n建置疊層 9\n建置疊層 15\n建置疊層 13\n建置疊層 7\n建置疊層 5\n建置疊層 3\n建置疊層 1\n建置疊層 17\n建置疊層 19\n建置疊層 21\n建置疊層 23\n建置疊層 39\n建置疊層 41\n建置疊層 43\n建置疊層 45\n建置疊層 47\n建置疊層 49\n建置疊層 51\n建置疊層 53\n建置疊層 55\n建置疊層 57\n建置疊層 59\n建置疊層 61\n建置疊層 63\n建置疊層 65\n建置疊層 67\n建置疊層 69\n建置疊層 71\n建置疊層 73\n建置疊層 75\n建置疊層 77\n建置疊層 79\n建置疊層 81\n建置疊層 83\n建置疊層 85\n建置疊層 87\n建置疊層 89\n建置疊層 91\n建置疊層 93\n建置疊層 95\n建置疊層 97\n建置疊層 99\n建置疊層 101\n建置疊層 103\n建置疊層 105\n建置疊層 107\n建置疊層 109\n建置疊層 111\n建置疊層 113\n建置疊層 115\n建置疊層 117\n建置疊層 119\n建置疊層 121\n建置疊層 123\n建置疊層 125\n建置疊層 127\n簡化銅層上的多邊形\n計算鍍銅\n簡化通孔輪廓\n為通孔和貫孔建置 BVH（盲埋孔）\n載入光線追蹤: 電路板\n載入光線追蹤: 層\n正在載入 3D 模型...\n重新載入時間 0.025 s\n算繪: 100 %\n算繪時間 0.090 s\n已成功建立 3D 算繪圖像\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "render",
+      "--width",
+      "1500",
+      "--height",
+      "1100",
+      "--background",
+      "opaque",
+      "--zoom",
+      "0.8",
+      "--side",
+      "bottom",
+      "-o",
+      "pcb/inspection-v03/3d/raw-mono-bottom.png",
+      "pcb/inspection-v03/3d/mono-layout-v03-preview.kicad_pcb"
+    ],
+    "stdout": "載入中...\n建置電路板邊框\n\n建立板層\n生成走線和貫孔\n建立區域\n建置疊層\n建置疊層 11\n建置疊層 9\n建置疊層 15\n建置疊層 13\n建置疊層 7\n建置疊層 5\n建置疊層 3\n建置疊層 1\n建置疊層 17\n建置疊層 19\n建置疊層 21\n建置疊層 23\n建置疊層 39\n建置疊層 41\n建置疊層 43\n建置疊層 45\n建置疊層 47\n建置疊層 49\n建置疊層 51\n建置疊層 53\n建置疊層 55\n建置疊層 57\n建置疊層 59\n建置疊層 61\n建置疊層 63\n建置疊層 65\n建置疊層 67\n建置疊層 69\n建置疊層 71\n建置疊層 73\n建置疊層 75\n建置疊層 77\n建置疊層 79\n建置疊層 81\n建置疊層 83\n建置疊層 85\n建置疊層 87\n建置疊層 89\n建置疊層 91\n建置疊層 93\n建置疊層 95\n建置疊層 97\n建置疊層 99\n建置疊層 101\n建置疊層 103\n建置疊層 105\n建置疊層 107\n建置疊層 109\n建置疊層 111\n建置疊層 113\n建置疊層 115\n建置疊層 117\n建置疊層 119\n建置疊層 121\n建置疊層 123\n建置疊層 125\n建置疊層 127\n簡化銅層上的多邊形\n計算鍍銅\n簡化通孔輪廓\n為通孔和貫孔建置 BVH（盲埋孔）\n載入光線追蹤: 電路板\n載入光線追蹤: 層\n正在載入 3D 模型...\n重新載入時間 0.022 s\n算繪: 100 %\n算繪時間 0.089 s\n已成功建立 3D 算繪圖像\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "render",
+      "--width",
+      "1500",
+      "--height",
+      "1100",
+      "--background",
+      "opaque",
+      "--zoom",
+      "0.8",
+      "--side",
+      "top",
+      "--rotate",
+      "315,0,30",
+      "-o",
+      "pcb/inspection-v03/3d/raw-mono-isometric.png",
+      "pcb/inspection-v03/3d/mono-layout-v03-preview.kicad_pcb"
+    ],
+    "stdout": "載入中...\n建置電路板邊框\n\n建立板層\n生成走線和貫孔\n建立區域\n建置疊層\n建置疊層 11\n建置疊層 9\n建置疊層 15\n建置疊層 13\n建置疊層 7\n建置疊層 5\n建置疊層 3\n建置疊層 1\n建置疊層 17\n建置疊層 19\n建置疊層 21\n建置疊層 23\n建置疊層 39\n建置疊層 41\n建置疊層 43\n建置疊層 45\n建置疊層 47\n建置疊層 49\n建置疊層 51\n建置疊層 53\n建置疊層 55\n建置疊層 57\n建置疊層 59\n建置疊層 61\n建置疊層 63\n建置疊層 65\n建置疊層 67\n建置疊層 69\n建置疊層 71\n建置疊層 73\n建置疊層 75\n建置疊層 77\n建置疊層 79\n建置疊層 81\n建置疊層 83\n建置疊層 85\n建置疊層 87\n建置疊層 89\n建置疊層 91\n建置疊層 93\n建置疊層 95\n建置疊層 97\n建置疊層 99\n建置疊層 101\n建置疊層 103\n建置疊層 105\n建置疊層 107\n建置疊層 109\n建置疊層 111\n建置疊層 113\n建置疊層 115\n建置疊層 117\n建置疊層 119\n建置疊層 121\n建置疊層 123\n建置疊層 125\n建置疊層 127\n簡化銅層上的多邊形\n計算鍍銅\n簡化通孔輪廓\n為通孔和貫孔建置 BVH（盲埋孔）\n載入光線追蹤: 電路板\n載入光線追蹤: 層\n正在載入 3D 模型...\n重新載入時間 0.022 s\n算繪: 100 %\n算繪時間 0.068 s\n已成功建立 3D 算繪圖像\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "export",
+      "svg",
+      "--layers",
+      "F.Cu,Edge.Cuts",
+      "--mode-single",
+      "--fit-page-to-board",
+      "--exclude-drawing-sheet",
+      "-o",
+      "pcb/inspection-v03/native/psu-top.svg",
+      "pcb/psu-layout-v03.kicad_pcb"
+    ],
+    "stdout": "已繪製到 'pcb/inspection-v03/native/psu-top.svg'。\n完成。\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "export",
+      "svg",
+      "--layers",
+      "B.Cu,Edge.Cuts",
+      "--mode-single",
+      "--fit-page-to-board",
+      "--exclude-drawing-sheet",
+      "-o",
+      "pcb/inspection-v03/native/psu-bottom.svg",
+      "--mirror",
+      "pcb/psu-layout-v03.kicad_pcb"
+    ],
+    "stdout": "已繪製到 'pcb/inspection-v03/native/psu-bottom.svg'。\n完成。\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "render",
+      "--width",
+      "1500",
+      "--height",
+      "1100",
+      "--background",
+      "opaque",
+      "--zoom",
+      "0.8",
+      "--side",
+      "top",
+      "-o",
+      "pcb/inspection-v03/3d/raw-psu-top.png",
+      "pcb/inspection-v03/3d/psu-layout-v03-preview.kicad_pcb"
+    ],
+    "stdout": "載入中...\n建置電路板邊框\n\n建立板層\n生成走線和貫孔\n建立區域\n建置疊層\n建置疊層 11\n建置疊層 9\n建置疊層 15\n建置疊層 13\n建置疊層 7\n建置疊層 5\n建置疊層 3\n建置疊層 1\n建置疊層 17\n建置疊層 19\n建置疊層 21\n建置疊層 23\n建置疊層 39\n建置疊層 41\n建置疊層 43\n建置疊層 45\n建置疊層 47\n建置疊層 49\n建置疊層 51\n建置疊層 53\n建置疊層 55\n建置疊層 57\n建置疊層 59\n建置疊層 61\n建置疊層 63\n建置疊層 65\n建置疊層 67\n建置疊層 69\n建置疊層 71\n建置疊層 73\n建置疊層 75\n建置疊層 77\n建置疊層 79\n建置疊層 81\n建置疊層 83\n建置疊層 85\n建置疊層 87\n建置疊層 89\n建置疊層 91\n建置疊層 93\n建置疊層 95\n建置疊層 97\n建置疊層 99\n建置疊層 101\n建置疊層 103\n建置疊層 105\n建置疊層 107\n建置疊層 109\n建置疊層 111\n建置疊層 113\n建置疊層 115\n建置疊層 117\n建置疊層 119\n建置疊層 121\n建置疊層 123\n建置疊層 125\n建置疊層 127\n簡化銅層上的多邊形\n計算鍍銅\n簡化通孔輪廓\n為通孔和貫孔建置 BVH（盲埋孔）\n載入光線追蹤: 電路板\n載入光線追蹤: 層\n正在載入 3D 模型...\n重新載入時間 0.026 s\n算繪: 100 %\n算繪時間 0.071 s\n已成功建立 3D 算繪圖像\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "render",
+      "--width",
+      "1500",
+      "--height",
+      "1100",
+      "--background",
+      "opaque",
+      "--zoom",
+      "0.8",
+      "--side",
+      "bottom",
+      "-o",
+      "pcb/inspection-v03/3d/raw-psu-bottom.png",
+      "pcb/inspection-v03/3d/psu-layout-v03-preview.kicad_pcb"
+    ],
+    "stdout": "載入中...\n建置電路板邊框\n\n建立板層\n生成走線和貫孔\n建立區域\n建置疊層\n建置疊層 11\n建置疊層 9\n建置疊層 15\n建置疊層 13\n建置疊層 7\n建置疊層 5\n建置疊層 3\n建置疊層 1\n建置疊層 17\n建置疊層 19\n建置疊層 21\n建置疊層 23\n建置疊層 39\n建置疊層 41\n建置疊層 43\n建置疊層 45\n建置疊層 47\n建置疊層 49\n建置疊層 51\n建置疊層 53\n建置疊層 55\n建置疊層 57\n建置疊層 59\n建置疊層 61\n建置疊層 63\n建置疊層 65\n建置疊層 67\n建置疊層 69\n建置疊層 71\n建置疊層 73\n建置疊層 75\n建置疊層 77\n建置疊層 79\n建置疊層 81\n建置疊層 83\n建置疊層 85\n建置疊層 87\n建置疊層 89\n建置疊層 91\n建置疊層 93\n建置疊層 95\n建置疊層 97\n建置疊層 99\n建置疊層 101\n建置疊層 103\n建置疊層 105\n建置疊層 107\n建置疊層 109\n建置疊層 111\n建置疊層 113\n建置疊層 115\n建置疊層 117\n建置疊層 119\n建置疊層 121\n建置疊層 123\n建置疊層 125\n建置疊層 127\n簡化銅層上的多邊形\n計算鍍銅\n簡化通孔輪廓\n為通孔和貫孔建置 BVH（盲埋孔）\n載入光線追蹤: 電路板\n載入光線追蹤: 層\n正在載入 3D 模型...\n重新載入時間 0.020 s\n算繪: 100 %\n算繪時間 0.081 s\n已成功建立 3D 算繪圖像\n",
+    "stderr": "",
+    "returncode": 0
+  },
+  {
+    "args": [
+      "pcb",
+      "render",
+      "--width",
+      "1500",
+      "--height",
+      "1100",
+      "--background",
+      "opaque",
+      "--zoom",
+      "0.8",
+      "--side",
+      "top",
+      "--rotate",
+      "315,0,30",
+      "-o",
+      "pcb/inspection-v03/3d/raw-psu-isometric.png",
+      "pcb/inspection-v03/3d/psu-layout-v03-preview.kicad_pcb"
+    ],
+    "stdout": "載入中...\n建置電路板邊框\n\n建立板層\n生成走線和貫孔\n建立區域\n建置疊層\n建置疊層 11\n建置疊層 9\n建置疊層 15\n建置疊層 13\n建置疊層 7\n建置疊層 5\n建置疊層 3\n建置疊層 1\n建置疊層 17\n建置疊層 19\n建置疊層 21\n建置疊層 23\n建置疊層 39\n建置疊層 41\n建置疊層 43\n建置疊層 45\n建置疊層 47\n建置疊層 49\n建置疊層 51\n建置疊層 53\n建置疊層 55\n建置疊層 57\n建置疊層 59\n建置疊層 61\n建置疊層 63\n建置疊層 65\n建置疊層 67\n建置疊層 69\n建置疊層 71\n建置疊層 73\n建置疊層 75\n建置疊層 77\n建置疊層 79\n建置疊層 81\n建置疊層 83\n建置疊層 85\n建置疊層 87\n建置疊層 89\n建置疊層 91\n建置疊層 93\n建置疊層 95\n建置疊層 97\n建置疊層 99\n建置疊層 101\n建置疊層 103\n建置疊層 105\n建置疊層 107\n建置疊層 109\n建置疊層 111\n建置疊層 113\n建置疊層 115\n建置疊層 117\n建置疊層 119\n建置疊層 121\n建置疊層 123\n建置疊層 125\n建置疊層 127\n簡化銅層上的多邊形\n計算鍍銅\n簡化通孔輪廓\n為通孔和貫孔建置 BVH（盲埋孔）\n載入光線追蹤: 電路板\n載入光線追蹤: 層\n正在載入 3D 模型...\n重新載入時間 0.020 s\n算繪: 100 %\n算繪時間 0.051 s\n已成功建立 3D 算繪圖像\n",
+    "stderr": "",
+    "returncode": 0
+  }
+]

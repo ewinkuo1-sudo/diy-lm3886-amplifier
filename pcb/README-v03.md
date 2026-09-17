@@ -12,6 +12,8 @@
 | 封裝假設 | [清單](mono-layout-v03-footprints.csv) | [清單](psu-layout-v03-footprints.csv) |
 | 原生 DRC | [0 違規、0 未連通](mono-v03-drc.json) | [0 違規、0 未連通](psu-v03-drc.json) |
 
+**2026-09-18 新增：**[正反面／組裝／3D 圖](inspection-v03/README.md)、[零件與封裝核對表](inspection-v03/parts-audit.md)。本輪僅新增看圖資料及模型預覽板，原 PCB 保持不變。
+
 詳細結果：[本輪審查與計算假設](review-v03.md)、[銅箔計算表](current-budget-v03.md)、[完整計算資料](current-budget-v03.json)、[驗證摘要](validation-v03.json)、[原生 DRC 檔案綁定](drc-provenance-v03.json)。
 
 本輪改善：
