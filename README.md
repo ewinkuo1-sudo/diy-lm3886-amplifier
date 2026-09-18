@@ -109,6 +109,7 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 | [上電與驗收](docs/04-bring-up.md) | 從低電壓到雙聲道功率測試 |
 | [驗證紀錄](electrical/validation.md) | ERC、網路核對與未驗證事項 |
 | [採購狀態](docs/08-procurement.md) | 已下單／到料料件與到料核對項目 |
+| [機殼候選](docs/12-chassis-candidates.md) | 淘寶候選、需求推導與下單前確認項目（未下單） |
 | [接班進度](HANDOFF.md) | 下一階段工作 |
 
 ## 重建與下一步
