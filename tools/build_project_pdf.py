@@ -95,10 +95,10 @@ def overview():
  return d
 
 flow=[P('LM3886 雙聲道後級','h1'),P('C 方案設計與電路彙整 / V0.3','h2'),P('2026-09-16｜双 22Vac 主電源｜雙橋整流｜四顆主濾波電容'.replace('双','雙')),P('只有變壓器及 LM3886T 已下單、待到貨。整流橋、全部電容與其餘料件均未購。'),P('本版更新電路圖供電標示、22Vac 電源與熱試算、採購及上電計畫。原放大電路與雙橋接法保留。主電源之外的保護與一次側仍待設計，沒有 PCB 或硬體量測。'),P('閱讀順序','h2'),P('整機概覽 → 修訂計畫 → 放大電路 → 內建電源 → 功率／散熱與電源估算 → 上電程序 → 採購與驗證 → 兩張 A3 向量原理圖。'),P('圖面版本','h2'),P('新版原理圖圖框為 V0.3；舊檔名保留以維持 repo 連結。2026-09-11 PDF 及舊導讀圖為歷史資料，不再作採購依據。'),PageBreak(),P('整機功能與介面','h1'),overview(),P('淡黃色區塊含未定案的設計；圖中的 12Vac 控制路徑僅表示用途，不代表可直接接到 DC12V 模組。'),P('雙橋建立正負電源，並非左右各一個獨立電源。兩個 22Vac 繞組保持獨立，DC 橋輸出在電容匯流點形成 GND。')]
-for name in ['docs/09-purchased-plan.md','docs/01-design.md','docs/05-internal-power.md','docs/02-calculations.md','docs/06-mains-calculations.md','docs/04-bring-up.md','docs/08-procurement.md','electrical/validation.md']:
+for name in ['docs/09-採購後修訂計畫.md','docs/01-設計規格.md','docs/05-內建電源與機構.md','docs/02-功率與散熱估算.md','docs/06-市電與電源估算.md','docs/04-上電與驗收.md','docs/08-採購狀態.md','electrical/validation.md']:
  flow.append(PageBreak())
  content=markdown((ROOT/name).read_text(encoding='utf-8'))
- if name=='docs/05-internal-power.md': flow.append(KeepInFrame(499,730,content,mode='shrink'))
+ if name=='docs/05-內建電源與機構.md': flow.append(KeepInFrame(499,730,content,mode='shrink'))
  else: flow.extend(content)
 body=TMP/'report-body.pdf';build(body,flow)
 writer=PdfWriter();writer.append(body,outline_item='C 方案現行設計與採購')
@@ -108,7 +108,7 @@ with (OUT/'LM3886_Plan_C_V03.pdf').open('wb') as f:writer.write(f)
 shopping=[P('LM3886 C 方案採購勾選清單','h1'),P('2026-09-16｜以下皆為一台雙聲道總用量，不必再乘二。'),P('已下單：雙 22Vac＋單 12Vac 變壓器、LM3886T（訂單數量待確認；設計需 2 顆）。只有這兩項已購。'),P('主電源與機構','h2')]
 rows=[['購','品項 / 候選規格','數量','狀態 / 核對重點'],['□','主整流橋，至少 15A / 200V','2','未購；腳位、浪湧與散熱待選'],['□','10,000µF / 63V 電解','4','未購；每軌 2 顆；系列、紋波、尺寸待選'],['□','100nF / 100V 薄膜','2','主電源旁路'],['□','2.2kΩ / 2W 電阻','2','每軌洩放'],['□','次級保險絲 / 座','2 組','額定待變壓器電流确认'.replace('确认','確認')],['□','散熱器 / 絕緣片 / 螺絲套','2 組','散熱 ≤0.4°C/W、介面 ≤0.3°C/W 初選'],['□','雙聲道 DC 保護與繼電器','1 組','AC / DC 供電、正負 DC 偵測、掉電斷開'],['□','輔助整流 / 濾波 / 穩壓','待定','先核對 12Vac 繞組電流與保護板'],['□','AC 入口 / 開關 / 保險絲 / 浪湧','1 組','規格待選；含三芯線與機殼 PE'],['□','金屬機殼 / 固定件 / 配線','1 批','依實際板與散熱器尺寸選定']]
 shopping.append(table(rows));shopping.append(PageBreak())
-source=(ROOT/'docs/08-procurement.md').read_text(encoding='utf-8');a=source.index('### 放大板被動元件');b=source.index('### 接插件');shopping.extend(markdown('# 放大板（全部未購）\n'+source[a:b]));shopping.append(PageBreak());shopping.extend(markdown('# 接插件與測試準備\n'+source[b:]))
+source=(ROOT/'docs/08-採購狀態.md').read_text(encoding='utf-8');a=source.index('### 放大板被動元件');b=source.index('### 接插件');shopping.extend(markdown('# 放大板（全部未購）\n'+source[a:b]));shopping.append(PageBreak());shopping.extend(markdown('# 接插件與測試準備\n'+source[b:]))
 shopping.extend([Spacer(1,10),P('測試用品：8Ω 非感性假負載 ×2（各連續至少 100W，依規格散熱）、限流雙電源、萬用表、示波器／訊號產生器、溫度計與焊接工具。先盤點可借用設備，不必重複採購。'),P('本清單不是已完成 PCB 的套件 BOM；尺寸與 footprint 尚待核對。')])
 build(OUT/'LM3886_Shopping_V03.pdf',shopping)
 for p in OUT.glob('*.pdf'):

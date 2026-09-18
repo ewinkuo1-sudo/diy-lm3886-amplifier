@@ -35,6 +35,6 @@ def report():
     '- 變壓器持續供電能力、一次側與次級保險絲額定：等待繞組電流、VA、熱與浪湧資料。',
     '- 電容紋波額定與整流橋散熱：依充電波形與實際元件核對。電容 −20% 容差會讓紋波增加為 1.25 倍。',
     '- 12Vac 全橋濾波約 15～16Vdc，空載可能更高。AC12V 與 DC12V 保護板不得混接，DC 模組可能需穩壓。', '',
-    '參考：[TI LM3886](https://www.ti.com/lit/ds/symlink/lm3886.pdf)、[TI AN-1849](https://www.ti.com/lit/an/snaa057c/snaa057c.pdf)。實際採購狀態見 08-procurement.md。', '']
+    '參考：[TI LM3886](https://www.ti.com/lit/ds/symlink/lm3886.pdf)、[TI AN-1849](https://www.ti.com/lit/an/snaa057c/snaa057c.pdf)。實際採購狀態見 08-採購狀態.md。', '']
     return '\n'.join(lines)
 if __name__=='__main__': print(report(),end='')

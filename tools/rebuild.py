@@ -30,9 +30,9 @@ def main():
     run('pdftoppm', '-scale-to', '2400', '-png', '-singlefile', 'electrical/preview/internal-psu-v02.pdf', 'electrical/preview/internal-psu-v02')
     run(sys.executable, 'tools/verify_power_supply.py')
     output = subprocess.check_output([sys.executable, 'tools/power_budget.py'], cwd=ROOT, text=True, encoding="utf-8")
-    (ROOT / 'docs/02-calculations.md').write_text(output, encoding="utf-8")
+    (ROOT / 'docs/02-功率與散熱估算.md').write_text(output, encoding="utf-8")
     mains = subprocess.check_output([sys.executable, 'tools/mains_budget.py'], cwd=ROOT, text=True, encoding="utf-8")
-    (ROOT / 'docs/06-mains-calculations.md').write_text(mains, encoding="utf-8")
+    (ROOT / 'docs/06-市電與電源估算.md').write_text(mains, encoding="utf-8")
     print('All V0.3 deliverables rebuilt and electrical checks passed.')
 
 

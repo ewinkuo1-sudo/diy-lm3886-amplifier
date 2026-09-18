@@ -10,7 +10,7 @@
 
 ![內建電源次級整流濾波草案](preview/internal-psu-v02.png)
 
-[電源 PDF](preview/internal-psu-v02.pdf) · [電源 KiCad 專案](internal-psu-v02.kicad_pro) · [電源 BOM](psu-bom-draft.csv)。這份圖只畫變壓器隔離次級之後的整流、濾波與洩放，市電一次側及軟啟動仍在[整機規劃](../docs/05-internal-power.md)階段。
+[電源 PDF](preview/internal-psu-v02.pdf) · [電源 KiCad 專案](internal-psu-v02.kicad_pro) · [電源 BOM](psu-bom-draft.csv)。這份圖只畫變壓器隔離次級之後的整流、濾波與洩放，市電一次側及軟啟動仍在[整機規劃](../docs/05-內建電源與機構.md)階段。
 
 電源 J203 的 1／2／3 與放大板 J5 的 1／2／3 用線束相接。兩份圖是獨立 KiCad 專案，不靠同名網路自動跨檔連線。橋式整流符號的 AC1／AC2／P／N 是功能端子，選實體料件後再對應腳位。
 
@@ -20,4 +20,4 @@
 
 在專案根目錄執行 `python3 tools/rebuild.py` 會重建兩份原理圖、ERC、netlist、BOM、PDF、PNG、功率／市電報告與驗證紀錄。生成器會覆寫原理圖；手動修改後需先同步修改生成器，或明確改成以 KiCad 手動檔為主，避免覆蓋人工編輯。
 
-[BOM](bom-draft.csv) · [驗證紀錄](validation.md) · [中文設計說明](../docs/01-design.md)
+[BOM](bom-draft.csv) · [驗證紀錄](validation.md) · [中文設計說明](../docs/01-設計規格.md)

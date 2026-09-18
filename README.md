@@ -2,7 +2,7 @@
 
 用兩顆 LM3886T 製作**內建電源的雙聲道純後級**，搭配使用者現有的 **Eversolo DAC-Z10（DAC＋前級）**。訊號路徑為 **DAC-Z10 RCA 前級輸出 → 本後級 → 喇叭**，音量與訊源選擇由 Z10 負責。本機採固定增益，前面板規劃電源及狀態指示。
 
-已下單 **賣場標示 200W、兩組獨立 22Vac＋單 12Vac 的 AC110V 環形變壓器，以及 LM3886T 拆機 IC**，均待到貨。現改按約 ±30V 等級供電、每聲道約 30～40W／8Ω 探索規劃；VA、各繞組電流與實際功率尚未確認。詳見 [採購後修訂計畫](docs/09-purchased-plan.md)。
+已下單 **賣場標示 200W、兩組獨立 22Vac＋單 12Vac 的 AC110V 環形變壓器，以及 LM3886T 拆機 IC**，均待到貨。現改按約 ±30V 等級供電、每聲道約 30～40W／8Ω 探索規劃；VA、各繞組電流與實際功率尚未確認。詳見 [採購後修訂計畫](docs/09-採購後修訂計畫.md)。
 
 這是第三個獨立擴大機專案，可與 [TPA3255 練習機](https://github.com/ewinkuo1-sudo/diy-tpa3255-amplifier) 及 [Purifi 主力機](https://github.com/ewinkuo1-sudo/diy-purifi-amplifier) 比較架構與製作經驗。
 
@@ -10,9 +10,9 @@
 
 ## 預計下單清單（2026-09-18）
 
-[露天商品直達連結與其餘待買候選](docs/11-ruten-shopping-links.md)：已核對原15項候選及23項新增商品，附數量、包裝選項與尚待確認的規格。
+[露天商品直達連結與其餘待買候選](docs/11-露天購物連結.md)：已核對原15項候選及23項新增商品，附數量、包裝選項與尚待確認的規格。
 
-已登記 Vishay／RNU2 電阻、CDE／WIMA 電容，以及 ROE／Mundorf／NCC 替代候選。**本批尚未下單；47µF與470µF品牌仍未決定。** [查看數量、價格試算與封裝影響](docs/10-planned-parts.md)。現有PCB與3D尚未按這批料件定版。
+已登記 Vishay／RNU2 電阻、CDE／WIMA 電容，以及 ROE／Mundorf／NCC 替代候選。**本批尚未下單；47µF與470µF品牌仍未決定。** [查看數量、價格試算與封裝影響](docs/10-預計下單清單.md)。現有PCB與3D尚未按這批料件定版。
 
 ## 目前進度：2026-09-16 已下單，待到貨核對
 
@@ -58,7 +58,7 @@
 
 ![內建電源次級整流濾波草案](electrical/preview/internal-psu-v02.png)
 
-[電源 PDF](electrical/preview/internal-psu-v02.pdf) · [內建電源設計](docs/05-internal-power.md) · [電源 BOM](electrical/psu-bom-draft.csv)
+[電源 PDF](electrical/preview/internal-psu-v02.pdf) · [內建電源設計](docs/05-內建電源與機構.md) · [電源 BOM](electrical/psu-bom-draft.csv)
 
 ```mermaid
 flowchart LR
@@ -95,21 +95,21 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 
 ## 文件
 
-[目前適用：V0.3 C 方案](docs/09-purchased-plan.md)；文件已同步目前供電假設；未選料與未量測項目有明確標註。
+[目前適用：V0.3 C 方案](docs/09-採購後修訂計畫.md)；文件已同步目前供電假設；未選料與未量測項目有明確標註。
 
 | 文件 | 內容 |
 |---|---|
-| [Z10 RCA 搭配](docs/07-z10-interface.md) | 已確認設備、電平與音量控制 |
-| [設計規格](docs/01-design.md) | 電路、接地、介面與保護邊界 |
-| [功率與散熱估算](docs/02-calculations.md) | 可重算的數字、公式與假設 |
-| [內建電源與機構規劃](docs/05-internal-power.md) | 變壓器、整流、接地、控制及機殼分區 |
-| [內建電源估算](docs/06-mains-calculations.md) | 市電變動、空載電壓、紋波、容量與放電 |
+| [Z10 RCA 搭配](docs/07-Z10介面.md) | 已確認設備、電平與音量控制 |
+| [設計規格](docs/01-設計規格.md) | 電路、接地、介面與保護邊界 |
+| [功率與散熱估算](docs/02-功率與散熱估算.md) | 可重算的數字、公式與假設 |
+| [內建電源與機構規劃](docs/05-內建電源與機構.md) | 變壓器、整流、接地、控制及機殼分區 |
+| [內建電源估算](docs/06-市電與電源估算.md) | 市電變動、空載電壓、紋波、容量與放電 |
 | [BOM 草案](electrical/bom-draft.csv) | 由 KiCad netlist 匯出，含選型條件 |
-| [整機配件需求](docs/03-parts.md) | 電源、散熱、接頭、測試器材 |
-| [上電與驗收](docs/04-bring-up.md) | 從低電壓到雙聲道功率測試 |
+| [整機配件需求](docs/03-整機配件需求.md) | 電源、散熱、接頭、測試器材 |
+| [上電與驗收](docs/04-上電與驗收.md) | 從低電壓到雙聲道功率測試 |
 | [驗證紀錄](electrical/validation.md) | ERC、網路核對與未驗證事項 |
-| [採購狀態](docs/08-procurement.md) | 已下單／到料料件與到料核對項目 |
-| [機殼候選](docs/12-chassis-candidates.md) | 淘寶候選、需求推導與下單前確認項目（未下單） |
+| [採購狀態](docs/08-採購狀態.md) | 已下單／到料料件與到料核對項目 |
+| [機殼候選](docs/12-機殼候選.md) | 淘寶候選、需求推導與下單前確認項目（未下單） |
 | [接班進度](HANDOFF.md) | 下一階段工作 |
 
 ## 重建與下一步
