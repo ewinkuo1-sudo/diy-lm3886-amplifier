@@ -30,7 +30,7 @@
 
 ![PCB V0.3](pcb/preview/system-layout-v03.png)
 
-[新版 PCB 與驗證](pcb/README-v03.md)／[本輪審查](pcb/review-v03.md)／[計算表](pcb/current-budget-v03.md)。V0.1／V0.2 板檔保留；V0.2 規則文字有更正，本輪已修復重建還原設定的問題。原理圖和既有 V0.3 PDF 未修改，PDF 未收錄本版 PCB。
+[新版 PCB 與驗證](pcb/README-v03.md)／[本輪審查](pcb/review-v03.md)／[計算表](pcb/current-budget-v03.md)。V0.1／V0.2 板檔保留並已歸檔至 `pcb/archive/`；V0.2 規則文字有更正，本輪已修復重建還原設定的問題。原理圖和既有 V0.3 PDF 未修改，PDF 未收錄本版 PCB。
 
 ## PCB 看圖與選料資料（2026-09-18）
 
@@ -44,7 +44,7 @@
 
 - [C 方案設計與電路彙整](output/pdf/LM3886_Plan_C_V03.pdf)：現行設計、整機方塊圖、估算、採購與兩張向量電路圖。
 - [C 方案採購勾選清單](output/pdf/LM3886_Shopping_V03.pdf)：僅變壓器及 IC 已訂，其餘待購。
-- [2026-09-11 舊完整 PDF](docs/LM3886_DIY_Project_Complete_2026-09-11.pdf)：歷史快照，舊供電與採購資訊不再適用。
+- [2026-09-11 舊完整 PDF](docs/archive/LM3886_DIY_Project_Complete_2026-09-11.pdf)：歷史快照，舊供電與採購資訊不再適用。
 
 ## 電路圖
 

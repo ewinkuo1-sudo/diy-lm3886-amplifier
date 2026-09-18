@@ -1,1 +1,1 @@
-(fp_lib_table (version 7) (lib (name "Draft")(type "KiCad")(uri "${KIPRJMOD}/Draft.pretty")(options "")(descr "Unverified draft placeholders")) (lib (name "DraftV02")(type "KiCad")(uri "${KIPRJMOD}/DraftV02.pretty")(options "")(descr "V0.2 unverified draft placeholders")) (lib (name "DraftV03")(type "KiCad")(uri "${KIPRJMOD}/DraftV03.pretty")(options "")(descr "V0.3 unverified engineering footprints")))
+(fp_lib_table (version 7) (lib (name "DraftV03")(type "KiCad")(uri "${KIPRJMOD}/DraftV03.pretty")(options "")(descr "V0.3 unverified engineering footprints")))

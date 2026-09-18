@@ -1,24 +1,21 @@
 # 接班進度
 
-更新：2026-09-18，PCB 正反面、組裝、3D 與零件核對資料完成；PCB 為 B 方案 V0.3，原理圖／PDF 維持既有 V0.3。使用者指定**內建供電、純後級，外接現有 DAC 與前級**。已確認 Eversolo DAC-Z10（DAC＋前級）及 RCA；音量由 Z10 控制。
+更新：2026-09-18，舊版 PCB 板檔與腳本已歸檔至 archive/；PCB 正反面、組裝、3D 與零件核對資料完成；PCB 為 B 方案 V0.3，原理圖／PDF 維持既有 V0.3。使用者指定**內建供電、純後級，外接現有 DAC 與前級**。已確認 Eversolo DAC-Z10（DAC＋前級）及 RCA；音量由 Z10 控制。
 
-## 待辦（2026-09-18 議定，尚未執行）：歸檔舊版板檔與腳本
+## 本次更新（2026-09-18）：歸檔舊版板檔與腳本
 
-使用者已同意「歸檔舊版」，但要求**下次對話再執行**。範圍是只搬位置、不刪檔，全部用 `git mv` 保留歷史。
+- 依前輪議定執行，範圍只搬位置不刪檔，全部 `git mv` 保留歷史。`electrical/` 的 v01／v02 原理圖是現行檔案，未動。
+- `pcb/archive/v01/`：`mono-placement-v01.*`、`psu-placement-v01.*`、`README-v01.md`、`Draft.pretty/`、`footprint-assumptions.csv`、`mono-drc.json`、`psu-drc.json`，以及 `preview/` 內三張 v01 PNG 與原本散在 pcb/ 頂層的 `mono-native.svg`、`psu-native.svg`（2026-09-16 產生，屬 V0.1）。
+- `pcb/archive/v02/`：`mono-layout-v02.*`、`psu-layout-v02.*`、兩份 `*-footprints.csv`、`mono-v02-drc.json`、`psu-v02-drc.json`、`validation-v02.json`、`README-v02.md`、`DraftV02.pretty/`，以及 `preview/` 內五張 v02 PNG／SVG。
+- `tools/archive/`：`build_pcb_draft.py`、`render_pcb_draft.py`、`build_pcb_v02.py`、`render_pcb_v02.py`、`verify_pcb_v02.py`、`pcb_layout_v02.py`。六支腳本的 repo 根目錄改為 `parents[2]`、輸出改指 `pcb/archive/v0X/`，並加註歷史腳本標頭；未在 KiCad 環境重跑。
+- `docs/archive/`：2026-09-11 舊完整 PDF。README、HANDOFF 連結同步更新。
+- **修正一個計畫沒列到的陷阱：** 現行 `tools/analyze_pcb_v03.py` 會讀 V0.2 板檔 JSON 做 V0.2→V0.3 對照，原本寫死 `pcb/`。已改為 `layout_path()` 依版本指向 `pcb/archive/v02/`；`current-budget-v03.json` 只改兩個來源雜湊的路徑鍵，數值未變（Python 3.14 重跑數值只有末位浮點差，未採用）。回歸測試 4 個通過。
+- `pcb/fp-lib-table` 只保留 DraftV03；v01／v02 各自附一份 fp-lib-table 指向自己的封裝庫。三代板檔的 footprint 均無庫前綴，載入不受影響。
+- 新增 `tools/README.md`：入口為 `rebuild.py`（只跑原理圖四支），其餘依用途分組。
+- 驗證：全庫 Markdown 相對連結 0 斷裂；舊路徑字串 0 殘留；全部 .py 通過 py_compile。本機無 kicad-cli，`tools/rebuild.py` 未執行；`rebuild.py` 不引用任何被搬檔案。
+- 沒有改原理圖、PCB V0.3、BOM、3D、PDF 內容；沒有重跑 ERC／DRC。
 
-**要搬的：**
-
-- `pcb/archive/v01/` ← `mono-placement-v01.*`、`psu-placement-v01.*`、`pcb/README-v01.md`、`Draft.pretty/`、`preview/mono-placement-v01.png`、`preview/psu-placement-v01.png`、`preview/system-placement-overview.png`
-- `pcb/archive/v02/` ← `mono-layout-v02.*`、`psu-layout-v02.*`、`*-layout-v02-footprints.csv`、`mono-v02-drc.json`、`psu-v02-drc.json`、`validation-v02.json`、`pcb/README-v02.md`、`DraftV02.pretty/`、`preview/*v02*`
-- `tools/archive/` ← `build_pcb_v02.py`、`render_pcb_v02.py`、`verify_pcb_v02.py`、`pcb_layout_v02.py`、`build_pcb_draft.py`、`render_pcb_draft.py`
-
-**三個必須先確認的陷阱：**
-
-1. **`electrical/` 底下的 v01／v02 是現行檔案，不是舊版。** `electrical/lm3886-v01.kicad_sch` 與 `electrical/internal-psu-v02.kicad_sch` 都是目前在用的原理圖，`tools/rebuild.py` 第 8、26 行直接引用。**絕對不要跟著 pcb/ 的版本號一起歸檔。**
-2. `tools/rebuild.py` 只呼叫 `build_schematic.py`、`build_power_supply.py`、`verify_electrical.py`、`verify_power_supply.py`，**不碰任何 pcb 腳本**，所以搬 `tools/*pcb*v02*` 不會弄壞 rebuild 流程。仍建議搬完跑一次確認。
-3. `pcb/README.md`、`README-v03.md`、`docs/` 內的相對連結指向這些檔案，搬完要全庫更新並跑連結檢查（0 斷裂才算完成）。
-
-**順帶建議（同一輪可做）：** 新增 `tools/README.md` 說明入口是 `rebuild.py`，其餘為被呼叫的產生器；以及把散在 03／08／09／10／11／12 六份文件的採購資訊做一個單一入口總表。
+**順帶建議（未做）：** 03／08／09／10／11／12 六份文件的採購資訊仍散落，建議下輪做單一入口總表；README／HANDOFF 的逐日流水帳可移至 CHANGELOG.md。
 
 ## 本次更新（2026-09-18）：docs 檔名中文化與機殼候選
 
@@ -76,7 +73,7 @@
 - 使用者選 B：保留三板架構重新布局；確認 LM3886T 與變壓器均仍在寄送中、尚未到貨。其他料件沒有新增已購或已到貨紀錄。
 - 新檔 `pcb/mono-layout-v02.kicad_pcb`（100×90 mm）、`pcb/psu-layout-v02.kicad_pcb`（160×120 mm），保留 V0.1 全部原檔。位置及逐段走線來源為 `tools/pcb_layout_v02.py`，生成／繪圖／驗證工具皆有 v02 檔名。
 - 輸入與回授靠近 IC；回授單獨由輸出腳取樣。放大板地線分路回到 (43,50) mm 匯流區；電源板由第一對電容接收充電、第二對電容引出 DC，接地匯流中心 (110,59.08) mm。
-- KiCad 10.0.6 原生載入、54＋35 焊盤網路對照通過；舊版實際 Default 間距 0.2 mm 下兩板 DRC 均 0 違規、0 未連通；原 0.3 mm 文字已更正。放大板地線分組另經幾何取樣檢查。完整結果見 `pcb/README-v02.md`、兩份 v02 DRC JSON 及 `validation-v02.json`。
+- KiCad 10.0.6 原生載入、54＋35 焊盤網路對照通過；舊版實際 Default 間距 0.2 mm 下兩板 DRC 均 0 違規、0 未連通；原 0.3 mm 文字已更正。放大板地線分組另經幾何取樣檢查。完整結果見 `pcb/archive/v02/README-v02.md`、兩份 v02 DRC JSON 及 `validation-v02.json`。
 - 本版沒有變更原理圖、元件值、供電假設或既有 PDF；沒有重跑 ERC。真實封裝、銅厚／溫升、去耦迴路、散熱、機構與線束仍待到貨／選型核對；沒有 Gerber 或硬體測試。
 - 下一步：先記錄到貨尺寸及變壓器規格，再確定整流橋／電容／接頭料號，修訂封裝及散熱器配合。不要把本次 DRC 通過視為可製造或可上電的證明。
 
@@ -118,7 +115,7 @@
 
 ## 完整 PDF 彙整（2026-09-11）
 
-- 新增 [完整專案 PDF](docs/LM3886_DIY_Project_Complete_2026-09-11.pdf)，共 52 頁，保留 33 個原始檔附件；附件 SHA-256 已逐一核對。
+- 新增 [完整專案 PDF](docs/archive/LM3886_DIY_Project_Complete_2026-09-11.pdf)，共 52 頁，保留 33 個原始檔附件；附件 SHA-256 已逐一核對。
 - 收錄基準提交：0cf78b502b1b72f2ab899b614ecd2449e5231f53。PDF 中的文件、電路與既有驗證紀錄均對應此快照；本次未重跑 ERC 或新增硬體驗證。
 - 兩張電路圖保留原始向量頁面；全文、BOM、程式附錄、PDF 書籤與目錄跳頁已檢查。
 - 此為固定版本彙整檔，未加入 tools/rebuild.py 自動生成流程；後續設計異動後需重新整理 PDF。

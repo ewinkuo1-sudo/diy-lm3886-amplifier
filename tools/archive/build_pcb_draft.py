@@ -1,3 +1,4 @@
+# 歷史腳本（已歸檔）：只重建 pcb/archive/ 內的舊版板檔，不影響現行 V0.3；輸出路徑已改指向歸檔資料夾。
 """Editable PCB placement + partial routing study. NOT FOR FABRICATION.
 Run in KiCad 10 Python environment after schematic netlist export.
 All footprint dimensions are provisional, including the LM3886 lead pattern.
@@ -7,8 +8,8 @@ import pcbnew as p
 import xml.etree.ElementTree as ET
 import math,json,csv,heapq
 
-ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'pcb';OUT.mkdir(exist_ok=True)
+ROOT=Path(__file__).resolve().parents[2]
+OUT=ROOT/'pcb/archive/v01';OUT.mkdir(parents=True,exist_ok=True)
 LIB=OUT/'Draft.pretty';LIB.mkdir(exist_ok=True)
 MM=p.FromMM
 def v(x,y):return p.VECTOR2I(MM(x),MM(y))

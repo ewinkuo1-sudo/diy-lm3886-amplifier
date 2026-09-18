@@ -1,8 +1,9 @@
+# 歷史腳本（已歸檔）：只重建 pcb/archive/ 內的舊版板檔，不影響現行 V0.3；輸出路徑已改指向歸檔資料夾。
 """Render actual PCB placement/track JSON, not a fabricated product image."""
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont
 import json,math,os
-R=Path(__file__).resolve().parents[1];D=R/'pcb';O=D/'preview';O.mkdir(exist_ok=True)
+R=Path(__file__).resolve().parents[2];D=R/'pcb/archive/v02';O=D/'preview';O.mkdir(exist_ok=True)
 FONT=os.environ.get('LM3886_FONT', '/System/Library/Fonts/STHeiti Medium.ttc' if Path('/System/Library/Fonts/STHeiti Medium.ttc').exists() else r'C:\Windows\Fonts\msjh.ttc')
 def font(n):return ImageFont.truetype(FONT,max(8,int(n)))
 def draw_board(im,data,origin,scale,show_pending=True):

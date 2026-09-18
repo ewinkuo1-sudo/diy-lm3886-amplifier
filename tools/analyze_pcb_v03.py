@@ -91,7 +91,9 @@ def coupling_screen(data):
  return result
 
 def analyze():
- data={(board,v):json.loads((ROOT/'pcb'/f'{board}-layout-v{v}.json').read_text()) for board in ['mono','psu'] for v in ['02','03']}
+ # V0.2 baseline files were archived to pcb/archive/v02/ on 2026-09-18; V0.3 stays in pcb/.
+ def layout_path(board,v):return ROOT/('pcb/archive/v02' if v=='02' else 'pcb')/f'{board}-layout-v{v}.json'
+ data={(board,v):json.loads(layout_path(board,v).read_text()) for board in ['mono','psu'] for v in ['02','03']}
  # 40 W is a sizing case, not a promised output rating. Same-phase stereo is assumed.
  out_rms=math.sqrt(40/8);out_peak=out_rms*math.sqrt(2);iq=.085
  rail_rms=math.sqrt(out_peak**2/4+2*iq*out_peak/math.pi+iq**2);rail_avg=out_peak/math.pi+iq
@@ -134,7 +136,7 @@ def analyze():
  feedback={v:{'sense_mm':path(data['mono',v],'L_OUT','U1.3','R4.2','length')['length_mm'],'inverting_mm':path(data['mono',v],'L_INV','U1.9','R4.1','length')['length_mm']} for v in ['02','03']}
  # Plated-barrel estimate only; no thermal prediction or via current rating.
  vias=[{'finished_hole_mm':.8,'plating_mm':p,'length_mm':1.6,'R25_mohm':1000*RHO*1.6/(math.pi*.8*p)} for p in [.015,.020,.025]]
- report={'assumptions':{'Vrail':30,'load_ohm':8,'sizing_output_W':40,'Iq_per_rail_A':iq,'rho25_ohm_mm':RHO,'alpha_per_C':ALPHA,'copper_thickness_mm':THICKNESS,'temperature_C':[25,85],'note':'85 C is an input sensitivity case, not a predicted temperature. No thermal rise solved.'},'current_cases':{k:{'rms_A':v[0],'peak_A':v[1]} for k,v in currents.items()},'charge_duty_sensitivity':[{'duty':d,'average_A':charge_avg,'rms_A':charge_avg/math.sqrt(d),'peak_A':charge_avg/d} for d in [.15,.25,.35]],'bypass_external_trace_lengths':loops,'feedback':feedback,'projected_coupling_screen':{v:coupling_screen(data['mono',v]) for v in ['02','03']},'paths':rows,'former_power_via_barrel_sensitivity':vias,'sha256':{str((ROOT/'pcb'/f'{b}-layout-v{v}.json').relative_to(ROOT)):hashlib.sha256((ROOT/'pcb'/f'{b}-layout-v{v}.json').read_bytes()).hexdigest() for b in ['mono','psu'] for v in ['02','03']}}
+ report={'assumptions':{'Vrail':30,'load_ohm':8,'sizing_output_W':40,'Iq_per_rail_A':iq,'rho25_ohm_mm':RHO,'alpha_per_C':ALPHA,'copper_thickness_mm':THICKNESS,'temperature_C':[25,85],'note':'85 C is an input sensitivity case, not a predicted temperature. No thermal rise solved.'},'current_cases':{k:{'rms_A':v[0],'peak_A':v[1]} for k,v in currents.items()},'charge_duty_sensitivity':[{'duty':d,'average_A':charge_avg,'rms_A':charge_avg/math.sqrt(d),'peak_A':charge_avg/d} for d in [.15,.25,.35]],'bypass_external_trace_lengths':loops,'feedback':feedback,'projected_coupling_screen':{v:coupling_screen(data['mono',v]) for v in ['02','03']},'paths':rows,'former_power_via_barrel_sensitivity':vias,'sha256':{str((layout_path(b,v)).relative_to(ROOT)):hashlib.sha256((layout_path(b,v)).read_bytes()).hexdigest() for b in ['mono','psu'] for v in ['02','03']}}
  (ROOT/'pcb/current-budget-v03.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
  lines=['# PCB V0.3 銅箔計算表（程式輸出）','','由 `tools/analyze_pcb_v03.py` 依 PCB 走線資料計算。完整假設與限制見 [本輪審查](review-v03.md)。','', '以下採名義 1 oz 銅厚 0.0348 mm、假設銅溫 25°C。電流情境為 40W／8Ω；充電列另採 15% 導通占空比矩形脈衝假設。','', '| 路徑 | RMS A | V0.2 電阻 mΩ | V0.3 電阻 mΩ | V0.3 峰值壓降 mV | V0.3 發熱 W |','|---|---:|---:|---:|---:|---:|']
  for row in rows:

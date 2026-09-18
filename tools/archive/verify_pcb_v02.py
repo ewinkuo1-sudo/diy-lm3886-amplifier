@@ -1,10 +1,11 @@
+# 歷史腳本（已歸檔）：只重建 pcb/archive/ 內的舊版板檔，不影響現行 V0.3；輸出路徑已改指向歸檔資料夾。
 """Check native DRC results, schematic pad count, and mono return separation.
 Run after build_pcb_v02.py and native KiCad DRC. The sampled ground check is
 supplemental; it neither replaces DRC nor validates EMC/stability/temperature.
 """
 from pathlib import Path
 import json,math,hashlib,datetime,xml.etree.ElementTree as ET
-R=Path(__file__).resolve().parents[1]
+R=Path(__file__).resolve().parents[2]
 def distance(a,b,q):
  dx,dy=b[0]-a[0],b[1]-a[1];den=dx*dx+dy*dy
  t=max(0,min(1,((q[0]-a[0])*dx+(q[1]-a[1])*dy)/den)) if den else 0
@@ -14,8 +15,8 @@ def family(track):
  return 'signal' if g.startswith('signal-ground') else g
 report={'status':'PASS','limits':'Draft only. Footprints, heating, stability, enclosure and harness remain unverified.','boards':{}}
 for name,source in [('mono','netlist.xml'),('psu','psu-netlist.xml')]:
- data=json.loads((R/'pcb'/f'{name}-layout-v02.json').read_text())
- drc=json.loads((R/'pcb'/f'{name}-v02-drc.json').read_text())
+ data=json.loads((R/'pcb/archive/v02'/f'{name}-layout-v02.json').read_text())
+ drc=json.loads((R/'pcb/archive/v02'/f'{name}-v02-drc.json').read_text())
  assert not drc['violations'] and not drc['unconnected_items'],name
  expected={}
  for net in ET.parse(R/'electrical'/source).findall('nets/net'):
@@ -46,7 +47,7 @@ for name,source in [('mono','netlist.xml'),('psu','psu-netlist.xml')]:
 report['baseline_commit']='c78e54f75277dbecbc7670cb88596bc62fedb618'
 report['checked_on']=datetime.date.today().isoformat()
 report['kicad_version']=drc['kicad_version']
-report['minimum_copper_clearance_mm']=json.loads((R/'pcb/mono-layout-v02.kicad_pro').read_text())['board']['design_settings']['rules']['min_clearance']
-report['sha256']={str(f.relative_to(R)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [R/'pcb/mono-layout-v02.kicad_pcb',R/'pcb/psu-layout-v02.kicad_pcb',R/'pcb/mono-layout-v02.kicad_pro',R/'pcb/psu-layout-v02.kicad_pro',R/'electrical/lm3886-v01.kicad_sch',R/'electrical/internal-psu-v02.kicad_sch']}
-(R/'pcb'/'validation-v02.json').write_text(json.dumps(report,indent=2)+'\n')
+report['minimum_copper_clearance_mm']=json.loads((R/'pcb/archive/v02/mono-layout-v02.kicad_pro').read_text())['board']['design_settings']['rules']['min_clearance']
+report['sha256']={str(f.relative_to(R)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [R/'pcb/archive/v02/mono-layout-v02.kicad_pcb',R/'pcb/archive/v02/psu-layout-v02.kicad_pcb',R/'pcb/archive/v02/mono-layout-v02.kicad_pro',R/'pcb/archive/v02/psu-layout-v02.kicad_pro',R/'electrical/lm3886-v01.kicad_sch',R/'electrical/internal-psu-v02.kicad_sch']}
+(R/'pcb/archive/v02'/'validation-v02.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

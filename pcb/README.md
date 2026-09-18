@@ -6,6 +6,6 @@
 
 - **[V0.3 圖檔、修改與驗證](README-v03.md)**
 - [布局與載流審查](review-v03.md)／[計算表](current-budget-v03.md)
-- [V0.2 歷史說明（含規則更正）](README-v02.md)／[V0.1 歷史說明](README-v01.md)
+- [V0.2 歷史說明（含規則更正）](archive/v02/README-v02.md)／[V0.1 歷史說明](archive/v01/README-v01.md)（舊版板檔、封裝庫與腳本已歸檔至 `pcb/archive/`、`tools/archive/`，只搬位置未刪除）
 
 最新兩板於固定 0.3 mm 間距規則下 DRC 均 0 違規、0 未連通。仍為工程草稿，封裝、實際溫升及整機驗證尚未完成，不可直接送廠。

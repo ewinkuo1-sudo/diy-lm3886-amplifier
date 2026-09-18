@@ -1,3 +1,5 @@
+> 2026-09-18 歸檔：本版全部檔案已移至 `pcb/archive/v01/`，重建腳本移至 `tools/archive/`。僅供歷史對照，現行版本見 [pcb/README.md](../../README.md)。
+
 # PCB 配置草稿 V0.1
 
 2026-09-16。依使用者同意的 PCB A 選項：兩片相同單聲道板＋一片共用電源板，延續系統 C 方案。只有變壓器與 LM3886T 已下單，其餘元件未購。
@@ -35,9 +37,9 @@
 先依 electrical/README.md 產生 netlist，再用含 pcbnew 的 KiCad Python 執行：
 
 ```sh
-python3 tools/build_pcb_draft.py
+python3 tools/archive/build_pcb_draft.py
 kicad-cli pcb drc --format json -o pcb/mono-drc.json pcb/mono-placement-v01.kicad_pcb
 kicad-cli pcb drc --format json -o pcb/psu-drc.json pcb/psu-placement-v01.kicad_pcb
 ```
 
-PNG：以裝有 Pillow 的 Windows Python 執行 `tools/render_pcb_draft.py`，目前使用 Windows 微軟正黑體。生成器會覆寫 PCB 草稿；手動修改前請先另存版本。原理圖仍為 V0.3，現有 V0.3 PDF 是加入 PCB 前的快照，未收錄本次草稿。
+PNG：以裝有 Pillow 的 Windows Python 執行 `tools/archive/render_pcb_draft.py`，目前使用 Windows 微軟正黑體。生成器會覆寫 PCB 草稿；手動修改前請先另存版本。原理圖仍為 V0.3，現有 V0.3 PDF 是加入 PCB 前的快照，未收錄本次草稿。

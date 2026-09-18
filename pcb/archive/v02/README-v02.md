@@ -1,6 +1,8 @@
+> 2026-09-18 歸檔：本版全部檔案已移至 `pcb/archive/v02/`，重建腳本移至 `tools/archive/`。僅供歷史對照，現行版本見 [pcb/README.md](../../README.md)。
+
 # PCB B 方案修訂 V0.2
 
-> 2026-09-17 更正：本版已發布專案實際使用 Default 網路類別 0.2 mm 間距；生成器曾把人工設定還原，因此先前文字的 0.3 mm 不準確。舊 DRC 紀錄及板檔保留。新版 V0.3 已修復並加入執行前後規則核對，詳見 [更正說明](review-v03.md#規則重設問題的更正)。
+> 2026-09-17 更正：本版已發布專案實際使用 Default 網路類別 0.2 mm 間距；生成器曾把人工設定還原，因此先前文字的 0.3 mm 不準確。舊 DRC 紀錄及板檔保留。新版 V0.3 已修復並加入執行前後規則核對，詳見 [更正說明](../../review-v03.md#規則重設問題的更正)。
 
 2026-09-17。依使用者選擇 B：保留兩片相同單聲道板＋一片共用電源板，重整布局、回流及走線。使用者確認 **LM3886T 與變壓器均仍在寄送中，尚未收到**；本版沒有已到料或實物尺寸核對的宣稱。
 
@@ -18,7 +20,7 @@
 ## 修改內容與依據
 
 - 放大板把輸入與回授放在右上，輸出電感／補償放在左側，電源接頭置於下側。R4 回授從 U1 輸出腳取樣，位於輸出電感前，回授與主輸出走線分開引出。
-- 原生成器的最近焊盤連接，改為 `tools/pcb_layout_v02.py` 內逐段明確定義的走線。靜音與負電源的層間連通已補足，真正需要換層的位置放置實體導通孔。
+- 原生成器的最近焊盤連接，改為 `tools/archive/pcb_layout_v02.py` 內逐段明確定義的走線。靜音與負電源的層間連通已補足，真正需要換層的位置放置實體導通孔。
 - 放大板接地匯流中心為板座標 **(43, 50) mm**。訊號／回授、喇叭、Zobel、靜音、局部去耦及電源回線分路安排；銅箔在中心附近的有限面積內匯合，不是理想零阻抗點。沒有用整面 GND 覆銅把各分路重新短接。
 - C3/C4 靠近 IC 供電區，C6/C7 放在板內供電路徑上。引腳引出仍受暫定 LM3886 封裝限制；到料後需再縮短及核對去耦迴路，不能據此認定高頻穩定。
 - 電源板將 AC 接頭、保險絲、整流橋留在左側；主電容正負電源成對排列。充電線先進 C201/C203，再連至 C202/C204；放大板的直流電源從後一對電容端引出。正負電容組的地各自引到 **(110, 59.08) mm** 匯流中心，再到 J203。
@@ -67,15 +69,15 @@ LM3886T 背板與負電源的關係及絕緣結構仍須核對。市電一次側
 ```sh
 kicad-cli sch export netlist --format kicadxml -o electrical/netlist.xml electrical/lm3886-v01.kicad_sch
 kicad-cli sch export netlist --format kicadxml -o electrical/psu-netlist.xml electrical/internal-psu-v02.kicad_sch
-python3 tools/build_pcb_v02.py
+python3 tools/archive/build_pcb_v02.py
 kicad-cli pcb drc --format json --exit-code-violations -o pcb/mono-v02-drc.json pcb/mono-layout-v02.kicad_pcb
 kicad-cli pcb drc --format json --exit-code-violations -o pcb/psu-v02-drc.json pcb/psu-layout-v02.kicad_pcb
-python3 tools/verify_pcb_v02.py
-python3 tools/render_pcb_v02.py
+python3 tools/archive/verify_pcb_v02.py
+python3 tools/archive/render_pcb_v02.py
 kicad-cli pcb export svg --layers F.Cu,B.Cu,F.SilkS,Edge.Cuts --mode-single --fit-page-to-board --exclude-drawing-sheet -o pcb/preview/mono-v02-native.svg pcb/mono-layout-v02.kicad_pcb
 kicad-cli pcb export svg --layers F.Cu,B.Cu,F.SilkS,Edge.Cuts --mode-single --fit-page-to-board --exclude-drawing-sheet -o pcb/preview/psu-v02-native.svg pcb/psu-layout-v02.kicad_pcb
 ```
 
 PNG 支援 macOS 黑體及 Windows 微軟正黑體；其他環境以 `LM3886_FONT` 指向可用的中文字型。PNG 與原生 SVG 都是頂視圖，合併顯示兩層銅箔，不能直接當背面蝕刻圖。
 
-本版來源為 `tools/pcb_layout_v02.py`（位置／連線）與 `tools/build_pcb_v02.py`（生成）；手動改 PCB 前請另存新版本，否則重建會覆寫 V0.2。`tools/build_pcb_draft.py` 仍只重建歷史 V0.1。
+本版來源為 `tools/archive/pcb_layout_v02.py`（位置／連線）與 `tools/archive/build_pcb_v02.py`（生成）；手動改 PCB 前請另存新版本，否則重建會覆寫 V0.2。`tools/archive/build_pcb_draft.py` 仍只重建歷史 V0.1。

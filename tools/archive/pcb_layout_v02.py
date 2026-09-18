@@ -1,3 +1,4 @@
+# 歷史腳本（已歸檔）：只重建 pcb/archive/ 內的舊版板檔，不影響現行 V0.3；輸出路徑已改指向歸檔資料夾。
 """B-layout design intent. Coordinates in mm; angles follow KiCad.
 Explicit electrical routes (including separate ground branches); not an autorouter.
 Footprints and conductor widths remain engineering assumptions pending parts/thermal review.
