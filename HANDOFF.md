@@ -2,6 +2,32 @@
 
 更新：2026-09-18，PCB 正反面、組裝、3D 與零件核對資料完成；PCB 為 B 方案 V0.3，原理圖／PDF 維持既有 V0.3。使用者指定**內建供電、純後級，外接現有 DAC 與前級**。已確認 Eversolo DAC-Z10（DAC＋前級）及 RCA；音量由 Z10 控制。
 
+## 待辦（2026-09-18 議定，尚未執行）：歸檔舊版板檔與腳本
+
+使用者已同意「歸檔舊版」，但要求**下次對話再執行**。範圍是只搬位置、不刪檔，全部用 `git mv` 保留歷史。
+
+**要搬的：**
+
+- `pcb/archive/v01/` ← `mono-placement-v01.*`、`psu-placement-v01.*`、`pcb/README-v01.md`、`Draft.pretty/`、`preview/mono-placement-v01.png`、`preview/psu-placement-v01.png`、`preview/system-placement-overview.png`
+- `pcb/archive/v02/` ← `mono-layout-v02.*`、`psu-layout-v02.*`、`*-layout-v02-footprints.csv`、`mono-v02-drc.json`、`psu-v02-drc.json`、`validation-v02.json`、`pcb/README-v02.md`、`DraftV02.pretty/`、`preview/*v02*`
+- `tools/archive/` ← `build_pcb_v02.py`、`render_pcb_v02.py`、`verify_pcb_v02.py`、`pcb_layout_v02.py`、`build_pcb_draft.py`、`render_pcb_draft.py`
+
+**三個必須先確認的陷阱：**
+
+1. **`electrical/` 底下的 v01／v02 是現行檔案，不是舊版。** `electrical/lm3886-v01.kicad_sch` 與 `electrical/internal-psu-v02.kicad_sch` 都是目前在用的原理圖，`tools/rebuild.py` 第 8、26 行直接引用。**絕對不要跟著 pcb/ 的版本號一起歸檔。**
+2. `tools/rebuild.py` 只呼叫 `build_schematic.py`、`build_power_supply.py`、`verify_electrical.py`、`verify_power_supply.py`，**不碰任何 pcb 腳本**，所以搬 `tools/*pcb*v02*` 不會弄壞 rebuild 流程。仍建議搬完跑一次確認。
+3. `pcb/README.md`、`README-v03.md`、`docs/` 內的相對連結指向這些檔案，搬完要全庫更新並跑連結檢查（0 斷裂才算完成）。
+
+**順帶建議（同一輪可做）：** 新增 `tools/README.md` 說明入口是 `rebuild.py`，其餘為被呼叫的產生器；以及把散在 03／08／09／10／11／12 六份文件的採購資訊做一個單一入口總表。
+
+## 本次更新（2026-09-18）：docs 檔名中文化與機殼候選
+
+- `docs/` 全部 12 份 .md 改為中文檔名（01-設計規格 … 12-機殼候選），編號前綴保留。`.json` 資料檔維持英文名，因為是腳本 I/O。
+- 同步更新 README、HANDOFF、`docs/diagrams/README.md`、`electrical/README.md`、`pcb/README-v03.md`，以及 `build_project_pdf.py`、`rebuild.py`、`power_budget.py`、`mains_budget.py` 四支腳本內的檔名字串。全庫連結檢查 0 斷裂、0 處舊檔名殘留。
+- 新增 [docs/12-機殼候選.md](docs/12-機殼候選.md)：由環牛 Ø120×43、電源板 160×120、放大板 100×90 與主電容尺寸推導最低內部空間（寬 ≥300／深 ≥250／高 ≥90 mm），列淘寶候選與商品連結。首選 4312A 兩側散熱 430×120×311（¥408）。
+- **機殼未下單，散熱熱阻全部未標 °C/W，內部淨空間未向賣家確認，型號推測尺寸未經賣家背書。主電容料號未定前機殼高度不應定案。**
+- 本輪沒有改動原理圖、PCB、BOM、3D 或 PDF，沒有重跑 ERC／DRC。
+
 ## 本次更新（2026-09-18）：露天商品連結
 
 - [docs/11-露天購物連結.md](docs/11-露天購物連結.md)整合38個已開啟核對的商品直達頁：原15項＋新增23項；docs/10的原表與JSON也補上連結／包裝選項。
