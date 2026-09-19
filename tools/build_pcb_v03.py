@@ -4,6 +4,7 @@ All footprint dimensions are provisional, including the LM3886 lead pattern.
 """
 from pathlib import Path
 from pcb_layout_v03 import AMP, PSU
+from silk_marks_v03 import silk_marks, silk_texts
 import pcbnew as p
 import xml.etree.ElementTree as ET
 import math,json
@@ -32,6 +33,10 @@ def make_fp(name,pads,body,kind='rect'):
   f.Add(sh)
  f.Reference().SetPosition(v((x0+x1)/2,y0-1.7));f.Reference().SetTextSize(v(1,1));f.Reference().SetTextThickness(MM(.15))
  f.Value().SetVisible(False)
+ for seg,w in silk_marks(name,pads,body):
+  sh=p.PCB_SHAPE(f);sh.SetLayer(p.F_SilkS);sh.SetWidth(MM(w));sh.SetShape(p.SHAPE_T_SEGMENT);sh.SetStart(v(*seg[0]));sh.SetEnd(v(*seg[1]));f.Add(sh)
+ for text,(tx,ty),size in silk_texts(name,pads,body):
+  t=p.PCB_TEXT(f);t.SetText(text);t.SetLayer(p.F_SilkS);t.SetPosition(v(tx,ty));t.SetTextSize(v(size,size));t.SetTextThickness(MM(.12));f.Add(t)
  p.PCB_IO_MGR.FindPlugin(p.PCB_IO_MGR.KICAD_SEXP).FootprintSave(str(LIB),f)
  specs[name]={'body':body,'kind':kind,'pads':pads}
  return name

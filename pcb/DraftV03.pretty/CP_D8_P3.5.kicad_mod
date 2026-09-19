@@ -71,6 +71,36 @@
 		(layer "F.CrtYd")
 		(uuid "c5c4e5a6-c836-4a4f-8cbc-65e7f2a53435")
 	)
+	(fp_line
+		(start -0.75 -2)
+		(end 0.25 -2)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "59bfd1e9-46c6-4681-8e11-534f567a6330")
+	)
+	(fp_line
+		(start -0.25 -2.5)
+		(end -0.25 -1.5)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "96c0bdb1-3362-475b-ace8-d13b3e071d77")
+	)
+	(fp_line
+		(start 4.95 -2.16)
+		(end 4.95 2.16)
+		(stroke
+			(width 0.4)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "17155bd5-887b-4dee-8169-196894ce780c")
+	)
 	(pad "1" thru_hole circle
 		(at 0 0)
 		(size 2 2)

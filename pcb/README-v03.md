@@ -14,6 +14,8 @@
 | 封裝假設 | [清單](mono-layout-v03-footprints.csv) | [清單](psu-layout-v03-footprints.csv) |
 | 原生 DRC | [0 違規、0 未連通](mono-v03-drc.json) | [0 違規、0 未連通](psu-v03-drc.json) |
 
+**2026-09-19 絲印組裝標記（僅封裝庫與生成器，板檔未重建）：**`DraftV03.pretty` 的 `CP_D12.5_P5`／`CP_D8_P3.5`／`CP_D35_P10` 加上「+」記號（pad 1 側）與負極粗條（pad 2 側）；`LM3886T_UNVERIFIED` 加上 pad 1 標記「1」、散熱片側粗線與「TAB = V- HEATSINK」字樣。極性依 `tools/pcb_layout_v03.py` 走線核對：七顆電解（C6／C7／C8／C201–C204）pad 1 皆接較正節點。幾何集中在 [tools/silk_marks_v03.py](../tools/silk_marks_v03.py)，`build_pcb_v03.py` 重建時會自動寫入。**兩份 `.kicad_pcb`、預覽圖與 DRC 雜湊未變**（本機無 KiCad），下次在 KiCad 環境執行「重建」段落的指令後才會出現在板面。C8 極性依 mute 拓樸推定（pin 8 經 R8 拉向 V−，故 GND 側為正），到料後請再核對。
+
 **2026-09-18 新增：**[正反面／組裝／3D 圖](inspection-v03/README.md)、[零件與封裝核對表](inspection-v03/parts-audit.md)。本輪僅新增看圖資料及模型預覽板，原 PCB 保持不變。
 
 詳細結果：[本輪審查與計算假設](review-v03.md)、[銅箔計算表](current-budget-v03.md)、[完整計算資料](current-budget-v03.json)、[驗證摘要](validation-v03.json)、[原生 DRC 檔案綁定](drc-provenance-v03.json)。

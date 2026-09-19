@@ -71,6 +71,38 @@
 		(layer "F.CrtYd")
 		(uuid "28be7406-a047-440b-bb9c-2659b40e9df3")
 	)
+	(fp_line
+		(start -1.5 -12.6)
+		(end 18.5 -12.6)
+		(stroke
+			(width 0.3)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "d81c502a-65ef-485d-a5b2-b9500b0883c5")
+	)
+	(fp_text user "1"
+		(at -2.3 0 0)
+		(layer "F.SilkS")
+		(uuid "96ab2354-91db-4bf7-bdf4-ced81b84c7b6")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(fp_text user "TAB = V-  HEATSINK"
+		(at 8.5 -9.5 0)
+		(layer "F.SilkS")
+		(uuid "2914db4a-cdc6-4818-9228-659578033661")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.12)
+			)
+		)
+	)
 	(pad "1" thru_hole circle
 		(at 0 0)
 		(size 1.65 1.65)

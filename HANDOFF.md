@@ -1,6 +1,14 @@
 # 接班進度
 
-更新：2026-09-18，舊版 PCB 板檔與腳本已歸檔至 archive/；PCB 正反面、組裝、3D 與零件核對資料完成；PCB 為 B 方案 V0.3，原理圖／PDF 維持既有 V0.3。使用者指定**內建供電、純後級，外接現有 DAC 與前級**。已確認 Eversolo DAC-Z10（DAC＋前級）及 RCA；音量由 Z10 控制。
+更新：2026-09-19，封裝庫加入絲印極性／pin 1 標記（板檔未重建）；2026-09-18，舊版 PCB 板檔與腳本已歸檔至 archive/；PCB 正反面、組裝、3D 與零件核對資料完成；PCB 為 B 方案 V0.3，原理圖／PDF 維持既有 V0.3。使用者指定**內建供電、純後級，外接現有 DAC 與前級**。已確認 Eversolo DAC-Z10（DAC＋前級）及 RCA；音量由 Z10 控制。
+
+## 本次更新（2026-09-19）：封裝絲印組裝標記
+
+- 新增 `tools/silk_marks_v03.py`（純 Python，無 pcbnew 依賴），`build_pcb_v03.py` 的 `make_fp` 於存檔前呼叫它，為 `CP_*` 電解加「+」與負極條、為 `LM3886T_UNVERIFIED` 加 pad 1 標記與散熱片側標線／字樣。
+- 同步以相同幾何手動寫入 `pcb/DraftV03.pretty/` 四個 `.kicad_mod`（每個新增 3 個 F.SilkS 項目，括號平衡已檢查）。**未改 `.kicad_pcb`、`.kicad_pro`、預覽圖與任何 DRC／驗證 JSON**，雜湊綁定不受影響。
+- 極性核對來源：`pcb_layout_v03.py` 走線 —— C7 (VCC,GND)、C6 (GND,VEE)、C8 (GND,L_MUTE)、C201/C202 (VCC,GND)、C203/C204 (GND,VEE)，pad 1 一律為正。
+- 驗證：`py_compile` 通過；`test_pcb_analysis_v03.py` OK。`verify_pcb_v03.py` 因缺 `electrical/netlist.xml`（需 kicad-cli 匯出）在改動前後同樣失敗，非本輪引入。本機無 KiCad，`PCB_TEXT` 於 footprint 內的 API 用法未實跑，重建時若報錯請優先檢查該兩行。
+- **待辦（封裝定案後）：** J1／J2 極性標示、JP1（RUN）說明文字、全板零件值顯示。
 
 ## 本次更新（2026-09-18）：歸檔舊版板檔與腳本
 
