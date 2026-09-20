@@ -10,3 +10,6 @@ electrical/psu-netlist.xml
 
 # PDF build and visual review intermediates
 tmp/pdfs/
+
+# Generated build outputs (PDF etc.)
+output/

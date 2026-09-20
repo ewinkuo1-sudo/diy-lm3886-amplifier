@@ -48,7 +48,7 @@ python3 tools/rebuild.py
 |---|---|
 | `build_diagrams.py` | 產生 `docs/diagrams/svg/*.svg`（色塊圖需 PyMuPDF） |
 | `render_diagrams.cjs` | SVG 轉 PNG（Node） |
-| `build_project_pdf.py` | 產生 `output/pdf/*.pdf`（需 reportlab、pypdf、CJK 字型；非 Windows 設 `LM3886_FONT`） |
+| `build_project_pdf.py` | 產生 `output/pdf/*.pdf`（需 reportlab、pypdf、CJK 字型；非 Windows 設 `LM3886_FONT`）。`output/` 為生成產物，不入版控 |
 
 ## archive/（歷史，勿用於現行版本）
 
