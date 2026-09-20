@@ -1,6 +1,6 @@
 # PCB V0.3 銅箔計算表（程式輸出）
 
-由 `tools/analyze_pcb_v03.py` 依 PCB 走線資料計算。完整假設與限制見 [本輪審查](review-v03.md)。
+由 `tools/analyze_pcb_v03.py` 依 PCB 走線資料計算。完整假設與限制見 [PCB V0.3 說明](README.md)。
 
 以下採名義 1 oz 銅厚 0.0348 mm、假設銅溫 25°C。電流情境為 40W／8Ω；充電列另採 15% 導通占空比矩形脈衝假設。
 

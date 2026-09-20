@@ -28,7 +28,7 @@ python3 tools/rebuild.py
 | `run_pcb_drc_v03.py` | 固定規則下跑原生 DRC，並把報告雜湊綁到檔案 |
 | `verify_pcb_v03.py` | 核對 DRC 結果、焊盤網路、放大板回地分組，寫 `pcb/validation-v03.json` |
 | `render_pcb_v03.py` | 由 JSON 畫 `pcb/preview/*.png`（需 Pillow） |
-| `analyze_pcb_v03.py` | 銅箔路徑電阻／壓降／損耗篩查，寫 `pcb/current-budget-v03.*` |
+| `analyze_pcb_v03.py` | 銅箔路徑電阻／壓降／損耗篩查，讀 `pcb/archive/v02/*-layout-v02.json` 做 V0.2 對照，寫 `pcb/current-budget-v03.json／.md` |
 | `test_pcb_analysis_v03.py` | analyze_pcb_v03 的回歸測試（unittest） |
 
 ## PCB V0.3 看圖與零件核對（`pcb/inspection-v03/`）

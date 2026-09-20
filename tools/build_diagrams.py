@@ -160,7 +160,7 @@ def build():
     d=SVG(1800,1190);d.header('LM3886｜IC 到輸出級','Zobel 與輸出隔離網路不等於喇叭 DC 保護；目前輸出端供假負載測試。')
     embed(d,signal('output'),25,160,1750,790,'680 85 1100 760')
     d.panel(50,980,1700,'PCB V0.3 對應',['R4 由 U1.3 獨立取樣；主輸出改 B.Cu。回授位於 L1/R7 之前，元件值與網路未改。','成機需另加 DC 偵測、延遲接通與掉電斷開控制；目前不能把 TEST OUT 當完成保護的喇叭端。'],GREEN)
-    d.footer('實際 PCB 走線與剩餘問題見 pcb/review-v03.md；此圖不是走線施工圖。');d.save('lm3886_ic_to_output')
+    d.footer('實際 PCB 走線與剩餘問題見 pcb/README.md；此圖不是走線施工圖。');d.save('lm3886_ic_to_output')
     d=SVG(1800,1860);d.header('LM3886｜電源級到 IC','雙獨立 22Vac 次級各接全橋；12Vac 輔助繞組留供控制，模組輸入與電流待定。')
     supply(d)
     d.panel(50,980,815,'PSU → 放大板線束',['J203.1 → J5.1 VCC → U1/U2 pin 1、5。','J203.2 → J5.2 GND → U1/U2 pin 7 及各回地。','J203.3 → J5.3 VEE → U1/U2 pin 4。','兩份原理圖靠實體線束相接，同名標籤不跨檔接線。','R201/R202 各 2.2kΩ / 2W，分別跨正／負軌。','C205/C206 各 100nF / 100V，分別跨正／負軌。'],BLUE)
@@ -171,7 +171,7 @@ def build():
     d.footer('兩顆橋堆與四顆主電容均未購；未指定 KBPC2510 或 300VA，未宣稱實際輸出額定。');d.save('lm3886_power_to_ic')
     annotated('lm3886-v01','lm3886_sch_annotated',False)
     annotated('internal-psu-v02','lm3886_psu_sch_annotated',True)
-    sources=['tools/build_schematic.py','tools/build_power_supply.py','electrical/lm3886-v01.kicad_sch','electrical/internal-psu-v02.kicad_sch','electrical/preview/lm3886-v01.pdf','electrical/preview/internal-psu-v02.pdf','pcb/review-v03.md']
+    sources=['tools/build_schematic.py','tools/build_power_supply.py','electrical/lm3886-v01.kicad_sch','electrical/internal-psu-v02.kicad_sch','electrical/preview/lm3886-v01.pdf','electrical/preview/internal-psu-v02.pdf','pcb/README.md']
     (OUT/'sources.json').write_text(json.dumps({'version':'Plan C V0.3','updated':'2026-09-17','sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources}},indent=2),encoding='utf-8')
 
 def annotated(source,name,psu):

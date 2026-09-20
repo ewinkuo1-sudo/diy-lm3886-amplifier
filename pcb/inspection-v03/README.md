@@ -49,7 +49,7 @@
 - [來源 SHA-256](sources.json)：原 PCB、專案與走線 JSON。
 - [本輪核對結果](verification.json)：預覽板刪除模型節點後與原板語法樹一致；模型、尺寸與 89 焊盤位置／網路對照。**檔案雜湊表已於 2026-09-21 移除可重建中間產物的條目**（models／preview 板／raw PNG），跑 `verify_pcb_inspection_v03.py` 前要先重建它們。
 - [KiCad 匯出紀錄](native-export-log.json)：四份原生銅箔 SVG 與六張 3D 算繪。
-- 既有 PCB V0.3 的 DRC／網路驗證見 [上層說明](../README-v03.md)。本輪沒有改走線，沒有新增 ERC／DRC 或實機測試；不把 3D 顯示當作電氣驗證。
+- 既有 PCB V0.3 的 DRC／網路驗證見 [上層說明](../README.md)。本輪沒有改走線，沒有新增 ERC／DRC 或實機測試；不把 3D 顯示當作電氣驗證。
 
 原廠工具依據：[KiCad 10 PCB Editor／3D viewer](https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html)；[KiCad VRML 單位說明](https://dev-docs.kicad.org/en/file-formats/legacy-pcb/index.html)。VRML 座標依 KiCad 的 0.1 inch 單位生成（1 單位＝2.54 mm）；不使用生成式圖片猜測電路。
 

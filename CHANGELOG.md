@@ -62,7 +62,7 @@
 ## 2026-09-18：docs 檔名中文化與機殼候選
 
 - `docs/` 全部 12 份 .md 改為中文檔名（01-設計規格 … 12-機殼候選），編號前綴保留。`.json` 資料檔維持英文名，因為是腳本 I/O。
-- 同步更新 README、HANDOFF、`docs/diagrams/README.md`、`electrical/README.md`、`pcb/README-v03.md`，以及 `build_project_pdf.py`、`rebuild.py`、`power_budget.py`、`mains_budget.py` 四支腳本內的檔名字串。全庫連結檢查 0 斷裂、0 處舊檔名殘留。
+- 同步更新 README、HANDOFF、`docs/diagrams/README.md`、`electrical/README.md`、`pcb/README-v03.md`（已併入 `pcb/README.md`），以及 `build_project_pdf.py`、`rebuild.py`、`power_budget.py`、`mains_budget.py` 四支腳本內的檔名字串。全庫連結檢查 0 斷裂、0 處舊檔名殘留。
 - 新增 `docs/archive/12-機殼候選.md`（已刪除）：由環牛 Ø120×43、電源板 160×120、放大板 100×90 與主電容尺寸推導最低內部空間（寬 ≥300／深 ≥250／高 ≥90 mm），列淘寶候選與商品連結。首選 4312A 兩側散熱 430×120×311（¥408）。
 - **機殼未下單，散熱熱阻全部未標 °C/W，內部淨空間未向賣家確認，型號推測尺寸未經賣家背書。主電容料號未定前機殼高度不應定案。**
 - 本輪沒有改動原理圖、PCB、BOM、3D 或 PDF，沒有重跑 ERC／DRC。
@@ -134,7 +134,7 @@
 - 新增 tools/analyze_pcb_v03.py 與 pcb/current-budget-v03.json／md；40W／8Ω、1 oz／25°C 情境下 U1.3→L1.1 銅箔電阻 20.93→9.25 mΩ。充電電流為 15–35% 占空比敏感度模型，非量測或保證上界。未計算實際溫升，未宣稱 IPC-2152 符合。
 - 修正 SaveBoard 重建同名專案而還原規則的問題；V0.2 已發布實際 Default 間距為 0.2 mm，舊文字已更正。V0.3 固定 0.3 mm、DRC 前後核對設定，並綁定 PCB／專案／JSON／報告雜湊。
 - KiCad 10.0.6：兩板 0 違規、0 未連通；54＋35 焊盤網路相符；分路接地幾何核對、4 個回歸測試通過，PNG 與原生 SVG 已檢視。原理圖、元件值與既有 PDF 未修改，未重跑 ERC。
-- 完整來源與限制見 pcb/README-v03.md、review-v03.md。下一步仍需到貨／料號核對、負軌與大電容去耦縮短、實際銅厚／孔壁／接頭載流及整機線束、保護與實測。
+- 完整來源與限制見 `pcb/README.md`（原 README-v03／review-v03，2026-09-21 合併）。下一步仍需到貨／料號核對、負軌與大電容去耦縮短、實際銅厚／孔壁／接頭載流及整機線束、保護與實測。
 
 ### 首頁同步紀錄（原 README「PCB B 方案修訂（V0.3／2026-09-17）」段落）
 
@@ -144,7 +144,7 @@
 
 ![PCB V0.3](pcb/preview/system-layout-v03.png)
 
-[新版 PCB 與驗證](pcb/README-v03.md)／[本輪審查](pcb/review-v03.md)／[計算表](pcb/current-budget-v03.md)。V0.1／V0.2 板檔保留並已歸檔至 `pcb/archive/`；V0.2 規則文字有更正，本輪已修復重建還原設定的問題。原理圖和既有 V0.3 PDF 未修改，PDF 未收錄本版 PCB。
+[PCB V0.3 說明與審查](pcb/README.md)／[計算表](pcb/current-budget-v03.md)。V0.1／V0.2 板檔保留並已歸檔至 `pcb/archive/`；V0.2 規則文字有更正，本輪已修復重建還原設定的問題。原理圖和既有 V0.3 PDF 未修改，PDF 未收錄本版 PCB。
 
 ---
 
