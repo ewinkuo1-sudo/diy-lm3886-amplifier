@@ -31,9 +31,10 @@ def main():
     run(sys.executable, 'tools/verify_power_supply.py')
     output = subprocess.check_output([sys.executable, 'tools/power_budget.py'], cwd=ROOT, text=True, encoding="utf-8")
     (ROOT / 'docs/02-功率與散熱估算.md').write_text(output, encoding="utf-8")
-    mains = subprocess.check_output([sys.executable, 'tools/mains_budget.py'], cwd=ROOT, text=True, encoding="utf-8")
-    (ROOT / 'docs/06-市電與電源估算.md').write_text(mains, encoding="utf-8")
+    # docs/06 was merged into docs/05 on 2026-09-21; mains_budget.py now prints to stdout only.
+    # Re-run `python3 tools/mains_budget.py` by hand and update the estimate section in docs/05.
     print('All V0.3 deliverables rebuilt and electrical checks passed.')
+    print('Reminder: docs/05 power estimates are not auto-written; run tools/mains_budget.py and update that section.')
 
 
 if __name__ == '__main__':

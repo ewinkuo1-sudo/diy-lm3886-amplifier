@@ -10,8 +10,8 @@ def rail_case(line_factor, power):
     return current, ripple, peak_rail-ripple/2, peak_rail-ripple
 def report():
     high=VAC*1.10*1.08*sqrt(2)-1.2
-    lines=['# V0.3 C 方案電源估算', '',
-    '由 tools/mains_budget.py 產生；沒有硬體量測。只知道賣場標示 200W、AC110V、兩組獨立 22Vac 加一組 12Vac。VA、各繞組電流、頻率額定與調整率均待確認，不推定 200VA 或可供電流。', '',
+    lines=['# V0.3 C 方案電源估算（docs/05 估算段的來源）', '',
+    '由 tools/mains_budget.py 產生（輸出到 stdout，供人工更新 docs/05 的估算段）；沒有硬體量測。只知道賣場標示 200W、AC110V、兩組獨立 22Vac 加一組 12Vac。VA、各繞組電流、頻率額定與調整率均待確認，不推定 200VA 或可供電流。', '',
     '## 試算假設', '',
     '- 假設 22Vac 為額定負載電壓；若實際為空載值，以下負載電壓會高估，需重算。',
     '- 市電以 110V／60Hz、±10% 試算；空載調整率假設 +8%。均非供應商保證或量測。',
