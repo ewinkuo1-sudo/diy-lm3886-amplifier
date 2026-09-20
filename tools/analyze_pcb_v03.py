@@ -91,7 +91,7 @@ def coupling_screen(data):
  return result
 
 def analyze():
- # V0.2 baseline files were archived to pcb/archive/v02/ on 2026-09-18; V0.3 stays in pcb/.
+ # Only the two V0.2 baseline JSONs survive under pcb/archive/v02/ (rest deleted 2026-09-21); V0.3 stays in pcb/.
  def layout_path(board,v):return ROOT/('pcb/archive/v02' if v=='02' else 'pcb')/f'{board}-layout-v{v}.json'
  data={(board,v):json.loads(layout_path(board,v).read_text()) for board in ['mono','psu'] for v in ['02','03']}
  # 40 W is a sizing case, not a promised output rating. Same-phase stereo is assumed.

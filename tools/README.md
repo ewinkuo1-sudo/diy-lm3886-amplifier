@@ -50,6 +50,8 @@ python3 tools/rebuild.py
 | `render_diagrams.cjs` | SVG 轉 PNG（Node） |
 | `build_project_pdf.py` | 產生 `output/pdf/*.pdf`（需 reportlab、pypdf、CJK 字型；非 Windows 設 `LM3886_FONT`）。`output/` 為生成產物，不入版控 |
 
-## archive/（歷史，勿用於現行版本）
+## 已刪除的歷史腳本
 
-V0.1（`*_draft.py`）與 V0.2（`*_v02.py`）的產生／繪圖／驗證腳本。輸出已改指向 `pcb/archive/v01/`、`pcb/archive/v02/`，只為重現歷史板檔。**檔名裡的 v01／v02 是 PCB 版號；`electrical/` 的 lm3886-v01、internal-psu-v02 是現行原理圖，別混淆。**
+V0.1（`*_draft.py`）與 V0.2（`*_v02.py`）的產生／繪圖／驗證腳本已於 2026-09-21 刪除，需要時從 Git 歷史（`41b217c`）取回。`pcb/archive/v02/mono-layout-v02.json`、`psu-layout-v02.json` 兩個檔案**刻意保留**，因為 `analyze_pcb_v03.py` 要讀它們做 V0.2→V0.3 對照。
+
+**檔名裡的 v01／v02 是 PCB 版號；`electrical/` 的 lm3886-v01、internal-psu-v02 是現行原理圖，別混淆。**
