@@ -2,63 +2,25 @@
 
 用兩顆 LM3886T 製作**內建電源的雙聲道純後級**，搭配使用者現有的 **Eversolo DAC-Z10（DAC＋前級）**。訊號路徑為 **DAC-Z10 RCA 前級輸出 → 本後級 → 喇叭**，音量與訊源選擇由 Z10 負責。本機採固定增益，前面板規劃電源及狀態指示。
 
-已下單 **賣場標示 200W、兩組獨立 22Vac＋單 12Vac 的 AC110V 環形變壓器，以及 LM3886T 拆機 IC**，均待到貨。現改按約 ±30V 等級供電、每聲道約 30～40W／8Ω 探索規劃；VA、各繞組電流與實際功率尚未確認。詳見 [採購後修訂計畫](docs/09-採購後修訂計畫.md)。
-
 這是第三個獨立擴大機專案，可與 [TPA3255 練習機](https://github.com/ewinkuo1-sudo/diy-tpa3255-amplifier) 及 [Purifi 主力機](https://github.com/ewinkuo1-sudo/diy-purifi-amplifier) 比較架構與製作經驗。
-
-**已選 C 方案：完整雙聲道、雙橋整流、4×10,000µF／63V 主濾波電容（每軌 20,000µF）。變壓器與 IC 已下單；2026-09-20 加購全部電阻、WIMA、CDE 主電容／靜音電容與 ROE 電解。整流橋、接頭、絕緣件、散熱、保護板、機殼仍未購。** 喇叭保護、浪湧限制、散熱與機殼接地列入完整整機設計，細部料號尚待確認。
-
-## 預計下單清單（2026-09-18）
-
-[露天商品直達連結與其餘待買候選](docs/11-露天購物連結.md)：已核對原15項候選及23項新增商品，附數量、包裝選項與尚待確認的規格。
-
-已登記 Vishay／RNU2 電阻、CDE／WIMA 電容，以及 ROE／Mundorf／NCC 替代候選。**2026-09-20 已下單（露天 yosontw，40 件 $2,298 含運）；47µF 選 ROE EGW、470µF 選 ROE EKE。** [查看數量、價格試算與封裝影響](docs/10-預計下單清單.md)。現有PCB與3D尚未按這批料件定版。
-
-## 目前進度：2026-09-16 已下單，待到貨核對
-
-兩份 KiCad 圖、PDF／PNG、BOM 與估算已更新為 V0.3 C 方案。保留雙橋四電容接法，改為 22Vac 供電標示；變壓器 VA／電流與控制電路仍待確認。
-
-已有放大板與電源次級兩份可編輯 KiCad 原理圖、PDF／PNG 預覽、43＋15 個元件的分板 BOM、腳位／線束核對、功率／散熱／紋波估算及上電流程。兩份圖的 KiCad ERC 均通過，0 錯誤、0 警告。
-
-**一次側接線、軟啟動及喇叭保護控制尚待設計；已有暫定 PCB 配置與部分走線，尚無可製造 PCB、加工圖或實機量測。** 次級整流圖不是完整市電施工圖，功率與散熱仍需驗證；目前輸出端供假負載測試。
-
-## PCB B 方案修訂（V0.3／2026-09-17）
-
-已訂 **LM3886T 與變壓器仍在寄送中**。本輪改善 C3/C4 的局部回地、分開輸出與回授取樣、加寬主電流路徑，並依 40W／8Ω 情境完成銅箔電阻、壓降與發熱功率估算。計算情境不是本機額定或量測。
-
-仍採兩片 **100 × 90 mm 單聲道板**＋一片 **160 × 120 mm 共用電源板**。KiCad 10.0.6、固定 0.3 mm 間距規則下，兩板均 **0 DRC 違規、0 未連通**，54＋35 焊盤網路對照通過。封裝、實際溫升、散熱與機構仍待確認，**不可直接製造**。
-
-![PCB V0.3](pcb/preview/system-layout-v03.png)
-
-[新版 PCB 與驗證](pcb/README-v03.md)／[本輪審查](pcb/review-v03.md)／[計算表](pcb/current-budget-v03.md)。V0.1／V0.2 板檔保留並已歸檔至 `pcb/archive/`；V0.2 規則文字有更正，本輪已修復重建還原設定的問題。原理圖和既有 V0.3 PDF 未修改，PDF 未收錄本版 PCB。
-
-## PCB 看圖與選料資料（2026-09-18）
-
-已完成正反面銅箔圖、極性／組裝圖、兩板三種角度的 3D 預覽、可旋轉的 KiCad 預覽板，以及 37 項零件／封裝核對表。**元件模型採暫定外框與假設高度，尚非可製造裝配模型。** 原理圖與 PCB V0.3 走線保持不變。
-
-[正反面、組裝與 3D 圖索引](pcb/inspection-v03/README.md) · [零件與封裝核對表](pcb/inspection-v03/parts-audit.md)
-
-![PCB 3D 工程預覽](pcb/inspection-v03/3d/overview.png)
-
-## 最新 PDF（V0.3／2026-09-16）
-
-- [C 方案設計與電路彙整](output/pdf/LM3886_Plan_C_V03.pdf)：現行設計、整機方塊圖、估算、採購與兩張向量電路圖。
-- [C 方案採購勾選清單](output/pdf/LM3886_Shopping_V03.pdf)：舊版（僅變壓器及 IC 已訂）。最新狀態看 [採購總表](docs/00-採購總表.md) 開頭的 2026-09-20 下單紀錄。
-- [2026-09-11 舊完整 PDF](docs/archive/LM3886_DIY_Project_Complete_2026-09-11.pdf)：歷史快照，舊供電與採購資訊不再適用。
-
-## 電路圖
-
-**2026-09-17：六張中文導讀圖已同步方案 C V0.3。** 更新雙 22Vac／雙橋四電容、回授串聯關係、元件編號與靜音極性，補上 PCB V0.3 回流說明。[導讀圖索引與重建方式](docs/diagrams/README.md)。
 
 ![V0.3 單聲道完整電路導讀](docs/diagrams/lm3886_complete.png)
 
-![LM3886 放大板電路草案](electrical/preview/lm3886-v01.png)
+## 目前狀態（2026-09-20）
 
-[下載 PDF](electrical/preview/lm3886-v01.pdf) · [KiCad 原理圖](electrical/lm3886-v01.kicad_sch) · [看圖與重建方式](electrical/README.md)
+- **已選 C 方案**：完整雙聲道、雙橋整流、4×10,000µF／63V 主濾波電容（每軌 20,000µF），約 ±30V 等級供電，每聲道約 30～40W／8Ω 為探索範圍而非額定。
+- **2026-09-16／17 已下單**：賣場標示 200W、兩組獨立 22Vac＋單 12Vac 的 AC110V 環形變壓器，以及 LM3886T 拆機 IC，均待到貨；VA 與各繞組電流未確認。
+- **2026-09-20 已下單**：全部電阻、WIMA、CDE 主電容／靜音電容與 ROE 電解（露天 yosontw，40 件 $2,298 含運）。
+- **電容選型定案**：47µF＝ROE EGW（臥式無極性）、470µF＝ROE EKE／63V。
+- **PCB V0.3 是工程草稿，不可送製**：兩板 KiCad DRC 0 違規、0 未連通，但封裝、溫升、散熱與機構皆未驗證。
+- **到貨後第一件事**：量測四款電解（ROE EGW 47µF、ROE EKE 470µF、CDE 381LX、CDE 361R）的實體尺寸，再改封裝、重建 PCB。
+- **仍未購**：整流橋、保險絲座／保險絲、電感、接頭、端子、絕緣與散熱件、AC 入口、軟啟動、喇叭保護板、線材、假負載、機殼。
+- **仍未設計**：一次側接線、軟啟動、輔助電源、雙軌監測與喇叭 DC 保護控制。
 
-![內建電源次級整流濾波草案](electrical/preview/internal-psu-v02.png)
+**要買零件看 [docs/00-採購總表.md](docs/00-採購總表.md)** — 已下單／可下單／要先確認／暫緩四段分類，附購買順序與所有商品連結。
+**要接手看 [HANDOFF.md](HANDOFF.md)**。**歷史逐日紀錄看 [CHANGELOG.md](CHANGELOG.md)**。
 
-[電源 PDF](electrical/preview/internal-psu-v02.pdf) · [內建電源設計](docs/05-內建電源與機構.md) · [電源 BOM](electrical/psu-bom-draft.csv)
+## 系統方塊
 
 ```mermaid
 flowchart LR
@@ -95,25 +57,39 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 
 ## 文件
 
-[目前適用：V0.3 C 方案](docs/09-採購後修訂計畫.md)；文件已同步目前供電假設；未選料與未量測項目有明確標註。
-
-**要買零件看這一份：[採購總表](docs/00-採購總表.md)** — 已下單／可下單／要先確認／暫緩四段分類，附購買順序與所有商品連結。下面 03、08、09、10、11、12 六份為其附錄。
-
 | 文件 | 內容 |
 |---|---|
 | [採購總表](docs/00-採購總表.md) | **採購單一入口**：狀態分類、購買順序、全部商品連結與金額試算 |
-| [Z10 RCA 搭配](docs/07-Z10介面.md) | 已確認設備、電平與音量控制 |
 | [設計規格](docs/01-設計規格.md) | 電路、接地、介面與保護邊界 |
 | [功率與散熱估算](docs/02-功率與散熱估算.md) | 可重算的數字、公式與假設 |
+| [上電與驗收](docs/04-上電與驗收.md) | 從低電壓到雙聲道功率測試 |
 | [內建電源與機構規劃](docs/05-內建電源與機構.md) | 變壓器、整流、接地、控制及機殼分區 |
 | [內建電源估算](docs/06-市電與電源估算.md) | 市電變動、空載電壓、紋波、容量與放電 |
+| [Z10 RCA 搭配](docs/07-Z10介面.md) | 已確認設備、電平與音量控制 |
+| [喇叭保護與啟停設計計畫](docs/13-喇叭保護與啟停設計計畫.md) | 保護、延遲、DC 偵測與啟停方案 |
+| [導讀圖索引](docs/diagrams/README.md) | 六張中文電路導讀圖與重建方式 |
 | [BOM 草案](electrical/bom-draft.csv) | 由 KiCad netlist 匯出，含選型條件 |
-| [整機配件需求](docs/03-整機配件需求.md) | 電源、散熱、接頭、測試器材 |
-| [上電與驗收](docs/04-上電與驗收.md) | 從低電壓到雙聲道功率測試 |
 | [驗證紀錄](electrical/validation.md) | ERC、網路核對與未驗證事項 |
-| [採購狀態](docs/08-採購狀態.md) | 已下單／到料料件與到料核對項目 |
-| [機殼候選](docs/12-機殼候選.md) | 淘寶候選、需求推導與下單前確認項目（未下單） |
-| [接班進度](HANDOFF.md) | 下一階段工作 |
+| [原理圖說明](electrical/README.md) | 放大板與電源次級 KiCad 圖、看圖與重建方式 |
+| [PCB V0.3 與驗證](pcb/README-v03.md) | 板檔、DRC、審查與載流計算表 |
+| [PCB 看圖資料](pcb/inspection-v03/README.md) | 正反面銅箔、組裝、3D 預覽與零件核對表 |
+| [工具說明](tools/README.md) | 各腳本用途與執行順序 |
+| [接班進度](HANDOFF.md) | 現況與下一階段工作 |
+| [變更紀錄](CHANGELOG.md) | 逐日進度歷史 |
+
+歷史附錄（03 整機配件需求、08 採購狀態、09 採購後修訂計畫、10 預計下單清單、11 露天購物連結、12 機殼候選）已歸檔至 [docs/archive/](docs/archive/)，現行採購資訊一律以採購總表為準。
+
+## 電路圖與 PCB 預覽
+
+![LM3886 放大板電路草案](electrical/preview/lm3886-v01.png)
+
+[放大板 PDF](electrical/preview/lm3886-v01.pdf) · [KiCad 原理圖](electrical/lm3886-v01.kicad_sch)
+
+![內建電源次級整流濾波草案](electrical/preview/internal-psu-v02.png)
+
+[電源 PDF](electrical/preview/internal-psu-v02.pdf) · [電源 BOM](electrical/psu-bom-draft.csv)
+
+![PCB V0.3](pcb/preview/system-layout-v03.png)
 
 ## 重建與下一步
 
@@ -125,4 +101,4 @@ python3 tools/rebuild.py
 
 下一版確認一次側電壓、變壓器與散熱器料號，完成市電保護／軟啟動及喇叭 DC 保護控制，再修訂 PCB 草稿與機殼尺寸。放大板單獨驗證時仍可用限流實驗電源；成機供電採內建方案。
 
-PDF 重製：先執行 `python3 tools/rebuild.py`，再以安裝 reportlab／pypdf 的 Python 執行 `tools/build_project_pdf.py`；非 Windows 環境需設定 `LM3886_FONT` 指向 CJK TrueType 字型。
+PDF 重製：先執行 `python3 tools/rebuild.py`，再以安裝 reportlab／pypdf 的 Python 執行 `tools/build_project_pdf.py`；非 Windows 環境需設定 `LM3886_FONT` 指向 CJK TrueType 字型。產物在 `output/`，不入版控。
