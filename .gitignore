@@ -13,3 +13,10 @@ tmp/pdfs/
 
 # Generated build outputs (PDF etc.)
 output/
+
+# Regenerable PCB inspection intermediates
+# build_pcb_inspection_v03.py -> models/ + *-preview.*；export_pcb_inspection_v03.py -> raw-*.png
+pcb/inspection-v03/3d/models/
+pcb/inspection-v03/3d/*-preview.kicad_pcb
+pcb/inspection-v03/3d/*-preview.kicad_pro
+pcb/inspection-v03/3d/raw-*.png

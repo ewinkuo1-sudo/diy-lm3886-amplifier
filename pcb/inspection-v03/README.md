@@ -29,15 +29,14 @@
 | 斜視 | [PNG](3d/mono-isometric.png) | [PNG](3d/psu-isometric.png) |
 | 正面 | [PNG](3d/mono-top.png) | [PNG](3d/psu-top.png) |
 | 背面 | [PNG](3d/mono-bottom.png) | [PNG](3d/psu-bottom.png) |
-| 可旋轉的 KiCad 預覽板 | [KiCad 專案](3d/mono-layout-v03-preview.kicad_pro)／[PCB](3d/mono-layout-v03-preview.kicad_pcb) | [KiCad 專案](3d/psu-layout-v03-preview.kicad_pro)／[PCB](3d/psu-layout-v03-preview.kicad_pcb) |
 
-下載整個專案，使用 KiCad 開啟上表的 **preview 專案與 PCB**，再開啟「檢視 → 3D 檢視器」，即可旋轉與縮放。保留旁邊的 `models/` 資料夾；模型以 `${KIPRJMOD}/models/…` 相對路徑連結。GitHub 本身只預覽 PNG，不會直接操作 KiCad 檔案。
+**可旋轉的 KiCad 預覽板不入版控。** 先執行 `python3 tools/build_pcb_inspection_v03.py`（純 Python 標準庫，不需 KiCad），它會產生 `3d/models/*.wrl` 與 `3d/*-layout-v03-preview.kicad_pcb/.kicad_pro`；再用 KiCad 開啟 preview 專案，「檢視 → 3D 檢視器」即可旋轉縮放。模型以 `${KIPRJMOD}/models/…` 相對路徑連結，`models/` 要留在 preview 板旁邊。
 
 原 PCB 沒有修改；另產生的 preview 板只新增 3D 模型引用。共 15 種自建 VRML 外框覆蓋 22＋15 個元件位置。平面外框取自現有暫定封裝，**全部高度另採假設值**，詳見尺寸表；不是原廠 CAD，也不是保證能容納實物的最大外框。
 
 模型沒有表達 IC 真正彎腳及背板、電感繞線、接頭插線口、螺絲工具空間、保險絲夾、散熱器或焊錫。小金屬柱僅協助看焊盤位置；不可拿來檢查真實引腳成形。板厚 1.6 mm 及四角固定孔仍是設計假設。3D 圖有助於討論配置，但不能據此宣稱無干涉或散熱合格。本輪沒有發行 STEP 加工模型、Gerber 或鑽孔製造包。
 
-原生算繪的未加框 PNG 保存為 `3d/raw-*.png`，供來源追溯；分享時優先使用加上假設說明的上表圖面。3D 背面角度依 KiCad 的 bottom 視角；對照焊盤時請使用 A 的明確鏡像平面圖。
+原生算繪的未加框 PNG（`3d/raw-*.png`）是 `export_pcb_inspection_v03.py` 的中間產物，**不入版控**；上表是加了假設說明框的版本。3D 背面角度依 KiCad 的 bottom 視角；對照焊盤時請使用 A 的明確鏡像平面圖。
 
 ## C：零件與封裝核對
 
@@ -48,7 +47,7 @@
 ## 檢查與來源
 
 - [來源 SHA-256](sources.json)：原 PCB、專案與走線 JSON。
-- [本輪核對結果](verification.json)：預覽板刪除模型節點後與原板語法樹一致；模型、尺寸與 89 焊盤位置／網路對照；全量檔案雜湊。
+- [本輪核對結果](verification.json)：預覽板刪除模型節點後與原板語法樹一致；模型、尺寸與 89 焊盤位置／網路對照。**檔案雜湊表已於 2026-09-21 移除可重建中間產物的條目**（models／preview 板／raw PNG），跑 `verify_pcb_inspection_v03.py` 前要先重建它們。
 - [KiCad 匯出紀錄](native-export-log.json)：四份原生銅箔 SVG 與六張 3D 算繪。
 - 既有 PCB V0.3 的 DRC／網路驗證見 [上層說明](../README-v03.md)。本輪沒有改走線，沒有新增 ERC／DRC 或實機測試；不把 3D 顯示當作電氣驗證。
 
