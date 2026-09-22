@@ -23,8 +23,8 @@
       "design_demand": "2個／L1、L2",
       "purchase_variant": "每件1只，需求2",
       "observed_price": "$379",
-      "qualification": "待確認：賣方稱線徑2.1mm、外徑13.5mm、長10.5mm、腳距28mm；DCR≤0.05Ω、≥4A峰值與公差未證實，2.1mm線徑須重新核對PCB孔徑。",
-      "status": "candidate_not_ordered",
+      "qualification": "待確認：賣方稱線徑2.1mm、外徑13.5mm、長10.5mm、腳距28mm；DCR≤0.05Ω、≥4A峰值與公差未證實，2.1mm線徑須重新核對PCB孔徑。 2026-09-22：建議改自繞（Ø1.0 mm 漆包線、Ø10 mm 芯、約 10 圈、腳距 20 mm），本商品降為備選。",
+      "status": "candidate_deprioritized_diy_recommended",
       "listing_checked_date": "2026-09-18",
       "cart_control_observed": true,
       "design_qualified": false
@@ -36,7 +36,7 @@
       "design_demand": "6個",
       "purchase_variant": "2P，賣方標300V／16A、14–22AWG；確認1件所含數量",
       "observed_price": "$1",
-      "qualification": "待確認：J1／J2各2個＋J201／J202各1個；廠牌、孔徑、插線方向與載流條件，不能只憑同為KF301認定相容。",
+      "qualification": "待確認：J1／J2／J3／J4 各 1 個（每個 2P）＋J201／J202 各 1 個，共 6；廠牌、孔徑、插線方向與載流條件，不能只憑同為KF301認定相容。",
       "status": "candidate_not_ordered",
       "listing_checked_date": "2026-09-18",
       "cart_control_observed": true,
@@ -301,6 +301,58 @@
       "listing_checked_date": "2026-09-18",
       "cart_control_observed": true,
       "design_qualified": false
+    },
+    {
+      "category": "電源板",
+      "name": "KBPC2510 固定件（M4 螺絲＋螺帽＋彈簧華司）",
+      "ruten_url": null,
+      "design_demand": "2 組",
+      "purchase_variant": "候選待找",
+      "observed_price": null,
+      "qualification": "橋堆金屬底座須鎖到機殼或散熱片；先前漏列。",
+      "status": "candidate_to_find",
+      "listing_checked_date": null,
+      "cart_control_observed": false,
+      "design_qualified": false
+    },
+    {
+      "category": "機構",
+      "name": "環形變壓器固定件（中央螺栓、橡膠墊、壓碟）",
+      "ruten_url": null,
+      "design_demand": "1 組",
+      "purchase_variant": "先問變壓器賣家是否附",
+      "observed_price": null,
+      "qualification": "壓碟不可同時碰上下蓋形成短路環；先前漏列。",
+      "status": "candidate_to_find",
+      "listing_checked_date": null,
+      "cart_control_observed": false,
+      "design_qualified": false
+    },
+    {
+      "category": "線材",
+      "name": "熱縮套管／絕緣套（一次側 600V 級）",
+      "ruten_url": null,
+      "design_demand": "1 包",
+      "purchase_variant": "候選待找",
+      "observed_price": null,
+      "qualification": "市電端子、變壓器接線、保險絲座腳；先前漏列。",
+      "status": "candidate_to_find",
+      "listing_checked_date": null,
+      "cart_control_observed": false,
+      "design_qualified": false
+    },
+    {
+      "category": "測試",
+      "name": "假負載散熱片",
+      "ruten_url": null,
+      "design_demand": "2",
+      "purchase_variant": "候選待找",
+      "observed_price": null,
+      "qualification": "TO-247 厚膜電阻裸裝僅十餘瓦；每聲道 ≥40W 連續需散熱片；先前漏列。",
+      "status": "candidate_to_find",
+      "listing_checked_date": null,
+      "cart_control_observed": false,
+      "design_qualified": false
     }
   ],
   "unresolved": [
@@ -320,5 +372,6 @@
       "name": "獨立狀態指示燈／輔助穩壓",
       "reason": "保護板帶LED、AC入口帶燈；先確認是否仍需要獨立前面板燈。12Vac繞組優先，不另訂變壓器或固定DC模組。"
     }
-  ]
+  ],
+  "updated": "2026-09-22"
 }

@@ -1,16 +1,16 @@
 reference,footprint,status
-J201,Terminal2_P5.08,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-J202,Terminal2_P5.08,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-F201,Fuse5x20_P25,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-F202,Fuse5x20_P25,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-BR1,Bridge_LOGICAL_UNVERIFIED,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-BR2,Bridge_LOGICAL_UNVERIFIED,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C201,CP_D35_P10,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C202,CP_D35_P10,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C203,CP_D35_P10,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C204,CP_D35_P10,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C205,Film_P5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C206,Film_P5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R201,R_2W_P20,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R202,R_2W_P20,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-J203,Terminal3_P5.08,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
+J201,Terminal2_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+J202,Terminal2_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+F201,Fuse5x20_P25,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+F202,Fuse5x20_P25,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+BR1,Bridge_LOGICAL_UNVERIFIED,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+BR2,Bridge_LOGICAL_UNVERIFIED,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C201,CP_D35_P10,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C202,CP_D35_P10,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C203,CP_D35_P10,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C204,CP_D35_P10,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C205,Film_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C206,Film_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R201,R_2W_P20,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R202,R_2W_P20,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+J203,Terminal3_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased

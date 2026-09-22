@@ -4,7 +4,7 @@ import json,csv
 R=Path(__file__).resolve().parents[1];O=R/'pcb/inspection-v03';data=json.loads((O/'parts-audit.json').read_text())
 mapping={r['mono_board_ref']:r['right_schematic_ref'] for r in csv.DictReader((R/'pcb/mono-channel-mapping.csv').open())}
 s=['# 零件與封裝核對表：PCB V0.3',
-'', '2026-09-18。這是選料與到貨核對用表，不是採購完成或製板核准。未新增任何已購料件。',
+'', '2026-09-18 建立，2026-09-22 更新採購狀態。這是選料與到貨核對用表，不是驗收紀錄或製板核准；「已購」一律指已下單待到貨，尺寸仍待實測。',
 '', '**平面尺寸來自現有暫定封裝；高度全部是本輪 3D 顯示假設，不是廠商尺寸，也不是保證能容納實物的最大外框。** 單位均為 mm。孔徑為目前板檔設定，不等於已核准成品孔與腳徑公差。',
 '', '## 優先核對順序',
 '', '1. **U1／U2 LM3886T**：完整型號、實物彎腳與腳距、背板位置、安裝孔、散熱器及絕緣介面。現有 `LM3886T_UNVERIFIED` 不應因 3D 看起來合理就定案。',

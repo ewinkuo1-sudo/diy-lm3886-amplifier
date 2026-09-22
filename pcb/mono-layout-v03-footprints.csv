@@ -1,23 +1,23 @@
 reference,footprint,status
-U1,LM3886T_UNVERIFIED,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-J1,Terminal2_P5.08,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-J2,Terminal2_P5.08,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-J5,Terminal3_P5.08,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C1,Film_P15,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R1,R_P7.5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R6,R_P7.5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R2,R_P7.5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R4,R_P7.5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R3,R_P7.5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C2,BP_D10_P5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C3,Film_P5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C4,Film_P5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C7,CP_D12.5_P5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C6,CP_D12.5_P5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R5,R_2W_P20,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C5,Film_P5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-L1,AirCoil_P20,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R7,R_2W_P20,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-R8,R_P7.5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-C8,CP_D8_P3.5,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
-JP1,Header2_P2.54,UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD
+U1,LM3886T_UNVERIFIED,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+J1,Terminal2_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+J2,Terminal2_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+J5,Terminal3_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C1,Film_P15,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R1,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R6,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R2,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R4,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R3,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C2,BP_D10_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C3,Film_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C4,Film_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C7,CP_D12.5_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C6,CP_D12.5_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R5,R_2W_P20,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C5,Film_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+L1,AirCoil_P20,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R7,R_2W_P20,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+R8,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C8,CP_D8_P3.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+JP1,Header2_P2.54,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased

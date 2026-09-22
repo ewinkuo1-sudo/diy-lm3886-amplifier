@@ -30,7 +30,7 @@
     "pcb/inspection-v03/3d/psu-bottom.png": "f4bf77ebad1e137e83971493a05183b565b84bc0a4d337fb8bf86635a3a1eaa5",
     "pcb/inspection-v03/3d/psu-isometric.png": "ce185addc5fae2bf2ecae55c96e8ceeb11e5f6ba25d359f6b33315041df74343",
     "pcb/inspection-v03/3d/psu-top.png": "b86c80c1c88eb7e88e60a12dd5dea59396f6b98869e17f442c4846e99dc6f040",
-    "pcb/inspection-v03/README.md": "e1f525d4b536d89700c43bedd901238db7c5783f290ffdda7344d4d9df74147e",
+    "pcb/inspection-v03/README.md": "39a6db08451d302beb747d0bf9bd40fceb30086566a41a776e6ce346510aab2a",
     "pcb/inspection-v03/drawings/mono-assembly-notes.md": "49319cf0e65541acaad1d9e3e5097594b4f1cafc40a01d75baf66ec5922216b2",
     "pcb/inspection-v03/drawings/mono-assembly.png": "17d97bfbe6545e0b23705dcd134f2ff8a1700d4c34e0cf57f6be99277d106236",
     "pcb/inspection-v03/drawings/mono-assembly.svg": "07a67d38880b132d42512aaff591939c67fb05968e7bcd76d8e6d44d227167ec",
@@ -50,9 +50,17 @@
     "pcb/inspection-v03/native/psu-bottom.svg": "5ce864e9370662b4beff1c27454073d05f7b0b6049a0097f0c019a542a6b23c1",
     "pcb/inspection-v03/native/psu-top.svg": "91475f71d4ee9498c1c6b795c1c9ff46f8d8329e7c99c037be6130b6b2d493dc",
     "pcb/inspection-v03/native-export-log.json": "f773ed80f41f3ae254a1cbb278f6858c0920a6632727b2417aa06177a87da2d3",
-    "pcb/inspection-v03/parts-audit.json": "5840c2f500dd1e895c9a31819b529576e4227fb305d06777a4dc9129c009d886",
-    "pcb/inspection-v03/parts-audit.md": "c7e7b356c926ad4ff910df86ee1a196b3d4ae3cff11b4c70964c64a247c7805e",
+    "pcb/inspection-v03/parts-audit.json": "da6f7c2ba37f0d43a395f607803353c3e3e228d9ce8bfce59168ab1b81c784c6",
+    "pcb/inspection-v03/parts-audit.md": "aa068aeb5fc9c925a8da83c94b328986be5fa8ff232f30bb3570eca28e7fc286",
     "pcb/inspection-v03/sources.json": "e9d4e8c62450e4aa9ce7ea19ff33da0d719c82d2036491fefedf9fb366bfa65a"
   },
-  "regenerated_not_tracked": "3d/models/*.wrl、3d/*-preview.kicad_pcb/.kicad_pro、3d/raw-*.png 為可重建中間產物，2026-09-21 起不入版控，見 .gitignore。驗證前請先依 README「重建」段落重新產生。"
+  "regenerated_not_tracked": "3d/models/*.wrl、3d/*-preview.kicad_pcb/.kicad_pro、3d/raw-*.png 為可重建中間產物，2026-09-21 起不入版控，見 .gitignore。驗證前請先依 README「重建」段落重新產生。",
+  "manual_hash_refresh_2026-09-22": {
+    "files": [
+      "pcb/inspection-v03/README.md",
+      "pcb/inspection-v03/parts-audit.json",
+      "pcb/inspection-v03/parts-audit.md"
+    ],
+    "note": "Hashes recomputed by hand (LF-normalised, matching the repository canonical form) after purchase-status text update. Not a re-run of verify_pcb_inspection_v03.py; geometry/model checks unchanged. README.md hash was already stale at 2026-09-21 commit."
+  }
 }

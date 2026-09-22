@@ -105,7 +105,7 @@
       "10": "L_PLUS",
       "11": "unconnected-(U1-NC-Pad11)"
     },
-    "purchase_status": "已訂，最後紀錄待到貨；尚未核對",
+    "purchase_status": "已訂（拆機）待到貨；封裝未核對",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "1=VCC；2=unconnected-(U1-NC-Pad2)；3=L_OUT；4=VEE；5=VCC；6=unconnected-(U1-NC-Pad6)；7=GND；8=L_MUTE；9=L_INV；10=L_PLUS；11=unconnected-(U1-NC-Pad11)"
@@ -269,7 +269,7 @@
       "1": "L_IN",
       "2": "L_AC"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 WIMA MKS4 100V 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -308,7 +308,7 @@
       "1": "GND",
       "2": "L_IN"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 MRS25 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -347,7 +347,7 @@
       "1": "L_AC",
       "2": "L_PLUS"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 MRS25 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -386,7 +386,7 @@
       "1": "GND",
       "2": "L_PLUS"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 MRS25 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -425,7 +425,7 @@
       "1": "L_INV",
       "2": "L_OUT"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 MRS25 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -464,7 +464,7 @@
       "1": "L_FB_AC",
       "2": "L_INV"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 MRS25 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -503,7 +503,7 @@
       "1": "GND",
       "2": "L_FB_AC"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 ROE EGW 臥式待到貨；立式改臥式必改",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "必須無極性 BP；不可以一般有極性電解直接替代"
@@ -542,7 +542,7 @@
       "1": "VCC",
       "2": "GND"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 WIMA MKS2 100V 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -581,7 +581,7 @@
       "1": "GND",
       "2": "VEE"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 WIMA MKS2 100V 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -620,7 +620,7 @@
       "1": "VCC",
       "2": "GND"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 ROE EKE 待到貨；量直徑腳距",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "有極性：1=正、2=負；1=VCC；2=GND"
@@ -659,7 +659,7 @@
       "1": "GND",
       "2": "VEE"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 ROE EKE 待到貨；量直徑腳距",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "有極性：1=正、2=負；1=GND；2=VEE"
@@ -698,7 +698,7 @@
       "1": "L_ZOBEL",
       "2": "L_OUT"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 RNU2 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -737,7 +737,7 @@
       "1": "GND",
       "2": "L_ZOBEL"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 WIMA MKS2 100V 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -815,7 +815,7 @@
       "1": "L_OUT",
       "2": "L_SPK"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 PR02 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -854,7 +854,7 @@
       "1": "L_MUTE",
       "2": "L_RUN"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 MRS25 0.6W 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -893,7 +893,7 @@
       "1": "GND",
       "2": "L_MUTE"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 CDE 361R 100V 待到貨；量直徑",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "有極性：1=正、2=負；1=GND；2=L_MUTE"
@@ -1237,7 +1237,7 @@
       "1": "VCC",
       "2": "GND"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 CDE 381LX 待到貨；量直徑高度腳距",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "有極性：1=正、2=負；1=VCC；2=GND"
@@ -1276,7 +1276,7 @@
       "1": "VCC",
       "2": "GND"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 CDE 381LX 待到貨；量直徑高度腳距",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "有極性：1=正、2=負；1=VCC；2=GND"
@@ -1315,7 +1315,7 @@
       "1": "GND",
       "2": "VEE"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 CDE 381LX 待到貨；量直徑高度腳距",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "有極性：1=正、2=負；1=GND；2=VEE"
@@ -1354,7 +1354,7 @@
       "1": "GND",
       "2": "VEE"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 CDE 381LX 待到貨；量直徑高度腳距",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "有極性：1=正、2=負；1=GND；2=VEE"
@@ -1393,7 +1393,7 @@
       "1": "VCC",
       "2": "GND"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 WIMA MKS2 100V 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -1432,7 +1432,7 @@
       "1": "GND",
       "2": "VEE"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 WIMA MKS2 100V 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -1471,7 +1471,7 @@
       "1": "VCC",
       "2": "GND"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 PR02 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
@@ -1510,7 +1510,7 @@
       "1": "GND",
       "2": "VEE"
     },
-    "purchase_status": "待購／未選料號",
+    "purchase_status": "已購 PR02 待到貨",
     "verified": false,
     "manufacturer_part_number": null,
     "notes": "依料號核對額定、腳徑與安裝方式"
