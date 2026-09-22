@@ -55,7 +55,7 @@ class SVG:
         self.text(45,55,title,38,'white','bold');self.text(45,103,sub,23,'#dbe8f0')
     def footer(self,s):
         self.text(45,self.h-52,s,21,GRAY)
-        self.text(45,self.h-20,'方案 C V0.3  •  2026-09-17  •  工程草稿／無硬體量測  •  docs/diagrams/README.md',19,GRAY)
+        self.text(45,self.h-20,'方案 C V0.3  •  2026-09-22  •  工程草稿／無硬體量測  •  docs/diagrams/README.md',19,GRAY)
     def save(self,name):
         (SRC/(name+'.svg')).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{self.w}" height="{self.h}" viewBox="0 0 {self.w} {self.h}">'+''.join(self.items)+'</svg>',encoding='utf-8')
 
@@ -71,7 +71,7 @@ def signal(mode='all'):
     d.text(915,500,'8 MUTE → 見電源／靜音圖',22,PURPLE,anchor='middle')
     input_start=len(d.items)
     d.line([(100,260),(305,260)]);d.text(80,210,'J1.1 RCA',25,BLUE)
-    d.cap(350,260,'C1 2.2µF / 63V')
+    d.cap(350,260,'C1 2.2µF / 100V')
     d.line([(395,260),(460,260)]);d.resistor(520,260,'R6 1kΩ')
     d.line([(580,260),(800,260)])
     for x,label in [(200,'R1 1MΩ'),(675,'R2 22kΩ')]:
@@ -135,7 +135,7 @@ def supply(d,y=0):
     d.line([(740,300+y),(1510,300+y)],RED)
     d.line([(740,395+y),(870,395+y),(870,580+y)],GRAY)
     d.line([(740,700+y),(870,700+y),(870,580+y),(1510,580+y)],GRAY)
-    d.dot(870,580+y,GRAY);d.text(910,562+y,'GND：BR1− 與 BR2+ 的 DC 中點',24,GRAY)
+    d.dot(870,580+y,GRAY);d.text(1525,625+y,'GND = BR1− 與 BR2+',22,GRAY);d.text(1525,655+y,'的 DC 中點',22,GRAY)
     d.line([(740,795+y),(1510,795+y)],BLUE)
     for x,labels in [(1020,('C201','C203')),(1290,('C202','C204'))]:
         for yy,a,b,label,col in [(440+y,300+y,580+y,labels[0],RED),(680+y,580+y,795+y,labels[1],BLUE)]:
@@ -164,15 +164,20 @@ def build():
     d=SVG(1800,1860);d.header('LM3886｜電源級到 IC','雙獨立 22Vac 次級各接全橋；12Vac 輔助繞組留供控制，模組輸入與電流待定。')
     supply(d)
     d.panel(50,980,815,'PSU → 放大板線束',['J203.1 → J5.1 VCC → U1/U2 pin 1、5。','J203.2 → J5.2 GND → U1/U2 pin 7 及各回地。','J203.3 → J5.3 VEE → U1/U2 pin 4。','兩份原理圖靠實體線束相接，同名標籤不跨檔接線。','R201/R202 各 2.2kΩ / 2W，分別跨正／負軌。','C205/C206 各 100nF / 100V，分別跨正／負軌。'],BLUE)
-    d.panel(905,980,845,'局部去耦（左聲道，右聲道編號 +100）',['VCC–GND：C3 100nF / 63V；C7 470µF / 63V。','GND–VEE：C4 100nF / 63V；C6 470µF / 63V。','C7 正端接 VCC；C6 正端接 GND。','PCB V0.3：C3/C4 地端在 IC 附近回 pin 7，','再由局部去耦支路回匯流區；訊號地另走支路。','GND 網名不表示各路電流應共用同一段細線。'],GREEN)
-    d.panel(50,1290,815,'靜音支路（左聲道）',['pin 8 → R8 22kΩ / 0.25W → JP1 → VEE。','C8 100µF / 63V：正端 GND，負端 pin 8。','JP1 閉合 RUN；開路 MUTE。右聲道為 JP2。','這是板級測試跳線；自動啟停／掉電控制待設計。'],PURPLE)
-    d.panel(905,1290,845,'供電條件與選型狀態',['22×√2 − 2×1.1 ≈ 28.9V／軌：未扣紋波／下陷。','35.8V／軌是高市電空載假設，非最大電壓保證。','僅變壓器與 IC 已訂、仍待到貨；其餘料件待購。','橋堆料號、保險絲、浪湧控制及散熱尚未定案。'],ORANGE)
+    d.panel(905,980,845,'局部去耦（左聲道，右聲道編號 +100）',['VCC–GND：C3 100nF / 100V；C7 470µF / 63V。','GND–VEE：C4 100nF / 100V；C6 470µF / 63V。','C7 正端接 VCC；C6 正端接 GND。','PCB V0.3：C3/C4 地端在 IC 附近回 pin 7，','再由局部去耦支路回匯流區；訊號地另走支路。','GND 網名不表示各路電流應共用同一段細線。'],GREEN)
+    d.panel(50,1290,815,'靜音支路（左聲道）',['pin 8 → R8 22kΩ / 0.6W → JP1 → VEE。','C8 100µF / 100V：正端 GND，負端 pin 8。','JP1 閉合 RUN；開路 MUTE。右聲道為 JP2。','這是板級測試跳線；自動啟停／掉電控制待設計。'],PURPLE)
+    d.panel(905,1290,845,'供電條件與選型狀態',['22×√2 − 2×1.1 ≈ 28.9V／軌：未扣紋波／下陷。','35.8V／軌是高市電空載假設，非最大電壓保證。','變壓器、IC、全部 R／C 已下單待到貨（9/16、9/20）。','橋堆、保險絲、電感、接頭、浪湧控制及散熱未購／未定案。'],ORANGE)
     d.panel(50,1540,1700,'機構與整機保護',['LM3886T 背板接 VEE，與接地機殼／散熱器間須具電氣絕緣；pin 2、6、11 為 NC。','保護接地 PE 的機殼連接不可由訊號 GND 替代；本圖僅次級與放大板導讀，一次側接線另行設計。'],RED)
-    d.footer('兩顆橋堆與四顆主電容均未購；未指定 KBPC2510 或 300VA，未宣稱實際輸出額定。');d.save('lm3886_power_to_ic')
+    d.footer('四顆主電容 CDE 381LX 已購待到貨；兩顆橋堆未購、未指定 KBPC2510，未宣稱實際輸出額定。');d.save('lm3886_power_to_ic')
     annotated('lm3886-v01','lm3886_sch_annotated',False)
     annotated('internal-psu-v02','lm3886_psu_sch_annotated',True)
-    sources=['tools/build_schematic.py','tools/build_power_supply.py','electrical/lm3886-v01.kicad_sch','electrical/internal-psu-v02.kicad_sch','electrical/preview/lm3886-v01.pdf','electrical/preview/internal-psu-v02.pdf','pcb/README.md']
-    (OUT/'sources.json').write_text(json.dumps({'version':'Plan C V0.3','updated':'2026-09-17','sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources}},indent=2),encoding='utf-8')
+    # .kicad_sch files carry fresh UUIDs on every rebuild, so their hashes are not reproducible; bind generators and exported PDFs only.
+    sources=['tools/build_schematic.py','tools/build_power_supply.py','tools/build_diagrams.py','electrical/preview/lm3886-v01.pdf','electrical/preview/internal-psu-v02.pdf']
+    def digest(p):
+        b=(ROOT/p).read_bytes()
+        if p.endswith('.py'): b=b.replace(b'\r\n',b'\n')  # LF-normalise text so Windows autocrlf checkouts match the repository hash
+        return hashlib.sha256(b).hexdigest()
+    (OUT/'sources.json').write_text(json.dumps({'version':'Plan C V0.3','updated':'2026-09-22','note':'kicad_sch and pcb/README.md removed from binding: sch UUIDs change per rebuild, README changes independently of the diagrams. Text sources hashed LF-normalised.','sha256':{p:digest(p) for p in sources}},indent=2,ensure_ascii=False),encoding='utf-8')
 
 def annotated(source,name,psu):
     d=SVG(2200,1940)
@@ -191,14 +196,14 @@ def annotated(source,name,psu):
         region(.05,.17,.41,.56,ORANGE);region(.47,.18,.36,.55,GREEN);region(.85,.39,.10,.16,BLUE)
         d.panel(40,1680,670,'橙框｜雙橋整流',['兩組獨立 22Vac 分別進 BR1／BR2。','AC 不互接；BR1− 與 BR2+ 接 GND。'],ORANGE)
         d.panel(765,1680,670,'綠框｜濾波、洩放',['C201–C204 各 10,000µF / 63V。','負軌電容正端朝 GND；每軌 20,000µF。'],GREEN)
-        d.panel(1490,1680,670,'藍框｜輸出線束',['J203.1/2/3 → 放大板 J5.1/2/3。','VCC／GND／VEE；其餘料件均待購。'],BLUE)
+        d.panel(1490,1680,670,'藍框｜輸出線束',['J203.1/2/3 → 放大板 J5.1/2/3。','VCC／GND／VEE；橋堆、保險絲、接頭仍待購。'],BLUE)
     else:
         for y in (.17,.51):
-            region(.05,y,.36,.16,BLUE);region(.31,y+.15,.14,.17,ORANGE);region(.435,y-.025,.16,.275,GREEN);region(.63,y,.28,.32,PURPLE)
+            region(.05,y,.36,.16,BLUE);region(.31,y+.135,.14,.185,ORANGE);region(.435,y-.025,.16,.275,GREEN);region(.63,y,.28,.32,PURPLE)
         d.panel(40,1680,500,'藍／橙框｜輸入與回授',['R6 為 1kΩ 串阻；R4 為 20kΩ。','R3 與 C2 串聯，右聲道編號 +100。'],BLUE)
         d.panel(580,1680,760,'綠框｜輸出穩定網路',['R5+C5 串聯到地；L1∥R7 串在輸出。','TEST OUT 供假負載，喇叭 DC 保護仍待設計。'],GREEN)
         d.panel(1380,1680,780,'紫框｜去耦與靜音',['負軌 C6、靜音 C8 的正端接 GND。','PCB V0.3 縮短 C3/C4 回 pin 7 路徑，網路未改。'],PURPLE)
-    d.footer('來源：electrical/preview/'+source+'.pdf；彩色導讀不取代原理圖／PCB 審查。');d.save(name)
+    d.footer('來源：electrical/preview/'+source+'.pdf（2026-09-16 重建）；底圖內耐壓值與採購註記待 KiCad 重建後更新。');d.save(name)
     doc.close()
 
 if __name__=='__main__':

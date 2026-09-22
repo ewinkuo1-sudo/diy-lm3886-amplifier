@@ -58,7 +58,7 @@ mono=json.loads((D/'mono-layout-v03.json').read_text(encoding='utf-8'))
 psu=json.loads((D/'psu-layout-v03.json').read_text(encoding='utf-8'))
 for data,scale in [(mono,12),(psu,10)]:
  w,h=data['size'];im=Image.new('RGB',(int(w*scale+160),int(h*scale+260)),'#101c25');d=ImageDraw.Draw(im)
- title='單聲道放大板 / B 方案 V0.3' if data is mono else '雙橋四電容電源板 / B 方案 V0.3'
+ title='單聲道放大板 / 方案 C・布局 B・V0.3' if data is mono else '雙橋四電容電源板 / 方案 C・布局 B・V0.3'
  d.text((80,25),title,font=font(32),fill='#f1f8f7');d.text((80,72),f'{w} × {h} mm / 頂視，合併顯示兩層銅箔 / 封裝待到料核對',font=font(20),fill='#9bbcbf')
  draw_board(im,data,(80,120),scale)
  star=data['anchors']['STAR'];cx=80+star[0]*scale;cy=120+star[1]*scale
@@ -68,8 +68,8 @@ for data,scale in [(mono,12),(psu,10)]:
  d.text((80,y+34),'工程草稿：走線寬度、真實封裝與散熱尚待驗證，不可送板。',font=font(20),fill='#edc178')
  im.save(O/(data['name']+'.png'))
 im=Image.new('RGB',(1900,1070),'#101c25');d=ImageDraw.Draw(im)
-d.text((60,32),'LM3886 / B 方案 PCB 修訂 V0.3',font=font(44),fill='#f3f8f7')
-d.text((60,100),'兩片相同單聲道板 + 一片共用主電源板 / 已訂 IC 與變壓器均在寄送中',font=font(25),fill='#adc7c8')
+d.text((60,32),'LM3886 / 方案 C PCB V0.3（布局 B）',font=font(44),fill='#f3f8f7')
+d.text((60,100),'兩片相同單聲道板 + 一片共用主電源板 / 變壓器、IC、全部 R／C 已下單待到貨；封裝待實測後修訂',font=font(25),fill='#adc7c8')
 for data,pos,title in [(mono,(60,210),'左聲道 100 × 90 mm'),(mono,(570,210),'右聲道 100 × 90 mm'),(psu,(1080,210),'主電源 160 × 120 mm')]:
  d.text((pos[0],166),title,font=font(24),fill='#d0e8e4');draw_board(im,data,pos,4.6)
  sx,sy=data['anchors']['STAR'];cx=pos[0]+sx*4.6;cy=pos[1]+sy*4.6
@@ -79,7 +79,7 @@ d.text((60,710),'接地：訊號、喇叭、Zobel、靜音分路回到匯流點�
 d.text((60,756),'電源板：左側交流／整流，右側直流輸出。',font=font(23),fill='#adc7c8')
 d.line((60,826,1840,826),fill='#36565c',width=2)
 d.text((60,854),'保留：LM3886T × 2、雙 22Vac 次級、雙橋、每軌 2 × 10,000µF／63V',font=font(26),fill='#a2dfbd')
-d.text((60,902),'待確認：所有實體封裝、整流橋與主電容料號、線寬溫升、散熱器與整機線束',font=font(25),fill='#e5c38a')
+d.text((60,902),'待確認：所有實體封裝（C2 立式改臥式必改）、整流橋料號、線寬溫升、散熱器與整機線束',font=font(25),fill='#e5c38a')
 d.text((60,961),'依 PCB 資料繪製，尺寸為暫定；板間相對位置不代表機殼配置。非製造版本。',font=font(23),fill='#93afb4')
 im.save(O/'system-layout-v03.png')
 print('Rendered V0.3 PCB data to',O)

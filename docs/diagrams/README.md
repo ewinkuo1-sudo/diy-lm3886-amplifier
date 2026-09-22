@@ -1,6 +1,6 @@
 # 方案 C V0.3 電路導讀圖
 
-更新：2026-09-17。六張 PNG 已取代 2026-09-13 舊圖，對齊目前兩份 V0.3 KiCad 原理圖與 PCB V0.3 的回流說明。原理圖、PCB、元件值與採購狀態未在本次更動；沒有新增硬體量測或重跑 ERC／DRC。舊圖可由 Git 歷史取回。
+更新：2026-09-22。六張 PNG 重建：四張向量圖的耐壓值改成實購規格（C1／C3／C4／C8 → 100V，R8 → 0.6W）、採購狀態改成 9/20 下單後的現況、修正 R4 標籤被框線遮住與 GND 註記壓線；兩張色塊導讀圖只更新外框與頁尾。**色塊圖底圖仍是 2026-09-16 的 KiCad PDF**，圖框內的 63V、「no PCB」與「NOT purchased」要等有 KiCad 的機器跑 `tools/rebuild.py` 才會消失（生成器已改好）。沒有新增硬體量測或重跑 ERC／DRC。
 
 | 圖片 | 內容 |
 |---|---|
@@ -21,7 +21,7 @@
 - R5 與 C5 串聯構成 Zobel；L1 與 R7 並聯後串入輸出。兩者不是喇叭 DC 保護。
 - C8 的正端接 GND，負端接 pin 8；pin 8 經 R8、RUN 跳線接 VEE。負軌 C6 正端也接 GND。
 - 約 ±30V 與 30–40W／8Ω 是規劃／探索範圍；沒有固定軌電壓或連續功率保證。35.8V／軌只是高市電空載假設。
-- 保留「僅變壓器與 IC 已訂待到貨」；整流橋、四顆主電容和其他料件仍待購。12Vac 控制、一次側及喇叭保護尚待設計。
+- 採購狀態：變壓器、IC、全部電阻／電容已下單待到貨；整流橋、保險絲、電感、接頭等未購。12Vac 控制、一次側及喇叭保護尚待設計。
 
 ## 來源與核對
 
@@ -33,12 +33,12 @@
 
 ## 重建
 
-可編輯原稿位於 [svg/](svg/)，SHA-256 來源清單在 [sources.json](sources.json)。需要 Python 3、PyMuPDF，以及 Node.js、sharp；中文字型預設 Microsoft JhengHei，其他平台需 Noto Sans CJK TC。
+可編輯原稿位於 [svg/](svg/)，SHA-256 來源清單在 [sources.json](sources.json)；清單只綁三個生成器與兩份 PDF，不再綁 `.kicad_sch`（每次重建 UUID 都變，雜湊不可重現）與 `pcb/README.md`。需要 Python 3、PyMuPDF，以及 Node.js、sharp；中文字型預設 Microsoft JhengHei，其他平台需 Noto Sans CJK TC。
 
 ```sh
-python -m pip install pymupdf
+py -3.13 -m pip install pymupdf        # Windows 本機：PyMuPDF 與 Pillow 只在 Python 3.13
 # sharp 可安裝於外部工具環境，並以 NODE_PATH 指向其 node_modules。
-python tools/build_diagrams.py
+py -3.13 tools/build_diagrams.py
 node tools/render_diagrams.cjs
 ```
 
