@@ -7,6 +7,20 @@
 
 ---
 
+## 2026-09-22：圖片與採購資料同步到 9/20 下單後狀態
+
+- **導讀圖六張重建**（`tools/build_diagrams.py`）：C1／C3／C4／C8 耐壓改為實購 100V、R8 改 0.6W；「僅變壓器與 IC 已訂」「四顆主電容未購」等過期文字改為現況；修正放大板色塊圖橙框遮住 R4 標籤、電源圖 GND 註記壓線；IC→輸出圖頁尾指向已不存在的 `pcb/review-v03.md` 改為 `pcb/README.md`。`sources.json` 改為只綁生成器與 PDF（sch 每次重建 UUID 都變，雜湊不可重現）。
+- **PCB 預覽圖重繪**（`render_pcb_v03.py`）：標題「B 方案」改為「方案 C PCB V0.3（布局 B）」，副標「已訂 IC 與變壓器均在寄送中」改為現況。走線 JSON、板檔、DRC 未動。
+- **原理圖生成器改值但未重建**：`build_schematic.py` C1／C3／C4 → 100V、C8 → 100V、R8 → 0.6W、title block 移除「no PCB」；`build_power_supply.py` 的「NOT purchased」註記改為 381LX 已購。**`.kicad_sch`／PDF／PNG／BOM／validation.md 仍為 9/16 產物**，等封裝改完在有 KiCad 的機器一起 `rebuild.py`。
+- **採購總表**：補 CDE 361R／381LX 型錄尺寸（361R EG 殼 Ø12.5×20／P5 → C8 封裝必改；381LX A05 殼 Ø35×50，但 **A052 料號不在現行型錄**，63V／10,000µF 只有 Ø30 K 殼）；補四項漏列（橋堆固定件、環形變壓器固定件、熱縮套管、假負載散熱片）；加 2.1／2.2 小計；0.7µH 電感改建議自繞、露天品降為備選；購買順序第 2 步改為先用型錄值估機殼。
+- **機器可讀資料**：`10-planned-parts.json` 全部項目由 `planned_not_ordered` 改為已下單待到貨，Mundorf／NCC 標為未選；`11-ruten-shopping-links.json` 修正 KF301 2P 數量說明、新增四項「候選待找」。
+- **PCB 核對資料**：`build_pcb_inspection_v03.py` 依實購料件逐項寫入採購狀態，重跑產生 `parts-audit.json/md`；`*-footprints.csv` 與 `build_pcb_v03.py` 的狀態字串同步；`inspection-v03/verification.json` 的檔案雜湊手動重算並註明。
+- **型錄比對（採購總表新增 1.1）**：查 TI、EIC、WIMA、Vishay、CDE 原廠文件逐項對現板封裝。新發現：LM3886T 鑽孔 0.9 mm 小於腳寬 0.97 mm 必改；KBPC2510 是 Faston 端子，`Bridge_LOGICAL` 的 1.5 mm 孔兩種裝法都不合，要先決定鎖機殼或改 KBPC-W；WIMA／Vishay 六款全部相容。只改 00 總表、HANDOFF、本檔，沒動封裝庫與 PCB。
+- **依型錄改封裝庫與生成器（板檔未重建）**：`build_pcb_v03.py`＋`DraftV03.pretty` 的 `LM3886T_UNVERIFIED` 鑽孔 0.9→1.1／焊盤 2.0，`CP_D35_P10` 鑽孔 1.3→2.5／焊盤 4.0；`pcb_layout_v03.py` C8 改 `CP_D12.5_P5`；`build_pcb_inspection_v03.py` 3D 高度 Film_P15 15、Film_P5 6.5、LM3886T 22。C2 臥式待 ROE 實測。
+- 沒有改電路、走線、元件值（僅耐壓／功率額定向上對齊實購件）；沒有硬體量測。
+
+---
+
 ## 2026-09-21：大幅精簡文件與檔案
 
 - **刪除 `pcb/archive/`、`tools/archive/`、`docs/archive/`**（含 2026-09-20 剛歸檔的六份採購附錄與 2026-09-11 舊完整 PDF）。**檔案沒有消失，最後包含它們的 commit 是 `41b217c`，用 `git show 41b217c:<路徑>` 或 `git checkout 41b217c -- <路徑>` 取回。**

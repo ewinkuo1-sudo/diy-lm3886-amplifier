@@ -5,7 +5,8 @@ from pathlib import Path
 import json, math, hashlib, re, html
 R=Path(__file__).resolve().parents[1]; P=R/'pcb'; O=P/'inspection-v03'
 (O/'3d/models').mkdir(parents=True,exist_ok=True); (O/'drawings').mkdir(exist_ok=True);(O/'native').mkdir(exist_ok=True)
-HEIGHT={'R_P7.5':2.5,'R_2W_P20':5,'Film_P15':12,'Film_P5':6,'BP_D10_P5':16,'CP_D12.5_P5':20,'CP_D8_P3.5':12,'CP_D35_P10':50,'Terminal2_P5.08':12,'Terminal3_P5.08':12,'Header2_P2.54':6,'AirCoil_P20':14,'Fuse5x20_P25':10,'Bridge_LOGICAL_UNVERIFIED':12,'LM3886T_UNVERIFIED':20}
+# 2026-09-22: Film_P15=15 (WIMA MKS4 2.2u/100V 8x15x18), Film_P5=6.5 (MKS2 2.5x6.5x7.2), LM3886T=22 (TI overall), CP_D35=50 (CDE A05); others remain assumptions.
+HEIGHT={'R_P7.5':2.5,'R_2W_P20':5,'Film_P15':15,'Film_P5':6.5,'BP_D10_P5':16,'CP_D12.5_P5':20,'CP_D8_P3.5':12,'CP_D35_P10':50,'Terminal2_P5.08':12,'Terminal3_P5.08':12,'Header2_P2.54':6,'AirCoil_P20':14,'Fuse5x20_P25':10,'Bridge_LOGICAL_UNVERIFIED':12,'LM3886T_UNVERIFIED':22}
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def tr(c,x,y):
  a=math.radians(c['angle']);return(c['x']+x*math.cos(a)+y*math.sin(a),c['y']-x*math.sin(a)+y*math.cos(a))
@@ -78,7 +79,8 @@ for key in ['mono','psu']:
  rows=['# '+('單聲道放大板' if key=='mono' else '共用電源板')+'：組裝與接腳對照','', '2026-09-18；PCB V0.3 工程草稿。下列為板檔網路，不代表實物腳位已核准。','', '兩片單聲道板絲印相同；右聲道原理圖編號請看 [左右聲道對照](../../mono-channel-mapping.csv)。' if key=='mono' else '雙橋 AC1／AC2／P／N 尚為功能端子，選料後需重新對應。','', '| 板上編號 | 元件值 | 焊盤號＝網路 | 注意事項 |','|---|---|---|---|']
  for c in data['parts']:
   pads=[p for p in data['pads'] if p['ref']==c['ref']];x0,y0,x1,y1=c['body'];pitch=math.dist(c['pads'][0][1:3],c['pads'][1][1:3]) if len(c['pads'])==2 else None
-  status='已訂，最後紀錄待到貨；尚未核對' if c['ref']=='U1' else '待購／未選料號'
+  ORDERED={'U1':'已訂（拆機）待到貨；封裝未核對','C1':'已購 WIMA MKS4 100V 待到貨','C2':'已購 ROE EGW 臥式待到貨；立式改臥式必改','C3':'已購 WIMA MKS2 100V 待到貨','C4':'已購 WIMA MKS2 100V 待到貨','C5':'已購 WIMA MKS2 100V 待到貨','C6':'已購 ROE EKE 待到貨；量直徑腳距','C7':'已購 ROE EKE 待到貨；量直徑腳距','C8':'已購 CDE 361R 100V 待到貨；量直徑','R1':'已購 MRS25 待到貨','R2':'已購 MRS25 待到貨','R3':'已購 MRS25 待到貨','R4':'已購 MRS25 待到貨','R5':'已購 RNU2 待到貨','R6':'已購 MRS25 待到貨','R7':'已購 PR02 待到貨','R8':'已購 MRS25 0.6W 待到貨','C201':'已購 CDE 381LX 待到貨；量直徑高度腳距','C202':'已購 CDE 381LX 待到貨；量直徑高度腳距','C203':'已購 CDE 381LX 待到貨；量直徑高度腳距','C204':'已購 CDE 381LX 待到貨；量直徑高度腳距','C205':'已購 WIMA MKS2 100V 待到貨','C206':'已購 WIMA MKS2 100V 待到貨','R201':'已購 PR02 待到貨','R202':'已購 PR02 待到貨'}
+  status=ORDERED.get(c['ref'],'待購／未選料號')
   info={'board':key,'reference':c['ref'],'value':c['value'],'footprint':c['footprint'],'body_xy_mm':[x1-x0,y1-y0],'height_assumption_mm':HEIGHT[c['footprint']],'two_pin_pitch_mm':round(pitch,3) if pitch else None,'drills_mm':sorted(set(p['drill'] for p in pads)),'pad_positions_local_mm':c['pads'],'pad_nets':{p['number']:p['net'] for p in pads},'purchase_status':status,'verified':False,'manufacturer_part_number':None,'notes':note(c,pads)};allrows.append(info)
   rows.append('| '+c['ref']+' | '+c['value']+' | '+' / '.join(f"{p['number']}={p['net']}" for p in pads)+' | '+note(c,pads)+' |')
  (O/'drawings'/(key+'-assembly-notes.md')).write_text('\n'.join(rows)+'\n')

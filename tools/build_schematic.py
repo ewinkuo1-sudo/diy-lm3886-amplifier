@@ -125,7 +125,7 @@ class Drawing:
     def save(self):
         lib = ''.join(v.replace('(symbol ' + q(k), '(symbol ' + q('Project:' + k), 1) for k, v in LIB.items())
         header = f'(kicad_sch(version 20250114)(generator "diy_lm3886")(uuid {uid(self.project)})(paper "A3")'
-        header += f'(title_block(title {q(self.title)})(date "2026-09-16")(rev "0.3 DRAFT")(comment 1 "Internal PSU system / no PCB / no hardware measurements"))'
+        header += f'(title_block(title {q(self.title)})(date "2026-09-22")(rev "0.3 DRAFT")(comment 1 "Internal PSU system / PCB V0.3 engineering draft only / no hardware measurements"))'
         (DEST / (self.project + '.kicad_sch')).write_text(header + f'(lib_symbols {lib})' + ''.join(self.items) + '(sheet_instances(path "/"(page "1"))))\n')
         (DEST / 'Project.kicad_sym').write_text('(kicad_symbol_lib(version 20231120)(generator "diy_lm3886")' + ''.join(LIB.values()) + ')\n')
         (DEST / 'sym-lib-table').write_text('(sym_lib_table\n  (version 7)\n  (lib (name "Project")(type "KiCad")(uri "${KIPRJMOD}/Project.kicad_sym")(options "")(descr "Project symbols"))\n)\n')
@@ -146,7 +146,7 @@ def build():
         d.terminal(ji, 1, ch + '_IN', dx=-5.08)
         d.terminal(ji, 2, 'GND', dx=-5.08)
         d.part('LM3886', u, 'LM3886T', 154.94, y)
-        d.part('C', c(1), '2.2u / 63V film', 88.9, y - 2.54)
+        d.part('C', c(1), '2.2u / 100V film', 88.9, y - 2.54)
         d.part('R', r(6), '1k', 109.22, y - 2.54)
         d.wire((66.04, y - 2.54), (76.2, y - 2.54), d.pin(c(1), 1))
         d.label(66.04, y - 2.54, ch + '_IN')
@@ -197,13 +197,13 @@ def build():
         d.part('Conn2', jo, ch + ' TEST OUT', 246.38, y)
         d.terminal(jo, 2, 'GND', dy=5.08)
         d.text(267, y - 17, ch + ' LOCAL DECOUPLING (at IC pins)', 1.7)
-        d.pair('C', c(3), '100n / 63V', 287.02, y, 'VCC', 'GND')
-        d.pair('C', c(4), '100n / 63V', 358.14, y, 'GND', 'VEE')
+        d.pair('C', c(3), '100n / 100V', 287.02, y, 'VCC', 'GND')
+        d.pair('C', c(4), '100n / 100V', 358.14, y, 'GND', 'VEE')
         d.pair('CP', c(7), '470u / 63V', 287.02, y + 25.4, 'VCC', 'GND')
         d.pair('CP', c(6), '470u / 63V', 358.14, y + 25.4, 'GND', 'VEE')
         d.text(267, y + 40, 'MUTE: jumper open = mute; fitted = run.', 1.4)
-        d.pair('R', r(8), '22k / 0.25W', 287.02, y + 55.88, ch + '_MUTE', ch + '_RUN')
-        d.pair('CP', c(8), '100u / 63V', 358.14, y + 55.88, 'GND', ch + '_MUTE')
+        d.pair('R', r(8), '22k / 0.6W', 287.02, y + 55.88, ch + '_MUTE', ch + '_RUN')
+        d.pair('CP', c(8), '100u / 100V', 358.14, y + 55.88, 'GND', ch + '_MUTE')
         jp = 'JP' + str(index + 1)
         d.part('Conn2', jp, ch + ' RUN LINK', 358.14, y + 68.58)
         d.terminal(jp, 1, ch + '_RUN', dx=-7.62)

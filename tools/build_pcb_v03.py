@@ -44,15 +44,17 @@ make_fp('R_P7.5',[(1,0,0,1.8,.8),(2,7.5,0,1.8,.8)],(1.2,-1.25,6.3,1.25))
 make_fp('R_2W_P20',[(1,0,0,2.4,1),(2,20,0,2.4,1)],(2.5,-2.5,17.5,2.5))
 make_fp('Film_P15',[(1,0,0,2,1),(2,15,0,2,1)],(-1.5,-4,16.5,4))
 make_fp('Film_P5',[(1,0,0,1.8,.8),(2,5,0,1.8,.8)],(-1.5,-2,6.5,2))
+# CP_D35_P10: CDE 381LX snap-in pins are 2.0x0.8 mm tabs -> round 2.5 mm hole / 4.0 mm pad as interim (was 1.3/3.0); confirm pitch on delivery.
 for name,dia,pitch in [('BP_D10_P5',10,5),('CP_D12.5_P5',12.5,5),('CP_D8_P3.5',8,3.5),('CP_D35_P10',35,10)]:
- make_fp(name,[(1,0,0,3 if dia==35 else 2,1.3 if dia==35 else .9),(2,pitch,0,3 if dia==35 else 2,1.3 if dia==35 else .9)],(pitch/2-dia/2,-dia/2,pitch/2+dia/2,dia/2),'circle')
+ make_fp(name,[(1,0,0,4 if dia==35 else 2,2.5 if dia==35 else .9),(2,pitch,0,4 if dia==35 else 2,2.5 if dia==35 else .9)],(pitch/2-dia/2,-dia/2,pitch/2+dia/2,dia/2),'circle')
 make_fp('Terminal2_P5.08',[(1,0,0,3,1.3),(2,5.08,0,3,1.3)],(-2.5,-4,7.58,4))
 make_fp('Terminal3_P5.08',[(i+1,5.08*i,0,3,1.3) for i in range(3)],(-2.5,-4,12.66,4))
 make_fp('Header2_P2.54',[(1,0,0,1.8,1),(2,2.54,0,1.8,1)],(-1.3,-1.3,3.84,1.3))
 make_fp('AirCoil_P20',[(1,0,0,3,1.3),(2,20,0,3,1.3)],(2,-7,18,7))
 make_fp('Fuse5x20_P25',[(1,0,0,3,1.3),(2,25,0,3,1.3)],(-2,-3.5,27,3.5))
 make_fp('Bridge_LOGICAL_UNVERIFIED',[(num,x,y,4,1.5) for num,x,y in [('AC1',0,0),('AC2',0,17.5),('P',17.5,0),('N',17.5,17.5)]],(-6,-6,23.5,23.5))
-make_fp('LM3886T_UNVERIFIED',[(i,1.7*(i-1),0 if i%2 else -5.08,1.65,.9) for i in range(1,12)],(-1.5,-12,18.5,-7))
+# TI NDJ0011B (2026-09-22): lead 0.97x0.41 mm, pitch 1.7, row offset 5.08 -> drill 1.1 / pad 2.0 (was 0.9/1.65, too small for the lead).
+make_fp('LM3886T_UNVERIFIED',[(i,1.7*(i-1),0 if i%2 else -5.08,2.0,1.1) for i in range(1,12)],(-1.5,-12,18.5,-7))
 
 def netlist(file):
  r=ET.parse(ROOT/'electrical'/file).getroot()
@@ -127,7 +129,7 @@ def build(name,size,layout,source,routes,anchors,labels):
 if __name__=='__main__':
  for config in (AMP,PSU):
   data=build(**config)
-  (OUT/(data['name']+'-footprints.csv')).write_text('reference,footprint,status\n'+''.join(f"{part['ref']},{part['footprint']},UNVERIFIED - ordered IC and transformer still in transit; all other MPNs TBD\n" for part in data['parts']))
+  (OUT/(data['name']+'-footprints.csv')).write_text('reference,footprint,status\n'+''.join(f"{part['ref']},{part['footprint']},UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased\n" for part in data['parts']))
  print('V0.3 layout B: routed engineering draft; no manufacturing release.')
 
  # SaveBoard can create/reset the sibling project. Apply draft rules AFTER all boards save.

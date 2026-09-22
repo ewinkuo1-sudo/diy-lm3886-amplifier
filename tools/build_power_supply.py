@@ -36,7 +36,7 @@ def build():
     for n, net in ((1, 'VCC'), (2, 'GND'), (3, 'VEE')):
         d.terminal('J203', n, net, dx=-10.16)
     d.text(15, 238, 'C201/C202: positive lead to VCC. C203/C204: positive lead to GND.', 1.6)
-    d.text(15, 247, 'C plan: 20,000 uF per rail. Both bridges and all four reservoir capacitors NOT purchased.', 1.5)
+    d.text(15, 247, 'C plan: 20,000 uF per rail. C201-C204 CDE 381LX ordered 2026-09-20 (awaiting delivery); both bridges NOT purchased.', 1.5)
     d.text(15, 256, 'Fuse ratings / bridge cooling / inrush / PE chassis bond / speaker protection: design and verify before assembly.', 1.4)
     d.text(15, 265, '12 VAC auxiliary: reserved for control / speaker protection; AC vs DC module input and current rating TBD.', 1.4)
     d.text(15, 274, 'Separate schematic projects: J203 pin 1/2/3 wires to amplifier J5 pin 1/2/3. Same-label text does not wire the two files.', 1.35)

@@ -1,6 +1,6 @@
 # 接班進度
 
-更新：2026-09-20，第二批零件下單（電阻／WIMA／CDE／ROE）並確定 47µF＝ROE EGW、470µF＝ROE EKE；README／HANDOFF 的逐日流水帳已移至 [CHANGELOG.md](CHANGELOG.md)。
+更新：2026-09-22，文件與圖片同步到 9/20 下單後的狀態；原理圖生成器已改成實購規格但**產物未重建**（見「環境注意」）。逐日紀錄在 [CHANGELOG.md](CHANGELOG.md)。
 
 使用者指定**內建供電、純後級，外接現有 DAC 與前級**。已確認 Eversolo DAC-Z10（DAC＋前級）及 RCA 介面；音量由 Z10 控制。本機採固定增益。
 
@@ -13,8 +13,8 @@
 
 ## 下一步
 
-1. **到貨後量四款電解的實體尺寸** —— ROE EGW 47µF、ROE EKE 470µF、CDE 381LX、CDE 361R。這四項下單前都沒有確定尺寸。
-2. **依實測尺寸改 `pcb/DraftV03.pretty/` 封裝** —— **C2 立式改臥式為必改**；其餘依孔距／孔徑／占位調整。改完再用 KiCad 重建 PCB（`tools/build_pcb_v03.py`、`pcb_layout_v03.py`）並重跑 DRC。
+1. **到貨後量四款電解的實體尺寸** —— ROE EGW 47µF、ROE EKE 470µF、CDE 381LX、CDE 361R。ROE 兩款無公開型錄只能實測；CDE 兩款型錄值已寫進採購總表第 1 節，到貨對印字與量一次確認。**381LX 的 A052 料號不在現行 CDE 型錄**，實收可能是 Ø30 的 K 殼。
+2. **改 `pcb/DraftV03.pretty/` 封裝** —— 型錄已確定的四項中，**三項已於 2026-09-22 改進封裝庫與生成器**（U1 鑽孔 1.1／焊盤 2.0、C8 改指派 `CP_D12.5_P5`、`CP_D35_P10` 鑽孔 2.5／焊盤 4.0 圓孔暫代槽孔），**板檔未重建**，所以 `.kicad_pcb`、預覽圖、parts-audit、footprints csv 仍顯示舊值。剩 **C2 立式改臥式** 等 ROE EGW 實測本體長度。BR1／BR2 要先決定 KBPC 鎖機殼走 Faston 線、或改買 KBPC-W 線腳版，現有 17.5 mm 方陣 1.5 mm 孔兩種都不合。逐項比對見採購總表 1.1。C201–C204 依實收殼徑改 snap-in 槽孔（腳片寬 ≤2.0／厚 0.8 mm，1.3 mm 圓孔不合）。改完在有 KiCad 的機器一次完成：`python3 tools/rebuild.py`（原理圖生成器已改 100V／0.6W／註記，會一併帶入 sch、PDF、BOM、validation.md）→ `build_pcb_v03.py` → `run_pcb_drc_v03.py` → `verify_pcb_v03.py` → `render_pcb_v03.py` → `build_diagrams.py`＋`render_diagrams.cjs`（兩張色塊圖底圖才會更新）。
 3. **變壓器到貨後量各繞組電流與調整率** —— 用實際值定保險絲額定與整流橋規格，並更新 `tools/power_budget.py`、`tools/mains_budget.py` 的估算前提。
 4. **主電容高度確定後才能定機殼** —— 目前推導的內部空間下限為寬 ≥300／深 ≥250／高 ≥90 mm，機殼未下單、熱阻未標、賣家未確認。
 5. 完成一次側保護、浪湧控制／軟啟動、輔助電源、雙軌監測及喇叭 DC 保護／繼電器設計，見 [docs/13-喇叭保護與啟停設計計畫.md](docs/13-喇叭保護與啟停設計計畫.md)。
@@ -37,6 +37,8 @@
 ## 環境注意
 
 - **本機沒有安裝 KiCad。** 沒有 `kicad-cli` 時只能改文件與封裝庫（`.kicad_mod` 為純文字，可手改），**不要動 `.kicad_pcb`** —— V0.3 板檔、專案檔、DRC／驗證 JSON 之間有雜湊綁定，手改會讓驗證紀錄失效。
+- **2026-09-22 起生成器與產物暫時不一致**：`tools/build_schematic.py`／`build_power_supply.py` 已是 100V／0.6W／新註記，但 `electrical/` 下的 sch、PDF、PNG、BOM、validation.md 仍是 9/16 產物。`pcb/validation-v03.json` 綁的是舊 sch 雜湊，重建後要重跑 `verify_pcb_v03.py` 更新。這是刻意的：等封裝定案一起重建，避免重建兩次。
+- Windows 本機的 PyMuPDF、Pillow 只裝在 Python 3.13（`py -3.13 -X utf8 …`）；sharp 不在全域 npm，跑 `render_diagrams.cjs`／`render_pcb_inspection_v03.cjs` 前要 `npm install sharp` 到任意目錄並設 `NODE_PATH`。
 - `tools/verify_pcb_v03.py` 需要 `electrical/netlist.xml`，該檔由 `kicad-cli` 匯出且不入版控；沒有 KiCad 的機器上它必定失敗，這不是程式錯誤。
 - `tools/rebuild.py` 需要 Python 3、KiCad 10 CLI 與 Poppler 的 `pdftoppm`。`tools/build_project_pdf.py` 另需 reportlab、pypdf，非 Windows 環境要設 `LM3886_FONT` 指向 CJK TrueType 字型；產物在 `output/`，不入版控。
 - 每次接手先檢查 Git 工作樹與遠端，保留其他協作者的修改，不強制覆寫遠端。
