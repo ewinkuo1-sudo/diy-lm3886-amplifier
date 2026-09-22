@@ -50,8 +50,8 @@
     "pcb/inspection-v03/native/psu-bottom.svg": "5ce864e9370662b4beff1c27454073d05f7b0b6049a0097f0c019a542a6b23c1",
     "pcb/inspection-v03/native/psu-top.svg": "91475f71d4ee9498c1c6b795c1c9ff46f8d8329e7c99c037be6130b6b2d493dc",
     "pcb/inspection-v03/native-export-log.json": "f773ed80f41f3ae254a1cbb278f6858c0920a6632727b2417aa06177a87da2d3",
-    "pcb/inspection-v03/parts-audit.json": "da6f7c2ba37f0d43a395f607803353c3e3e228d9ce8bfce59168ab1b81c784c6",
-    "pcb/inspection-v03/parts-audit.md": "aa068aeb5fc9c925a8da83c94b328986be5fa8ff232f30bb3570eca28e7fc286",
+    "pcb/inspection-v03/parts-audit.json": "a3c41c0ec6da37f0673d0f89533db9a735e92441cfb33316f5cb153198335fea",
+    "pcb/inspection-v03/parts-audit.md": "da3458a8a4c49d7b61c068d22fd3a853c8653e924e331284416fef89044dc946",
     "pcb/inspection-v03/sources.json": "e9d4e8c62450e4aa9ce7ea19ff33da0d719c82d2036491fefedf9fb366bfa65a"
   },
   "regenerated_not_tracked": "3d/models/*.wrl、3d/*-preview.kicad_pcb/.kicad_pro、3d/raw-*.png 為可重建中間產物，2026-09-21 起不入版控，見 .gitignore。驗證前請先依 README「重建」段落重新產生。",
@@ -61,6 +61,6 @@
       "pcb/inspection-v03/parts-audit.json",
       "pcb/inspection-v03/parts-audit.md"
     ],
-    "note": "Hashes recomputed by hand (LF-normalised, matching the repository canonical form) after purchase-status text update. Not a re-run of verify_pcb_inspection_v03.py; geometry/model checks unchanged. README.md hash was already stale at 2026-09-21 commit."
+    "note": "Hashes recomputed by hand (LF-normalised, matching the repository canonical form) after purchase-status text update. Not a re-run of verify_pcb_inspection_v03.py; geometry/model checks unchanged. README.md hash was already stale at 2026-09-21 commit. Refreshed again same day after delivery-status update."
   }
 }
