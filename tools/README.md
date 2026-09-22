@@ -18,6 +18,7 @@ python3 tools/rebuild.py
 | `verify_power_supply.py` | 電源板拓樸、極性與線束核對 |
 | `power_budget.py` | 理想 B 類功率／散熱估算，輸出 docs/02 |
 | `mains_budget.py` | 市電變動、空載電壓、紋波估算，輸出 docs/06；引用 power_budget |
+| `control_budget.py` | V0.4 控制板估算：湧流／軟啟動、繼電器 DC 分斷、掉電時序、12Vac 輔助電源、靜音、Z10 trigger；輸出 docs/14 §6（純標準庫，不由 rebuild.py 呼叫，手動執行） |
 
 ## PCB V0.3（現行；需 KiCad Python 環境）
 
