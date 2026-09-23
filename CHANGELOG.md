@@ -7,6 +7,14 @@
 
 ---
 
+## 2026-09-24（晚）：整流橋裝法定案為鎖機殼
+
+- 產生 A（KBPC2510 鎖機殼、板上 4 位端子）與 B（KBPC-W 線腳版焊板）兩張電源板預覽，皆 DRC 0；使用者選 A。
+- `BridgeTerminal4_P5.08` 取代 `Bridge_LOGICAL_UNVERIFIED`；四條橋堆進出線加轉折點；電源圖註記更新；採購總表 §1.1／§2.1 改寫，新增 Faston 母端子與線材項；HANDOFF 步驟 2 更新。
+- 電源板重建、DRC 0、驗證通過；`analyze_pcb_v03.py` 重算。3D／導讀圖仍未重建。
+
+---
+
 ## 2026-09-24：原理圖與 PCB 在本機重建
 
 - 發現這台 Windows 其實裝有 KiCad 10.0.6（不在 PATH），先前「本機無 KiCad」判斷錯誤。在 `core.autocrlf=false` 的 clone 中重建，Python 文字寫檔強制 LF。

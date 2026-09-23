@@ -6,7 +6,7 @@ import json, math, hashlib, re, html
 R=Path(__file__).resolve().parents[1]; P=R/'pcb'; O=P/'inspection-v03'
 (O/'3d/models').mkdir(parents=True,exist_ok=True); (O/'drawings').mkdir(exist_ok=True);(O/'native').mkdir(exist_ok=True)
 # 2026-09-22: Film_P15=15 (WIMA MKS4 2.2u/100V 8x15x18), Film_P5=6.5 (MKS2 2.5x6.5x7.2), LM3886T=22 (TI overall), CP_D35=50 (CDE A05); others remain assumptions.
-HEIGHT={'R_P7.5':2.5,'R_2W_P20':5,'Film_P15':15,'Film_P5':6.5,'BP_D10_P5':16,'BP_Axial_L40_D20_P50':21,'CP_D12.5_P5':20,'CP_D8_P3.5':12,'CP_D35_P10':50,'Terminal2_P5.08':12,'Terminal3_P5.08':12,'Header2_P2.54':6,'AirCoil_P20':14,'Fuse5x20_P25':10,'Bridge_LOGICAL_UNVERIFIED':12,'LM3886T_UNVERIFIED':22}
+HEIGHT={'R_P7.5':2.5,'R_2W_P20':5,'Film_P15':15,'Film_P5':6.5,'BP_D10_P5':16,'BP_Axial_L40_D20_P50':21,'CP_D12.5_P5':20,'CP_D8_P3.5':12,'CP_D35_P10':50,'Terminal2_P5.08':12,'BridgeTerminal4_P5.08':12,'Terminal3_P5.08':12,'Header2_P2.54':6,'AirCoil_P20':14,'Fuse5x20_P25':10,'Bridge_LOGICAL_UNVERIFIED':12,'LM3886T_UNVERIFIED':22}
 def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 def tr(c,x,y):
  a=math.radians(c['angle']);return(c['x']+x*math.cos(a)+y*math.sin(a),c['y']-x*math.sin(a)+y*math.cos(a))

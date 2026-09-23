@@ -60,7 +60,9 @@ make_fp('Terminal3_P5.08',[(i+1,5.08*i,0,3,1.3) for i in range(3)],(-2.5,-4,12.6
 make_fp('Header2_P2.54',[(1,0,0,1.8,1),(2,2.54,0,1.8,1)],(-1.3,-1.3,3.84,1.3))
 make_fp('AirCoil_P20',[(1,0,0,3,1.3),(2,20,0,3,1.3)],(2,-7,18,7))
 make_fp('Fuse5x20_P25',[(1,0,0,3,1.3),(2,25,0,3,1.3)],(-2,-3.5,27,3.5))
-make_fp('Bridge_LOGICAL_UNVERIFIED',[(num,x,y,4,1.5) for num,x,y in [('AC1',0,0),('AC2',0,17.5),('P',17.5,0),('N',17.5,17.5)]],(-6,-6,23.5,23.5))
+# 2026-09-24 decision: KBPC2510 bolts to the chassis; its four Faston tabs come to this 4-way 5.08 mm screw terminal.
+# Pad numbers stay AC1/AC2/P/N so the schematic BR symbol maps without change. Terminal pin/hole per KF301 catalogue, unverified.
+make_fp('BridgeTerminal4_P5.08',[(num,5.08*i,0,3,1.3) for i,num in enumerate(['AC1','AC2','P','N'])],(-2.5,-4,17.74,4))
 # TI NDJ0011B (2026-09-22): lead 0.97x0.41 mm, pitch 1.7, row offset 5.08 -> drill 1.1 / pad 2.0 (was 0.9/1.65, too small for the lead).
 make_fp('LM3886T_UNVERIFIED',[(i,1.7*(i-1),0 if i%2 else -5.08,2.0,1.1) for i in range(1,12)],(-1.5,-12,18.5,-7))
 

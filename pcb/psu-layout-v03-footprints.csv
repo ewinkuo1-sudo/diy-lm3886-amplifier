@@ -3,8 +3,8 @@ J201,Terminal2_P5.08,UNVERIFIED - footprints are provisional outlines; ordered p
 J202,Terminal2_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 F201,Fuse5x20_P25,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 F202,Fuse5x20_P25,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
-BR1,Bridge_LOGICAL_UNVERIFIED,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
-BR2,Bridge_LOGICAL_UNVERIFIED,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+BR1,BridgeTerminal4_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+BR2,BridgeTerminal4_P5.08,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 C201,CP_D35_P10,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 C202,CP_D35_P10,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 C203,CP_D35_P10,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
