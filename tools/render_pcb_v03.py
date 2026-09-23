@@ -69,7 +69,7 @@ for data,scale in [(mono,12),(psu,10)]:
  im.save(O/(data['name']+'.png'))
 im=Image.new('RGB',(1900,1070),'#101c25');d=ImageDraw.Draw(im)
 d.text((60,32),'LM3886 / 方案 C PCB V0.3（布局 B）',font=font(44),fill='#f3f8f7')
-d.text((60,100),'兩片相同單聲道板 + 一片共用主電源板 / 變壓器、IC、全部 R／C 已下單待到貨；封裝待實測後修訂',font=font(25),fill='#adc7c8')
+d.text((60,100),'兩片相同單聲道板 + 一片共用主電源板 / 變壓器與 R／C 已到貨並量測；LM3886T 到貨未回報',font=font(25),fill='#adc7c8')
 for data,pos,title in [(mono,(40,210),'左聲道 115 × 90 mm'),(mono,(590,210),'右聲道 115 × 90 mm'),(psu,(1150,210),'主電源 160 × 120 mm')]:
  d.text((pos[0],166),title,font=font(24),fill='#d0e8e4');draw_board(im,data,pos,4.6)
  sx,sy=data['anchors']['STAR'];cx=pos[0]+sx*4.6;cy=pos[1]+sy*4.6
@@ -79,7 +79,7 @@ d.text((60,710),'接地：訊號、喇叭、Zobel、靜音分路回到匯流點�
 d.text((60,756),'電源板：左側交流／整流，右側直流輸出。',font=font(23),fill='#adc7c8')
 d.line((60,826,1840,826),fill='#36565c',width=2)
 d.text((60,854),'保留：LM3886T × 2、雙 22Vac 次級、雙橋、每軌 2 × 10,000µF／63V',font=font(26),fill='#a2dfbd')
-d.text((60,902),'待確認：所有實體封裝（C2 立式改臥式必改）、整流橋料號、線寬溫升、散熱器與整機線束',font=font(25),fill='#e5c38a')
+d.text((60,902),'待確認：LM3886T 實物腳位、整流橋料號與封裝、線寬溫升、散熱器與整機線束',font=font(25),fill='#e5c38a')
 d.text((60,961),'依 PCB 資料繪製，尺寸為暫定；板間相對位置不代表機殼配置。非製造版本。',font=font(23),fill='#93afb4')
 im.save(O/'system-layout-v03.png')
 print('Rendered V0.3 PCB data to',O)

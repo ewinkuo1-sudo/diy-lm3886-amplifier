@@ -13,6 +13,7 @@
 - 原理圖：兩份 ERC 0 違規；`verify_electrical.py` 期望值改為實購（C1／C3／C4／C8 100V、R8 0.6W），核對通過。本機無 pdftoppm，預覽 PNG 以 PyMuPDF 轉出（2400 px 長邊）。docs/02 重算結果無變化。
 - PCB：首輪 DRC 3 項（C2／R1 保留區重疊、U1 絲印字高與壓字），驗證抓到 C2 訊號地與靜音回流相碰；修正見 pcb/README。最終兩板 DRC 0 違規、0 未連通，`verify_pcb_v03.py` 通過，`analyze_pcb_v03.py` 重算、單元測試通過，預覽圖重繪。
 - 工具：`build_pcb_v03.py`／`run_pcb_drc_v03.py` 把 KiCad 在 Windows 寫出的 CRLF 轉 LF 後才雜湊；四支腳本的雜湊路徑改 `as_posix()`，避免 Windows 反斜線路徑。
+- 自我複核後補修：系統預覽圖與電源圖上的「待到貨／C2 立式改臥式」過期字樣、pcb/README 的 R3.1–C2.2 距離改為實算 10 mm、機殼寬度需求標註待重算（原以 100×90 推導），並註明 C2 本體下方有走線與過孔。
 - **未重建**：`pcb/inspection-v03/`（3D、parts-audit）與 `docs/diagrams/`。
 
 ---

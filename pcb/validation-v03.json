@@ -43,6 +43,6 @@
     "pcb/mono-layout-v03.kicad_pro": "f124f35407c4949f95884dd2d512d28ca8b928a726441f5e4ee4d084de3f6c41",
     "pcb/psu-layout-v03.kicad_pro": "d36c962a47c0292b7e63130960958eb0497c617e3a0f109dd27906f6b8666a00",
     "electrical/lm3886-v01.kicad_sch": "7e4c4d7ebf146ec051ec72f926a239aa9ff3e011f8a352e2c151c8ac77f56fca",
-    "electrical/internal-psu-v02.kicad_sch": "714c3300ba696a853e90dbac0749d586d4177a61c1abd1cc176f8f77c8490f4c"
+    "electrical/internal-psu-v02.kicad_sch": "1a198d3e4f0c7abaec2f9dc877246c3294d2ab71732dba2bbc2d9ded1cb15925"
   }
 }
