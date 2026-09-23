@@ -36,7 +36,7 @@
 
 ## 環境注意
 
-- **（2026-09-23 更正）這台 Windows 其實裝有 KiCad 10.0.6**（`%LOCALAPPDATA%\Programs\KiCad.0in\` 的 `kicad-cli.exe` 與內建 `python.exe`，不在 PATH）。在此機重建前先處理 git autocrlf：工作樹為 CRLF，雜湊綁定檔以 LF 計算。以下為原說明：沒有 `kicad-cli` 時只能改文件與封裝庫（`.kicad_mod` 為純文字，可手改），**不要動 `.kicad_pcb`** —— V0.3 板檔、專案檔、DRC／驗證 JSON 之間有雜湊綁定，手改會讓驗證紀錄失效。
+- **（2026-09-23 更正）這台 Windows 其實裝有 KiCad 10.0.6**（`%LOCALAPPDATA%\Programs\KiCad\10.0\bin\` 的 `kicad-cli.exe` 與內建 `python.exe`，不在 PATH）。在此機重建前先處理 git autocrlf：工作樹為 CRLF，雜湊綁定檔以 LF 計算。以下為原說明：沒有 `kicad-cli` 時只能改文件與封裝庫（`.kicad_mod` 為純文字，可手改），**不要動 `.kicad_pcb`** —— V0.3 板檔、專案檔、DRC／驗證 JSON 之間有雜湊綁定，手改會讓驗證紀錄失效。
 - **2026-09-22 起生成器與產物暫時不一致**：`tools/build_schematic.py`／`build_power_supply.py` 已是 100V／0.6W／新註記，但 `electrical/` 下的 sch、PDF、PNG、BOM、validation.md 仍是 9/16 產物。`pcb/validation-v03.json` 綁的是舊 sch 雜湊，重建後要重跑 `verify_pcb_v03.py` 更新。這是刻意的：等封裝定案一起重建，避免重建兩次。
 - Windows 本機的 PyMuPDF、Pillow 只裝在 Python 3.13（`py -3.13 -X utf8 …`）；sharp 不在全域 npm，跑 `render_diagrams.cjs`／`render_pcb_inspection_v03.cjs` 前要 `npm install sharp` 到任意目錄並設 `NODE_PATH`。
 - `tools/verify_pcb_v03.py` 需要 `electrical/netlist.xml`，該檔由 `kicad-cli` 匯出且不入版控；沒有 KiCad 的機器上它必定失敗，這不是程式錯誤。
