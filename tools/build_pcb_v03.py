@@ -45,8 +45,12 @@ make_fp('R_2W_P20',[(1,0,0,2.4,1),(2,20,0,2.4,1)],(2.5,-2.5,17.5,2.5))
 make_fp('Film_P15',[(1,0,0,2,1),(2,15,0,2,1)],(-1.5,-4,16.5,4))
 make_fp('Film_P5',[(1,0,0,1.8,.8),(2,5,0,1.8,.8)],(-1.5,-2,6.5,2))
 # CP_D35_P10: CDE 381LX snap-in pins are 2.0x0.8 mm tabs -> round 2.5 mm hole / 4.0 mm pad as interim (was 1.3/3.0); confirm pitch on delivery.
+# CP_D12.5_P5: ROE EKE 470u and CDE 361R 100u leads measured/catalog ~0.8 mm -> drill 1.0 (was 0.9, only 0.1 mm clearance).
 for name,dia,pitch in [('BP_D10_P5',10,5),('CP_D12.5_P5',12.5,5),('CP_D8_P3.5',8,3.5),('CP_D35_P10',35,10)]:
- make_fp(name,[(1,0,0,4 if dia==35 else 2,2.5 if dia==35 else .9),(2,pitch,0,4 if dia==35 else 2,2.5 if dia==35 else .9)],(pitch/2-dia/2,-dia/2,pitch/2+dia/2,dia/2),'circle')
+ drill=2.5 if dia==35 else 1.0 if dia==12.5 else .9
+ make_fp(name,[(1,0,0,4 if dia==35 else 2,drill),(2,pitch,0,4 if dia==35 else 2,drill)],(pitch/2-dia/2,-dia/2,pitch/2+dia/2,dia/2),'circle')
+# BP_Axial_L40_D20_P50: ROE EGW 47u BP lying flat, measured 2026-09-23 body ~40 x D20 mm, lead ~0.8-1.0 mm -> P50 (5 mm per bend), drill 1.2.
+make_fp('BP_Axial_L40_D20_P50',[(1,0,0,2.6,1.2),(2,50,0,2.6,1.2)],(5,-10.5,45,10.5))
 make_fp('Terminal2_P5.08',[(1,0,0,3,1.3),(2,5.08,0,3,1.3)],(-2.5,-4,7.58,4))
 make_fp('Terminal3_P5.08',[(i+1,5.08*i,0,3,1.3) for i in range(3)],(-2.5,-4,12.66,4))
 make_fp('Header2_P2.54',[(1,0,0,1.8,1),(2,2.54,0,1.8,1)],(-1.3,-1.3,3.84,1.3))

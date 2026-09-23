@@ -16,7 +16,7 @@ for key,label in [('mono','單聲道放大板｜每台兩片'),('psu','共用電
 im=Image.new('RGB',(2100,1110),'#101e28');d=ImageDraw.Draw(im)
 d.text((55,28),'LM3886｜PCB V0.3 立體配置預覽',font=f(42),fill='#f1f7f6')
 d.text((55,90),'兩片相同放大板＋一片共用電源板；下圖各展示一種板。',font=f(27),fill='#b0c7d0')
-for key,x,label in [('mono',35,'放大板 100 × 90 mm，需兩片'),('psu',1070,'電源板 160 × 120 mm，需一片')]:
+for key,x,label in [('mono',35,'放大板 115 × 90 mm，需兩片'),('psu',1070,'電源板 160 × 120 mm，需一片')]:
  d.text((x+15,155),label,font=f(26),fill='#f1f7f6');src=Image.open(O/f'raw-{key}-isometric.png').convert('RGB');src.thumbnail((995,800));im.paste(src,(x,210))
 d.text((55,1000),'暫定外形與假設高度，僅供檢視；兩圖縮放不同，不代表機殼配置。',font=f(28),fill='#efc077')
 d.text((55,1050),'實際腳位、料號、散熱與機構確認後，才能完成製造版。',font=f(25),fill='#b0c7d0')

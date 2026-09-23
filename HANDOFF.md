@@ -13,8 +13,8 @@
 
 ## 下一步
 
-1. **到貨後量四款電解的實體尺寸** —— ROE EGW 47µF、ROE EKE 470µF、CDE 381LX、CDE 361R。ROE 兩款無公開型錄只能實測；CDE 兩款型錄值已寫進採購總表第 1 節，到貨對印字與量一次確認。**381LX 的 A052 料號不在現行 CDE 型錄**，實收可能是 Ø30 的 K 殼。
-2. **改 `pcb/DraftV03.pretty/` 封裝** —— 型錄已確定的四項中，**三項已於 2026-09-22 改進封裝庫與生成器**（U1 鑽孔 1.1／焊盤 2.0、C8 改指派 `CP_D12.5_P5`、`CP_D35_P10` 鑽孔 2.5／焊盤 4.0 圓孔暫代槽孔），**板檔未重建**，所以 `.kicad_pcb`、預覽圖、parts-audit、footprints csv 仍顯示舊值。剩 **C2 立式改臥式** 等 ROE EGW 實測本體長度。BR1／BR2 要先決定 KBPC 鎖機殼走 Faston 線、或改買 KBPC-W 線腳版，現有 17.5 mm 方陣 1.5 mm 孔兩種都不合。逐項比對見採購總表 1.1。C201–C204 依實收殼徑改 snap-in 槽孔（腳片寬 ≤2.0／厚 0.8 mm，1.3 mm 圓孔不合）。改完在有 KiCad 的機器一次完成：`python3 tools/rebuild.py`（原理圖生成器已改 100V／0.6W／註記，會一併帶入 sch、PDF、BOM、validation.md）→ `build_pcb_v03.py` → `run_pcb_drc_v03.py` → `verify_pcb_v03.py` → `render_pcb_v03.py` → `build_diagrams.py`＋`render_diagrams.cjs`（兩張色塊圖底圖才會更新）。
+1. **到貨後量四款電解的實體尺寸**（2026-09-23 已量 381LX、EKE、EGW；361R 與 381LX 腳片寬厚未量）—— ROE EGW 47µF、ROE EKE 470µF、CDE 381LX、CDE 361R。ROE 兩款無公開型錄只能實測；CDE 兩款型錄值已寫進採購總表第 1 節，到貨對印字與量一次確認。**381LX 的 A052 料號不在現行 CDE 型錄**，實收可能是 Ø30 的 K 殼。
+2. **改 `pcb/DraftV03.pretty/` 封裝** —— 型錄已確定的四項中，**三項已於 2026-09-22 改進封裝庫與生成器**（U1 鑽孔 1.1／焊盤 2.0、C8 改指派 `CP_D12.5_P5`、`CP_D35_P10` 鑽孔 2.5／焊盤 4.0 圓孔暫代槽孔），**板檔未重建**，所以 `.kicad_pcb`、預覽圖、parts-audit、footprints csv 仍顯示舊值。**C2 已於 2026-09-23 改躺式 `BP_Axial_L40_D20_P50`、放大板加寬為 115×90、`CP_D12.5_P5` 鑽孔 1.0**（見 pcb/README），同樣待重建與 DRC。BR1／BR2 要先決定 KBPC 鎖機殼走 Faston 線、或改買 KBPC-W 線腳版，現有 17.5 mm 方陣 1.5 mm 孔兩種都不合。逐項比對見採購總表 1.1。C201–C204 依實收殼徑改 snap-in 槽孔（腳片寬 ≤2.0／厚 0.8 mm，1.3 mm 圓孔不合）。改完在有 KiCad 的機器一次完成：`python3 tools/rebuild.py`（原理圖生成器已改 100V／0.6W／註記，會一併帶入 sch、PDF、BOM、validation.md）→ `build_pcb_v03.py` → `run_pcb_drc_v03.py` → `verify_pcb_v03.py` → `render_pcb_v03.py` → `build_diagrams.py`＋`render_diagrams.cjs`（兩張色塊圖底圖才會更新）。
 3. **變壓器到貨後量各繞組電流與調整率** —— 用實際值定保險絲額定與整流橋規格，並更新 `tools/power_budget.py`、`tools/mains_budget.py` 的估算前提。
 4. **主電容高度確定後才能定機殼** —— 目前推導的內部空間下限為寬 ≥300／深 ≥250／高 ≥90 mm，機殼未下單、熱阻未標、賣家未確認。
 5. **V0.4 控制板**：需求在 [docs/13](docs/13-喇叭保護與啟停設計計畫.md)，設計草案在 [docs/14](docs/14-V0.4-控制與保護板設計草案.md)（2026-09-22 起）。變壓器到貨後照 14 §8 量五項寫回，再照 §7 選繼電器、定 R_s；之後才畫 CTRL 原理圖（新增 `tools/build_control_board.py`，比照兩份現有生成器）。UPC1237 模組到貨照 14 §9 驗證，不直接裝機。

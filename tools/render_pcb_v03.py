@@ -70,7 +70,7 @@ for data,scale in [(mono,12),(psu,10)]:
 im=Image.new('RGB',(1900,1070),'#101c25');d=ImageDraw.Draw(im)
 d.text((60,32),'LM3886 / 方案 C PCB V0.3（布局 B）',font=font(44),fill='#f3f8f7')
 d.text((60,100),'兩片相同單聲道板 + 一片共用主電源板 / 變壓器、IC、全部 R／C 已下單待到貨；封裝待實測後修訂',font=font(25),fill='#adc7c8')
-for data,pos,title in [(mono,(60,210),'左聲道 100 × 90 mm'),(mono,(570,210),'右聲道 100 × 90 mm'),(psu,(1080,210),'主電源 160 × 120 mm')]:
+for data,pos,title in [(mono,(40,210),'左聲道 115 × 90 mm'),(mono,(590,210),'右聲道 115 × 90 mm'),(psu,(1150,210),'主電源 160 × 120 mm')]:
  d.text((pos[0],166),title,font=font(24),fill='#d0e8e4');draw_board(im,data,pos,4.6)
  sx,sy=data['anchors']['STAR'];cx=pos[0]+sx*4.6;cy=pos[1]+sy*4.6
  d.ellipse((cx-5,cy-5,cx+5,cy+5),outline='#fff3aa',width=2)

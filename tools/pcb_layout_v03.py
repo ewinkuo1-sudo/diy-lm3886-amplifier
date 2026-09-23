@@ -2,18 +2,18 @@
 Explicit electrical routes (including separate ground branches); not an autorouter.
 Footprints and conductor widths remain engineering assumptions pending parts/thermal review.
 """
-AMP=dict(name='mono-layout-v03',size=(100,90),source='netlist.xml',layout={
+AMP=dict(name='mono-layout-v03',size=(115,90),source='netlist.xml',layout={
 'U1':('LM3886T_UNVERIFIED',39,14,0),
 'J1':('Terminal2_P5.08',94,27,270),'J2':('Terminal2_P5.08',10,76,0),'J5':('Terminal3_P5.08',40,77,0),
 'C1':('Film_P15',87,12,180),'R1':('R_P7.5',84,27,270),'R6':('R_P7.5',68,12,180),'R2':('R_P7.5',68,25,90),
-'R4':('R_P7.5',55,19,180),'R3':('R_P7.5',62,24,180),'C2':('BP_D10_P5',68,35,180),
+'R4':('R_P7.5',55,19,180),'R3':('R_P7.5',62,24,180),'C2':('BP_Axial_L40_D20_P50',72,80,90),
 'C3':('Film_P5',32,19,0),'C4':('Film_P5',34,13,90),
 'C7':('CP_D12.5_P5',32,41,0),'C6':('CP_D12.5_P5',49,36,0),
 'R5':('R_2W_P20',12,25,0),'C5':('Film_P5',8,18,0),
 'L1':('AirCoil_P20',10,45,270),'R7':('R_2W_P20',23,45,270),
-'R8':('R_P7.5',74,52,0),'C8':('CP_D12.5_P5',74,63,0),'JP1':('Header2_P2.54',88,58,270),
+'R8':('R_P7.5',100,48,270),'C8':('CP_D12.5_P5',103,66,180),'JP1':('Header2_P2.54',110,52,270),
 },anchors={'STAR':(43,50),'SG':(73,43),'via_mute':(58,18),'via_zobel_g1':(20,40),'via_zobel_g2':(20,49)},labels=[
-('TAB=VEE',67,6),('RCA IN',90,40),('TEST OUT',13,83),('V+  G  V-',45,83),('RUN',88,65),('GND STAR',44,55),
+('TAB=VEE',67,6),('RCA IN',90,40),('TEST OUT',13,83),('V+  G  V-',45,83),('RUN',110,60),('GND STAR',44,55),
 ],routes=[
 # Local signal network; feedback is picked off the IC output before L1.
 ('L_INV','F.Cu',.35,['U1.9','R4.1','R3.2'],'feedback'),
@@ -45,10 +45,10 @@ AMP=dict(name='mono-layout-v03',size=(100,90),source='netlist.xml',layout={
 ('GND','B.Cu',1,['via_zobel_g2',(35,49),'STAR'],'zobel-return'),
 ('GND','B.Cu',.6,['J1.2',(94,43),'SG'],'signal-ground'),
 ('GND','B.Cu',.6,['R1.1',(80,27),(80,43),'SG'],'signal-ground'),
-('GND','B.Cu',.6,['R2.1',(73,25),'SG'],'signal-ground'),
-('GND','B.Cu',.6,['C2.1','SG'],'signal-ground'),
+('GND','B.Cu',.6,['R2.1',(76,26),(76,43),'SG'],'signal-ground'),
+('GND','B.Cu',1.0,['C2.1','SG'],'signal-ground'),
 ('GND','B.Cu',.8,['SG',(65,50),'STAR'],'signal-ground-to-star'),
-('GND','B.Cu',.6,['C8.1',(74,55),(51,55),'STAR'],'mute-return'),
+('GND','B.Cu',.6,['C8.1',(92,57),(86,55),(51,55),'STAR'],'mute-return'),
 # Bulk feed then local HF bypass. Widths are provisional, not a current rating.
 ('VCC','F.Cu',3,['J5.1',(34,71),(34,58),(32,56),'C7.1'],'positive-feed'),
 ('VCC','F.Cu',2,['C7.1',(29,38),(29,31),(27,29),(27,19),'C3.1'],'positive-local'),
@@ -57,9 +57,9 @@ AMP=dict(name='mono-layout-v03',size=(100,90),source='netlist.xml',layout={
 ('VEE','F.Cu',3,['J5.3',(56,71),(56,44),'C6.2'],'negative-feed'),
 ('VEE','B.Cu',.8,['C6.2',(52,29),(44.1,25),'U1.4'],'negative-pin'),
 ('VEE','B.Cu',.8,['U1.4',(44.1,5),(34,5),'C4.2'],'negative-bypass'),
-('VEE','B.Cu',.8,['J5.3',(57,69),(88,69),'JP1.2'],'mute-supply'),
+('VEE','F.Cu',.8,['J5.3',(57,76),(108,76),(112,72),(112,58),'JP1.2'],'mute-supply'),
 ('L_MUTE','B.Cu',.35,['U1.8',(50.9,6),(58,6),'via_mute'],'mute'),
-('L_MUTE','F.Cu',.35,['via_mute',(56,29),(58.5,40),(58.5,47),'R8.1','C8.2'],'mute'),
+('L_MUTE','F.Cu',.35,['via_mute',(56,29),(58.5,40),(58.5,47),'R8.1',(96,51),(96,62),'C8.2'],'mute'),
 ('L_RUN','F.Cu',.35,['R8.2','JP1.1'],'mute'),
 ])
 PSU=dict(name='psu-layout-v03',size=(160,120),source='psu-netlist.xml',layout={
