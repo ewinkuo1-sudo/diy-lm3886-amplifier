@@ -50,6 +50,6 @@ report['baseline_commit']='d39b62360c13417d566d6ab0d0b95fe969c4c5b0'
 report['checked_on']=datetime.date.today().isoformat()
 report['kicad_version']=drc['kicad_version']
 report['minimum_copper_clearance_mm']=json.loads((R/'pcb/mono-layout-v03.kicad_pro').read_text())['board']['design_settings']['rules']['min_clearance']
-report['sha256']={str(f.relative_to(R)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [R/'pcb/mono-layout-v03.kicad_pcb',R/'pcb/psu-layout-v03.kicad_pcb',R/'pcb/mono-layout-v03.kicad_pro',R/'pcb/psu-layout-v03.kicad_pro',R/'electrical/lm3886-v01.kicad_sch',R/'electrical/internal-psu-v02.kicad_sch']}
+report['sha256']={f.relative_to(R).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in [R/'pcb/mono-layout-v03.kicad_pcb',R/'pcb/psu-layout-v03.kicad_pcb',R/'pcb/mono-layout-v03.kicad_pro',R/'pcb/psu-layout-v03.kicad_pro',R/'electrical/lm3886-v01.kicad_sch',R/'electrical/internal-psu-v02.kicad_sch']}
 (R/'pcb'/'validation-v03.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

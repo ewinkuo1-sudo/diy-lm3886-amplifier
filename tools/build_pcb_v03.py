@@ -14,6 +14,10 @@ OUT=ROOT/'pcb';OUT.mkdir(exist_ok=True)
 LIB=OUT/'DraftV03.pretty';LIB.mkdir(exist_ok=True)
 MM=p.FromMM
 def v(x,y):return p.VECTOR2I(MM(x),MM(y))
+# KiCad on Windows saves CRLF; the repo and every SHA-256 binding use LF.
+def lf(path):
+ b=Path(path).read_bytes()
+ if b'\r\n' in b:Path(path).write_bytes(b.replace(b'\r\n',b'\n'))
 def xy(a):return (p.ToMM(a.x),p.ToMM(a.y))
 specs={}
 def make_fp(name,pads,body,kind='rect'):
@@ -37,7 +41,7 @@ def make_fp(name,pads,body,kind='rect'):
   sh=p.PCB_SHAPE(f);sh.SetLayer(p.F_SilkS);sh.SetWidth(MM(w));sh.SetShape(p.SHAPE_T_SEGMENT);sh.SetStart(v(*seg[0]));sh.SetEnd(v(*seg[1]));f.Add(sh)
  for text,(tx,ty),size in silk_texts(name,pads,body):
   t=p.PCB_TEXT(f);t.SetText(text);t.SetLayer(p.F_SilkS);t.SetPosition(v(tx,ty));t.SetTextSize(v(size,size));t.SetTextThickness(MM(.12));f.Add(t)
- p.PCB_IO_MGR.FindPlugin(p.PCB_IO_MGR.KICAD_SEXP).FootprintSave(str(LIB),f)
+ p.PCB_IO_MGR.FindPlugin(p.PCB_IO_MGR.KICAD_SEXP).FootprintSave(str(LIB),f);lf(LIB/(name+'.kicad_mod'))
  specs[name]={'body':body,'kind':kind,'pads':pads}
  return name
 make_fp('R_P7.5',[(1,0,0,1.8,.8),(2,7.5,0,1.8,.8)],(1.2,-1.25,6.3,1.25))
@@ -77,7 +81,7 @@ def build(name,size,layout,source,routes,anchors,labels):
    if net not in nets:
     nets[net]=p.NETINFO_ITEM(board,net);board.Add(nets[net])
    pad.SetNet(nets[net]);pads[(ref,number)]=pad
-  if ref=='U1':f.Reference().SetPosition(v(47.5,4.5))
+  if ref=='U1':f.Reference().SetPosition(v(60,3))
   if ref=='C3':f.Reference().SetPosition(v(34.5,23))
   if ref=='J1':f.Reference().SetPosition(v(90,36))
   if ref=='J203':f.Reference().SetPosition(v(150,48))
@@ -120,7 +124,7 @@ def build(name,size,layout,source,routes,anchors,labels):
   diam,drill=(1.6,.8) if key.startswith('via_power') else (.9,.4)
   net=codes.pop();via=p.PCB_VIA(board);via.SetPosition(v(*point));via.SetWidth(MM(diam));via.SetDrill(MM(drill));via.SetViaType(p.VIATYPE_THROUGH);via.SetLayerPair(p.F_Cu,p.B_Cu);via.SetNet(nets[net]);board.Add(via)
   vias.append({'x':point[0],'y':point[1],'net':net,'dia':diam,'drill':drill})
- path=OUT/(name+'.kicad_pcb');p.SaveBoard(str(path),board)
+ path=OUT/(name+'.kicad_pcb');p.SaveBoard(str(path),board);lf(path)
  # Independent round-trip pad-to-net audit, including each NC pin.
  check=p.LoadBoard(str(path));actual={(f.GetReference(),pad.GetNumber()):pad.GetNetname() for f in check.GetFootprints() if f.GetReference() in layout for pad in f.Pads()}
  expected={k:n for k,n in nodes.items() if k[0] in layout}

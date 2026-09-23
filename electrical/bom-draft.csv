@@ -1,20 +1,20 @@
 reference,quantity,value,symbol,footprint,selection_notes
-C1,1,2.2u / 63V film,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
+C1,1,2.2u / 100V film,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
 C2,1,47u / 63V BP,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
-C3,1,100n / 63V,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
-C4,1,100n / 63V,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
+C3,1,100n / 100V,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
+C4,1,100n / 100V,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
 C5,1,100n / 100V film,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
 C6,1,470u / 63V,CP,,"Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating"
 C7,1,470u / 63V,CP,,"Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating"
-C8,1,100u / 63V,CP,,"Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating"
-C101,1,2.2u / 63V film,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
+C8,1,100u / 100V,CP,,"Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating"
+C101,1,2.2u / 100V film,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
 C102,1,47u / 63V BP,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
-C103,1,100n / 63V,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
-C104,1,100n / 63V,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
+C103,1,100n / 100V,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
+C104,1,100n / 100V,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
 C105,1,100n / 100V film,C,,Film unless 47u BP (nonpolar); 100n supply bypass may use X7R
 C106,1,470u / 63V,CP,,"Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating"
 C107,1,470u / 63V,CP,,"Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating"
-C108,1,100u / 63V,CP,,"Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating"
+C108,1,100u / 100V,CP,,"Polarized; pin 1 positive, pin 2 negative; verify ripple and temperature rating"
 J1,1,L RCA,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted
 J2,1,L TEST OUT,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted
 J3,1,R RCA,Conn2,,Connector/panel hardware TBD; RUN switch contacts >=60V DC if substituted
@@ -31,7 +31,7 @@ R4,1,20k / 1%,R,,1% metal film; 0.25W unless value specifies 2W; output resistor
 R5,1,2.7R / 2W,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
 R6,1,1k,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
 R7,1,10R / 2W,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
-R8,1,22k / 0.25W,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
+R8,1,22k / 0.6W,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
 R101,1,1M,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
 R102,1,22k,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
 R103,1,1k / 1%,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
@@ -39,6 +39,6 @@ R104,1,20k / 1%,R,,1% metal film; 0.25W unless value specifies 2W; output resist
 R105,1,2.7R / 2W,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
 R106,1,1k,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
 R107,1,10R / 2W,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
-R108,1,22k / 0.25W,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
+R108,1,22k / 0.6W,R,,1% metal film; 0.25W unless value specifies 2W; output resistors low inductance
 U1,1,LM3886T,LM3886,,LM3886T/NOPB; non-isolated T package; footprint TBD
 U2,1,LM3886T,LM3886,,LM3886T/NOPB; non-isolated T package; footprint TBD

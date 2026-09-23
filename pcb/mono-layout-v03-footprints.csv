@@ -9,7 +9,7 @@ R6,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiti
 R2,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 R4,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 R3,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
-C2,BP_D10_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C2,BP_Axial_L40_D20_P50,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 C3,Film_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 C4,Film_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 C7,CP_D12.5_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
@@ -19,5 +19,5 @@ C5,Film_P5,UNVERIFIED - footprints are provisional outlines; ordered parts await
 L1,AirCoil_P20,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 R7,R_2W_P20,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 R8,R_P7.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
-C8,CP_D8_P3.5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
+C8,CP_D12.5_P5,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased
 JP1,Header2_P2.54,UNVERIFIED - footprints are provisional outlines; ordered parts awaiting delivery and measurement (see docs/00); bridges, fuse holders, inductors, connectors not yet purchased

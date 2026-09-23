@@ -107,11 +107,11 @@
   ],
   "feedback": {
     "02": {
-      "sense_mm": 7.142128534267639,
+      "sense_mm": 7.1421285342676395,
       "inverting_mm": 5.546169849544818
     },
     "03": {
-      "sense_mm": 7.142128534267639,
+      "sense_mm": 7.1421285342676395,
       "inverting_mm": 5.546169849544818
     }
   },
@@ -127,7 +127,7 @@
         }
       },
       "supply": {
-        "minimum_projected_trace_edge_gap_mm": 5.015098649200421,
+        "minimum_projected_trace_edge_gap_mm": 5.0150986492004215,
         "closest": {
           "quiet_net": "L_INV",
           "power_net": "VEE",
@@ -147,7 +147,7 @@
         }
       },
       "supply": {
-        "minimum_projected_trace_edge_gap_mm": 5.015098649200421,
+        "minimum_projected_trace_edge_gap_mm": 5.0150986492004215,
         "closest": {
           "quiet_net": "L_INV",
           "power_net": "VEE",
@@ -385,7 +385,7 @@
         "03": {
           "geometry": {
             "length_mm": 43.69132232948902,
-            "sum_length_over_width": 14.563774109829673,
+            "sum_length_over_width": 14.563774109829671,
             "min_width_mm": 3,
             "via_transitions": 0
           },
@@ -393,30 +393,30 @@
             {
               "copper_mm": 0.0348,
               "assumed_copper_C": 25,
-              "R_ohm": 0.007114487352503002,
-              "peak_drop_V": 0.022497984418370722,
-              "heat_W": 0.035572436762515015
+              "R_ohm": 0.007114487352503,
+              "peak_drop_V": 0.022497984418370715,
+              "heat_W": 0.03557243676251501
             },
             {
               "copper_mm": 0.0348,
               "assumed_copper_C": 85,
-              "R_ohm": 0.008779277392988704,
-              "peak_drop_V": 0.02776251277226947,
-              "heat_W": 0.04389638696494353
+              "R_ohm": 0.008779277392988703,
+              "peak_drop_V": 0.027762512772269467,
+              "heat_W": 0.04389638696494352
             },
             {
               "copper_mm": 0.0696,
               "assumed_copper_C": 25,
-              "R_ohm": 0.003557243676251501,
-              "peak_drop_V": 0.011248992209185361,
-              "heat_W": 0.017786218381257508
+              "R_ohm": 0.0035572436762515,
+              "peak_drop_V": 0.011248992209185358,
+              "heat_W": 0.017786218381257504
             },
             {
               "copper_mm": 0.0696,
               "assumed_copper_C": 85,
-              "R_ohm": 0.004389638696494352,
-              "peak_drop_V": 0.013881256386134735,
-              "heat_W": 0.021948193482471765
+              "R_ohm": 0.004389638696494351,
+              "peak_drop_V": 0.013881256386134733,
+              "heat_W": 0.02194819348247176
             }
           ]
         }
@@ -1940,9 +1940,9 @@
     }
   ],
   "sha256": {
-    "pcb/archive/v02/mono-layout-v02.json": "9b84bc50105e93fdb46ffaf82654fec954146c5ee7833c521fe6423acf0204f7",
-    "pcb/mono-layout-v03.json": "7b4d7077e552f301d78591df5c2e4943e348fb63ca5e27c1dd19302ab246fcd9",
-    "pcb/archive/v02/psu-layout-v02.json": "d2889fbd8e6ff5157feb988c7fead968ec53e50a17b3c196e3d7db4eef304b78",
-    "pcb/psu-layout-v03.json": "83ad01fc262e1d7e48bf926ceffe728bcd750f47861f263f1faf7a6ae2401f0b"
+    "pcb\\archive\\v02\\mono-layout-v02.json": "9b84bc50105e93fdb46ffaf82654fec954146c5ee7833c521fe6423acf0204f7",
+    "pcb\\mono-layout-v03.json": "7a797e80daa04d13a682d99c504103b1be0c32bd4f281dde4c7118d4da4aa477",
+    "pcb\\archive\\v02\\psu-layout-v02.json": "d2889fbd8e6ff5157feb988c7fead968ec53e50a17b3c196e3d7db4eef304b78",
+    "pcb\\psu-layout-v03.json": "26b29d98d25c45c5a2bb02d3c8a7e0a3a43065007b078ba3a50087bd860d6ab3"
   }
 }

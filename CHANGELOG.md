@@ -7,11 +7,21 @@
 
 ---
 
+## 2026-09-24：原理圖與 PCB 在本機重建
+
+- 發現這台 Windows 其實裝有 KiCad 10.0.6（不在 PATH），先前「本機無 KiCad」判斷錯誤。在 `core.autocrlf=false` 的 clone 中重建，Python 文字寫檔強制 LF。
+- 原理圖：兩份 ERC 0 違規；`verify_electrical.py` 期望值改為實購（C1／C3／C4／C8 100V、R8 0.6W），核對通過。本機無 pdftoppm，預覽 PNG 以 PyMuPDF 轉出（2400 px 長邊）。docs/02 重算結果無變化。
+- PCB：首輪 DRC 3 項（C2／R1 保留區重疊、U1 絲印字高與壓字），驗證抓到 C2 訊號地與靜音回流相碰；修正見 pcb/README。最終兩板 DRC 0 違規、0 未連通，`verify_pcb_v03.py` 通過，`analyze_pcb_v03.py` 重算、單元測試通過，預覽圖重繪。
+- 工具：`build_pcb_v03.py`／`run_pcb_drc_v03.py` 把 KiCad 在 Windows 寫出的 CRLF 轉 LF 後才雜湊；四支腳本的雜湊路徑改 `as_posix()`，避免 Windows 反斜線路徑。
+- **未重建**：`pcb/inspection-v03/`（3D、parts-audit）與 `docs/diagrams/`。
+
+---
+
 ## 2026-09-23：到貨件初量，C2 改躺式、放大板加寬
 
 - 使用者實量（尺量／目測，非卡尺）：變壓器 Ø約120、本體含出線鼓起約 50 mm、中心開孔約 Ø40、出線 8 條各約 30 cm；CDE 381LX Ø約35×50、2 腳、腳距約 10，印字 10000µF／63WV／+105°C／8040，殼上無完整料號；ROE EKE 470µF Ø約12×25、腳距約 5、腳徑約 0.8；ROE EGW 47µF 軸向約 40×Ø20、腳徑約 0.8–1.0。寫入 docs/00 §1／§1.1。
 - 使用者決定 EGW 躺著裝、放大板加寬。新增 `BP_Axial_L40_D20_P50`；`pcb_layout_v03.py` 放大板 115×90、C2 移至 (72,80) 轉 90°、R8／C8／JP1 右移、三段走線改道；`CP_D12.5_P5` 鑽孔 0.9→1.0；預覽圖尺寸文字與系統圖位置同步。
-- **板檔、DRC、預覽圖、parts-audit 皆未重建**（本機無 KiCad）。自寫座標幾何檢查無新增違規，不取代 DRC。兩片放大板加寬後，機殼內寬需求增加約 30 mm，機殼估算待重算。
+- **板檔、DRC、預覽圖、parts-audit 皆未重建**（當時誤以為本機無 KiCad；9/24 已重建板檔）。自寫座標幾何檢查無新增違規，不取代 DRC。兩片放大板加寬後，機殼內寬需求增加約 30 mm，機殼估算待重算。
 
 ---
 

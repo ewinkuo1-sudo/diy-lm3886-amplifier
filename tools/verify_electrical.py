@@ -54,11 +54,11 @@ def verify():
     for base, u, coil in [(0, 'U1', 'L1'), (100, 'U2', 'L2')]:
         wanted = {u: 'LM3886T', coil: '0.7uH / air core'}
         for number, value in {1: '1M', 2: '22k', 3: '1k / 1%', 4: '20k / 1%',
-                              5: '2.7R / 2W', 6: '1k', 7: '10R / 2W', 8: '22k / 0.25W'}.items():
+                              5: '2.7R / 2W', 6: '1k', 7: '10R / 2W', 8: '22k / 0.6W'}.items():
             wanted[f'R{base+number}'] = value
-        for number, value in {1: '2.2u / 63V film', 2: '47u / 63V BP', 3: '100n / 63V',
-                              4: '100n / 63V', 5: '100n / 100V film', 6: '470u / 63V',
-                              7: '470u / 63V', 8: '100u / 63V'}.items():
+        for number, value in {1: '2.2u / 100V film', 2: '47u / 63V BP', 3: '100n / 100V',
+                              4: '100n / 100V', 5: '100n / 100V film', 6: '470u / 63V',
+                              7: '470u / 63V', 8: '100u / 100V'}.items():
             wanted[f'C{base+number}'] = value
         for ref, value in wanted.items():
             if values.get(ref) != value:

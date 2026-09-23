@@ -70,7 +70,7 @@ allrows=[]
 for key in ['mono','psu']:
  name=key+'-layout-v03';data=json.loads((P/(name+'.json')).read_text());parts={c['ref']:c for c in data['parts']}
  for ext in ['.json','.kicad_pcb','.kicad_pro']:
-  f=P/(name+ext);manifest['sources'][str(f.relative_to(R))]=sha(f)
+  f=P/(name+ext);manifest['sources'][f.relative_to(R).as_posix()]=sha(f)
  for c in parts.values():(O/'3d/models'/(c['footprint']+'.wrl')).write_text(model(c))
  dest=O/'3d'/(name+'-preview.kicad_pcb');count=add_models(P/(name+'.kicad_pcb'),dest,parts)
  (dest.with_suffix('.kicad_pro')).write_bytes((P/(name+'.kicad_pro')).read_bytes())

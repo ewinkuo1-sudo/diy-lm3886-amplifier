@@ -39,5 +39,5 @@ def silk_texts(name,pads,body):
  if name.startswith('LM3886T'):
   x0,y0,x1,y1=body
   texts.append(('1',(-2.3,0),.8))             # pin-1 marker beside pad 1
-  texts.append(('TAB = V-  HEATSINK',((x0+x1)/2,(y0+y1)/2),.7))   # inside tab outline
+  texts.append(('TAB = V-  HEATSINK',((x0+x1)/2,(y0+y1)/2),.8))   # inside tab outline
  return texts

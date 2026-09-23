@@ -53,5 +53,5 @@ for key in ['mono','psu']:
  for side in ['top','bottom']:assert '</svg>' in (O/'native'/f'{key}-{side}.svg').read_text()
 log=json.loads((O/'native-export-log.json').read_text());assert len(log)==10 and all(x['returncode']==0 for x in log)
 assert len(audit)==37
-report={'date':'2026-09-18','checks':checks,'audit_rows':len(audit),'native_exports':len(log),'scope':'source/geometry/model/asset consistency only; no new ERC/DRC/hardware testing','manual_visual_review':'Top/bottom copper, assembly polarity, native top/bottom/isometric component renders reviewed; see README limitations.','files':{str(f.relative_to(R)):sha(f) for f in sorted(O.rglob('*')) if f.is_file() and f.name!='verification.json' and f.suffix not in ['.kicad_prl']}}
+report={'date':'2026-09-18','checks':checks,'audit_rows':len(audit),'native_exports':len(log),'scope':'source/geometry/model/asset consistency only; no new ERC/DRC/hardware testing','manual_visual_review':'Top/bottom copper, assembly polarity, native top/bottom/isometric component renders reviewed; see README limitations.','files':{f.relative_to(R).as_posix():sha(f) for f in sorted(O.rglob('*')) if f.is_file() and f.name!='verification.json' and f.suffix not in ['.kicad_prl']}}
 (O/'verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(checks,indent=2))

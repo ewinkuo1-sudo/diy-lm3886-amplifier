@@ -2,7 +2,7 @@
 
 > 2026-09-16：本目錄兩份圖面、PDF／PNG 與計算已更新成 V0.3 C 方案；檔名保留以維持連結。12Vac 控制／一次側仍待設計，電氣檢查結果見 validation.md。
 >
-> ⚠️ 2026-09-22：`tools/build_schematic.py`／`build_power_supply.py` 已改成實購規格（C1／C3／C4／C8 100V、R8 0.6W）、title block 與電源圖註記已更新，**但本目錄的 `.kicad_sch`、PDF、PNG、BOM 與 validation.md 尚未重建**（本機沒有 KiCad）。目前這些產物仍顯示 63V／0.25W 與「NOT purchased」。等電解尺寸實測、封裝改完，一起在有 KiCad 的機器跑 `python3 tools/rebuild.py`。
+> 2026-09-24：本目錄的 `.kicad_sch`、PDF、PNG、BOM 已以 KiCad 10.0.6 重建，帶入實購規格（C1／C3／C4／C8 100V、R8 0.6W）；ERC 0 違規，netlist 獨立核對通過。
 
 ![原理圖預覽](preview/lm3886-v01.png)
 

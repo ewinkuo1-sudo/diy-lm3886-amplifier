@@ -6,13 +6,13 @@ AMP=dict(name='mono-layout-v03',size=(115,90),source='netlist.xml',layout={
 'U1':('LM3886T_UNVERIFIED',39,14,0),
 'J1':('Terminal2_P5.08',94,27,270),'J2':('Terminal2_P5.08',10,76,0),'J5':('Terminal3_P5.08',40,77,0),
 'C1':('Film_P15',87,12,180),'R1':('R_P7.5',84,27,270),'R6':('R_P7.5',68,12,180),'R2':('R_P7.5',68,25,90),
-'R4':('R_P7.5',55,19,180),'R3':('R_P7.5',62,24,180),'C2':('BP_Axial_L40_D20_P50',72,80,90),
+'R4':('R_P7.5',55,19,180),'R3':('R_P7.5',62,24,180),'C2':('BP_Axial_L40_D20_P50',70.5,80,90),
 'C3':('Film_P5',32,19,0),'C4':('Film_P5',34,13,90),
 'C7':('CP_D12.5_P5',32,41,0),'C6':('CP_D12.5_P5',49,36,0),
 'R5':('R_2W_P20',12,25,0),'C5':('Film_P5',8,18,0),
 'L1':('AirCoil_P20',10,45,270),'R7':('R_2W_P20',23,45,270),
 'R8':('R_P7.5',100,48,270),'C8':('CP_D12.5_P5',103,66,180),'JP1':('Header2_P2.54',110,52,270),
-},anchors={'STAR':(43,50),'SG':(73,43),'via_mute':(58,18),'via_zobel_g1':(20,40),'via_zobel_g2':(20,49)},labels=[
+},anchors={'STAR':(43,50),'SG':(73,43),'via_mute':(58,18),'via_zobel_g1':(20,40),'via_zobel_g2':(20,49),'via_mute_ret':(62,71)},labels=[
 ('TAB=VEE',67,6),('RCA IN',90,40),('TEST OUT',13,83),('V+  G  V-',45,83),('RUN',110,60),('GND STAR',44,55),
 ],routes=[
 # Local signal network; feedback is picked off the IC output before L1.
@@ -48,7 +48,9 @@ AMP=dict(name='mono-layout-v03',size=(115,90),source='netlist.xml',layout={
 ('GND','B.Cu',.6,['R2.1',(76,26),(76,43),'SG'],'signal-ground'),
 ('GND','B.Cu',1.0,['C2.1','SG'],'signal-ground'),
 ('GND','B.Cu',.8,['SG',(65,50),'STAR'],'signal-ground-to-star'),
-('GND','B.Cu',.6,['C8.1',(92,57),(86,55),(51,55),'STAR'],'mute-return'),
+# Mute return crosses under C2 on F.Cu, then drops to B.Cu west of C2's signal-ground run so the branches meet only at STAR.
+('GND','F.Cu',.6,['C8.1',(100,71),'via_mute_ret'],'mute-return'),
+('GND','B.Cu',.6,['via_mute_ret',(51,55),'STAR'],'mute-return'),
 # Bulk feed then local HF bypass. Widths are provisional, not a current rating.
 ('VCC','F.Cu',3,['J5.1',(34,71),(34,58),(32,56),'C7.1'],'positive-feed'),
 ('VCC','F.Cu',2,['C7.1',(29,38),(29,31),(27,29),(27,19),'C3.1'],'positive-local'),

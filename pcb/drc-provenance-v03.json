@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-17T01:49:54.210214+08:00",
+  "timestamp": "2026-09-24T00:10:14.995585+08:00",
   "boards": {
     "mono": {
       "rules": {
@@ -11,10 +11,10 @@
       },
       "kicad_version": "10.0.6",
       "sha256": {
-        "pcb/mono-layout-v03.kicad_pcb": "b60dc7ad6b2b30e708d3764dd421a8c767193a2354e4e1694b6e5f543a786601",
+        "pcb/mono-layout-v03.kicad_pcb": "85637e0323dab14cfd72cd47cfaefe01de0342a08061bc4baa2f2cc83b2028fc",
         "pcb/mono-layout-v03.kicad_pro": "f124f35407c4949f95884dd2d512d28ca8b928a726441f5e4ee4d084de3f6c41",
-        "pcb/mono-v03-drc.json": "5e02b56eae82dcb3f9e0132b43a2a82115f211d22476c893842861ec95bf6a69",
-        "pcb/mono-layout-v03.json": "7b4d7077e552f301d78591df5c2e4943e348fb63ca5e27c1dd19302ab246fcd9"
+        "pcb/mono-v03-drc.json": "d36f1c4dd77e38dec667c4fd14ac058f603b113308295425e4a4dcdf6de70aa8",
+        "pcb/mono-layout-v03.json": "7a797e80daa04d13a682d99c504103b1be0c32bd4f281dde4c7118d4da4aa477"
       }
     },
     "psu": {
@@ -27,10 +27,10 @@
       },
       "kicad_version": "10.0.6",
       "sha256": {
-        "pcb/psu-layout-v03.kicad_pcb": "405e2c6045d675e8ea73d2985765992b002c39716e740b18862af4f778c636e8",
+        "pcb/psu-layout-v03.kicad_pcb": "857cfbcf825ce2112d360f346d6e33325f290edf1632581ecb81c3ba46d9756b",
         "pcb/psu-layout-v03.kicad_pro": "d36c962a47c0292b7e63130960958eb0497c617e3a0f109dd27906f6b8666a00",
-        "pcb/psu-v03-drc.json": "770c04666569a61118dc55ffb49bc1c35ab197a79f4ec5fb823d5717c3118297",
-        "pcb/psu-layout-v03.json": "83ad01fc262e1d7e48bf926ceffe728bcd750f47861f263f1faf7a6ae2401f0b"
+        "pcb/psu-v03-drc.json": "2d6a9a03dbe40737f7eda0787b42a8b1ad6547d060cc83c8aaa30ec6609fffa3",
+        "pcb/psu-layout-v03.json": "26b29d98d25c45c5a2bb02d3c8a7e0a3a43065007b078ba3a50087bd860d6ab3"
       }
     }
   }
