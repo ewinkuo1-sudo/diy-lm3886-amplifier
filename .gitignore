@@ -20,3 +20,7 @@ pcb/inspection-v03/3d/models/
 pcb/inspection-v03/3d/*-preview.kicad_pcb
 pcb/inspection-v03/3d/*-preview.kicad_pro
 pcb/inspection-v03/3d/raw-*.png
+pcb/inspection-v04/3d/models/
+pcb/inspection-v04/3d/*-preview.kicad_pcb
+pcb/inspection-v04/3d/*-preview.kicad_pro
+pcb/inspection-v04/3d/raw-*.png

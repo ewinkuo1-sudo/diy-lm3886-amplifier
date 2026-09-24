@@ -1,0 +1,36 @@
+{
+  "baseline": "2e31133",
+  "scope": "review artifacts only; PCB V0.4 (mono D + psu) layout unchanged",
+  "sources": {
+    "pcb/mono-layout-v04d.json": "2b07feec8456b30b4258b4993441df61d88eda782e5c25753702462450854cd2",
+    "pcb/mono-layout-v04d.kicad_pcb": "da360884f87ca0795fd9b32fb8401a5bfb8f0e24172fec8688ee0a9e107ddccc",
+    "pcb/mono-layout-v04d.kicad_pro": "375f04bccaa2e9e1f49d3c7cc6312f7216124fd1709b31ceb326053f294b67fa",
+    "pcb/psu-layout-v04.json": "73e0a5ab3604b09b9fb655843615988c40a4ce902f8cd486dc6985b1bedafce9",
+    "pcb/psu-layout-v04.kicad_pcb": "4a2ab8fbb671bb593162da35b4c47e6defb0cf59e77a04164f0ce16a1b05fcbe",
+    "pcb/psu-layout-v04.kicad_pro": "6b561d58006961200b8d4c0ecddf007e906388f7bb87af48e6de0337eadd429a"
+  },
+  "boards": {
+    "mono": {
+      "components": 22,
+      "assigned_models": 22,
+      "pads": 54,
+      "tracks": 58,
+      "size_mm": [
+        115,
+        90
+      ]
+    },
+    "psu": {
+      "components": 22,
+      "assigned_models": 22,
+      "pads": 50,
+      "tracks": 88,
+      "size_mm": [
+        160,
+        120
+      ]
+    }
+  },
+  "model_units": "1 VRML unit = 2.54 mm; bodies generated in mm then scaled",
+  "height_status": "All heights are illustrative assumptions, not verified or guaranteed maximum envelopes."
+}

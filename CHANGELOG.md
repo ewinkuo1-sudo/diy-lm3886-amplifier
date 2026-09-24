@@ -16,6 +16,13 @@
 
 ---
 
+## 2026-09-24（深夜）：V0.4 的 3D／正反面／組裝圖與零件核對表
+
+- 新增 `pcb/inspection-v04/`（放大板 D＋電源板）：正反面銅箔 SVG／PNG（D 的背面圖畫出鋪銅）、組裝極性圖、逐腳對照、KiCad 原生 SVG、六張 3D 算繪＋總覽、`parts-audit.md/json`（44 列，含 snubber 預留位與 J204）。
+- 工具 `tools/*_inspection_v04.py` 由 V0.3 版衍生；SVG→PNG 改用 PyMuPDF 取代 node／sharp。`verify_pcb_inspection_v04.py`（KiCad Python）通過：preview 板只多模型節點、22＋22 模型外框、54＋50 焊盤網路對照。中間產物加入 .gitignore。
+
+---
+
 ## 2026-09-24（深夜）：V0.4 併入 main，V0.3 退為歷史版本
 
 - 新增 `pcb/preview/system-layout-v04.png`（兩片 D＋電源板 V0.4）。README／pcb/README／HANDOFF 改為「V0.4 現行、V0.3 歷史」，V0.3 檔案與雜湊原樣保留。`v04-layout` 以 fast-forward 併入 `main`。
