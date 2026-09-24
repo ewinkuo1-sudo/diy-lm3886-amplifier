@@ -16,6 +16,12 @@
 
 ---
 
+## 2026-09-24（深夜）：V0.4 併入 main，V0.3 退為歷史版本
+
+- 新增 `pcb/preview/system-layout-v04.png`（兩片 D＋電源板 V0.4）。README／pcb/README／HANDOFF 改為「V0.4 現行、V0.3 歷史」，V0.3 檔案與雜湊原樣保留。`v04-layout` 以 fast-forward 併入 `main`。
+
+---
+
 ## 2026-09-24（深夜）：放大板選定 D 為主、C 保留；D 輸出主幹改頂層
 
 - 使用者看過三張預覽後決定以變體 D（整面接地）為主要方案，C 板檔保留。
