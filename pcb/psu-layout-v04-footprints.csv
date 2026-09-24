@@ -1,0 +1,23 @@
+reference,footprint,status
+J201,Terminal2_P5.08,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+J202,Terminal2_P5.08,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+F201,Fuse5x20_P25,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+F202,Fuse5x20_P25,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+BR1,BridgeTerminal4_P5.08,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+BR2,BridgeTerminal4_P5.08,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C201,CP_D35_P10,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C202,CP_D35_P10,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C203,CP_D35_P10,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C204,CP_D35_P10,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+R201,R_2W_P20,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+R202,R_2W_P20,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C207,Film_P15,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C208,Film_P15,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+R203,R_2W_P20,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C209,Film_P15,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C210,Film_P15,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+R204,R_2W_P20,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C205,Film_P5,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+C206,Film_P5,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+J203,Terminal3_P5.08,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00
+J204,Terminal3_P5.08,UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00

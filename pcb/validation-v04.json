@@ -37,6 +37,13 @@
           "filled_regions": 1
         }
       ]
+    },
+    "psu-layout-v04": {
+      "pad_net_count": 50,
+      "native_DRC_violations": 0,
+      "native_DRC_unconnected": 0,
+      "tracks": 88,
+      "vias": 0
     }
   },
   "kicad_version": "10.0.6",
@@ -49,6 +56,10 @@
     "pcb/mono-layout-v04d.kicad_pcb": "87a98d3e626457bd94261d7b34a0467b495597da6d5df05720bf8af867087f8b",
     "pcb/mono-layout-v04d.kicad_pro": "375f04bccaa2e9e1f49d3c7cc6312f7216124fd1709b31ceb326053f294b67fa",
     "pcb/mono-v04d-drc.json": "b7855fcb78036a27f0fb614b434d30b8ba071c357c2760b1f99e6b8928cb35f0",
-    "electrical/lm3886-v01.kicad_sch": "7e4c4d7ebf146ec051ec72f926a239aa9ff3e011f8a352e2c151c8ac77f56fca"
+    "pcb/psu-layout-v04.kicad_pcb": "4a2ab8fbb671bb593162da35b4c47e6defb0cf59e77a04164f0ce16a1b05fcbe",
+    "pcb/psu-layout-v04.kicad_pro": "6b561d58006961200b8d4c0ecddf007e906388f7bb87af48e6de0337eadd429a",
+    "pcb/psu-v04-drc.json": "bfade7c11217cb717c7c501d5e72ad072c799944663b4653c20f54ff2856a970",
+    "electrical/lm3886-v01.kicad_sch": "7e4c4d7ebf146ec051ec72f926a239aa9ff3e011f8a352e2c151c8ac77f56fca",
+    "electrical/internal-psu-v02.kicad_sch": "9236a91c56c8df3484d3e006f5511c988fbac097c8b10edcf94ab7bc516bdf35"
   }
 }

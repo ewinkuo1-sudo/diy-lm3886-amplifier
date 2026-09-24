@@ -16,6 +16,14 @@
 
 ---
 
+## 2026-09-24（深夜）：PCB V0.4 電源板畫好、DRC 0，三塊板齊
+
+- 新增 `tools/pcb_layout_v04_psu.py`，`build_pcb_v04.py` 一次建三板。電源板加 J203／J204 每聲道 3P 端子（STAR 移到端子旁）、每繞組 snubber 預留位一列（只留孔）。
+- DRC 第一輪 1 錯（負半邊 snubber 回線壓到 V- 充電線）＋絲印警告，改線位後 0 違規 0 未連通；`verify_pcb_v04.py` 三板通過並綁定雜湊；`render_pcb_v04.py` 出三張圖。
+- 放大板 C／D 板檔未變（生成器重跑只動 UUID，已還原）。
+
+---
+
 ## 2026-09-24（深夜）：PCB V0.4 放大板變體 D 畫好、DRC 0
 
 - `pcb_layout_v04.py` 加 `AMP_D`（座標與 C 相同、拿掉 GND 分路、加底層 GND 鋪銅）；`build_pcb_v04.py` 加 zone 建立與 `ZONE_FILLER` 填銅、填銅多邊形寫進 JSON；`render_pcb_v04.py` 畫鋪銅；`verify_pcb_v04.py` 對有鋪銅的板改檢查連通區數。

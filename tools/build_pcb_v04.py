@@ -8,13 +8,14 @@ import json,sys
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import build_pcb_v03 as v03
 from pcb_layout_v04 import AMP_C,AMP_D
+from pcb_layout_v04_psu import PSU_V04
 import pcbnew as p
 
 OUT=v03.OUT
 # Reference labels that build() pins for V0.3 land on other parts in V0.4; move them after the fact.
 REFS={'U1':(60,3),'C3':(54.5,19),'C4':(54.5,24.5),'J1':(90,21.5),'C2':(87,66),'J5':(50.8,72),'C5':(59,45),'R5':(36,58),'R4':(61.2,21.75),'R3':(70.8,21.75),'R1':(76.75,16.9),'C1':(78.5,2.5),'L1':(9.5,55),'R7':(20.5,55),'R2':(66.25,11.6)}
-REF_POS={'mono-layout-v04c':REFS,'mono-layout-v04d':REFS}
-BOARDS=(AMP_C,AMP_D)
+REF_POS={'mono-layout-v04c':REFS,'mono-layout-v04d':REFS,'psu-layout-v04':{'J203':(143,39.5),'J204':(143,80),'C207':(17.5,55.5),'C208':(37.5,55.5),'R203':(59,53),'C209':(17.5,115.5),'C210':(37.5,115.5),'R204':(59,113),'C205':(135.5,48),'C206':(140.5,70.5)}}
+BOARDS=(AMP_C,AMP_D,PSU_V04)
 MM=v03.MM
 def add_zones(board,zones,nets):
  out=[]
@@ -48,7 +49,7 @@ if __name__=='__main__':
     f.Reference().SetPosition(v03.v(*REF_POS[data['name']][f.GetReference()]))
   p.SaveBoard(str(path),board);v03.lf(path)
   (OUT/(data['name']+'-footprints.csv')).write_text('reference,footprint,status\n'+''.join(f"{part['ref']},{part['footprint']},UNVERIFIED - same provisional DraftV03 outlines as V0.3; see pcb/mono-layout-v03-footprints.csv and docs/00\n" for part in data['parts']))
- print('V0.4 variant C: routed engineering draft; no manufacturing release.')
+ print('V0.4 boards: routed engineering drafts; no manufacturing release.')
  for config in BOARDS:
   project=OUT/(config['name']+'.kicad_pro')
   settings=json.loads(project.read_text())

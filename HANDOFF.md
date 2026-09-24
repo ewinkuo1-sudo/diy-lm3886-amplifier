@@ -18,7 +18,7 @@
 3. **變壓器到貨後量各繞組電流與調整率** —— 用實際值定保險絲額定與整流橋規格，並更新 `tools/power_budget.py`、`tools/mains_budget.py` 的估算前提。
 4. **主電容高度確定後才能定機殼** —— 目前推導的內部空間下限為寬 ≥300／深 ≥250／高 ≥90 mm（**以 100×90 放大板推導，放大板已加寬為 115×90，寬度要重算**），機殼未下單、熱阻未標、賣家未確認。
 5. **V0.4 控制板**：需求在 [docs/13](docs/13-喇叭保護與啟停設計計畫.md)，設計草案在 [docs/14](docs/14-V0.4-控制與保護板設計草案.md)（2026-09-22 起）。變壓器到貨後照 14 §8 量五項寫回，再照 §7 選繼電器、定 R_s；之後才畫 CTRL 原理圖（新增 `tools/build_control_board.py`，比照兩份現有生成器）。UPC1237 模組到貨照 14 §9 驗證，不直接裝機。
-5b. **PCB V0.4 放大板**：變體 C 與 D 都已於 2026-09-24 畫好（`pcb/mono-layout-v04c.*`／`v04d.*`，各 DRC 0，見 pcb/README「PCB V0.4」節）；接著畫電源板 V0.4（原理圖已含 J204／snubber），然後三張並排預覽給使用者選 C 或 D。重建指令：`kicad-cli sch export netlist … electrical/netlist.xml` → KiCad 內建 python 跑 `tools/build_pcb_v04.py`（會同時建 C、D 兩板） → `kicad-cli pcb drc --format json --exit-code-violations -o pcb/mono-v04c-drc.json pcb/mono-layout-v04c.kicad_pcb` → `py -3.13 tools/verify_pcb_v04.py` → `tools/render_pcb_v04.py`；跑完 `git checkout -- pcb/DraftV03.pretty`（生成器只會重寫 UUID）。
+5b. **PCB V0.4 三塊板已畫好**（2026-09-24）：放大板變體 C／D（`pcb/mono-layout-v04c.*`／`v04d.*`）與電源板（`pcb/psu-layout-v04.*`），各 DRC 0，見 pcb/README「PCB V0.4」節。**等使用者看圖選 C 或 D**；選定後再做 V0.4 的 current-budget／analyze、3D 與導讀圖、系統並排圖，並決定要不要把 V0.3 退為歷史版本。重建指令：`kicad-cli sch export netlist … electrical/netlist.xml` → KiCad 內建 python 跑 `tools/build_pcb_v04.py`（會同時建 C、D、電源板三板） → `kicad-cli pcb drc --format json --exit-code-violations -o pcb/mono-v04c-drc.json pcb/mono-layout-v04c.kicad_pcb` → `py -3.13 tools/verify_pcb_v04.py` → `tools/render_pcb_v04.py`；跑完 `git checkout -- pcb/DraftV03.pretty`（生成器只會重寫 UUID）。
 6. Z10 RCA 規格已核對為 2.5Vrms／0dBFS；以假負載校正音量位置及削波點。一次側按 110V／60Hz 規劃，實際變壓器額定與調整率仍須核對。
 7. 放大板先以限流實驗電源測試，內建電源獨立驗證後再整合；完成假負載／熱／失真量測後才接喇叭。
 
