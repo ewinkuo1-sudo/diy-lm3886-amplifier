@@ -1,6 +1,6 @@
 # 接班進度
 
-更新：2026-09-24，**PCB V0.4 已併入 main 成為現行版本**（放大板變體 D 為主、C 保留、電源板加每聲道端子與 snubber 預留位；三板 DRC 0），V0.3 退為歷史。PCB 3D／正反面導讀圖已重建為 V0.4（`pcb/inspection-v04/`）；`docs/diagrams/` 的電路導讀圖仍是舊版（見「環境注意」）。逐日紀錄在 [CHANGELOG.md](CHANGELOG.md)。
+更新：2026-09-24，**PCB V0.4 已併入 main 成為現行版本**（放大板變體 D 為主、C 保留、電源板加每聲道端子與 snubber 預留位；三板 DRC 0），V0.3 退為歷史。PCB 3D／正反面導讀圖已重建為 V0.4（`pcb/inspection-v04/`）；`docs/diagrams/` 亦已重建並新增單聲道完整接線圖 `lm3886_full_v04.png`。逐日紀錄在 [CHANGELOG.md](CHANGELOG.md)。
 
 使用者指定**內建供電、純後級，外接現有 DAC 與前級**。已確認 Eversolo DAC-Z10（DAC＋前級）及 RCA 介面；音量由 Z10 控制。本機採固定增益。
 

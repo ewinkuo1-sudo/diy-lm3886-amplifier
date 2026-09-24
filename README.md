@@ -4,11 +4,11 @@
 
 這是第三個獨立擴大機專案，可與 [TPA3255 練習機](https://github.com/ewinkuo1-sudo/diy-tpa3255-amplifier) 及 [Purifi 主力機](https://github.com/ewinkuo1-sudo/diy-purifi-amplifier) 比較架構與製作經驗。
 
-![V0.3 單聲道完整電路導讀](docs/diagrams/lm3886_complete.png)
+![V0.4 單聲道完整接線圖](docs/diagrams/lm3886_full_v04.png)
 
 ## 目前狀態（2026-09-24）
 
-- **PCB V0.4 為現行版本**（2026-09-24 併入 main）：放大板**變體 D**（底層整面接地）為主、變體 C（改良星型）保留備查，電源板加每聲道一組輸出端子與每繞組 snubber 預留位。三板 KiCad 10.0.6 DRC 0 違規、0 未連通，電路與零件沿用 V0.3 不變。**仍是工程草稿，不可送製**：封裝、溫升、散熱、機構、變壓器振鈴都未驗證。V0.3 退為歷史版本，檔案保留。詳見 [pcb/README](pcb/README.md)；3D／正反面導讀圖已重建為 V0.4（[inspection-v04](pcb/inspection-v04/README.md)）。
+- **PCB V0.4 為現行版本**（2026-09-24 併入 main）：放大板**變體 D**（底層整面接地）為主、變體 C（改良星型）保留備查，電源板加每聲道一組輸出端子與每繞組 snubber 預留位。三板 KiCad 10.0.6 DRC 0 違規、0 未連通，電路與零件沿用 V0.3 不變。**仍是工程草稿，不可送製**：封裝、溫升、散熱、機構、變壓器振鈴都未驗證。V0.3 退為歷史版本，檔案保留。詳見 [pcb/README](pcb/README.md)；3D／正反面導讀圖已重建為 V0.4（[inspection-v04](pcb/inspection-v04/README.md)），電路導讀圖與電源板原理圖預覽也已同步（[docs/diagrams](docs/diagrams/README.md)）。
 
 - **已選 C 方案**：完整雙聲道、雙橋整流、4×10,000µF／63V 主濾波電容（每軌 20,000µF），約 ±30V 等級供電，每聲道約 30～40W／8Ω 為探索範圍而非額定。
 - **2026-09-22 到貨**：環形變壓器（賣場標示 200W、兩組獨立 22Vac＋單 12Vac）與 9/20 下單的全部電阻、WIMA、CDE、ROE 共 40 件（露天 yosontw）。**尚未開箱核對與量測**；VA 與各繞組電流仍未知。
@@ -70,7 +70,7 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 | [內建電源與機構](docs/05-內建電源與機構.md) | 變壓器、整流、接地、機殼分區與電源估算 |
 | [喇叭保護與啟停設計計畫](docs/13-喇叭保護與啟停設計計畫.md) | V0.4 需求：保護、延遲、DC 偵測與啟停方案 |
 | [V0.4 控制與保護板設計草案](docs/14-V0.4-控制與保護板設計草案.md) | 控制板架構、啟停時序、與現有板介面、繼電器篩選、軟啟動與輔助電源計算 |
-| [導讀圖索引](docs/diagrams/README.md) | 六張中文電路導讀圖與重建方式 |
+| [導讀圖索引](docs/diagrams/README.md) | 單聲道完整接線圖（放大板＋電源板全部畫出）與五張中文導讀圖 |
 | [BOM 草案](electrical/bom-draft.csv) | 由 KiCad netlist 匯出，含選型條件 |
 | [驗證紀錄](electrical/validation.md) | ERC、網路核對與未驗證事項 |
 | [原理圖說明](electrical/README.md) | 放大板與電源次級 KiCad 圖、看圖與重建方式 |

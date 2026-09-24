@@ -16,6 +16,14 @@
 
 ---
 
+## 2026-09-24（深夜）：單聲道完整接線圖、電源板原理圖預覽同步、導讀圖重建
+
+- 使用者指出原理圖看起來不完整：KiCad 圖以網路標籤代替畫線，且電源板預覽 PNG／PDF 是改 J204／snubber 之前匯出的。重新匯出 `electrical/preview/internal-psu-v02.pdf/.png`（ERC 0）。
+- 新增 `tools/build_diagram_full_v04.py` → `docs/diagrams/lm3886_full_v04.png`：放大板 D 22 件＋電源板 22 件全部以實線畫出（電源、去耦、靜音、回授、Zobel、J5↔J203 線束、J204），元件編號＝板上絲印。
+- `build_diagrams.py`：舊「完整電路總覽」停產並移到 `docs/diagrams/archive-v03/`；其餘五張重建，色塊圖彩色框依新 PDF 版面重新對位，文字改 V0.4／到貨現況；`render_diagrams.py` 以 PyMuPDF 取代 sharp。`sources.json` 重綁。
+
+---
+
 ## 2026-09-24（深夜）：V0.4 的 3D／正反面／組裝圖與零件核對表
 
 - 新增 `pcb/inspection-v04/`（放大板 D＋電源板）：正反面銅箔 SVG／PNG（D 的背面圖畫出鋪銅）、組裝極性圖、逐腳對照、KiCad 原生 SVG、六張 3D 算繪＋總覽、`parts-audit.md/json`（44 列，含 snubber 預留位與 J204）。

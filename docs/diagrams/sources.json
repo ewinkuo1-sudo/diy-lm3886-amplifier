@@ -1,12 +1,13 @@
 {
-  "version": "Plan C V0.3",
-  "updated": "2026-09-22",
+  "version": "Plan C PCB V0.4",
+  "updated": "2026-09-24",
   "note": "kicad_sch and pcb/README.md removed from binding: sch UUIDs change per rebuild, README changes independently of the diagrams. Text sources hashed LF-normalised.",
   "sha256": {
     "tools/build_schematic.py": "c943531a294a3532af532ec939ca4abd24d9119bca27fed08f77a6866aa5416f",
-    "tools/build_power_supply.py": "7cb874a18e599da96926e50614fbc7ccd4f8e63c99c434299bff484368b797f8",
-    "tools/build_diagrams.py": "832ed5ee525d03fd13099a97cf8a2ae7f65e6e02bae3df6e00527f8f120fff50",
-    "electrical/preview/lm3886-v01.pdf": "6011aa04d3ca896a1fd929898e922d0901287a7e5438713fd8028fb59ce371c4",
-    "electrical/preview/internal-psu-v02.pdf": "497f1686285e151aa3bfb70a3be0f0c07c6275dd4f887f39e0cf716b878b9295"
+    "tools/build_power_supply.py": "0fc33cf1159affd35c3e352534bb994cccd04ab52adeb85379ae811dcbce7d08",
+    "tools/build_diagrams.py": "1c2a9edc5397fd1678c1982f29b86df4eb4ce8ace0c76053d3231fe166c341ba",
+    "tools/build_diagram_full_v04.py": "1c7d2af37a3cb5574636bf9b808d35452a852cb0f15b9701082c6f202516863d",
+    "electrical/preview/lm3886-v01.pdf": "cafd21a0d98f37895f741e67e4b761dabf1db8b7f7d8562b88f77b3ffd9ed479",
+    "electrical/preview/internal-psu-v02.pdf": "5607b744e5cec0edc5b60558f274299417150008f1fefdc1a29a3927fa909b77"
   }
 }
