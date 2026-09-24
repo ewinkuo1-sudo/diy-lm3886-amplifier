@@ -7,10 +7,17 @@ C203,1,10000u / 63V,CP,,Pin1 positive; ripple rating and dimensions TBD
 C204,1,10000u / 63V,CP,,Pin1 positive; ripple rating and dimensions TBD
 C205,1,100n / 100V film,C,,Component selection/footprint TBD
 C206,1,100n / 100V film,C,,Component selection/footprint TBD
+C207,1,TBD Cx (10n / 630V film),C,,Component selection/footprint TBD
+C208,1,TBD Cs (150n / 630V film),C,,Component selection/footprint TBD
+C209,1,TBD Cx (10n / 630V film),C,,Component selection/footprint TBD
+C210,1,TBD Cs (150n / 630V film),C,,Component selection/footprint TBD
 F201,1,TBD per transformer,Fuse,,Rating and breaking capacity TBD; this is not a selected fuse
 F202,1,TBD per transformer,Fuse,,Rating and breaking capacity TBD; this is not a selected fuse
 J201,1,T1 SEC 1,Conn2,,Component selection/footprint TBD
 J202,1,T1 SEC 2,Conn2,,Component selection/footprint TBD
-J203,1,TO AMP J5,Conn3,,Component selection/footprint TBD
+J203,1,TO L AMP J5,Conn3,,Component selection/footprint TBD
+J204,1,TO R AMP J5,Conn3,,Component selection/footprint TBD
 R201,1,2.2k / 2W BLEED,R,,Component selection/footprint TBD
 R202,1,2.2k / 2W BLEED,R,,Component selection/footprint TBD
+R203,1,TBD Rs (10R-47R / 2W),R,,Component selection/footprint TBD
+R204,1,TBD Rs (10R-47R / 2W),R,,Component selection/footprint TBD
