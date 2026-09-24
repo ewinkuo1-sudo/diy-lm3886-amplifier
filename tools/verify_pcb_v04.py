@@ -15,7 +15,7 @@ def family(track):
  g=track['group']
  return 'signal' if g.startswith('signal-ground') else g
 report={'status':'PASS','limits':'Draft only. Footprints, heating, stability, enclosure and harness remain unverified.','boards':{}}
-for name,source in [('mono-layout-v04c','netlist.xml')]:
+for name,source in [('mono-layout-v04c','netlist.xml'),('mono-layout-v04d','netlist.xml')]:
  data=json.loads((R/'pcb'/f'{name}.json').read_text(encoding='utf-8'))
  drc=json.loads((R/'pcb'/(name.replace('-layout','')+'-drc.json')).read_text(encoding='utf-8'))
  assert not drc['violations'] and not drc['unconnected_items'],name
@@ -27,6 +27,11 @@ for name,source in [('mono-layout-v04c','netlist.xml')]:
  actual={(p['ref'],p['number']):p['net'] for p in data['pads']}
  assert actual==expected,(name,'pad net mismatch')
  record={'pad_net_count':len(actual),'native_DRC_violations':0,'native_DRC_unconnected':0,'tracks':len(data['tracks']),'vias':len(data['vias'])}
+ if data.get('zones'):
+  # Variant D: the B.Cu pour is the return path; branch separation does not apply. Connectivity comes from native DRC.
+  record['ground_pour']=[{'net':z['net'],'layer':z['layer'],'filled_regions':len(z['filled'])} for z in data['zones']]
+  assert all(len(z['filled'])==1 for z in data['zones']),'pour split into islands'
+  report['boards'][name]=record;continue
  ground=[t for t in data['tracks'] if t['net']=='GND'];star=data['anchors']['STAR'];contacts=[]
  for i,a in enumerate(ground):
   for b in ground[i+1:]:
@@ -45,6 +50,6 @@ for name,source in [('mono-layout-v04c','netlist.xml')]:
  report['kicad_version']=drc['kicad_version']
 report['checked_on']=datetime.date.today().isoformat()
 report['minimum_copper_clearance_mm']=json.loads((R/'pcb/mono-layout-v04c.kicad_pro').read_text())['board']['design_settings']['rules']['min_clearance']
-report['sha256']={f.relative_to(R).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in [R/'pcb/mono-layout-v04c.kicad_pcb',R/'pcb/mono-layout-v04c.kicad_pro',R/'pcb/mono-v04c-drc.json',R/'electrical/lm3886-v01.kicad_sch']}
+report['sha256']={f.relative_to(R).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in [R/'pcb/mono-layout-v04c.kicad_pcb',R/'pcb/mono-layout-v04c.kicad_pro',R/'pcb/mono-v04c-drc.json',R/'pcb/mono-layout-v04d.kicad_pcb',R/'pcb/mono-layout-v04d.kicad_pro',R/'pcb/mono-v04d-drc.json',R/'electrical/lm3886-v01.kicad_sch']}
 (R/'pcb'/'validation-v04.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report['boards'],indent=1))

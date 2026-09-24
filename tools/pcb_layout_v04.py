@@ -79,3 +79,10 @@ AMP_C=dict(name='mono-layout-v04c',size=(115,90),source='netlist.xml',layout={
 # mute supply runs along the bottom edge on F.Cu so it never crosses the L_MUTE run
 ('VEE','F.Cu',0.8,['J5.3',(62,86),(104,86),(113,78),(113,76),'JP1.2'],'mute-supply'),
 ])
+
+# Variant D: identical placement and signal/power copper, but every GND branch is replaced by a
+# solid B.Cu ground pour (thermal spokes to pads). The STAR anchor stays only as the label position.
+AMP_D=dict(AMP_C,name='mono-layout-v04d',
+ routes=[r for r in AMP_C['routes'] if r[0]!='GND'],
+ labels=[l for l in AMP_C['labels'] if l[0] not in ('GND STAR','SG')]+[('GND PLANE B.Cu',44,42)],
+ zones=[('GND','B.Cu',[(0,0),(115,0),(115,90),(0,90)])])

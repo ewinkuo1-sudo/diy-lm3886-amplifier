@@ -23,6 +23,20 @@
         "radius": 5
       },
       "ground_check": "No cross-family copper contact found outside the 5 mm join region; 0.1 mm centerline sampling with trace radii."
+    },
+    "mono-layout-v04d": {
+      "pad_net_count": 54,
+      "native_DRC_violations": 0,
+      "native_DRC_unconnected": 0,
+      "tracks": 60,
+      "vias": 0,
+      "ground_pour": [
+        {
+          "net": "GND",
+          "layer": "B.Cu",
+          "filled_regions": 1
+        }
+      ]
     }
   },
   "kicad_version": "10.0.6",
@@ -32,6 +46,9 @@
     "pcb/mono-layout-v04c.kicad_pcb": "d3fad86ffa6ee178e9a3b9127fbae6d373669b0266d86576702cf7e8119d6a84",
     "pcb/mono-layout-v04c.kicad_pro": "bb597d39e7d87a8d7b7293db2dfb2d1a907ce5ef68cbac2e25adbf876dbbeecb",
     "pcb/mono-v04c-drc.json": "54bfd209ece5ff218405afc732cc23d00f019e97385bc80d84c85c286c2941bc",
+    "pcb/mono-layout-v04d.kicad_pcb": "87a98d3e626457bd94261d7b34a0467b495597da6d5df05720bf8af867087f8b",
+    "pcb/mono-layout-v04d.kicad_pro": "375f04bccaa2e9e1f49d3c7cc6312f7216124fd1709b31ceb326053f294b67fa",
+    "pcb/mono-v04d-drc.json": "b7855fcb78036a27f0fb614b434d30b8ba071c357c2760b1f99e6b8928cb35f0",
     "electrical/lm3886-v01.kicad_sch": "7e4c4d7ebf146ec051ec72f926a239aa9ff3e011f8a352e2c151c8ac77f56fca"
   }
 }
