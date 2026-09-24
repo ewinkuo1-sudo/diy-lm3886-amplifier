@@ -61,7 +61,7 @@ class SVG:
 
 def signal(mode='all'):
     d=SVG(1800,870)
-    d.text(80,65,'左聲道 U1；右聲道 U2 相同，R/C 編號加 100，L1→L2、J1/J2→J3/J4。',25)
+    if mode=='all':d.text(80,65,'左聲道 U1；右聲道 U2 相同，R/C 編號加 100，L1→L2、J1/J2→J3/J4。',25)
     d.rect(800,160,230,310,'#fff0f0',RED)
     d.text(915,217,'U1 LM3886T',29,RED,'bold','middle')
     d.text(818,268,'10  +IN',24,RED);d.text(818,365,'9   −IN',24,RED)
@@ -117,8 +117,15 @@ def signal(mode='all'):
         d.panel(1120,680,610,'輸出重點',['R5 與 C5 串聯到地，是 Zobel 網路。','L1 與 R7 並聯後串入輸出，不是 DC 保護。'],GREEN)
     return d
 
+_clip=[0]
 def embed(d,other,x,y,w,h,view=None):
-    d.items.append(f'<svg x="{x}" y="{y}" width="{w}" height="{h}" overflow="hidden" viewBox="{view or f"0 0 {other.w} {other.h}"}">'+''.join(other.items)+'</svg>')
+    # Nested <svg viewBox> is mis-rendered by PyMuPDF (drawn unscaled at the origin), so place the child
+    # with an explicit clip + translate/scale group that reproduces xMidYMid-meet behaviour.
+    vx,vy,vw,vh=[float(v) for v in (view or f'0 0 {other.w} {other.h}').split()]
+    sc=min(w/vw,h/vh);tx=x+(w-vw*sc)/2-vx*sc;ty=y+(h-vh*sc)/2-vy*sc;_clip[0]+=1;cid=f'clip{_clip[0]}'
+    # PyMuPDF also ignores clip-path, so drop the child's full-canvas background instead of relying on the clip.
+    body=[i for i in other.items if not i.startswith('<rect width=')]
+    d.items.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#f8fafc"/><clipPath id="{cid}"><rect x="{x}" y="{y}" width="{w}" height="{h}"/></clipPath><g clip-path="url(#{cid})"><g transform="translate({tx:.3f} {ty:.3f}) scale({sc:.5f})">'+''.join(body)+'</g></g>')
 
 def supply(d,y=0):
     # Exact dual-bridge topology; no AC connection between the isolated windings.

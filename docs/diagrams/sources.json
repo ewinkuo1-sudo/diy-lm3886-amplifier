@@ -5,7 +5,7 @@
   "sha256": {
     "tools/build_schematic.py": "c943531a294a3532af532ec939ca4abd24d9119bca27fed08f77a6866aa5416f",
     "tools/build_power_supply.py": "0fc33cf1159affd35c3e352534bb994cccd04ab52adeb85379ae811dcbce7d08",
-    "tools/build_diagrams.py": "1c2a9edc5397fd1678c1982f29b86df4eb4ce8ace0c76053d3231fe166c341ba",
+    "tools/build_diagrams.py": "d3f3ffb0e9c61d83933d938149cc580740ad7e317b27b980d1fbbf5d4d6375b6",
     "tools/build_diagram_full_v04.py": "1c7d2af37a3cb5574636bf9b808d35452a852cb0f15b9701082c6f202516863d",
     "electrical/preview/lm3886-v01.pdf": "cafd21a0d98f37895f741e67e4b761dabf1db8b7f7d8562b88f77b3ffd9ed479",
     "electrical/preview/internal-psu-v02.pdf": "5607b744e5cec0edc5b60558f274299417150008f1fefdc1a29a3927fa909b77"

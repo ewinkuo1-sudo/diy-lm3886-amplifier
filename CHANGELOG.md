@@ -16,6 +16,12 @@
 
 ---
 
+## 2026-09-24（深夜）：修正兩張導讀圖的 PyMuPDF 渲染錯誤
+
+- `lm3886_input_stage.png`／`lm3886_ic_to_output.png` 前一筆 commit 的版本是壞的：PyMuPDF 不支援巢狀 `<svg viewBox>` 與 `clip-path`，子圖被畫在原點且蓋住標題。`build_diagrams.py` 的 `embed()` 改成明確的 translate/scale 群組並去掉子圖底色，兩張圖重建；其餘圖不受影響。
+
+---
+
 ## 2026-09-24（深夜）：單聲道完整接線圖、電源板原理圖預覽同步、導讀圖重建
 
 - 使用者指出原理圖看起來不完整：KiCad 圖以網路標籤代替畫線，且電源板預覽 PNG／PDF 是改 J204／snubber 之前匯出的。重新匯出 `electrical/preview/internal-psu-v02.pdf/.png`（ERC 0）。
