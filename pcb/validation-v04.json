@@ -28,7 +28,7 @@
       "pad_net_count": 54,
       "native_DRC_violations": 0,
       "native_DRC_unconnected": 0,
-      "tracks": 60,
+      "tracks": 58,
       "vias": 0,
       "ground_pour": [
         {
@@ -53,9 +53,9 @@
     "pcb/mono-layout-v04c.kicad_pcb": "d3fad86ffa6ee178e9a3b9127fbae6d373669b0266d86576702cf7e8119d6a84",
     "pcb/mono-layout-v04c.kicad_pro": "bb597d39e7d87a8d7b7293db2dfb2d1a907ce5ef68cbac2e25adbf876dbbeecb",
     "pcb/mono-v04c-drc.json": "54bfd209ece5ff218405afc732cc23d00f019e97385bc80d84c85c286c2941bc",
-    "pcb/mono-layout-v04d.kicad_pcb": "87a98d3e626457bd94261d7b34a0467b495597da6d5df05720bf8af867087f8b",
+    "pcb/mono-layout-v04d.kicad_pcb": "da360884f87ca0795fd9b32fb8401a5bfb8f0e24172fec8688ee0a9e107ddccc",
     "pcb/mono-layout-v04d.kicad_pro": "375f04bccaa2e9e1f49d3c7cc6312f7216124fd1709b31ceb326053f294b67fa",
-    "pcb/mono-v04d-drc.json": "b7855fcb78036a27f0fb614b434d30b8ba071c357c2760b1f99e6b8928cb35f0",
+    "pcb/mono-v04d-drc.json": "9e39b1e636691f68a17f8d121b3ab906eeb23fbe91f6062d79e54635ade7d46e",
     "pcb/psu-layout-v04.kicad_pcb": "4a2ab8fbb671bb593162da35b4c47e6defb0cf59e77a04164f0ce16a1b05fcbe",
     "pcb/psu-layout-v04.kicad_pro": "6b561d58006961200b8d4c0ecddf007e906388f7bb87af48e6de0337eadd429a",
     "pcb/psu-v04-drc.json": "bfade7c11217cb717c7c501d5e72ad072c799944663b4653c20f54ff2856a970",
