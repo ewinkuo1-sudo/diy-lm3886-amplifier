@@ -7,6 +7,15 @@
 
 ---
 
+## 2026-09-29（晚）：PCB V0.5 候選——為塞進 BZ4312A2 縮板，DRC 0
+
+- 起因：BZ4312A2 配置 A 下，V0.4 三板深度只剩 7 mm、前排寬只剩 30 mm。結論是三板架構不用重做（IC 必貼側牆、重物必在前排），只改兩塊板的形狀。
+- 放大板 D 115×90 → 90×90：C2（EGW 47µF）躺式改站立（新封裝 `BP_Axial_Vert_D20_P15`，腳距 15 為假設）、R1／C1 直立、J1 內移、靜音零件搬到右下、L_MUTE 沿上緣與右邊繞行。IC 區、輸出區、回授網路座標不動。
+- 電源板 160×120 → 125×130：AC 區搬上緣、輸出區搬下緣、電容兩欄各下面一顆轉 90°、洩放電阻進欄間空隙、snubber 預留位貼左右邊。更正：四顆電容本來就是 2×2，160 寬是兩側端子區造成的。
+- 新增 `tools/pcb_layout_v05.py`／`pcb_layout_v05_psu.py`／`build_pcb_v05.py`／`verify_pcb_v05.py`／`render_pcb_v05.py`／`draw_chassis_fit_v05.py`；產出 `pcb/*-v05*`、`validation-v05.json`（含機殼餘裕：深 7→22、前排寬 10→45）、`docs/diagrams/chassis_bz4312a2_v05_fit.png`。
+- DRC 三輪：H2 固定孔壓 C1 保留區、C205／C206 與大電容保留區重疊、R1 與 R2 保留區重疊、VEE 短樁頂到 VCC 匯流；第三輪兩板 0 違規 0 未連通。
+- 在分支 `v05-layout`，未併入 main；V0.4 仍現行。U1 未動，IC 方案 B 等三項實量。
+
 ## 2026-09-24（深夜）：PCB V0.4 放大板變體 C 畫好、DRC 0
 
 - 新增 `tools/pcb_layout_v04.py`／`build_pcb_v04.py`／`verify_pcb_v04.py`／`render_pcb_v04.py`，產出 `pcb/mono-layout-v04c.*`、`mono-v04c-drc.json`、`validation-v04.json`、預覽圖。電路與封裝沿用 V0.3，只改位置與銅箔。

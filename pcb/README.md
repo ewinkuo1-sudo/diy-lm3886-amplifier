@@ -1,6 +1,6 @@
 # PCB
 
-**現行版本是 V0.4**（2026-09-24：放大板變體 D 為主、變體 C 保留、電源板加每聲道端子與 snubber 預留位），三板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.4」各節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v04](inspection-v04/README.md)。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
+**現行版本是 V0.4**（2026-09-24：放大板變體 D 為主、變體 C 保留、電源板加每聲道端子與 snubber 預留位），三板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.4」各節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v04](inspection-v04/README.md)。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。**2026-09-29 另有 V0.5 候選**（放大板 90×90、電源板 125×130，為了塞進 BZ4312A2 而縮板，電路不變，兩板 DRC 0；見「PCB V0.5 候選」節），待使用者選定才併入。
 
 ![PCB V0.4](preview/system-layout-v04.png)
 
@@ -97,6 +97,33 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 | 原生 DRC／走線資料／封裝清單 | [psu-v04-drc.json](psu-v04-drc.json)／[psu-layout-v04.json](psu-layout-v04.json)／[footprints.csv](psu-layout-v04-footprints.csv) |
 
 **V0.4 三塊板都畫完了（放大板 C、放大板 D、電源板）**，等使用者看圖選 C 或 D。之後才做：V0.4 的 `current-budget`／`analyze` 對照、3D 與導讀圖、系統並排圖；V0.3 檔案與雜湊全部未動。
+
+## PCB V0.5 候選（機殼配合縮板，2026-09-29，待使用者選定）
+
+> ⚠️ **工程草稿，不可送製。** 電路、零件、網路與 V0.4 完全相同；只改板形與零件位置。兩板 KiCad 10.0.6 **0 DRC 違規、0 未連通**，54＋50 焊盤網路與原理圖相符，放大板底層鋪銅單一連通區、0 過孔（[validation-v05.json](validation-v05.json)）。**尚未併入 main，V0.4 仍是現行版本。**
+
+![PCB V0.5 對照 V0.4](preview/system-layout-v05.png)
+
+**為什麼要縮：** BZ4312A2 內 330×297 配置 A 下，放大板貼牆那一邊是 115 mm 那邊，直接吃深度：25（後板端子帶）＋115＋30＋120（變壓器）＝290，前面只剩 7 mm；前排變壓器 Ø120＋電源板 160 只剩 30 mm 空隙。三板分法本身沒錯（IC 一定貼側牆散熱器，重物一定在前排），要改的是兩塊板的形狀。對照圖 [docs/diagrams/chassis_bz4312a2_v05_fit.png](../docs/diagrams/chassis_bz4312a2_v05_fit.png)（`tools/draw_chassis_fit_v05.py`，板尺寸直接讀板檔 JSON）。
+
+| 板 | V0.4 | V0.5 | 改了什麼 |
+|---|---|---|---|
+| 放大板 D | 115×90 | **90×90** | C2（ROE EGW 47µF）由躺式 `BP_Axial_L40_D20_P50` 改**站立** `BP_Axial_Vert_D20_P15`（pad 1 在本體正下方、pad 2 為反折腳，腳距 15 **是假設，要拿實物彎腳量**）；R1 改直立 (73.5,14.5)、C1 改沿右邊直立 (85.5,23)、J1 移到 C1 正下方 (85,30)，右上角固定孔才不會壓進 C1 保留區；靜音零件 R8／C8／JP1 搬到 C2 下方右下角，L_MUTE 沿上緣→穿過固定孔與 C1.2 之間→沿右邊 x=88.5 下行→穿過 C2 本體下方到 R8；靜音 VEE 沿下緣 y=88。IC 區（U1、C3、C4、C6、C7、J5）、輸出區（L1、R7、R5、C5、J2）與回授網路（R2–R4、R6）座標與 V0.4 相同 |
+| 電源板 | 160×120 | **125×130** | 四顆 381LX 本來就是 2×2；160 寬是左邊 AC／橋堆端子區 50＋右邊輸出端子區 20 夾著電容。V0.5 把 AC 區（J201／F201／BR1 左、J202／F202／BR2 右，鏡射）搬到上緣，輸出區（STAR、C205／C206、J203／J204）搬到下緣；電容兩欄 x=35（正電容組）、x=90（負電容組），每欄下面那顆轉 90° 讓同網路焊盤相鄰、組內匯流線走本體下方直線，另一軌繞欄外側（VCC x=24 頂層、GND x=79 底層）；洩放電阻 R201／R202 站在兩欄之間 20 mm 空隙；snubber 預留位（每繞組 Cx、Cs＋Rs）直立貼左右邊；VCC 匯流頂層 y=113、GND 底層 y=113、VEE 繞外側 y=127 |
+
+**機殼結果（配置 A，同樣假設：後板帶 25、排距 30、變壓器左右各 20）：** 深度餘裕 7 → **22** mm，前排寬餘 10 → **45** mm（validation-v05.json `chassis_fit_bz4312a2`）。
+
+**沒改的：** U1 仍在 y=14。IC 移到板邊直接鎖散熱牆（使用者 2026-09-29 選的方案 B）等 docs/00 §3 第 2 條的三項實量後再改，屆時只動 U1／C3／C4 與相關中繼點，不影響這次的縮板。變體 C 不做 V0.5。
+
+**DRC 三輪：** 第一輪放大板 1 錯（固定孔 H2 在 C1 保留區內）＋1 警告，電源板 2 錯（C205／C206 與大電容保留區重疊 0.5 mm）＋6 絲印警告；第二輪放大板 1 錯（R1 直立後與 R2 保留區重疊 0.15）、電源板 1 錯（VEE 4 mm 短樁頂到 y=114 的 VCC 匯流）；第三輪兩板 0 違規、0 未連通。
+
+| 項目 | 檔案 |
+|---|---|
+| 放大板 D | [mono-layout-v05d.kicad_pcb](mono-layout-v05d.kicad_pcb)／[.kicad_pro](mono-layout-v05d.kicad_pro)／[走線＋鋪銅 JSON](mono-layout-v05d.json)／[封裝清單](mono-layout-v05d-footprints.csv)／[DRC](mono-v05d-drc.json)／[預覽](preview/mono-layout-v05d.png) |
+| 電源板 | [psu-layout-v05.kicad_pcb](psu-layout-v05.kicad_pcb)／[.kicad_pro](psu-layout-v05.kicad_pro)／[JSON](psu-layout-v05.json)／[封裝清單](psu-layout-v05-footprints.csv)／[DRC](psu-v05-drc.json)／[預覽](preview/psu-layout-v05.png) |
+| 生成器／驗證 | `tools/pcb_layout_v05.py`、`pcb_layout_v05_psu.py`、`build_pcb_v05.py`（沿用 V0.3 封裝庫與 `build()`、V0.4 `add_zones()`；新增 `BP_Axial_Vert_D20_P15`）、`verify_pcb_v05.py`、`render_pcb_v05.py`、`draw_chassis_fit_v05.py` |
+
+重建：`kicad-cli sch export netlist` 兩份 → KiCad 內建 python 跑 `tools/build_pcb_v05.py` → `kicad-cli pcb drc --format json --exit-code-violations -o pcb/mono-v05d-drc.json pcb/mono-layout-v05d.kicad_pcb`（電源板同理）→ `py -3.13 tools/verify_pcb_v05.py` → `render_pcb_v05.py` → `git checkout -- pcb/DraftV03.pretty`。**未做：** inspection-v05（正反面／3D／parts-audit）、current-budget 對照、導讀圖的 PCB 對應文字。
 
 ## 審查結論（2026-09-17，以 V0.2 `d39b623` 為比較基準）
 

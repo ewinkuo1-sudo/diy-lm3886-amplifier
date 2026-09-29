@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "limits": "Draft only. Footprints (incl. the new upright C2 pitch), heating, stability, enclosure and harness remain unverified.",
+  "boards": {
+    "mono-layout-v05d": {
+      "size_mm": [
+        90,
+        90
+      ],
+      "pad_net_count": 54,
+      "native_DRC_violations": 0,
+      "native_DRC_unconnected": 0,
+      "tracks": 57,
+      "vias": 0,
+      "ground_pour": [
+        {
+          "net": "GND",
+          "layer": "B.Cu",
+          "filled_regions": 1
+        }
+      ]
+    },
+    "psu-layout-v05": {
+      "size_mm": [
+        125,
+        130
+      ],
+      "pad_net_count": 50,
+      "native_DRC_violations": 0,
+      "native_DRC_unconnected": 0,
+      "tracks": 87,
+      "vias": 0
+    }
+  },
+  "kicad_version": "10.0.6",
+  "chassis_fit_bz4312a2": {
+    "inner_mm": [
+      330,
+      297,
+      112
+    ],
+    "amp_board_along_wall_mm": 90,
+    "amp_board_across_mm": 90,
+    "psu_mm": [
+      125,
+      130
+    ],
+    "depth_used_mm": 275,
+    "depth_spare_mm": 22,
+    "front_row_width_used_mm": 285,
+    "front_row_width_spare_mm": 45,
+    "note": "V0.4 left 7 mm depth and 10 mm front-row width. Figures assume 25 mm rear-panel connector band, 30 mm row gap, transformer D120 with 20 mm gaps."
+  },
+  "checked_on": "2026-09-29",
+  "minimum_copper_clearance_mm": 0.3,
+  "sha256": {
+    "pcb/mono-layout-v05d.kicad_pcb": "17151872f1528d1ae5cd43d781cf111117e5586628e95bed2bd423d46efe9397",
+    "pcb/mono-layout-v05d.kicad_pro": "e4b27d0596c33bf98dcc4f41008b6c81ae58417eae813c2ea85a45f331df24c3",
+    "pcb/mono-v05d-drc.json": "005b2271603df58abe8cebc9ffd64090dd0119a547a1877e49f8d322b1d1e952",
+    "pcb/psu-layout-v05.kicad_pcb": "7e228c20be5368cf55b2842d7d4a18a9930d419779295d3b9b8ecc2d2342f6e2",
+    "pcb/psu-layout-v05.kicad_pro": "9e53f95cc024574d5fb0f441b221695aea259e8fc91b10a3f6886d30a7e0d60c",
+    "pcb/psu-v05-drc.json": "cab7d14435c16a1b429e318ee59874babfb3bdc9f579516638778cceebc31f9e",
+    "electrical/lm3886-v01.kicad_sch": "7e4c4d7ebf146ec051ec72f926a239aa9ff3e011f8a352e2c151c8ac77f56fca",
+    "electrical/internal-psu-v02.kicad_sch": "9236a91c56c8df3484d3e006f5511c988fbac097c8b10edcf94ab7bc516bdf35"
+  }
+}
