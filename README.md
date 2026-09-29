@@ -8,7 +8,8 @@
 
 ## 目前狀態（2026-09-24）
 
-- **PCB V0.4 為現行版本**（2026-09-24 併入 main）：放大板**變體 D**（底層整面接地）為主、變體 C（改良星型）保留備查，電源板加每聲道一組輸出端子與每繞組 snubber 預留位。三板 KiCad 10.0.6 DRC 0 違規、0 未連通，電路與零件沿用 V0.3 不變。**仍是工程草稿，不可送製**：封裝、溫升、散熱、機構、變壓器振鈴都未驗證。V0.3 退為歷史版本，檔案保留。**2026-09-29 另畫了 V0.5 候選**（分支 `v05-layout`；放大板 90×90、電源板 125×130，為塞進 BZ4312A2 縮板、電路不變、兩板 DRC 0；機殼深度餘裕 7→22 mm），待選定併入。詳見 [pcb/README](pcb/README.md)；3D／正反面導讀圖已重建為 V0.4（[inspection-v04](pcb/inspection-v04/README.md)），電路導讀圖與電源板原理圖預覽也已同步（[docs/diagrams](docs/diagrams/README.md)）。
+- **PCB V0.5 為現行版本**（2026-09-29 併入 main）：為塞進 BZ4312A2 機殼，放大板 D 由 115×90 縮為 **90×90**（C2 改站立）、電源板由 160×120 改 **125×130**（AC 區上緣、輸出區下緣），電路、零件、網路不變，兩板 KiCad 10.0.6 DRC 0 違規、0 未連通；配置 A 深度餘裕 7→22 mm、前排寬餘 10→45 mm（[對照圖](docs/diagrams/chassis_bz4312a2_v05_fit.png)）。3D／正反面看圖資料在 [inspection-v05](pcb/inspection-v05/README.md)。IC 位置未動，方案 B 等三項實量。
+- **PCB V0.4（歷史）**（2026-09-24 併入 main）：放大板**變體 D**（底層整面接地）為主、變體 C（改良星型）保留備查，電源板加每聲道一組輸出端子與每繞組 snubber 預留位。三板 KiCad 10.0.6 DRC 0 違規、0 未連通，電路與零件沿用 V0.3 不變。**仍是工程草稿，不可送製**：封裝、溫升、散熱、機構、變壓器振鈴都未驗證。V0.3 退為歷史版本，檔案保留。詳見 [pcb/README](pcb/README.md)；3D／正反面導讀圖已重建為 V0.4（[inspection-v04](pcb/inspection-v04/README.md)），電路導讀圖與電源板原理圖預覽也已同步（[docs/diagrams](docs/diagrams/README.md)）。
 
 - **已選 C 方案**：完整雙聲道、雙橋整流、4×10,000µF／63V 主濾波電容（每軌 20,000µF），約 ±30V 等級供電，每聲道約 30～40W／8Ω 為探索範圍而非額定。
 - **2026-09-22 到貨**：環形變壓器（賣場標示 200W、兩組獨立 22Vac＋單 12Vac）與 9/20 下單的全部電阻、WIMA、CDE、ROE 共 40 件（露天 yosontw）。**尚未開箱核對與量測**；VA 與各繞組電流仍未知。
@@ -74,8 +75,8 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 | [BOM 草案](electrical/bom-draft.csv) | 由 KiCad netlist 匯出，含選型條件 |
 | [驗證紀錄](electrical/validation.md) | ERC、網路核對與未驗證事項 |
 | [原理圖說明](electrical/README.md) | 放大板與電源次級 KiCad 圖、看圖與重建方式 |
-| [PCB](pcb/README.md) | V0.4 現行（放大板 D 為主／C 保留、電源板）與 V0.3 歷史：板檔、DRC、審查結論與載流計算表 |
-| [PCB 看圖資料](pcb/inspection-v04/README.md) | V0.4（放大板 D＋電源板）正反面銅箔、組裝、3D 預覽與零件核對表；[V0.3 版](pcb/inspection-v03/README.md) 保留 |
+| [PCB](pcb/README.md) | V0.5 現行（放大板 D 90×90、電源板 125×130）與 V0.4／V0.3 歷史：板檔、DRC、審查結論與載流計算表 |
+| [PCB 看圖資料](pcb/inspection-v05/README.md) | V0.5（放大板 D＋電源板）正反面銅箔、組裝、3D 預覽與零件核對表；[V0.4](pcb/inspection-v04/README.md)／[V0.3](pcb/inspection-v03/README.md) 版保留 |
 | [工具說明](tools/README.md) | 各腳本用途與執行順序 |
 | [接班進度](HANDOFF.md) | 現況與下一階段工作 |
 | [變更紀錄](CHANGELOG.md) | 逐日進度歷史 |
@@ -90,7 +91,7 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 
 [電源 PDF](electrical/preview/internal-psu-v02.pdf) · [電源 BOM](electrical/psu-bom-draft.csv)
 
-![PCB V0.4](pcb/preview/system-layout-v04.png)
+![PCB V0.5](pcb/preview/system-layout-v05.png)
 
 ## 重建與下一步
 

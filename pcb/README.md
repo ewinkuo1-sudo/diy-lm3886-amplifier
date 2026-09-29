@@ -1,8 +1,8 @@
 # PCB
 
-**現行版本是 V0.4**（2026-09-24：放大板變體 D 為主、變體 C 保留、電源板加每聲道端子與 snubber 預留位），三板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.4」各節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v04](inspection-v04/README.md)。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。**2026-09-29 另有 V0.5 候選**（放大板 90×90、電源板 125×130，為了塞進 BZ4312A2 而縮板，電路不變，兩板 DRC 0；見「PCB V0.5 候選」節），待使用者選定才併入。
+**現行版本是 V0.5**（2026-09-29 使用者選定併入 main：為塞進 BZ4312A2 機殼把放大板 D 縮為 90×90、電源板改 125×130，電路不變），兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.5」節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v05](inspection-v05/README.md)。**V0.4 自 2026-09-29 起為歷史版本**（放大板 D／C 與電源板板檔、DRC、[inspection-v04](inspection-v04/README.md) 保留）。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
 
-![PCB V0.4](preview/system-layout-v04.png)
+![PCB V0.5](preview/system-layout-v05.png)
 
 ---
 
@@ -98,9 +98,9 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 
 **V0.4 三塊板都畫完了（放大板 C、放大板 D、電源板）**，等使用者看圖選 C 或 D。之後才做：V0.4 的 `current-budget`／`analyze` 對照、3D 與導讀圖、系統並排圖；V0.3 檔案與雜湊全部未動。
 
-## PCB V0.5 候選（機殼配合縮板，2026-09-29，待使用者選定）
+## PCB V0.5（機殼配合縮板，2026-09-29，現行）
 
-> ⚠️ **工程草稿，不可送製。** 電路、零件、網路與 V0.4 完全相同；只改板形與零件位置。兩板 KiCad 10.0.6 **0 DRC 違規、0 未連通**，54＋50 焊盤網路與原理圖相符，放大板底層鋪銅單一連通區、0 過孔（[validation-v05.json](validation-v05.json)）。**尚未併入 main，V0.4 仍是現行版本。**
+> ⚠️ **工程草稿，不可送製。** 電路、零件、網路與 V0.4 完全相同；只改板形與零件位置。兩板 KiCad 10.0.6 **0 DRC 違規、0 未連通**，54＋50 焊盤網路與原理圖相符，放大板底層鋪銅單一連通區、0 過孔（[validation-v05.json](validation-v05.json)）。**2026-09-29 使用者看過預覽後選定，已併入 main 成為現行版本；** 3D／正反面／零件核對見 [inspection-v05](inspection-v05/README.md)。
 
 ![PCB V0.5 對照 V0.4](preview/system-layout-v05.png)
 
@@ -123,7 +123,7 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 | 電源板 | [psu-layout-v05.kicad_pcb](psu-layout-v05.kicad_pcb)／[.kicad_pro](psu-layout-v05.kicad_pro)／[JSON](psu-layout-v05.json)／[封裝清單](psu-layout-v05-footprints.csv)／[DRC](psu-v05-drc.json)／[預覽](preview/psu-layout-v05.png) |
 | 生成器／驗證 | `tools/pcb_layout_v05.py`、`pcb_layout_v05_psu.py`、`build_pcb_v05.py`（沿用 V0.3 封裝庫與 `build()`、V0.4 `add_zones()`；新增 `BP_Axial_Vert_D20_P15`）、`verify_pcb_v05.py`、`render_pcb_v05.py`、`draw_chassis_fit_v05.py` |
 
-重建：`kicad-cli sch export netlist` 兩份 → KiCad 內建 python 跑 `tools/build_pcb_v05.py` → `kicad-cli pcb drc --format json --exit-code-violations -o pcb/mono-v05d-drc.json pcb/mono-layout-v05d.kicad_pcb`（電源板同理）→ `py -3.13 tools/verify_pcb_v05.py` → `render_pcb_v05.py` → `git checkout -- pcb/DraftV03.pretty`。**未做：** inspection-v05（正反面／3D／parts-audit）、current-budget 對照、導讀圖的 PCB 對應文字。
+重建：`kicad-cli sch export netlist` 兩份 → KiCad 內建 python 跑 `tools/build_pcb_v05.py` → `kicad-cli pcb drc --format json --exit-code-violations -o pcb/mono-v05d-drc.json pcb/mono-layout-v05d.kicad_pcb`（電源板同理）→ `py -3.13 tools/verify_pcb_v05.py` → `render_pcb_v05.py` → `git checkout -- pcb/DraftV03.pretty`。**未做：** current-budget 對照、導讀圖的 PCB 對應文字（仍寫 V0.4 座標描述，電路未變）。
 
 ## 審查結論（2026-09-17，以 V0.2 `d39b623` 為比較基準）
 
