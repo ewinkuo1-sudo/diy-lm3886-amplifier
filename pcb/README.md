@@ -1,6 +1,6 @@
 # PCB
 
-**現行版本是 V0.5**（2026-09-29 使用者選定併入 main：為塞進 BZ4312A2 機殼把放大板 D 縮為 90×90、電源板改 125×130，電路不變），兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.5」節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v05](inspection-v05/README.md)。**V0.4 自 2026-09-29 起為歷史版本**（放大板 D／C 與電源板板檔、DRC、[inspection-v04](inspection-v04/README.md) 保留）。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
+**現行版本是 V0.5**（2026-09-29 使用者選定併入 main：為塞進 BZ4312A2 機殼把放大板 D 縮為 90×90、電源板改 125×130，電路不變），兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.5」節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v05](inspection-v05/README.md)。**V0.4 自 2026-09-29 起為歷史版本**（放大板 D／C 與電源板板檔、DRC、[inspection-v04](inspection-v04/README.md) 保留）。**另有 V0.5.2 候選**（每聲道放大＋濾波合板 90×142 ×2、無電源板，DRC 0，見「PCB V0.5.2 候選」節），待使用者選定。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
 
 ![PCB V0.5](preview/system-layout-v05.png)
 
@@ -124,6 +124,36 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 | 生成器／驗證 | `tools/pcb_layout_v05.py`、`pcb_layout_v05_psu.py`、`build_pcb_v05.py`（沿用 V0.3 封裝庫與 `build()`、V0.4 `add_zones()`；新增 `BP_Axial_Vert_D20_P15`）、`verify_pcb_v05.py`、`render_pcb_v05.py`、`draw_chassis_fit_v05.py` |
 
 重建：`kicad-cli sch export netlist` 兩份 → KiCad 內建 python 跑 `tools/build_pcb_v05.py` → `kicad-cli pcb drc --format json --exit-code-violations -o pcb/mono-v05d-drc.json pcb/mono-layout-v05d.kicad_pcb`（電源板同理）→ `py -3.13 tools/verify_pcb_v05.py` → `render_pcb_v05.py` → `git checkout -- pcb/DraftV03.pretty`。**未做：** current-budget 對照、導讀圖的 PCB 對應文字（仍寫 V0.4 座標描述，電路未變）。
+
+## PCB V0.5.2 候選（每聲道「放大＋濾波」合板，2026-09-29 深夜，待使用者選定）
+
+> ⚠️ **工程草稿，不可送製。** 使用者問「很多設計是兩塊板、每塊合併單聲道電源與放大，我們能不能」而畫的候選。電路、零件、網路不變；一塊板 KiCad 10.0.6 **0 DRC 違規、0 未連通**，67 焊盤網路與合成網路表相符（[validation-v052.json](validation-v052.json)）。**未併入 main，V0.5 仍是現行版本。這塊板還沒有 KiCad 原理圖**：網路表由 `tools/make_netlist_v052.py` 從兩份既有網路表合成（放大板全部零件去掉 J5，加 C201／C203／R201／R202／C205／C206 與新 4 位 DC 端子 J6）；若選定，要補原理圖生成器。
+
+![V0.5 vs V0.5.2](preview/system-layout-v052-compare.png)
+
+**板形：** 90（貼牆）× 142（向機殼中央）。上半 y 0–90 就是 V0.5 放大板 D 原樣（IC 區、輸出區、回授網路、C2 站立、靜音區座標全部不動，只拿掉 J5）；下半 y 90–142 放該聲道的 C201（V+）、C203（V−）兩顆 381LX、洩放 R201／R202 直立在兩顆電容中間 16 mm 空隙、J6 四位 DC 端子（BR1+／BR1−／BR2+／BR2−）在下緣、旁路 C205／C206 在 STAR 旁。
+
+**接地：** 底層 GND 鋪銅**只蓋放大區（y ≤ 92）**；電源區的 GND（J6.2／J6.3、兩顆電容負端、洩放、旁路）全走 4 mm 明線匯到 STAR (45,121)，再由一條 4 mm 底層線在 (45,86) 接進鋪銅。充電脈衝因此不經放大區鋪銅。`verify_pcb_v052.py` 檢查電源區 8 個 GND 焊盤都在鋪銅外、跨越鋪銅邊界的 GND 銅箔只有那一條。
+
+**它不是真正的雙單聲道：** 變壓器只有一組 2×22 Vac，兩顆 KBPC2510 仍鎖機殼、兩塊板都掛在同兩顆橋堆上（共用整流、各板濾波）。AC 側的保險絲 F201／F202 與 snubber 預留位離開 PCB：機殼保險絲座或另做小 AC 板。
+
+| 比較 | V0.5（現行） | V0.5.2 |
+|---|---|---|
+| 板數／面積 | 3 板，32,450 mm² | 2 板，25,560 mm² |
+| 電源→IC 粗線 | 電源板→放大板 20–30 cm 線束 ×2 | 板上 5 cm 銅箔 |
+| 板間線束 | 每聲道 3 條 DC＋橋堆 4 條 Faston | 每板 4 條 DC，橋堆放兩板中間 46 mm 空隙、DC 端子正對它 |
+| 接地匯流點 | 電源板一個 STAR，兩聲道共用 | 每板一個 STAR，兩板地在機殼再匯一次（哼聲風險，要處理） |
+| BZ4312A2 配置 A | 後排 90＋150＋90、控制板在中；深餘 22、前排寬餘 45 | 後排 142＋46＋142、控制板改到前排；深餘 32、前排寬餘 50（[對照圖](../docs/diagrams/chassis_bz4312a2_v052_fit.png)） |
+| 原理圖 | 兩份既有 | **無**，選定後補 |
+
+**DRC 兩輪：** 第一輪 C206 被 V− 4 mm 充電線壓到（短路）＋與 C203 保留區重疊、兩處走線懸空（T 接點不算連接，要把中繼點寫成對方路徑的頂點）；第二輪 0 違規。
+
+| 項目 | 檔案 |
+|---|---|
+| 板檔 | [mono-layout-v052.kicad_pcb](mono-layout-v052.kicad_pcb)／[.kicad_pro](mono-layout-v052.kicad_pro)／[JSON](mono-layout-v052.json)／[封裝清單](mono-layout-v052-footprints.csv)／[DRC](mono-v052-drc.json)／[預覽](preview/mono-layout-v052.png) |
+| 生成器／驗證 | `tools/make_netlist_v052.py`、`pcb_layout_v052.py`（引用 `pcb_layout_v05.AMP_V05`）、`build_pcb_v052.py`（新增 `Terminal4_P5.08`）、`verify_pcb_v052.py`、`render_pcb_v052.py`、`draw_chassis_fit_v052.py` |
+
+重建：`kicad-cli sch export netlist` 兩份 → `py -3.13 tools/make_netlist_v052.py` → KiCad python `tools/build_pcb_v052.py` → `kicad-cli pcb drc … -o pcb/mono-v052-drc.json pcb/mono-layout-v052.kicad_pcb` → `verify_pcb_v052.py` → `render_pcb_v052.py` → `git checkout -- pcb/DraftV03.pretty`。
 
 ## 審查結論（2026-09-17，以 V0.2 `d39b623` 為比較基準）
 

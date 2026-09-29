@@ -7,6 +7,15 @@
 
 ---
 
+## 2026-09-29（深夜）：PCB V0.5.2 候選——每聲道放大＋濾波合板，DRC 0
+
+- 使用者問「很多設計兩塊板、每塊合併單聲道電源與放大，我們可以嗎」。答：可以，但變壓器只一組 2×22 Vac，只能共用整流、各板濾波，不是真正雙單聲道；AC 保險絲要離板。
+- 新板 `mono-layout-v052` 90×142：上半＝V0.5 放大板 D 原樣去 J5；下半 C201／C203、R201／R202、C205／C206、新 4 位 DC 端子 J6（`Terminal4_P5.08`）。鋪銅只蓋 y≤92，電源區 GND 明線匯 STAR (45,121) 再一條 4 mm 線接鋪銅；`verify_pcb_v052.py` 檢查此結構。
+- 網路表 `electrical/merged-v052-netlist.xml` 由 `tools/make_netlist_v052.py` 合成（可重建、已 ignore），**尚無 KiCad 原理圖**。
+- DRC 兩輪（C206 被 V− 充電線壓到＋保留區重疊、兩處 T 接懸空）→ 0 違規 0 未連通。
+- 出圖：`pcb/preview/mono-layout-v052.png`、`system-layout-v052-compare.png`（V0.5 三板 vs V0.5.2 兩板＋比較表）、`docs/diagrams/chassis_bz4312a2_v052_fit.png`（後排 142＋46＋142、橋堆進中間、控制板改前排；深餘 32、前排寬餘 50）。
+- 在分支 `v052-layout`，未併 main；V0.5 仍現行。
+
 ## 2026-09-29（晚）：PCB V0.5 候選——為塞進 BZ4312A2 縮板，DRC 0
 
 - 起因：BZ4312A2 配置 A 下，V0.4 三板深度只剩 7 mm、前排寬只剩 30 mm。結論是三板架構不用重做（IC 必貼側牆、重物必在前排），只改兩塊板的形狀。

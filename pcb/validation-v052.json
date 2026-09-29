@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "limits": "Draft only; merged netlist has no KiCad schematic yet. Footprints (upright C2 pitch, Terminal4), heating, stability, enclosure and harness remain unverified.",
+  "board": {
+    "size_mm": [
+      90,
+      142
+    ],
+    "pad_net_count": 67,
+    "native_DRC_violations": 0,
+    "native_DRC_unconnected": 0,
+    "tracks": 91,
+    "vias": 0,
+    "ground_pour": {
+      "net": "GND",
+      "layer": "B.Cu",
+      "outline_y_max": 92,
+      "filled_regions": 1
+    },
+    "supply_gnd_pads_outside_pour": 8,
+    "pour_links": 1,
+    "star": [
+      45,
+      121
+    ]
+  },
+  "chassis_fit_bz4312a2": {
+    "inner_mm": [
+      330,
+      297,
+      112
+    ],
+    "board_along_wall_mm": 90,
+    "board_across_mm": 142,
+    "boards": 2,
+    "back_row_width_used_mm": 284,
+    "back_row_centre_spare_mm": 46,
+    "depth_used_mm": 265,
+    "depth_spare_mm": 32,
+    "front_row": "transformer D120 + control board 120x105; width 20+120+20+120=280, spare 50. The two KBPC2510 sit on the floor in the 46 mm gap between the boards, facing both J6 terminals",
+    "note": "V0.5 (3 boards): depth spare 22, front-row spare 45; control board sat between the amp boards. V0.5.2 moves it to the front row."
+  },
+  "kicad_version": "10.0.6",
+  "checked_on": "2026-09-29",
+  "minimum_copper_clearance_mm": 0.3,
+  "sha256": {
+    "pcb/mono-layout-v052.kicad_pcb": "579ca69e22ca5276c0dc560874408c420f6db95fbb0cf378cf7a821fc9faafe4",
+    "pcb/mono-layout-v052.kicad_pro": "665934c92b1165145b64e41b74027a7aacf6d5273d600b5d7c1ff7a72b0a9ccd",
+    "pcb/mono-v052-drc.json": "411882e3a2dcf3f5bcafd8c907db7a9d966134f57cb6f25aee3a9841e7af97c9",
+    "tools/make_netlist_v052.py": "0927e06e26e3a0d0b96d60f0f198bb144547cef5ea42c7127b1388bc3faf1eac",
+    "electrical/lm3886-v01.kicad_sch": "7e4c4d7ebf146ec051ec72f926a239aa9ff3e011f8a352e2c151c8ac77f56fca",
+    "electrical/internal-psu-v02.kicad_sch": "9236a91c56c8df3484d3e006f5511c988fbac097c8b10edcf94ab7bc516bdf35"
+  }
+}
