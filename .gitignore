@@ -28,3 +28,4 @@ pcb/inspection-v05/3d/models/
 pcb/inspection-v05/3d/*-preview.kicad_pcb
 pcb/inspection-v05/3d/*-preview.kicad_pro
 pcb/inspection-v05/3d/raw-*.png
+electrical/merged-v052-netlist.xml
