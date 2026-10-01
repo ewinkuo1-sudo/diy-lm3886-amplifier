@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-01",
+  "checks": {
+    "mono": {
+      "native_loaded": true,
+      "preview_only_adds_models": true,
+      "project_rules_unchanged": true,
+      "model_assignment_count": 22,
+      "model_body_bounds_match_assumptions": true,
+      "pad_positions_and_nets_checked": 54
+    },
+    "psu": {
+      "native_loaded": true,
+      "preview_only_adds_models": true,
+      "project_rules_unchanged": true,
+      "model_assignment_count": 22,
+      "model_body_bounds_match_assumptions": true,
+      "pad_positions_and_nets_checked": 50
+    }
+  },
+  "audit_rows": 44,
+  "native_exports": 10,
+  "scope": "source/geometry/model/asset consistency only; no new ERC/DRC/hardware testing",
+  "manual_visual_review": "Top/bottom copper, assembly polarity, native top/bottom/isometric component renders reviewed; see README limitations.",
+  "files": {
+    "pcb/inspection-v051/3d/mono-bottom.png": "2d44a4d5666f18fcf5b4fdd9342661b251465bbdd4d554c73d9c140a2bef3abf",
+    "pcb/inspection-v051/3d/mono-isometric.png": "f17125888dcd6ab22f5d7ab9ea6d30291d9fa368e473e97d99e433e3f9493654",
+    "pcb/inspection-v051/3d/mono-top.png": "fcf20fcedb62ad7e91da6c3ab7bbfe33ed65d75847da69038531a477005dba38",
+    "pcb/inspection-v051/3d/overview.png": "5e6f0bcf3a4fc2aa507c87570c288a5a8b5c452eca4b21f0726f35492aa866ea",
+    "pcb/inspection-v051/3d/psu-bottom.png": "03da98bc2bc823d144df2230d39def4500103861ffeb7a65e3c5ffd6f339b783",
+    "pcb/inspection-v051/3d/psu-isometric.png": "b49b6b6ef67e88d0ad9df08e81a29cf901f957a4a4fe0ba848cca8af193394e0",
+    "pcb/inspection-v051/3d/psu-top.png": "676ae9b77235307f42edf1b5e66de2c4a40d13b74576b885e326ddad3304096b",
+    "pcb/inspection-v051/drawings/mono-assembly-notes.md": "79cbba020dbe1cae49d8b264dc4d521e720ee7fe7e6d578c3012aee5197467b4",
+    "pcb/inspection-v051/drawings/mono-assembly.png": "f45d43eaea2809282c27919c054c903f69d5c3bcbd9562cdaf438ef3c7d60a79",
+    "pcb/inspection-v051/drawings/mono-assembly.svg": "1a09048ed7e20ab7f6e043da9ba643960394b08f39dd373efeab867faa907229",
+    "pcb/inspection-v051/drawings/mono-bottom.png": "4318d6d8d33684b0fe8a7d9ee7dd29a47ad156a872402abb143c00baf158375f",
+    "pcb/inspection-v051/drawings/mono-bottom.svg": "17a50eb4bc3b10fc2dedd25e3c0ab96958510551223df3ab1aa726d83eb5c75d",
+    "pcb/inspection-v051/drawings/mono-top.png": "d68365962889d53390d8225ad3ac1e53c4eba19c0d0163fb5fb4876fb2f1a0cd",
+    "pcb/inspection-v051/drawings/mono-top.svg": "f61503296c6cc84568ccda549c147eeac275abc7d172f825250a1f461e703dc3",
+    "pcb/inspection-v051/drawings/psu-assembly-notes.md": "ce83e91c3d771fb12a90089bf98e589d173aec347e3ccf90620ec25bdf47c5b3",
+    "pcb/inspection-v051/drawings/psu-assembly.png": "cd208bb779c9937b2ebf6dfd6086d3530ea08baa0eb01c685cb24f2308b31b60",
+    "pcb/inspection-v051/drawings/psu-assembly.svg": "ea407aa4961de75ea6fa93cf7939f3763c7fd17373aea2f2b1c639f6b0af1808",
+    "pcb/inspection-v051/drawings/psu-bottom.png": "8b5a936acd728f3d5cd0dc5b462d06215e740f2335776243779a60d027c29523",
+    "pcb/inspection-v051/drawings/psu-bottom.svg": "2b976fed37c7b510ba51e69f6356f859089e0c1780e2f2d3361b918dab11960e",
+    "pcb/inspection-v051/drawings/psu-top.png": "62d437c084e2af09cec98c9b7bb8b989f6545ff6405f5cca24e199a1a249be97",
+    "pcb/inspection-v051/drawings/psu-top.svg": "f98763dbc06b9fffc7fcb9b42ecd70813394e5bdad4047dcf439236e355ac3aa",
+    "pcb/inspection-v051/native/mono-bottom.svg": "cd840d84792e154dbc220dbed2b1b95365d701b97f41fbadf595b3c932b7726b",
+    "pcb/inspection-v051/native/mono-top.svg": "b205e0128ada99e57e538131278052b433d91b0100070ba4eafa308f424a81cd",
+    "pcb/inspection-v051/native/psu-bottom.svg": "44600e226a15b67dce7be23f50c69d1d3ee7c3df81fdff12c3d9e5458e9913d2",
+    "pcb/inspection-v051/native/psu-top.svg": "e1bde55f918d2c29a09ce8fbf29a454ec678b22cc2c247571f94bf8902bc48f4",
+    "pcb/inspection-v051/native-export-log.json": "7f686b4659fb207d7e8bffc25cf51a181e40d55459c8ce0cee22466f12c58d6a",
+    "pcb/inspection-v051/parts-audit.json": "8674fc3b5464c29efe3e1774f0497796b2c25e20893d05cff5ffbc35d282c7a9",
+    "pcb/inspection-v051/parts-audit.md": "f675059c63100b0129b23a065a6dd5d111f14e01d4d55fe7d1bd45a29af0f3d9",
+    "pcb/inspection-v051/sources.json": "3de9f5248a0b02ac9d6a10ff11f77e1d0aa13aa338a855ab6c5374fa1faf923b"
+  }
+}

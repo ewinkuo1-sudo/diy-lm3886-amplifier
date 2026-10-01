@@ -1,0 +1,36 @@
+{
+  "baseline": "456e574",
+  "scope": "review artifacts only; PCB V0.5.1 (mono D as V0.5 + psu with GBJ2510 bridges on board) layout unchanged",
+  "sources": {
+    "pcb/mono-layout-v05d.json": "5ddf666c517e70d3bc8a3e1e53d90231e08bed41f5dee84171b89ae9a1a9b205",
+    "pcb/mono-layout-v05d.kicad_pcb": "17151872f1528d1ae5cd43d781cf111117e5586628e95bed2bd423d46efe9397",
+    "pcb/mono-layout-v05d.kicad_pro": "e4b27d0596c33bf98dcc4f41008b6c81ae58417eae813c2ea85a45f331df24c3",
+    "pcb/psu-layout-v051.json": "2e44c3d8e68f68ce3f43a6b9c8d20aec6d4b08759c359acfde143dc40f2985ee",
+    "pcb/psu-layout-v051.kicad_pcb": "f47a9e0f9243553c35edd0561c77ebc47617056bd0372f742bdf24155f268440",
+    "pcb/psu-layout-v051.kicad_pro": "fe1ba7f3be6c79f0b3e4c1606df294398d76f1d076b360b5edf2498f03f118c2"
+  },
+  "boards": {
+    "mono": {
+      "components": 22,
+      "assigned_models": 22,
+      "pads": 54,
+      "tracks": 57,
+      "size_mm": [
+        90,
+        90
+      ]
+    },
+    "psu": {
+      "components": 22,
+      "assigned_models": 22,
+      "pads": 50,
+      "tracks": 83,
+      "size_mm": [
+        125,
+        130
+      ]
+    }
+  },
+  "model_units": "1 VRML unit = 2.54 mm; bodies generated in mm then scaled",
+  "height_status": "All heights are illustrative assumptions, not verified or guaranteed maximum envelopes."
+}

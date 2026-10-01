@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1035" height="1225" viewBox="0 0 1035 1225">
+<rect width="1035" height="1225" fill="#101e28"/>
+<g font-family="Arial, STHeiti, sans-serif">
+<text x="60.00" y="46.00" fill="#f1f7f6" font-size="26" text-anchor="start">共用電源板 / PCB V0.5.1</text>
+<text x="60.00" y="82.00" fill="#c6d9df" font-size="20" text-anchor="start">背面銅箔 B.Cu｜由板底觀看</text>
+<text x="60.00" y="112.00" fill="#eac180" font-size="16" text-anchor="start">125 x 130 mm | 相對頂視圖左右翻面；不是從正面透視</text>
+<rect x="80" y="155" width="875" height="910" fill="#173d3b" stroke="#79ada2"/>
+<path d="M 913.0 281.56 L 913 365" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 913 365 L 699.5 365" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 699.5 365 L 699.5 316.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 122.0 281.56 L 122 365" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 122 365 L 265.5 365" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 265.5 365 L 265.5 316.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 906.0 344.0 L 906 365" fill="none" stroke="#6eb6ef" stroke-width="7.0" stroke-linecap="round"/>
+<path d="M 129.0 344.0 L 129 365" fill="none" stroke="#6eb6ef" stroke-width="7.0" stroke-linecap="round"/>
+<path d="M 647.0 316.0 L 647 540" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 647 540 L 710.0 540.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 710.0 540.0 L 710.0 736.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 388.0 316.0 L 388 407" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 388 407 L 325.0 470.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 325.0 470.0 L 402 505" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 402 505 L 402 771" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 402 771 L 325.0 806.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 710.0 736.0 L 619 827" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 619 827 L 517.5 918" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 325.0 806.0 L 416 827" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 416 827 L 517.5 918" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 517.5 918 L 556.0 918.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 517.5 918 L 479.0 918.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 517.5 918 L 517.5 946" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 517.5 946 L 737.44 946" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 737.44 946 L 737.44 981.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 517.5 946 L 352.44 946" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 352.44 946 L 352.44 981.0" fill="none" stroke="#6eb6ef" stroke-width="28" stroke-linecap="round"/>
+<path d="M 556.0 715.0 L 675 715" fill="none" stroke="#6eb6ef" stroke-width="5.6000000000000005" stroke-linecap="round"/>
+<path d="M 675 715 L 710 715" fill="none" stroke="#6eb6ef" stroke-width="5.6000000000000005" stroke-linecap="round"/>
+<path d="M 479.0 575.0 L 402 575" fill="none" stroke="#6eb6ef" stroke-width="5.6000000000000005" stroke-linecap="round"/>
+<text x="913.00" y="267.78" fill="#ffffff" font-size="13" text-anchor="middle">J201</text>
+<text x="762.50" y="201.00" fill="#ffffff" font-size="13" text-anchor="middle">F201</text>
+<text x="734.50" y="320.00" fill="#ffffff" font-size="13" text-anchor="middle">BR1</text>
+<text x="122.00" y="267.78" fill="#ffffff" font-size="13" text-anchor="middle">J202</text>
+<text x="272.50" y="201.00" fill="#ffffff" font-size="13" text-anchor="middle">F202</text>
+<text x="300.50" y="320.00" fill="#ffffff" font-size="13" text-anchor="middle">BR2</text>
+<text x="710.00" y="509.00" fill="#ffffff" font-size="13" text-anchor="middle">C201</text>
+<text x="710.00" y="775.00" fill="#ffffff" font-size="13" text-anchor="middle">C202</text>
+<text x="325.00" y="509.00" fill="#ffffff" font-size="13" text-anchor="middle">C203</text>
+<text x="325.00" y="775.00" fill="#ffffff" font-size="13" text-anchor="middle">C204</text>
+<text x="556.00" y="649.00" fill="#ffffff" font-size="13" text-anchor="middle">R201</text>
+<text x="479.00" y="649.00" fill="#ffffff" font-size="13" text-anchor="middle">R202</text>
+<text x="906.00" y="400.50" fill="#ffffff" font-size="13" text-anchor="middle">C207</text>
+<text x="906.00" y="540.50" fill="#ffffff" font-size="13" text-anchor="middle">C208</text>
+<text x="906.00" y="698.00" fill="#ffffff" font-size="13" text-anchor="middle">R203</text>
+<text x="129.00" y="400.50" fill="#ffffff" font-size="13" text-anchor="middle">C209</text>
+<text x="129.00" y="540.50" fill="#ffffff" font-size="13" text-anchor="middle">C210</text>
+<text x="129.00" y="698.00" fill="#ffffff" font-size="13" text-anchor="middle">R204</text>
+<text x="573.50" y="922.00" fill="#ffffff" font-size="13" text-anchor="middle">C205</text>
+<text x="461.50" y="922.00" fill="#ffffff" font-size="13" text-anchor="middle">C206</text>
+<text x="737.44" y="985.00" fill="#ffffff" font-size="13" text-anchor="middle">J203</text>
+<text x="352.44" y="985.00" fill="#ffffff" font-size="13" text-anchor="middle">J204</text>
+<circle cx="913.0" cy="246.0" r="10.5" fill="#ecc77b"/><circle cx="913.0" cy="246.0" r="4.55" fill="#10232b"/>
+<circle cx="913.0" cy="281.56" r="10.5" fill="#ecc77b"/><circle cx="913.0" cy="281.56" r="4.55" fill="#10232b"/>
+<circle cx="850.0" cy="197.0" r="10.5" fill="#ecc77b"/><circle cx="850.0" cy="197.0" r="4.55" fill="#10232b"/>
+<circle cx="675.0" cy="197.0" r="10.5" fill="#ecc77b"/><circle cx="675.0" cy="197.0" r="4.55" fill="#10232b"/>
+<circle cx="752.0" cy="316.0" r="13.299999999999999" fill="#ecc77b"/><circle cx="752.0" cy="316.0" r="9.1" fill="#10232b"/>
+<circle cx="699.5" cy="316.0" r="13.299999999999999" fill="#ecc77b"/><circle cx="699.5" cy="316.0" r="9.1" fill="#10232b"/>
+<circle cx="647.0" cy="316.0" r="13.299999999999999" fill="#ecc77b"/><circle cx="647.0" cy="316.0" r="9.1" fill="#10232b"/>
+<circle cx="822.0" cy="316.0" r="13.299999999999999" fill="#ecc77b"/><circle cx="822.0" cy="316.0" r="9.1" fill="#10232b"/>
+<circle cx="122.0" cy="246.0" r="10.5" fill="#ecc77b"/><circle cx="122.0" cy="246.0" r="4.55" fill="#10232b"/>
+<circle cx="122.0" cy="281.56" r="10.5" fill="#ecc77b"/><circle cx="122.0" cy="281.56" r="4.55" fill="#10232b"/>
+<circle cx="185.0" cy="197.0" r="10.5" fill="#ecc77b"/><circle cx="185.0" cy="197.0" r="4.55" fill="#10232b"/>
+<circle cx="360.0" cy="197.0" r="10.5" fill="#ecc77b"/><circle cx="360.0" cy="197.0" r="4.55" fill="#10232b"/>
+<circle cx="318.0" cy="316.0" r="13.299999999999999" fill="#ecc77b"/><circle cx="318.0" cy="316.0" r="9.1" fill="#10232b"/>
+<circle cx="265.5" cy="316.0" r="13.299999999999999" fill="#ecc77b"/><circle cx="265.5" cy="316.0" r="9.1" fill="#10232b"/>
+<circle cx="213.0" cy="316.0" r="13.299999999999999" fill="#ecc77b"/><circle cx="213.0" cy="316.0" r="9.1" fill="#10232b"/>
+<circle cx="388.0" cy="316.0" r="13.299999999999999" fill="#ecc77b"/><circle cx="388.0" cy="316.0" r="9.1" fill="#10232b"/>
+<circle cx="710.0" cy="470.0" r="14.0" fill="#ecc77b"/><circle cx="710.0" cy="470.0" r="8.75" fill="#10232b"/>
+<circle cx="710.0" cy="540.0" r="14.0" fill="#ecc77b"/><circle cx="710.0" cy="540.0" r="8.75" fill="#10232b"/>
+<circle cx="710.0" cy="806.0" r="14.0" fill="#ecc77b"/><circle cx="710.0" cy="806.0" r="8.75" fill="#10232b"/>
+<circle cx="710.0" cy="736.0" r="14.0" fill="#ecc77b"/><circle cx="710.0" cy="736.0" r="8.75" fill="#10232b"/>
+<circle cx="325.0" cy="470.0" r="14.0" fill="#ecc77b"/><circle cx="325.0" cy="470.0" r="8.75" fill="#10232b"/>
+<circle cx="325.0" cy="540.0" r="14.0" fill="#ecc77b"/><circle cx="325.0" cy="540.0" r="8.75" fill="#10232b"/>
+<circle cx="325.0" cy="806.0" r="14.0" fill="#ecc77b"/><circle cx="325.0" cy="806.0" r="8.75" fill="#10232b"/>
+<circle cx="325.0" cy="736.0" r="14.0" fill="#ecc77b"/><circle cx="325.0" cy="736.0" r="8.75" fill="#10232b"/>
+<circle cx="556.0" cy="575.0" r="8.4" fill="#ecc77b"/><circle cx="556.0" cy="575.0" r="3.5" fill="#10232b"/>
+<circle cx="556.0" cy="715.0" r="8.4" fill="#ecc77b"/><circle cx="556.0" cy="715.0" r="3.5" fill="#10232b"/>
+<circle cx="479.0" cy="575.0" r="8.4" fill="#ecc77b"/><circle cx="479.0" cy="575.0" r="3.5" fill="#10232b"/>
+<circle cx="479.0" cy="715.0" r="8.4" fill="#ecc77b"/><circle cx="479.0" cy="715.0" r="3.5" fill="#10232b"/>
+<circle cx="906.0" cy="344.0" r="7.0" fill="#ecc77b"/><circle cx="906.0" cy="344.0" r="3.5" fill="#10232b"/>
+<circle cx="906.0" cy="449.0" r="7.0" fill="#ecc77b"/><circle cx="906.0" cy="449.0" r="3.5" fill="#10232b"/>
+<circle cx="906.0" cy="484.0" r="7.0" fill="#ecc77b"/><circle cx="906.0" cy="484.0" r="3.5" fill="#10232b"/>
+<circle cx="906.0" cy="589.0" r="7.0" fill="#ecc77b"/><circle cx="906.0" cy="589.0" r="3.5" fill="#10232b"/>
+<circle cx="906.0" cy="624.0" r="8.4" fill="#ecc77b"/><circle cx="906.0" cy="624.0" r="3.5" fill="#10232b"/>
+<circle cx="906.0" cy="764.0" r="8.4" fill="#ecc77b"/><circle cx="906.0" cy="764.0" r="3.5" fill="#10232b"/>
+<circle cx="129.0" cy="344.0" r="7.0" fill="#ecc77b"/><circle cx="129.0" cy="344.0" r="3.5" fill="#10232b"/>
+<circle cx="129.0" cy="449.0" r="7.0" fill="#ecc77b"/><circle cx="129.0" cy="449.0" r="3.5" fill="#10232b"/>
+<circle cx="129.0" cy="484.0" r="7.0" fill="#ecc77b"/><circle cx="129.0" cy="484.0" r="3.5" fill="#10232b"/>
+<circle cx="129.0" cy="589.0" r="7.0" fill="#ecc77b"/><circle cx="129.0" cy="589.0" r="3.5" fill="#10232b"/>
+<circle cx="129.0" cy="624.0" r="8.4" fill="#ecc77b"/><circle cx="129.0" cy="624.0" r="3.5" fill="#10232b"/>
+<circle cx="129.0" cy="764.0" r="8.4" fill="#ecc77b"/><circle cx="129.0" cy="764.0" r="3.5" fill="#10232b"/>
+<circle cx="591.0" cy="918.0" r="6.3" fill="#ecc77b"/><circle cx="591.0" cy="918.0" r="2.8000000000000003" fill="#10232b"/>
+<circle cx="556.0" cy="918.0" r="6.3" fill="#ecc77b"/><circle cx="556.0" cy="918.0" r="2.8000000000000003" fill="#10232b"/>
+<circle cx="479.0" cy="918.0" r="6.3" fill="#ecc77b"/><circle cx="479.0" cy="918.0" r="2.8000000000000003" fill="#10232b"/>
+<circle cx="444.0" cy="918.0" r="6.3" fill="#ecc77b"/><circle cx="444.0" cy="918.0" r="2.8000000000000003" fill="#10232b"/>
+<circle cx="773.0" cy="981.0" r="10.5" fill="#ecc77b"/><circle cx="773.0" cy="981.0" r="4.55" fill="#10232b"/>
+<circle cx="737.44" cy="981.0" r="10.5" fill="#ecc77b"/><circle cx="737.44" cy="981.0" r="4.55" fill="#10232b"/>
+<circle cx="701.88" cy="981.0" r="10.5" fill="#ecc77b"/><circle cx="701.88" cy="981.0" r="4.55" fill="#10232b"/>
+<circle cx="388.0" cy="981.0" r="10.5" fill="#ecc77b"/><circle cx="388.0" cy="981.0" r="4.55" fill="#10232b"/>
+<circle cx="352.44" cy="981.0" r="10.5" fill="#ecc77b"/><circle cx="352.44" cy="981.0" r="4.55" fill="#10232b"/>
+<circle cx="316.88" cy="981.0" r="10.5" fill="#ecc77b"/><circle cx="316.88" cy="981.0" r="4.55" fill="#10232b"/>
+<circle cx="927" cy="183" r="11.200000000000001" fill="#101e28" stroke="#bfcccf"/>
+<circle cx="108" cy="183" r="11.200000000000001" fill="#101e28" stroke="#bfcccf"/>
+<circle cx="108" cy="1037" r="11.200000000000001" fill="#101e28" stroke="#bfcccf"/>
+<circle cx="927" cy="1037" r="11.200000000000001" fill="#101e28" stroke="#bfcccf"/>
+<text x="60.00" y="1097.00" fill="#f2bd76" font-size="18" text-anchor="start">暫定封裝｜工程審查圖，非製造版</text>
+<text x="60.00" y="1126.00" fill="#c6d9df" font-size="15" text-anchor="start">極性與接頭用途：請搭配逐腳對照表閱讀。</text>
+<text x="60.00" y="1152.00" fill="#c6d9df" font-size="14" text-anchor="start">編號是導讀標示，不是實際絲印。圖片不可直接作為製板底片。</text>
+<text x="60.00" y="1177.00" fill="#c6d9df" font-size="14" text-anchor="start">底面圖已左右翻轉；元件仍裝在正面，編號僅供定位。</text>
+</g></svg>

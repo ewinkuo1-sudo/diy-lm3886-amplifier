@@ -1,13 +1,13 @@
 # 接班進度
 
-更新：2026-09-29，**PCB V0.5 已併入 main 成為現行版本**（使用者看預覽後選定；放大板 D 90×90、電源板 125×130，為塞進 BZ4312A2 縮板，電路不變，兩板 DRC 0；`pcb/inspection-v05/` 3D／正反面／零件核對已做）。V0.4 退為歷史。2026-09-24，**PCB V0.4 已併入 main 成為現行版本**（放大板變體 D 為主、C 保留、電源板加每聲道端子與 snubber 預留位；三板 DRC 0），V0.3 退為歷史。PCB 3D／正反面導讀圖已重建為 V0.4（`pcb/inspection-v04/`）；`docs/diagrams/` 亦已重建並新增單聲道完整接線圖 `lm3886_full_v04.png`。逐日紀錄在 [CHANGELOG.md](CHANGELOG.md)。
+更新：2026-10-01，**PCB V0.5.1 已併入 main 成為現行版本**（電源板整流橋改 GBJ2510 直立上板，`pcb/psu-layout-v051`，DRC 0；放大板 D 沿用 V0.5；`pcb/inspection-v051/` 已做）。同日變壓器電氣實量完成（197 VA、2×22.29 Vac 空載、市電 110 V），最壞軌電壓修正為 ±33.5 V，保險絲／整流橋／散熱片採購提案在 docs/00 §2.1。2026-09-29，**PCB V0.5 已併入 main 成為現行版本**（使用者看預覽後選定；放大板 D 90×90、電源板 125×130，為塞進 BZ4312A2 縮板，電路不變，兩板 DRC 0；`pcb/inspection-v05/` 3D／正反面／零件核對已做）。V0.4 退為歷史。2026-09-24，**PCB V0.4 已併入 main 成為現行版本**（放大板變體 D 為主、C 保留、電源板加每聲道端子與 snubber 預留位；三板 DRC 0），V0.3 退為歷史。PCB 3D／正反面導讀圖已重建為 V0.4（`pcb/inspection-v04/`）；`docs/diagrams/` 亦已重建並新增單聲道完整接線圖 `lm3886_full_v04.png`。逐日紀錄在 [CHANGELOG.md](CHANGELOG.md)。
 
 使用者指定**內建供電、純後級，外接現有 DAC 與前級**。已確認 Eversolo DAC-Z10（DAC＋前級）及 RCA 介面；音量由 Z10 控制。本機採固定增益。
 
 ## 現況
 
 - **電路**：放大板 `electrical/lm3886-v01` 與電源次級 `electrical/internal-psu-v02` 兩份可編輯 KiCad 原理圖為現行電路來源，43＋15 元件 BOM、ERC 均 0 錯誤 0 警告。生成器是唯一來源，改完要跑 `python3 tools/rebuild.py`。
-- **PCB**：**現行 V0.5**（`pcb/mono-layout-v05d`、`psu-layout-v05`；`tools/pcb_layout_v05*.py`／`build_pcb_v05.py`／`verify_pcb_v05.py`／`render_pcb_v05.py`／`*_inspection_v05.py`），工程草稿不可送製；V0.4（`v04d` 主、`v04c` 備、`psu-layout-v04`）為歷史。以下 V0.3 描述為歷史：V0.3 為**工程草稿，不可送製**。兩片 **115×90 mm** 單聲道板（2026-09-24 由 100×90 加寬，C2 改躺式）＋一片 160×120 mm 電源板，KiCad 10.0.6 下 0 DRC 違規、0 未連通，54＋35 焊盤網路對照通過。封裝為暫定外框與假設高度，溫升、散熱、機構與線束都沒驗證。V0.1／V0.2 板檔與舊腳本已於 2026-09-21 刪除，需要時從 Git 歷史（`41b217c`）取回。
+- **PCB**：**現行 V0.5.1**（放大板 `pcb/mono-layout-v05d`＋電源板 `psu-layout-v051`；`tools/pcb_layout_v051_psu.py`／`build_pcb_v051.py`／`verify_pcb_v051.py`／`render_pcb_v051.py`／`*_inspection_v051.py`；電源板 `psu-layout-v05` 為歷史），工程草稿不可送製；V0.4（`v04d` 主、`v04c` 備、`psu-layout-v04`）為歷史。以下 V0.3 描述為歷史：V0.3 為**工程草稿，不可送製**。兩片 **115×90 mm** 單聲道板（2026-09-24 由 100×90 加寬，C2 改躺式）＋一片 160×120 mm 電源板，KiCad 10.0.6 下 0 DRC 違規、0 未連通，54＋35 焊盤網路對照通過。封裝為暫定外框與假設高度，溫升、散熱、機構與線束都沒驗證。V0.1／V0.2 板檔與舊腳本已於 2026-09-21 刪除，需要時從 Git 歷史（`41b217c`）取回。
 - **採購**：變壓器與 yosontw 40 件（電阻、WIMA、CDE、ROE）**2026-09-22 已到貨，未核對未量測**；LM3886T 拆機 IC 到貨未回報。量測順序見 docs/00 §1 與 docs/14 §8。整流橋、保險絲、電感、接頭、端子、絕緣散熱件、AC 入口、軟啟動、保護板、線材、假負載、機殼仍未購。現行採購狀態一律看 [docs/00-採購總表.md](docs/00-採購總表.md)。
 - **選型定案**：C2／C102＝ROE EGW 47µF 臥式無極性；C6／C7／C106／C107＝ROE EKE 470µF／63V。
 
@@ -15,7 +15,7 @@
 
 1. **到貨後量四款電解的實體尺寸**（2026-09-23 已量 381LX、EKE、EGW；361R 與 381LX 腳片寬厚未量）—— ROE EGW 47µF、ROE EKE 470µF、CDE 381LX、CDE 361R。ROE 兩款無公開型錄只能實測；CDE 兩款型錄值已寫進採購總表第 1 節，到貨對印字與量一次確認。**381LX 的 A052 料號不在現行 CDE 型錄**，實收可能是 Ø30 的 K 殼。
 2. **改 `pcb/DraftV03.pretty/` 封裝** —— 型錄已確定的四項中，**三項已於 2026-09-22 改進封裝庫與生成器**（U1 鑽孔 1.1／焊盤 2.0、C8 改指派 `CP_D12.5_P5`、`CP_D35_P10` 鑽孔 2.5／焊盤 4.0 圓孔暫代槽孔）。**C2 已於 2026-09-23 改躺式 `BP_Axial_L40_D20_P50`、放大板加寬為 115×90、`CP_D12.5_P5` 鑽孔 1.0**（見 pcb/README）。**2026-09-24 已重建板檔並通過 DRC／驗證**；parts-audit 與 3D 預覽已於 2026-09-24 以 V0.4 重做（`pcb/inspection-v04/`，工具 `tools/*_inspection_v04.py`，SVG→PNG 改用 PyMuPDF）。**BR1／BR2 已於 2026-09-24 定案：KBPC2510 鎖機殼、四條 Faston 線接到板上 `BridgeTerminal4_P5.08` 4 位端子**（電源板已重建、DRC 0）。逐項比對見採購總表 1.1。C201–C204 依實收殼徑改 snap-in 槽孔（腳片寬 ≤2.0／厚 0.8 mm，1.3 mm 圓孔不合）。改完在有 KiCad 的機器一次完成：`python3 tools/rebuild.py`（原理圖生成器已改 100V／0.6W／註記，會一併帶入 sch、PDF、BOM、validation.md）→ `build_pcb_v03.py` → `run_pcb_drc_v03.py` → `verify_pcb_v03.py` → `render_pcb_v03.py` → `build_diagrams.py`＋`render_diagrams.cjs`（兩張色塊圖底圖才會更新）。
-3. **變壓器到貨後量各繞組電流與調整率** —— 用實際值定保險絲額定與整流橋規格，並更新 `tools/power_budget.py`、`tools/mains_budget.py` 的估算前提。
+3. **變壓器到貨後量各繞組電流與調整率** —— 用實際值定保險絲額定與整流橋規格，並更新 `tools/power_budget.py`、`tools/mains_budget.py` 的估算前提。**2026-10-01 已量空載電壓、直流電阻、標籤電流（docs/00 §1），保險絲與整流橋已定；`mains_budget.py` 的「22 V＋8% 調整率」前提尚未改成實測值重跑，docs/05 試算段落仍是舊數字。**
 4. **主電容高度確定後才能定機殼** —— 目前推導的內部空間下限為寬 ≥300／深 ≥250／高 ≥90 mm（**以 100×90 放大板推導，放大板已加寬為 115×90，寬度要重算**），機殼未下單、熱阻未標、賣家未確認。
 5. **V0.4 控制板**：需求在 [docs/13](docs/13-喇叭保護與啟停設計計畫.md)，設計草案在 [docs/14](docs/14-V0.4-控制與保護板設計草案.md)（2026-09-22 起）。變壓器到貨後照 14 §8 量五項寫回，再照 §7 選繼電器、定 R_s；之後才畫 CTRL 原理圖（新增 `tools/build_control_board.py`，比照兩份現有生成器）。UPC1237 模組到貨照 14 §9 驗證，不直接裝機。
 5c. **PCB V0.5（2026-09-29，已併入 main）**：放大板 D 115×90→90×90（C2 站立 `BP_Axial_Vert_D20_P15`，腳距 15 為假設）、電源板 160×120→125×130（AC 區上緣、輸出區下緣、snubber 貼邊）；兩板 DRC 0、驗證通過、`validation-v05.json` 含機殼餘裕數字（深 7→22、前排寬 10→45）。機殼對照圖 `docs/diagrams/chassis_bz4312a2_v05_fit.png`。**使用者 2026-09-29 晚選定，已 ff 併入 main、文件「現行」改 V0.5、`pcb/inspection-v05/` 已做**；下一步接 IC 方案 B（U1 上移到板邊，等三項實量）、C2 站立腳距實量、current-budget 對照。重建流程同 5b，把 v04 換成 v05（`build_pcb_v05.py` 一次建兩板）。

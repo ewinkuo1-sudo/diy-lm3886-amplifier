@@ -1,6 +1,6 @@
 # PCB
 
-**現行版本是 V0.5**（2026-09-29 使用者選定併入 main：為塞進 BZ4312A2 機殼把放大板 D 縮為 90×90、電源板改 125×130，電路不變），兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.5」節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v05](inspection-v05/README.md)。**V0.4 自 2026-09-29 起為歷史版本**（放大板 D／C 與電源板板檔、DRC、[inspection-v04](inspection-v04/README.md) 保留）。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
+**現行版本是 V0.5.1**（2026-10-01 使用者選定併入 main：電源板的整流橋改為 GBJ2510 直立上板，取代 KBPC2510 鎖機殼＋Faston 線；放大板 D 90×90 與 V0.5 相同），兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.5.1」節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v051](inspection-v051/README.md)。**V0.5 電源板（`psu-layout-v05`）自 2026-10-01 起為歷史**，板檔與 [inspection-v05](inspection-v05/README.md) 保留。**V0.4 自 2026-09-29 起為歷史版本**（放大板 D／C 與電源板板檔、DRC、[inspection-v04](inspection-v04/README.md) 保留）。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
 
 ![PCB V0.5](preview/system-layout-v05.png)
 
@@ -98,7 +98,30 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 
 **V0.4 三塊板都畫完了（放大板 C、放大板 D、電源板）**，等使用者看圖選 C 或 D。之後才做：V0.4 的 `current-budget`／`analyze` 對照、3D 與導讀圖、系統並排圖；V0.3 檔案與雜湊全部未動。
 
-## PCB V0.5（機殼配合縮板，2026-09-29，現行）
+## PCB V0.5.1（整流橋上板，2026-10-01，現行）
+
+> ⚠️ **工程草稿，不可送製。** 只改電源板：BR1／BR2 由「4 位端子接機殼上的 KBPC2510」改為 **GBJ2510 直立裝在板上**，電路、零件、網路、板尺寸 125×130 與其他零件位置全部不變；放大板 D 沿用 V0.5 板檔（`mono-layout-v05d`）。電源板 KiCad 10.0.6 **0 DRC 違規、0 未連通**，50 焊盤網路與原理圖相符（[validation-v051.json](validation-v051.json)）。**2026-10-01 使用者看過預覽後選定併入 main。** 3D／正反面／零件核對見 [inspection-v051](inspection-v051/README.md)。
+
+![電源板 V0.5 → V0.5.1](preview/psu-layout-v051-compare.png)
+
+**為什麼改：** 變壓器 2026-10-01 量完（2×22.29 Vac 空載、繞組 4.2 A、次級迴路約 0.3 Ω），使用者想把整流放回板上少掉八個 Faston 壓接點與四條大電流線。KBPC2510W（接腳版）28.5 mm 方塊塞不進上緣 27 mm 的條帶，GBJ2510 直立只占 30×4 mm，放得下且板不必加大。
+
+| 項目 | V0.5 | V0.5.1 |
+|---|---|---|
+| BR1／BR2 封裝 | `BridgeTerminal4_P5.08`（4 位 5.08 螺絲端子） | **`GBJ_Upright_P10_7.5_7.5`**（新；Diodes DS21221：腳距 10／7.5／7.5、扁腳 1.0×2.2 → 長孔 2.6×1.4、焊盤 3.8×2.6，腳序 ＋ ～ ～ －，絲印標極性與散熱面粗線） |
+| 位置 | (21,23) 轉 0°／(104,23) 轉 180° | **(19,23)／(81,23) 都轉 0°**：印字面朝電容（+y）、金屬背朝板邊（−y）。右邊不鏡射旋轉，否則金屬背會朝向電容；右半四條線因此另外佈，與左邊不完全對稱 |
+| 散熱 | 橋堆鎖機殼 | 金屬背那側預留寬 30×厚 10 mm 散熱片空間（離保險絲座 1.0、離電容外框 1.5 mm，`verify_pcb_v051.py` 檢查） |
+| 進出走線 | — | 僅 POS／NEG_AC_FUSED、POS／NEG_AC2、VCC／GND／VEE 進電容的七條重接；其餘 0 改動 |
+
+| 板 | 檔案 |
+|---|---|
+| 電源板 V0.5.1 | [psu-layout-v051.kicad_pcb](psu-layout-v051.kicad_pcb)／[.kicad_pro](psu-layout-v051.kicad_pro)／[JSON](psu-layout-v051.json)／[封裝清單](psu-layout-v051-footprints.csv)／[DRC](psu-v051-drc.json)／[預覽](preview/psu-layout-v051.png)／[與 V0.5 對照](preview/psu-layout-v051-compare.png) |
+| 放大板 D | 同 V0.5：[mono-layout-v05d.kicad_pcb](mono-layout-v05d.kicad_pcb) |
+| 生成器／驗證 | `tools/pcb_layout_v051_psu.py`（由 `pcb_layout_v05_psu.py` 衍生，只覆寫 BR 與七條走線）、`build_pcb_v051.py`（新增 `make_fp_oval`）、`verify_pcb_v051.py`、`render_pcb_v051.py`、`*_inspection_v051.py` |
+
+重建：`kicad-cli sch export netlist`（psu）→ KiCad 內建 python 跑 `tools/build_pcb_v051.py` → `kicad-cli pcb drc --format json --exit-code-violations -o pcb/psu-v051-drc.json pcb/psu-layout-v051.kicad_pcb` → `py -3.13 tools/verify_pcb_v051.py` → `render_pcb_v051.py` → `git checkout -- pcb/DraftV03.pretty`（只保留新增的 `GBJ_Upright_P10_7.5_7.5.kicad_mod`）。**未做：** GBJ 實物核對、散熱片選定後的 3D、原理圖 BR 符號的封裝欄位（原理圖未重建，網路表不受影響）。
+
+## PCB V0.5（機殼配合縮板，2026-09-29；電源板自 2026-10-01 起為歷史、放大板沿用）
 
 > ⚠️ **工程草稿，不可送製。** 電路、零件、網路與 V0.4 完全相同；只改板形與零件位置。兩板 KiCad 10.0.6 **0 DRC 違規、0 未連通**，54＋50 焊盤網路與原理圖相符，放大板底層鋪銅單一連通區、0 過孔（[validation-v05.json](validation-v05.json)）。**2026-09-29 使用者看過預覽後選定，已併入 main 成為現行版本；** 3D／正反面／零件核對見 [inspection-v05](inspection-v05/README.md)。
 
