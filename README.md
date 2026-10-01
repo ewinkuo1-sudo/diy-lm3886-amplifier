@@ -77,8 +77,8 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 | [BOM 草案](electrical/bom-draft.csv) | 由 KiCad netlist 匯出，含選型條件 |
 | [驗證紀錄](electrical/validation.md) | ERC、網路核對與未驗證事項 |
 | [原理圖說明](electrical/README.md) | 放大板與電源次級 KiCad 圖、看圖與重建方式 |
-| [PCB](pcb/README.md) | V0.5 現行（放大板 D 90×90、電源板 125×130）與 V0.4／V0.3 歷史：板檔、DRC、審查結論與載流計算表 |
-| [PCB 看圖資料](pcb/inspection-v05/README.md) | V0.5（放大板 D＋電源板）正反面銅箔、組裝、3D 預覽與零件核對表；[V0.4](pcb/inspection-v04/README.md)／[V0.3](pcb/inspection-v03/README.md) 版保留 |
+| [PCB](pcb/README.md) | V0.5.1 現行（放大板 D 90×90、電源板 125×130 整流橋上板）與 V0.5／V0.4／V0.3 歷史：板檔、DRC、審查結論與載流計算表 |
+| [PCB 看圖資料](pcb/inspection-v051/README.md) | V0.5.1（放大板 D＋電源板）正反面銅箔、組裝、3D 預覽與零件核對表；[V0.5](pcb/inspection-v05/README.md)／[V0.4](pcb/inspection-v04/README.md)／[V0.3](pcb/inspection-v03/README.md) 版保留 |
 | [工具說明](tools/README.md) | 各腳本用途與執行順序 |
 | [接班進度](HANDOFF.md) | 現況與下一階段工作 |
 | [變更紀錄](CHANGELOG.md) | 逐日進度歷史 |

@@ -1,12 +1,14 @@
 # tools/ 腳本索引
 
-入口只有一支：
+更新：2026-10-01。腳本以 PCB 版號分家族（v03／v04／v05／v051），**現行是 V0.5.1**：放大板用 v05 家族建、電源板用 v051 家族建。舊家族保留，只為重現歷史板檔，不再修改。
+
+原理圖側入口只有一支：
 
 ```sh
 python3 tools/rebuild.py
 ```
 
-`rebuild.py` 需要 KiCad 10 CLI 與 Poppler `pdftoppm`；它只重建**原理圖側**：畫兩份 KiCad 原理圖、跑 ERC、匯出 netlist／PDF／PNG、獨立核對網路，再重新產生 docs/02 與 docs/06 兩份估算文件。任何驗證失敗即中止。**它不呼叫任何 pcb 腳本**；PCB、導讀圖、PDF 需另外手動執行下列工具。
+`rebuild.py` 需要 KiCad 10 CLI 與 Poppler `pdftoppm`；它只重建**原理圖側**：畫兩份 KiCad 原理圖、跑 ERC、匯出 netlist／PDF／PNG、獨立核對網路，再重新產生 docs/02。任何驗證失敗即中止。**它不呼叫任何 pcb 腳本**；PCB、看圖資料、導讀圖、PDF 需另外手動執行。Windows 本機沒有 `pdftoppm`，照 rebuild.py 的步驟手動跑並用 PyMuPDF 轉 PNG（見 HANDOFF「環境注意」）。
 
 ## 原理圖與估算（由 rebuild.py 呼叫）
 
@@ -17,42 +19,50 @@ python3 tools/rebuild.py
 | `verify_electrical.py` | 以獨立電路規格核對 KiCad 匯出的放大板 netlist |
 | `verify_power_supply.py` | 電源板拓樸、極性與線束核對 |
 | `power_budget.py` | 理想 B 類功率／散熱估算，輸出 docs/02 |
-| `mains_budget.py` | 市電變動、空載電壓、紋波估算，輸出 docs/06；引用 power_budget |
-| `control_budget.py` | V0.4 控制板估算：湧流／軟啟動、繼電器 DC 分斷、掉電時序、12Vac 輔助電源、靜音、Z10 trigger；輸出 docs/14 §6（純標準庫，不由 rebuild.py 呼叫，手動執行） |
+| `mains_budget.py` | 市電變動、空載電壓、紋波估算，**只印到 stdout**，人工更新 docs/05 估算段（docs/06 已於 2026-09-21 併入 docs/05）；引用 power_budget。**前提仍是「22 V＋8% 調整率」，尚未改成 2026-10-01 實測值** |
+| `control_budget.py` | 控制板估算：湧流／軟啟動、繼電器 DC 分斷、掉電時序、12 Vac 輔助電源、靜音、Z10 trigger；輸出 docs/14 §6（不由 rebuild.py 呼叫，手動執行） |
 
-## PCB V0.3（現行；需 KiCad Python 環境）
+## PCB 現行 V0.5.1（需 KiCad Python 環境）
 
-| 腳本 | 用途 |
-|---|---|
-| `pcb_layout_v03.py` | B 方案 V0.3 位置與逐段走線定義（資料檔，不直接執行） |
-| `build_pcb_v03.py` | 由 pcb_layout_v03 與 netlist 產生 `pcb/*-layout-v03.kicad_pcb`、JSON 與封裝表 |
-| `run_pcb_drc_v03.py` | 固定規則下跑原生 DRC，並把報告雜湊綁到檔案 |
-| `verify_pcb_v03.py` | 核對 DRC 結果、焊盤網路、放大板回地分組，寫 `pcb/validation-v03.json` |
-| `render_pcb_v03.py` | 由 JSON 畫 `pcb/preview/*.png`（需 Pillow） |
-| `analyze_pcb_v03.py` | 銅箔路徑電阻／壓降／損耗篩查，讀 `pcb/archive/v02/*-layout-v02.json` 做 V0.2 對照，寫 `pcb/current-budget-v03.json／.md` |
-| `test_pcb_analysis_v03.py` | analyze_pcb_v03 的回歸測試（unittest） |
-
-## PCB V0.3 看圖與零件核對（`pcb/inspection-v03/`）
+每個版本家族都是同一組角色：**layout（資料檔）→ build → DRC → verify → render**，再加六支 inspection 腳本。V0.5.1 只重畫電源板，放大板沿用 V0.5。
 
 | 腳本 | 用途 |
 |---|---|
-| `build_pcb_inspection_v03.py` | 產生導讀圖 SVG、暫定 VRML 模型、預覽板與組裝表 |
-| `export_pcb_inspection_v03.py` | 用 kicad-cli 匯出原生分層 SVG 與 3D 渲染 |
-| `frame_pcb_inspection_v03.py` | 3D 渲染加註假設說明框（需 Pillow） |
-| `render_pcb_inspection_v03.cjs` | SVG 轉 PNG（Node，需 sharp） |
-| `write_pcb_parts_audit_v03.py` | 產生 `parts-audit.json／md` |
-| `verify_pcb_inspection_v03.py` | 核對預覽板、模型尺寸與來源綁定 |
+| `pcb_layout_v05.py` | 放大板 D 90×90 位置與走線定義（**現行放大板**；底層整面接地） |
+| `pcb_layout_v05_psu.py` | 電源板 V0.5 125×130 定義（歷史；v051 由它衍生） |
+| `pcb_layout_v051_psu.py` | 電源板 V0.5.1 定義：V0.5 只覆寫 BR1／BR2 改 GBJ2510 直立上板與相關七條走線（**現行電源板**） |
+| `build_pcb_v05.py` | 一次建放大板 D＋電源板 V0.5（沿用 v03 的 `build()` 與 v04 的 `add_zones()`；新增封裝 `BP_Axial_Vert_D20_P15`） |
+| `build_pcb_v051.py` | 只建電源板 V0.5.1；新增封裝 `GBJ_Upright_P10_7.5_7.5`（`make_fp_oval` 長孔） |
+| `verify_pcb_v05.py` | DRC 0、焊盤網路對照、放大板鋪銅單一連通區 → `pcb/validation-v05.json` |
+| `verify_pcb_v051.py` | 同上（電源板）＋ GBJ 本體與 10 mm 散熱片包絡不撞件 → `pcb/validation-v051.json` |
+| `render_pcb_v05.py` | 由 JSON 畫 `pcb/preview/*-v05*.png` 與 `system-layout-v05.png` |
+| `render_pcb_v051.py` | 畫 `psu-layout-v051.png` 與 V0.5／V0.5.1 並排對照圖 |
+| `build_pcb_inspection_v051.py` → `export_` → `frame_` → `render_` → `write_pcb_parts_audit_v051.py` → `verify_pcb_inspection_v051.py` | 看圖資料 `pcb/inspection-v051/`：導讀 SVG、暫定 VRML、預覽板、kicad-cli 分層與 3D 匯出、加註假設框、SVG→PNG（PyMuPDF）、零件核對表、來源綁定核對。中間產物（`3d/models/`、`*-preview.*`、`raw-*.png`）不入版控 |
 
-## 導讀圖與 PDF
+DRC 不再有專用腳本（v03 的 `run_pcb_drc_v03.py` 之後直接用 `kicad-cli pcb drc`），完整指令順序見 HANDOFF「V0.5.1 重建流程」。
+
+## 歷史家族（保留，不再改）
+
+| 家族 | 板 | 腳本 |
+|---|---|---|
+| **v03**（2026-09-17～24） | 放大板 115×90＋電源板 160×120 | `pcb_layout_v03.py`、`build_pcb_v03.py`（其他版本的 `build()` 都來自這支）、`run_pcb_drc_v03.py`（雜湊綁定 DRC）、`verify_pcb_v03.py`、`render_pcb_v03.py`（其他版本的畫圖函式來源）、`silk_marks_v03.py`（封裝極性絲印）、`analyze_pcb_v03.py`＋`test_pcb_analysis_v03.py`（載流對照 V0.2→V0.3，讀 `pcb/archive/v02/*.json`，**之後版本沒再做**）、`*_inspection_v03.py` 五支＋`render_pcb_inspection_v03.cjs`（需 sharp） |
+| **v04**（2026-09-24） | 放大板 C（星型改良）／D（整面接地）115×90＋電源板 160×120 | `pcb_layout_v04.py`（含 AMP_C／AMP_D）、`pcb_layout_v04_psu.py`、`build_pcb_v04.py`（一次建三板；`add_zones()` 鋪銅）、`verify_pcb_v04.py`、`render_pcb_v04.py`、`*_inspection_v04.py` 六支（SVG→PNG 改用 PyMuPDF） |
+| **v05**（2026-09-29） | 放大板 D 90×90（現行）＋電源板 125×130（歷史） | 見上表 |
+
+## 機殼、導讀圖與 PDF
 
 | 腳本 | 用途 |
 |---|---|
-| `build_diagrams.py` | 產生 `docs/diagrams/svg/*.svg`（色塊圖需 PyMuPDF） |
-| `render_diagrams.cjs` | SVG 轉 PNG（Node） |
-| `build_project_pdf.py` | 產生 `output/pdf/*.pdf`（需 reportlab、pypdf、CJK 字型；非 Windows 設 `LM3886_FONT`）。`output/` 為生成產物，不入版控 |
+| `draw_chassis_fit_v05.py` | BZ4312A2 俯視配置 A，左 V0.4／右 V0.5 三板，板尺寸讀 `pcb/*.json` → `docs/diagrams/chassis_bz4312a2_v05_fit.png` |
+| `draw_chassis_iso.py` | BZ4312A2 內部等角立體示意（配置 A）→ `chassis_bz4312a2_3d.png`（PIL） |
+| `build_diagram_full_v04.py` | 單聲道完整接線圖 `docs/diagrams/svg/lm3886_full_v04.svg`（每條線畫出、無網路標籤；電路到 V0.5.1 未變，仍適用） |
+| `build_diagrams.py` | 其餘五張導讀 SVG（色塊圖需 PyMuPDF 讀 KiCad PDF） |
+| `render_diagrams.py` | SVG→PNG（PyMuPDF，Windows 用這支） |
+| `render_diagrams.cjs` | SVG→PNG（Node＋sharp；mac 用） |
+| `build_project_pdf.py` | 產生 `output/pdf/*.pdf`（需 reportlab、pypdf、CJK 字型；非 Windows 設 `LM3886_FONT`）。`output/` 不入版控 |
 
 ## 已刪除的歷史腳本
 
-V0.1（`*_draft.py`）與 V0.2（`*_v02.py`）的產生／繪圖／驗證腳本已於 2026-09-21 刪除，需要時從 Git 歷史（`41b217c`）取回。`pcb/archive/v02/mono-layout-v02.json`、`psu-layout-v02.json` 兩個檔案**刻意保留**，因為 `analyze_pcb_v03.py` 要讀它們做 V0.2→V0.3 對照。
+V0.1（`*_draft.py`）與 V0.2（`*_v02.py`）腳本已於 2026-09-21 刪除，需要時從 Git 歷史（`41b217c`）取回。`pcb/archive/v02/mono-layout-v02.json`、`psu-layout-v02.json` **刻意保留**，因為 `analyze_pcb_v03.py` 要讀它們做對照。
 
 **檔名裡的 v01／v02 是 PCB 版號；`electrical/` 的 lm3886-v01、internal-psu-v02 是現行原理圖，別混淆。**
