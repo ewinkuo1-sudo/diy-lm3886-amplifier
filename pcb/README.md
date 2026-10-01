@@ -2,7 +2,7 @@
 
 **現行版本是 V0.5.1**（2026-10-01 使用者選定併入 main：電源板的整流橋改為 GBJ2510 直立上板，取代 KBPC2510 鎖機殼＋Faston 線；放大板 D 90×90 與 V0.5 相同），兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.5.1」節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v051](inspection-v051/README.md)。**V0.5 電源板（`psu-layout-v05`）自 2026-10-01 起為歷史**，板檔與 [inspection-v05](inspection-v05/README.md) 保留。**V0.4 自 2026-09-29 起為歷史版本**（放大板 D／C 與電源板板檔、DRC、[inspection-v04](inspection-v04/README.md) 保留）。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
 
-![PCB V0.5](preview/system-layout-v05.png)
+![PCB V0.5.1（現行三板）](preview/system-layout-v051.png)
 
 ---
 

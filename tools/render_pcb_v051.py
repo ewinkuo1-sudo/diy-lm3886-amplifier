@@ -35,3 +35,27 @@ for ref in ('BR1','BR2'):
  d.rectangle((x0,y0,x1,y1),outline='#e8c27a',width=2)
 d.text((50,760),'V0.5.1 KiCad 10.0.6 DRC 0 違規、0 未連通，50 焊盤網路與原理圖相符。GBJ 腳孔 2.6×1.4 長孔、腳距 10／7.5／7.5 取自原廠規格書，實物到貨要核對。非製造版本。',font=font(19),fill='#93afb4')
 im.save(O/'psu-layout-v051-compare.png');print('rendered',O/'psu-layout-v051-compare.png')
+
+# System view (2026-10-01): the three boards that make up the current V0.5.1 machine, at one scale.
+# Amplifier boards are V0.5 D (solid B.Cu pour -> needs the zone hook); PSU is V0.5.1 (bridges on board).
+ZONE_HOOK='''
+ for zn in data.get('zones',[]):
+  for ring in zn['filled']:
+   d.polygon([point(*q) for q in ring['outer']],fill='#3b6f9c')
+   for hole in ring['holes']:d.polygon([point(*q) for q in hole],fill='#115b4d')
+'''
+ns_amp={"__file__":str(R/"tools/render_pcb_v03.py")};exec(src[:src.index("mono=json.loads")].replace('V0.3 B / ENGINEERING DRAFT','V0.5 / ENGINEERING DRAFT').replace(" # actual copper, top view for both layers",ZONE_HOOK),ns_amp)
+amp=json.loads((D/'mono-layout-v05d.json').read_text(encoding='utf-8'))
+S=3.6
+im=Image.new('RGB',(1900,780),'#101c25');d=ImageDraw.Draw(im)
+d.text((60,32),'LM3886 / 方案 C PCB V0.5.1（現行）：兩片放大板 D 90×90 ＋ 電源板 125×130，同比例',font=font(44),fill='#f3f8f7')
+d.text((60,100),'放大板與 V0.5 相同；電源板的整流橋 GBJ2510 直接站在板上（黃框＝金屬背面側預留的散熱片空間），不再用 Faston 線接機殼上的橋堆',font=font(25),fill='#adc7c8')
+for dat,pos,title,drawer in [(amp,(60,190),'放大板 D（左聲道）90×90',ns_amp['draw_board']),(amp,(520,190),'放大板 D（右聲道）90×90',ns_amp['draw_board']),(data,(1000,190),'電源板 V0.5.1 125×130（GBJ2510 ×2 上板）',draw_board)]:
+ d.text((pos[0],pos[1]-34),title,font=font(24),fill='#d0e8e4');drawer(im,dat,pos,S)
+for ref in ('BR1','BR2'):
+ b=next(p for p in data['parts'] if p['ref']==ref);x0=1000+(b['x']-2.5)*S;x1=1000+(b['x']+27.5)*S;y1=190+(b['y']-2)*S;y0=y1-10*S
+ d.rectangle((x0,y0,x1,y1),outline='#e8c27a',width=2)
+d.text((1620,220),'BZ4312A2 內 330×297',font=font(22),fill='#e5c38a')
+d.text((1620,252),'配置 A：深餘 22、前排寬餘 45',font=font(20),fill='#a2dfbd')
+d.text((60,700),'三板 KiCad 10.0.6 DRC 0 違規、0 未連通。C2 站立腳距 15、GBJ 高度 20 為假設，實物到貨要量。U1 仍在 y=14，方案 B 等三項實量後再改。非製造版本。',font=font(23),fill='#93afb4')
+im.save(O/'system-layout-v051.png');print('rendered',O/'system-layout-v051.png')

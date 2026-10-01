@@ -86,7 +86,7 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 
 [電源 PDF](electrical/preview/internal-psu-v02.pdf) · [電源 BOM](electrical/psu-bom-draft.csv)
 
-![PCB V0.5](pcb/preview/system-layout-v05.png)
+![PCB V0.5.1（現行：兩片放大板 D＋整流橋上板的電源板）](pcb/preview/system-layout-v051.png)
 
 ## 重建與下一步
 

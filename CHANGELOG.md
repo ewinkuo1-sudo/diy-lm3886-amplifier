@@ -13,6 +13,7 @@
 - **tools/README.md 整份重寫**：原本停在「PCB V0.3（現行）」，v04／v05／v051 共 24 支腳本沒列；改成按版本家族列出，並註明 `mains_budget.py` 輸出到 stdout（docs/06 早已併入 docs/05）。
 - README 目錄表「PCB／PCB 看圖資料」兩列改指 V0.5.1 與 inspection-v051；docs/diagrams/README 補註六張圖對 V0.5.1 仍適用（電路未變，只有橋堆線束那段不存在）。
 - **版控**：`.gitignore` 漏加 v051 那段，使 `pcb/inspection-v051/3d/` 的 24 個中間產物（`models/*.wrl`、`*-preview.kicad_*`、`raw-*.png`）被 commit 進來；補規則並 `git rm --cached`（磁碟上檔案保留）。已併入 main 的本地分支 `v04-layout`、`v05-layout` 刪除；`v052-layout`（未採用合板候選）依使用者決定保留。
+- 使用者指出 README 首頁「目前狀態」標題仍是 09-24、系統圖仍是 V0.5：狀態節重寫為 2026-10-01 現況；`render_pcb_v051.py` 加系統視圖 `pcb/preview/system-layout-v051.png`（兩片放大板 D＋V0.5.1 電源板，同比例），README 與 pcb/README 首圖改用它。
 - 無電路、板檔、估算變動。
 
 ## 2026-10-01（下午）：PCB V0.5.1——電源板整流橋 GBJ2510 直立上板，併入 main
