@@ -6,7 +6,8 @@
 
 ## 現況（2026-10-01）
 
-- **電路**：放大板 `electrical/lm3886-v01` 與電源次級 `electrical/internal-psu-v02` 兩份 KiCad 原理圖是電路唯一來源（生成器 `tools/build_schematic.py`／`build_power_supply.py`），43＋15 元件，ERC 0 錯誤 0 警告。改電路 → 改生成器 → `python3 tools/rebuild.py`。
+- **電路**：放大板 `electrical/lm3886-v01` 與電源次級 `electrical/internal-psu-v02` 兩份 KiCad 原理圖是電路唯一來源（生成器 `tools/build_schematic.py`／`build_power_supply.py`），43＋15 元件，ERC 0 錯誤 0 警告。改電路 → 改生成器 → `python3 tools/rebuild.py`。**2026-10-01 深夜新增控制／保護板第一版**：`electrical/control-v01`（CTRL，46 件：UPC1237、7812 輔助電源、G2R-1-E ×2、光耦靜音 ×2、TL431 旁通計時）＋`electrical/mains-v01`（MAINS，11 件：SL22 10005 NTC、K_BYP G2R-1-E、K_TRIG G5LE-1），生成器 `tools/build_control_board.py`，ERC 0；**rebuild.py 尚未呼叫它**，手動跑 ERC／PDF／netlist。決定與偏離 docs/14 之處見 docs/14 開頭狀態列。
+- **機殼與配置（2026-10-01 深夜改向）**：BZ4312A2 延到下一台；**改選弘宙 102**（型錄 d395×c290×e105，內估 393×273×100，賣家未確認），**散熱器內置**兩側：150 長×90 高×30 深黑色鋁擠 ×2（規格依 8 Ω 連續正弦 θSA ≤1.2 °C/W，估法 θSA≈1000/表面積 cm²），鰭片朝牆、底板朝板、上蓋底板開通風孔。配置：後排 放大板 L 80×90｜電源板 87×120｜放大板 R 80×90，變壓器前排中央，控制板 70×120 平放左側、市電板右側。**V0.6 三板尚未畫**（目標尺寸如上，對 103 也成立）。下單前問賣家：內寬實際值、上蓋通風孔、後面板是否空白。
 - **PCB：現行 V0.5.1**，工程草稿**不可送製**。放大板 D `pcb/mono-layout-v05d`（90×90，底層整面接地，與 V0.5 相同）＋電源板 `pcb/psu-layout-v051`（125×130，整流橋 GBJ2510 直立上板）。兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，`validation-v051.json` 通過；看圖資料 `pcb/inspection-v051/`。V0.5 電源板、V0.4（D 主／C 備／PSU）、V0.3 均為歷史，檔案原樣保留。放大板 **U1 仍在 y=14**（IC 方案 B 未改板，見下一步 1）。
 - **機殼**：定案淘寶清風工作室 **BZ4312A2**（BRZHIFI，「無音量前＋平衡後」版，¥458，內 330×297×112，兩側散熱器 300×118×50，附保險絲尾插與電源開關）。**未下單**，只剩問賣家能否加開 12 V trigger 孔。配置 A（放大板貼後側牆、中間控制板、前排變壓器＋電源板）餘裕深 22／前排寬 45 mm，圖 `docs/diagrams/chassis_bz4312a2_v05_fit.png`。XLR 只當接頭：pin 2→DPDT→J1，pin 3 空接。
 - **IC 固定**：使用者傾向方案 B（IC 搬到板邊直接鎖側牆散熱器，不用 L 型鋁角），**等三項實量才改板**。
@@ -20,7 +21,8 @@
 2. **C2 站立腳距實量**：把 EGW 47 µF 實物彎腳量腳距，不是 15 就改 `BP_Axial_Vert_D20_P15` 並重建。
 3. **變壓器帶載量測**：照 [docs/04](docs/04-上電與驗收.md) 與 [docs/14](docs/14-V0.4-控制與保護板設計草案.md) §8 量帶載電壓、絕緣、溫升；然後把 `tools/mains_budget.py` 的「22 V＋8% 調整率」前提改成實測值重跑，更新 docs/05 試算段。
 4. **採購**：照 docs/00 §3 順序。機殼下單前問 trigger 孔；GBJ2510 到貨核腳距 10／7.5／7.5、本體 30×20×3.8、背面絕緣；原理圖 BR1／BR2 的封裝欄位還沒改成 `GBJ_Upright_P10_7.5_7.5`（板檔已是）。
-5. **控制板（docs/13／14）**：變壓器已量，可開始篩繼電器（K_SPK ≥36 VDC／≥9 A 分斷）、NTC、R_s；docs/14 §6 用兩軌儲能 22.4 J 重算 → 畫 CTRL 原理圖（新增 `tools/build_control_board.py`，比照兩份現有生成器）。UPC1237 模組到貨照 14 §9 驗證，不直接裝機。
+5. **控制板（docs/13／14）**：原理圖第一版已畫（見現況）。接下來：①使用者審圖；②買零件（G2R-1-E 12VDC ×4、G5LE-1 12VDC ×1、UPC1237 ×2、SL22 10005 ×1、H11D1 或 SFH617A ×2、TL431、BC327、7812、DF06M）並量繼電器腳位畫封裝；③把 `build_control_board.py` 接進 `rebuild.py`，補 `verify_control_board.py`（比照 verify_power_supply）；④docs/14 §6 用 22.4 J 重算、§3 時序表改成「解除靜音＝繼電器吸合」；⑤麵包板實測 UPC1237 在 12 V 供電下的門檻與延遲（型錄是 25–60 V）。
+5b. **V0.6 三板 PCB**：等 IC 三個數字（步驟 1）與賣家回 102 內寬 → 放大板 80×90（IC 貼板邊）、電源板 87×120（電容 2×2 在上、GBJ×2＋保險絲在下、端子朝變壓器），再加 CTRL／MAINS 兩塊板的 PCB。
 6. **工具對照未做**：V0.4 之後沒有再做 current-budget／analyze 載流對照（`analyze_pcb_v03.py` 只到 V0.3）；若要補，比照 v03 寫 v051 版。
 7. **測試順序**：放大板先用限流實驗電源；內建電源獨立驗證後再整合；假負載／熱／失真量完才接喇叭（docs/04）。
 

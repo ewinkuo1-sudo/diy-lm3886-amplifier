@@ -16,6 +16,7 @@ python3 tools/rebuild.py
 |---|---|
 | `build_schematic.py` | 產生放大板原理圖 `electrical/lm3886-v01.kicad_sch`（純標準庫） |
 | `build_power_supply.py` | 產生次級電源原理圖 `electrical/internal-psu-v02.kicad_sch`；引用 build_schematic 的繪圖函式 |
+| `build_control_board.py` | **2026-10-01 新增，rebuild.py 尚未呼叫**：產生控制／保護板 `electrical/control-v01.kicad_sch`（UPC1237、G2R-1-E ×2、光耦靜音、TL431 旁通計時、7812 輔助電源）與市電板 `electrical/mains-v01.kicad_sch`（NTC、K_BYP、K_TRIG）。手動跑 `kicad-cli sch erc／export pdf／export netlist`，PyMuPDF 轉 PNG 到 `electrical/preview/` |
 | `verify_electrical.py` | 以獨立電路規格核對 KiCad 匯出的放大板 netlist |
 | `verify_power_supply.py` | 電源板拓樸、極性與線束核對 |
 | `power_budget.py` | 理想 B 類功率／散熱估算，輸出 docs/02 |

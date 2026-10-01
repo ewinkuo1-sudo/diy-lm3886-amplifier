@@ -68,6 +68,9 @@ class Drawing:
         self.project, self.title = project, title
         self.items, self.parts, self.pins = [], [], {}
         self.seq = 0
+        # title-block fields; the two original sheets keep their 2026-09-22 values
+        self.date, self.rev = '2026-09-22', '0.3 DRAFT'
+        self.comment = 'Internal PSU system / PCB V0.3 engineering draft only / no hardware measurements'
 
     def item(self, text):
         self.seq += 1
@@ -93,8 +96,10 @@ class Drawing:
         properties += prop('Value', value, x + (13 if vertical else 0), y + (1 if vertical else -4.5), flag)
         if kind == 'LM3886':
             properties = prop('Reference', ref, x + 17.78, y - 15.24) + prop('Value', value, x + 17.78, y - 12.7)
-        if kind == 'Bridge':
-            properties = prop('Reference', ref, x, y - 17.78) + prop('Value', value, x, y - 15.24)
+        # Boxed / multi-pin symbols: put both texts above the body so they never sit on the outline.
+        above = {'Bridge': 17.78, 'Relay': 17.78, 'UPC1237': 20.32, 'Opto': 12.7, 'Reg78': 10.16, 'TL431': 12.7, 'PNP': 12.7, 'NPN': 12.7}
+        if kind in above:
+            properties = prop('Reference', ref, x, y - above[kind]) + prop('Value', value, x, y - above[kind] + 2.54)
         properties += prop('Footprint', '', x, y, True)
         properties += prop('Datasheet', 'https://www.ti.com/lit/ds/symlink/lm3886.pdf' if kind == 'LM3886' else '', x, y, True)
         self.items.append(f'(symbol(lib_id {q("Project:" + kind)})(at {x} {y} {90 if vertical else 0})(unit 1)'
@@ -125,7 +130,7 @@ class Drawing:
     def save(self):
         lib = ''.join(v.replace('(symbol ' + q(k), '(symbol ' + q('Project:' + k), 1) for k, v in LIB.items())
         header = f'(kicad_sch(version 20250114)(generator "diy_lm3886")(uuid {uid(self.project)})(paper "A3")'
-        header += f'(title_block(title {q(self.title)})(date "2026-09-22")(rev "0.3 DRAFT")(comment 1 "Internal PSU system / PCB V0.3 engineering draft only / no hardware measurements"))'
+        header += f'(title_block(title {q(self.title)})(date {q(self.date)})(rev {q(self.rev)})(comment 1 {q(self.comment)}))'
         (DEST / (self.project + '.kicad_sch')).write_text(header + f'(lib_symbols {lib})' + ''.join(self.items) + '(sheet_instances(path "/"(page "1"))))\n')
         (DEST / 'Project.kicad_sym').write_text('(kicad_symbol_lib(version 20231120)(generator "diy_lm3886")' + ''.join(LIB.values()) + ')\n')
         (DEST / 'sym-lib-table').write_text('(sym_lib_table\n  (version 7)\n  (lib (name "Project")(type "KiCad")(uri "${KIPRJMOD}/Project.kicad_sym")(options "")(descr "Project symbols"))\n)\n')
