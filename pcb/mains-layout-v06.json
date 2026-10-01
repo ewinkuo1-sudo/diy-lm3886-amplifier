@@ -1,0 +1,1348 @@
+{
+  "name": "mains-layout-v06",
+  "size": [
+    70,
+    100
+  ],
+  "parts": [
+    {
+      "ref": "J403",
+      "value": "Z10 12V TRIGGER (tip +, sleeve -)",
+      "footprint": "Terminal2_P5.08",
+      "x": 6,
+      "y": 10.5,
+      "angle": 0,
+      "body": [
+        -2.5,
+        -4,
+        7.58,
+        4
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          1,
+          0,
+          0,
+          3,
+          1.3
+        ],
+        [
+          2,
+          5.08,
+          0,
+          3,
+          1.3
+        ]
+      ]
+    },
+    {
+      "ref": "D402",
+      "value": "1N4007 flyback",
+      "footprint": "D_DO-41_P10.16",
+      "x": 22.16,
+      "y": 17.5,
+      "angle": 180,
+      "body": [
+        -1.395,
+        -1.645,
+        11.555,
+        1.645
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          "1",
+          0.0,
+          0.0,
+          2.2,
+          1.1
+        ],
+        [
+          "2",
+          10.16,
+          0.0,
+          2.2,
+          1.1
+        ]
+      ]
+    },
+    {
+      "ref": "K401",
+      "value": "K_TRIG G2RL-1-E 12VDC (16 A)",
+      "footprint": "Relay_G2RL-1-E",
+      "x": 12,
+      "y": 30,
+      "angle": 90,
+      "body": [
+        -2.795,
+        -2.595,
+        10.295,
+        26.795
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          "COM",
+          0.0,
+          20.0,
+          2.0,
+          1.3
+        ],
+        [
+          "COM",
+          7.5,
+          20.0,
+          2.0,
+          1.3
+        ],
+        [
+          "NO",
+          0.0,
+          25.0,
+          2.0,
+          1.3
+        ],
+        [
+          "NO",
+          7.5,
+          25.0,
+          2.0,
+          1.3
+        ],
+        [
+          "A1",
+          0.0,
+          0.0,
+          2.0,
+          1.3
+        ],
+        [
+          "A2",
+          7.5,
+          0.0,
+          2.0,
+          1.3
+        ]
+      ]
+    },
+    {
+      "ref": "D401",
+      "value": "1N4007 series (reverse-polarity)",
+      "footprint": "D_DO-41_P10.16",
+      "x": 13,
+      "y": 40,
+      "angle": 180,
+      "body": [
+        -1.395,
+        -1.645,
+        11.555,
+        1.645
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          "1",
+          0.0,
+          0.0,
+          2.2,
+          1.1
+        ],
+        [
+          "2",
+          10.16,
+          0.0,
+          2.2,
+          1.1
+        ]
+      ]
+    },
+    {
+      "ref": "D403",
+      "value": "1N4007 flyback",
+      "footprint": "D_DO-41_P10.16",
+      "x": 22.16,
+      "y": 46,
+      "angle": 180,
+      "body": [
+        -1.395,
+        -1.645,
+        11.555,
+        1.645
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          "1",
+          0.0,
+          0.0,
+          2.2,
+          1.1
+        ],
+        [
+          "2",
+          10.16,
+          0.0,
+          2.2,
+          1.1
+        ]
+      ]
+    },
+    {
+      "ref": "K402",
+      "value": "K_BYP G2RL-1-E 12VDC (16 A)",
+      "footprint": "Relay_G2RL-1-E",
+      "x": 12,
+      "y": 60,
+      "angle": 90,
+      "body": [
+        -2.795,
+        -2.595,
+        10.295,
+        26.795
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          "COM",
+          0.0,
+          20.0,
+          2.0,
+          1.3
+        ],
+        [
+          "COM",
+          7.5,
+          20.0,
+          2.0,
+          1.3
+        ],
+        [
+          "NO",
+          0.0,
+          25.0,
+          2.0,
+          1.3
+        ],
+        [
+          "NO",
+          7.5,
+          25.0,
+          2.0,
+          1.3
+        ],
+        [
+          "A1",
+          0.0,
+          0.0,
+          2.0,
+          1.3
+        ],
+        [
+          "A2",
+          7.5,
+          0.0,
+          2.0,
+          1.3
+        ]
+      ]
+    },
+    {
+      "ref": "J404",
+      "value": "FROM CTRL J306 (BYP_HI, GND)",
+      "footprint": "Terminal2_P5.08",
+      "x": 11.08,
+      "y": 70,
+      "angle": 180,
+      "body": [
+        -2.5,
+        -4,
+        7.58,
+        4
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          1,
+          0,
+          0,
+          3,
+          1.3
+        ],
+        [
+          2,
+          5.08,
+          0,
+          3,
+          1.3
+        ]
+      ]
+    },
+    {
+      "ref": "J401",
+      "value": "FROM IEC + FUSE (L, N)",
+      "footprint": "Terminal2_P5.08",
+      "x": 65,
+      "y": 16,
+      "angle": 270,
+      "body": [
+        -2.5,
+        -4,
+        7.58,
+        4
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          1,
+          0,
+          0,
+          3,
+          1.3
+        ],
+        [
+          2,
+          5.08,
+          0,
+          3,
+          1.3
+        ]
+      ]
+    },
+    {
+      "ref": "J402",
+      "value": "FRONT POWER SWITCH",
+      "footprint": "Terminal2_P5.08",
+      "x": 65,
+      "y": 32,
+      "angle": 270,
+      "body": [
+        -2.5,
+        -4,
+        7.58,
+        4
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          1,
+          0,
+          0,
+          3,
+          1.3
+        ],
+        [
+          2,
+          5.08,
+          0,
+          3,
+          1.3
+        ]
+      ]
+    },
+    {
+      "ref": "RT401",
+      "value": "SL22 10005 (10R / 5A / 90J)",
+      "footprint": "NTC_D22_P10",
+      "x": 40,
+      "y": 80,
+      "angle": 90,
+      "body": [
+        -6.5,
+        -11.5,
+        16.5,
+        11.5
+      ],
+      "kind": "circle",
+      "pads": [
+        [
+          1,
+          0,
+          0,
+          2.6,
+          1.3
+        ],
+        [
+          2,
+          10,
+          0,
+          2.6,
+          1.3
+        ]
+      ]
+    },
+    {
+      "ref": "J405",
+      "value": "TO T1 PRIMARY (L, N)",
+      "footprint": "Terminal2_P5.08",
+      "x": 65,
+      "y": 86,
+      "angle": 90,
+      "body": [
+        -2.5,
+        -4,
+        7.58,
+        4
+      ],
+      "kind": "rect",
+      "pads": [
+        [
+          1,
+          0,
+          0,
+          3,
+          1.3
+        ],
+        [
+          2,
+          5.08,
+          0,
+          3,
+          1.3
+        ]
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "a": [
+        6.0,
+        10.5
+      ],
+      "b": [
+        4,
+        12.5
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_IN",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        4,
+        12.5
+      ],
+      "b": [
+        4,
+        38
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_IN",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        4,
+        38
+      ],
+      "b": [
+        2.84,
+        40.0
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_IN",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        11.08,
+        10.5
+      ],
+      "b": [
+        12,
+        14
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_N",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        12,
+        14
+      ],
+      "b": [
+        12.0,
+        17.5
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_N",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        12.0,
+        17.5
+      ],
+      "b": [
+        12.0,
+        22.5
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_N",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        13.0,
+        40.0
+      ],
+      "b": [
+        13,
+        36
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_P",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        13,
+        36
+      ],
+      "b": [
+        12.0,
+        30.0
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_P",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        22.16,
+        17.5
+      ],
+      "b": [
+        23.5,
+        18
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_P",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        23.5,
+        18
+      ],
+      "b": [
+        23.5,
+        36
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_P",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        23.5,
+        36
+      ],
+      "b": [
+        13,
+        36
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "TRIG_P",
+      "group": "trigger"
+    },
+    {
+      "a": [
+        6.0,
+        70.0
+      ],
+      "b": [
+        4,
+        68
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "GND_CTRL",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        4,
+        68
+      ],
+      "b": [
+        4,
+        46
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "GND_CTRL",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        4,
+        46
+      ],
+      "b": [
+        12.0,
+        46.0
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "GND_CTRL",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        12.0,
+        46.0
+      ],
+      "b": [
+        12.0,
+        52.5
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "GND_CTRL",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        11.08,
+        70.0
+      ],
+      "b": [
+        13,
+        68
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "BYP_HI",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        13,
+        68
+      ],
+      "b": [
+        13,
+        66
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "BYP_HI",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        13,
+        66
+      ],
+      "b": [
+        12.0,
+        60.0
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "BYP_HI",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        22.16,
+        46.0
+      ],
+      "b": [
+        23.5,
+        48
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "BYP_HI",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        23.5,
+        48
+      ],
+      "b": [
+        23.5,
+        66
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "BYP_HI",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        23.5,
+        66
+      ],
+      "b": [
+        13,
+        66
+      ],
+      "width": 0.5,
+      "layer": "F.Cu",
+      "net": "BYP_HI",
+      "group": "bypass-coil"
+    },
+    {
+      "a": [
+        65.0,
+        16.0
+      ],
+      "b": [
+        61,
+        18
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        61,
+        18
+      ],
+      "b": [
+        32,
+        18
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        32,
+        18
+      ],
+      "b": [
+        32,
+        22.5
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        32,
+        22.5
+      ],
+      "b": [
+        32,
+        30
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        61,
+        18
+      ],
+      "b": [
+        60,
+        19
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        60,
+        19
+      ],
+      "b": [
+        60,
+        30
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        60,
+        30
+      ],
+      "b": [
+        65.0,
+        32.0
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        65.0,
+        37.08
+      ],
+      "b": [
+        62,
+        37
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        62,
+        37
+      ],
+      "b": [
+        42,
+        37
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        42,
+        37
+      ],
+      "b": [
+        37,
+        33
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        37,
+        33
+      ],
+      "b": [
+        37,
+        30
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        37,
+        30
+      ],
+      "b": [
+        37,
+        22.5
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        42,
+        37
+      ],
+      "b": [
+        42,
+        48
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        42,
+        48
+      ],
+      "b": [
+        32,
+        48
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        32,
+        48
+      ],
+      "b": [
+        32,
+        52.5
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        32,
+        52.5
+      ],
+      "b": [
+        32,
+        60
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        32,
+        60
+      ],
+      "b": [
+        32,
+        76
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        32,
+        76
+      ],
+      "b": [
+        40.0,
+        80.0
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_SW",
+      "group": "mains"
+    },
+    {
+      "a": [
+        37,
+        52.5
+      ],
+      "b": [
+        37,
+        60
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_T1",
+      "group": "mains"
+    },
+    {
+      "a": [
+        37,
+        60
+      ],
+      "b": [
+        37,
+        66
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_T1",
+      "group": "mains"
+    },
+    {
+      "a": [
+        37,
+        66
+      ],
+      "b": [
+        40,
+        69
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_T1",
+      "group": "mains"
+    },
+    {
+      "a": [
+        40,
+        69
+      ],
+      "b": [
+        40.0,
+        70.0
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_T1",
+      "group": "mains"
+    },
+    {
+      "a": [
+        40.0,
+        70.0
+      ],
+      "b": [
+        50,
+        70
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_T1",
+      "group": "mains"
+    },
+    {
+      "a": [
+        50,
+        70
+      ],
+      "b": [
+        61,
+        70
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_T1",
+      "group": "mains"
+    },
+    {
+      "a": [
+        61,
+        70
+      ],
+      "b": [
+        61,
+        83
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_T1",
+      "group": "mains"
+    },
+    {
+      "a": [
+        61,
+        83
+      ],
+      "b": [
+        65.0,
+        86.0
+      ],
+      "width": 2.0,
+      "layer": "F.Cu",
+      "net": "L_T1",
+      "group": "mains"
+    },
+    {
+      "a": [
+        65.0,
+        21.08
+      ],
+      "b": [
+        68.5,
+        24
+      ],
+      "width": 1.5,
+      "layer": "F.Cu",
+      "net": "N_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        68.5,
+        24
+      ],
+      "b": [
+        68.5,
+        78
+      ],
+      "width": 1.5,
+      "layer": "F.Cu",
+      "net": "N_IN",
+      "group": "mains"
+    },
+    {
+      "a": [
+        68.5,
+        78
+      ],
+      "b": [
+        65.0,
+        80.92
+      ],
+      "width": 1.5,
+      "layer": "F.Cu",
+      "net": "N_IN",
+      "group": "mains"
+    }
+  ],
+  "pads": [
+    {
+      "ref": "J403",
+      "number": "1",
+      "net": "TRIG_IN",
+      "x": 6.0,
+      "y": 10.5,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "J403",
+      "number": "2",
+      "net": "TRIG_N",
+      "x": 11.08,
+      "y": 10.5,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "D402",
+      "number": "1",
+      "net": "TRIG_P",
+      "x": 22.16,
+      "y": 17.5,
+      "dia": 2.2,
+      "drill": 1.1
+    },
+    {
+      "ref": "D402",
+      "number": "2",
+      "net": "TRIG_N",
+      "x": 12.0,
+      "y": 17.5,
+      "dia": 2.2,
+      "drill": 1.1
+    },
+    {
+      "ref": "K401",
+      "number": "COM",
+      "net": "L_IN",
+      "x": 32.0,
+      "y": 22.5,
+      "dia": 2.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "K401",
+      "number": "NO",
+      "net": "L_SW",
+      "x": 37.0,
+      "y": 22.5,
+      "dia": 2.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "K401",
+      "number": "A1",
+      "net": "TRIG_P",
+      "x": 12.0,
+      "y": 30.0,
+      "dia": 2.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "K401",
+      "number": "A2",
+      "net": "TRIG_N",
+      "x": 12.0,
+      "y": 22.5,
+      "dia": 2.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "D401",
+      "number": "1",
+      "net": "TRIG_P",
+      "x": 13.0,
+      "y": 40.0,
+      "dia": 2.2,
+      "drill": 1.1
+    },
+    {
+      "ref": "D401",
+      "number": "2",
+      "net": "TRIG_IN",
+      "x": 2.84,
+      "y": 40.0,
+      "dia": 2.2,
+      "drill": 1.1
+    },
+    {
+      "ref": "D403",
+      "number": "1",
+      "net": "BYP_HI",
+      "x": 22.16,
+      "y": 46.0,
+      "dia": 2.2,
+      "drill": 1.1
+    },
+    {
+      "ref": "D403",
+      "number": "2",
+      "net": "GND_CTRL",
+      "x": 12.0,
+      "y": 46.0,
+      "dia": 2.2,
+      "drill": 1.1
+    },
+    {
+      "ref": "K402",
+      "number": "COM",
+      "net": "L_SW",
+      "x": 32.0,
+      "y": 52.5,
+      "dia": 2.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "K402",
+      "number": "NO",
+      "net": "L_T1",
+      "x": 37.0,
+      "y": 52.5,
+      "dia": 2.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "K402",
+      "number": "A1",
+      "net": "BYP_HI",
+      "x": 12.0,
+      "y": 60.0,
+      "dia": 2.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "K402",
+      "number": "A2",
+      "net": "GND_CTRL",
+      "x": 12.0,
+      "y": 52.5,
+      "dia": 2.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "J404",
+      "number": "1",
+      "net": "BYP_HI",
+      "x": 11.08,
+      "y": 70.0,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "J404",
+      "number": "2",
+      "net": "GND_CTRL",
+      "x": 6.0,
+      "y": 70.0,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "J401",
+      "number": "1",
+      "net": "L_IN",
+      "x": 65.0,
+      "y": 16.0,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "J401",
+      "number": "2",
+      "net": "N_IN",
+      "x": 65.0,
+      "y": 21.08,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "J402",
+      "number": "1",
+      "net": "L_IN",
+      "x": 65.0,
+      "y": 32.0,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "J402",
+      "number": "2",
+      "net": "L_SW",
+      "x": 65.0,
+      "y": 37.08,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "RT401",
+      "number": "1",
+      "net": "L_SW",
+      "x": 40.0,
+      "y": 80.0,
+      "dia": 2.6,
+      "drill": 1.3
+    },
+    {
+      "ref": "RT401",
+      "number": "2",
+      "net": "L_T1",
+      "x": 40.0,
+      "y": 70.0,
+      "dia": 2.6,
+      "drill": 1.3
+    },
+    {
+      "ref": "J405",
+      "number": "1",
+      "net": "L_T1",
+      "x": 65.0,
+      "y": 86.0,
+      "dia": 3.0,
+      "drill": 1.3
+    },
+    {
+      "ref": "J405",
+      "number": "2",
+      "net": "N_IN",
+      "x": 65.0,
+      "y": 80.92,
+      "dia": 3.0,
+      "drill": 1.3
+    }
+  ],
+  "vias": [],
+  "anchors": {},
+  "pending_connections": [],
+  "verified_pad_count": 26
+}

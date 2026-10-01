@@ -10,6 +10,10 @@ electrical/psu-netlist.xml
 electrical/*-erc.json
 electrical/*-netlist.xml
 
+# 3D scene exports (regenerable: tools/draw_chassis_scene_v06.py, kicad-cli pcb export stl)
+docs/diagrams/*.gltf
+pcb/preview/3d/
+
 # PDF build and visual review intermediates
 tmp/pdfs/
 

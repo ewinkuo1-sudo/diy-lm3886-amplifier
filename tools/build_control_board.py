@@ -3,8 +3,8 @@
 Two schematic projects, like the amplifier / PSU split: electrical/control-v01.kicad_sch and
 electrical/mains-v01.kicad_sch. Requirements and timing come from docs/13 and docs/14; this file is the
 first circuit, not a verified design. Decisions taken 2026-10-01 with the user: self-built board around a
-UPC1237 protector IC (UTC datasheet QW-R107-065.B), Omron G2R-1-E 12 VDC relays for the speakers and the
-soft-start bypass, G5LE-1 12 VDC for the 12 V trigger, Ametherm SL22 10005 NTC (10 ohm / 5 A / 90 J)
+UPC1237 protector IC (UTC datasheet QW-R107-065.B), Omron G2RL-1-E 12 VDC relays (16 A, 33 mA coil, KiCad library footprint)
+for the speakers, the soft-start bypass and the 12 V trigger, Ametherm SL22 10005 NTC (10 ohm / 5 A / 90 J)
 in the mains, two boards (low-voltage CTRL near the RCA side, MAINS on the other side of the chassis).
 
 Deviations from docs/14 section 3, both deliberate:
@@ -13,8 +13,8 @@ Deviations from docs/14 section 3, both deliberate:
    still makes the un-mute soft. One timer less, same safety (mute drops the moment the relay drops);
  * UPC1237 VCC is the regulated +12 V, not the 25-60 V of the datasheet. Pin 8 is an internal 3.4 V
    reference fed through a resistor (15 k from 45 V in the datasheet = 2.8 mA), so R301 = 3.3 k from 12 V
-   gives the same current; the relay driver (pin 6, 80 mA max) drives a PNP because two G2R-1-E coils
-   draw 2 x 44 mA. To be confirmed on the bench (docs/14 section 9 style check).
+   gives the same current; the relay driver (pin 6, 80 mA max) drives a PNP so the two G2RL-1-E coils
+   (2 x 33 mA) plus the opto/LED chain never load pin 6 directly. To be confirmed on the bench (docs/14 section 9 style check).
 """
 from build_schematic import Drawing, define, passive, line
 
@@ -63,11 +63,16 @@ def build_ctrl():
     d.part('Conn2', 'J301', 'T1 12VAC', 30.48, y - 2.54)
     d.terminal('J301', 1, 'AC_A', dx=-10.16)
     d.terminal('J301', 2, 'AC_B', dx=-10.16)
-    d.part('Bridge', 'BR301', 'DF06M 1A/600V', 66.04, y)
-    d.terminal('BR301', 'AC1', 'AC_A', dx=-7.62)
-    d.terminal('BR301', 'AC2', 'AC_B', dx=-7.62)
-    d.terminal('BR301', 'P', 'RAW', dx=7.62)
-    d.terminal('BR301', 'N', 'GND', dx=7.62)
+    # bridge from four 1N4007 (DO-41): common footprint, no package-pinout doubt (2026-10-01 PCB decision)
+    for ref, yy, hi, lo in (('D306', y - 7.62, 'RAW', 'AC_A'), ('D307', y + 2.54, 'RAW', 'AC_B')):
+        d.part('D', ref, '1N4007', 66.04, yy)
+        d.terminal(ref, 1, hi, dx=-5.08)
+        d.terminal(ref, 2, lo, dx=5.08)
+    for ref, yy, hi, lo in (('D308', y - 7.62, 'AC_A', 'GND'), ('D309', y + 2.54, 'AC_B', 'GND')):
+        d.part('D', ref, '1N4007', 86.36, yy)
+        d.terminal(ref, 1, hi, dx=-5.08)
+        d.terminal(ref, 2, lo, dx=5.08)
+    d.text(50, y + 10, 'D306-D309 = full bridge: AC_A/AC_B -> D306/D307 cathodes = RAW; D308/D309 anodes = GND.', 1.3)
     d.pair('CP', 'C301', '2200u / 25V', 106.68, y, 'RAW', 'GND')
     d.pair('C', 'C302', '100n', 106.68, y + 15.24, 'RAW', 'GND')
     d.part('Reg78', 'U301', '7812 (TO-220, to chassis)', 142.24, y)
@@ -76,7 +81,7 @@ def build_ctrl():
     d.terminal('U301', 'GND', 'GND', dy=5.08)
     d.pair('CP', 'C303', '10u / 25V', 182.88, y, '+12V', 'GND')
     d.pair('C', 'C304', '100n', 182.88, y + 15.24, '+12V', 'GND')
-    d.text(15, y + 28, 'RAW ~15-17 VDC at 150 mA (2 x 44 mA coils + bypass coil 44 mA + logic). 7812 dissipates ~1 W: bolt to chassis. Ripple 2200u @150 mA ~0.6 Vpp (docs/14 6.5).', 1.3)
+    d.text(15, y + 28, 'RAW ~15-17 VDC at ~120 mA (3 x 33 mA G2RL coils + logic). 7812 dissipates ~0.6 W: clip heatsink or bolt to chassis. Ripple 2200u @120 mA ~0.5 Vpp (docs/14 6.5).', 1.3)
     # --- B. UPC1237 protector --------------------------------------------------------------------------------
     y = 127
     d.text(15, y - 40, 'B. UPC1237 PROTECTOR (UTC QW-R107-065.B)', 1.8)
@@ -98,6 +103,7 @@ def build_ctrl():
     # relay driver: pin 6 sinks the PNP base current; R303 limits it to ~10 mA
     d.part('R', 'R303', '1k', 139.7, y + 2.54)
     d.wire(d.pin('U302', 6), d.pin('R303', 1))
+    d.label(*d.pin('U302', 6), 'RLYDRV')
     d.terminal('R303', 2, 'Q1B', dx=5.08)
     d.terminal('U302', 5, 'GND', dy=5.08)
     d.terminal('U302', 1, 'GND', dx=-5.08)     # overload detector unused -> grounded (test-circuit SW1 position 2)
@@ -120,6 +126,7 @@ def build_ctrl():
     d.terminal('D301', 2, 'AC_A', dx=5.08)
     d.part('R', 'R306', '56k', 40.64, y - 22.86)
     d.wire(d.pin('D301', 1), d.pin('R306', 2))
+    d.label(*d.pin('D301', 1), 'ACSENSE')
     d.terminal('R306', 1, 'ACDET', dx=-5.08)
     d.part('R', 'R307', '10k', 40.64, y - 12.7)
     d.terminal('R307', 1, 'ACDET', dx=-5.08)
@@ -132,7 +139,7 @@ def build_ctrl():
     # --- C. speaker relays, mute opto-couplers, status LEDs -------------------------------------------------
     y = 127
     x = 231.14
-    d.text(x - 20, y - 40, 'C. SPEAKER RELAYS (G2R-1-E 12VDC, 16 A, 2 x 44 mA), MUTE OPTOS, STATUS LEDS', 1.8)
+    d.text(x - 20, y - 40, 'C. SPEAKER RELAYS (G2RL-1-E 12VDC, 16 A, 2 x 33 mA), MUTE OPTOS, STATUS LEDS', 1.8)
     d.part('PNP', 'Q301', 'BC327-40 (PNP, 800 mA)', x, y - 15.24)
     d.terminal('Q301', 'B', 'Q1B', dx=-5.08)
     d.terminal('Q301', 'E', '+12V', dy=-5.08)
@@ -142,7 +149,7 @@ def build_ctrl():
     d.terminal('R308', 2, '+12V', dx=5.08)
     for i, (k, dio, ch) in enumerate((('K301', 'D302', 'L'), ('K302', 'D303', 'R'))):
         yy = y + 12.7 + i * 35.56
-        d.part('Relay', k, 'G2R-1-E 12VDC', x + 40.64, yy)
+        d.part('Relay', k, 'G2RL-1-E 12VDC', x + 40.64, yy)
         d.terminal(k, 'A1', 'RLY', dx=-7.62)
         d.terminal(k, 'A2', 'GND', dx=-7.62)
         d.terminal(k, 'COM', 'AMP_%s_OUT' % ch, dx=7.62)
@@ -155,7 +162,7 @@ def build_ctrl():
         d.terminal(j, 1, 'AMP_%s_OUT' % ch, dx=-10.16)
         d.terminal(j, 2, 'SPK_%s' % ch, dx=-10.16)
     d.text(x - 20, y + 73, 'Speaker return wire goes straight from the binding post to the amplifier J2.2 / J4.2, never through this board (docs/14 4).', 1.3)
-    d.text(x - 20, y + 78, 'Relay DC breaking: G2R-1-E is rated 30 VDC; a 33.5 V / 8 ohm fault (4.5 A) is a one-shot protective break, accepted 2026-10-01 (docs/14 6.3 asks >=36 VDC).', 1.3)
+    d.text(x - 20, y + 78, 'Relay DC breaking: G2RL-1-E is rated 30 VDC; a 33.5 V / 8 ohm fault (4.5 A) is a one-shot protective break, accepted 2026-10-01 (docs/14 6.3 asks >=36 VDC).', 1.3)
     # mute opto-couplers: LEDs in series from RLY (RUN = relay ON); transistors switch RUN -> VEE on each amplifier board
     yy = y + 99.06
     d.part('R', 'R309', '1k', x, yy)
@@ -164,7 +171,7 @@ def build_ctrl():
     for i, ch in enumerate(('L', 'R')):
         u = 'U303' if ch == 'L' else 'U304'
         ox = x + 35.56 + i * 76.2
-        d.part('Opto', u, 'H11D1 (Vceo 300 V)', ox, yy)
+        d.part('Opto', u, 'SFH617A-3 (Vceo 70 V)', ox, yy)
         d.terminal(u, 'A', 'OPTO_A' if ch == 'L' else 'OPTO_M', dx=-5.08)
         d.terminal(u, 'K', 'OPTO_M' if ch == 'L' else 'GND', dx=-5.08)
         d.terminal(u, 'C', 'RUN_%s' % ch, dx=5.08)
@@ -174,7 +181,7 @@ def build_ctrl():
         d.terminal(j, 1, 'RUN_%s' % ch, dx=-7.62)
         d.terminal(j, 2, 'VEE_%s' % ch, dx=-7.62)
     d.text(x - 20, yy + 14, 'Opto collector -> amplifier RUN (R8 end), emitter -> that board VEE: closes the JP1 position, 1.3 mA. Two independent paths; the L and R mute nodes stay isolated (docs/13).', 1.3)
-    d.text(x - 20, yy + 19, 'Opto must stand |VEE| = 36 V when off: H11D1 (300 V) or SFH617A (70 V); NOT PC817 (35 V). LED chain 2 x 1.2 V at ~8 mA from RLY through R309.', 1.3)
+    d.text(x - 20, yy + 19, 'Opto must stand |VEE| = 36 V when off: SFH617A-3 (70 V, DIP-4) or H11D1 (300 V, DIP-6); NOT PC817 (35 V). LED chain 2 x 1.2 V at ~8 mA from RLY through R309.', 1.3)
     # status LEDs on the front panel: green = relay ON (from RLY), red = +12V present but relay OFF (returns into RLY node)
     # front-panel LEDs live in the lower-left block, under the timer (sheet space)
     yy = 262
@@ -246,7 +253,7 @@ def build_mains():
     d.part('Conn2', 'J402', 'FRONT POWER SWITCH', 30.48, y + 27.94)
     d.terminal('J402', 1, 'L_IN', dx=-10.16)
     d.terminal('J402', 2, 'L_SW', dx=-10.16)
-    d.part('Relay', 'K401', 'K_TRIG G5LE-1 12VDC (10 A)', 91.44, y + 22.86)
+    d.part('Relay', 'K401', 'K_TRIG G2RL-1-E 12VDC (16 A)', 91.44, y + 22.86)
     d.terminal('K401', 'COM', 'L_IN', dx=7.62)
     d.terminal('K401', 'NO', 'L_SW', dx=7.62)
     d.terminal('K401', 'A1', 'TRIG_P', dx=-7.62)
@@ -264,7 +271,7 @@ def build_mains():
     d.part('NTC', 'RT401', 'SL22 10005 (10R / 5A / 90J)', 165.1, y)
     d.terminal('RT401', 1, 'L_SW', dx=-5.08)
     d.terminal('RT401', 2, 'L_T1', dx=5.08)
-    d.part('Relay', 'K402', 'K_BYP G2R-1-E 12VDC (16 A)', 165.1, y + 27.94)
+    d.part('Relay', 'K402', 'K_BYP G2RL-1-E 12VDC (16 A)', 165.1, y + 27.94)
     d.terminal('K402', 'COM', 'L_SW', dx=7.62)
     d.terminal('K402', 'NO', 'L_T1', dx=7.62)
     d.terminal('K402', 'A1', 'BYP_HI', dx=-7.62)

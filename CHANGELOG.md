@@ -7,6 +7,14 @@
 
 ---
 
+## 2026-10-01（深夜 2）：控制板 CTRL 與市電板 MAINS 的 PCB V0.6、弘宙 102 機箱 3D 配置
+
+- **原理圖微調後再畫板**：繼電器全部改 Omron **G2RL-1-E**（低背 16 A、線圈 33 mA；KiCad 函式庫有封裝與 3D 模型，G2R-1-E／G5LE-1 沒有或腳位不確定）；輔助電源橋 DF06M 改成 **1N4007 ×4**（D306–D309，封裝無疑義）；光耦改 **SFH617A-3**（DIP-4，Vceo 70 V；H11D1 是 6 腳）；pin 6 與 D301 節點補標籤 RLYDRV／ACSENSE。ERC 仍 0。
+- **PCB**：`tools/pcb_layout_v06_ctrl.py`＋`build_pcb_v06_ctrl.py` → `pcb/ctrl-layout-v06`（70×120，49 件）與 `pcb/mains-layout-v06`（70×100，11 件）。封裝：G2RL／SIP-8／DIP-4／TO-92 wide／TO-220／DO-41／DO-35 由 KiCad 函式庫複製進 DraftV03.pretty 並把焊盤編號改成腳名（G2RL 的 11→COM、14→NO、刪 12；每個觸點兩個焊盤要用短線相連，KiCad 不把同號焊盤視為相通）；TO-92 窄版 1.27 間距過不了 0.3 mm 間隙規則，改 wide 版。DRC 三輪→兩板 **0 錯誤、0 未連通**（剩絲印警告）。`verify_pcb_v06_ctrl.py`：MAINS 市電／低壓銅箔最小距離 7.25 mm（L_IN 焊盤 vs TRIG_P 走線）。
+- **3D**：`tools/draw_chassis_scene_v06.py`（pyvista，`py -3.13 -m pip install pyvista`）：kicad-cli 匯出 CTRL／MAINS STL（含函式庫模型；G2RL 模型未隨 KiCad 安裝，以方塊補），散熱器 150×90×30、變壓器、放大板與電源板 V0.6 目標外形示意 → `docs/diagrams/chassis_102_v06_3d.png`（等角＋俯視）。**座標教訓**：2D 配置圖的 x（從正面看的左右）在 VTK 右手座標要鏡射 x 才一致；kicad-cli STL 的 Y＝−板 y、板頂 z=0。另輸出 .gltf（.gitignore）。
+- **配置修正**：102 多出的寬度不能分到散熱器與放大板之間——IC 要直接鎖散熱器底板，放大板必須緊貼散熱器區（x 55）；餘裕只放在放大板與電源板之間（各 18）。前一節的「四個縫各 9」作廢。
+- pcb/README 新增 V0.6 節；tools/README 新增 V0.6 家族；HANDOFF 現況與下一步更新；.gitignore 補 gltf 與 STL 目錄。
+
 ## 2026-10-01（深夜）：機殼改向弘宙 102、散熱器內置、控制／保護板第一版原理圖
 
 - **機殼**：使用者決定「先挑殼、散熱器放殼內、以現有零件重排 PCB」。依型錄（雙面板前附把手 1 series）比較 103（d355×c285×e105）與 102（d395×c290×e105），**選 102**：內尺寸估 393×273×100。配置圖（本場 scratchpad，尚未進 repo）：後排 放大板 L 80×90｜電源板 87×120｜放大板 R 80×90，變壓器前排中央，控制板 70×120 平放左側、市電板右側；三板目標尺寸對 103 也成立，102 多出的 40 mm 分成四個縫。合板（每聲道放大＋電容）在這兩個殼都塞不下，不採用。CASE106（內 230×165）判定不可能。

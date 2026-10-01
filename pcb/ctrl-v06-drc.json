@@ -1,0 +1,705 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-01T22:38:58",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "ctrl-layout-v06.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 70.0,
+                        "y": 0.0
+                    },
+                    "uuid": "59d04f6f-72bb-4a0f-8540-49c2911d905c"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J306",
+                    "pos": {
+                        "x": 62.0,
+                        "y": 113.5
+                    },
+                    "uuid": "f02331ec-763a-4c51-9878-96fc075906ec"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "J307 的參考欄位",
+                    "pos": {
+                        "x": 17.5,
+                        "y": 110.0
+                    },
+                    "uuid": "3f6407ae-4cd9-49b7-8066-f04c2bb260a9"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J307",
+                    "pos": {
+                        "x": 6.5,
+                        "y": 108.0
+                    },
+                    "uuid": "5430db6b-b88e-47fd-a2f6-5446faf5094e"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1033 mm)",
+            "items": [
+                {
+                    "description": "J307 的參考欄位",
+                    "pos": {
+                        "x": 17.5,
+                        "y": 110.0
+                    },
+                    "uuid": "3f6407ae-4cd9-49b7-8066-f04c2bb260a9"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J308",
+                    "pos": {
+                        "x": 28.5,
+                        "y": 116.0
+                    },
+                    "uuid": "e053da22-b02e-4cd3-9ea8-905e7f561341"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0618 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'PLACEMENT DRAFT - NOT FOR FAB'",
+                    "pos": {
+                        "x": 35.0,
+                        "y": 116.0
+                    },
+                    "uuid": "8a812c8a-b7ce-4d01-818f-2644fea27e10"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J308",
+                    "pos": {
+                        "x": 28.5,
+                        "y": 116.0
+                    },
+                    "uuid": "e053da22-b02e-4cd3-9ea8-905e7f561341"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1426 mm)",
+            "items": [
+                {
+                    "description": "R302 的參考欄位",
+                    "pos": {
+                        "x": 48.19,
+                        "y": 73.75
+                    },
+                    "uuid": "7a829007-5262-47bd-9801-e5fb47325ff9"
+                },
+                {
+                    "description": "D308 的參考欄位",
+                    "pos": {
+                        "x": 49.0,
+                        "y": 72.0
+                    },
+                    "uuid": "e09d21f6-ad3d-4c83-87a1-a6bb8117dee2"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "D309 的參考欄位",
+                    "pos": {
+                        "x": 49.0,
+                        "y": 76.0
+                    },
+                    "uuid": "7a2fbdb5-092e-4db0-878d-27514a638dac"
+                },
+                {
+                    "description": "R302 的參考欄位",
+                    "pos": {
+                        "x": 48.19,
+                        "y": 73.75
+                    },
+                    "uuid": "7a829007-5262-47bd-9801-e5fb47325ff9"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1357 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 矩形 J308",
+                    "pos": {
+                        "x": 28.5,
+                        "y": 116.0
+                    },
+                    "uuid": "e053da22-b02e-4cd3-9ea8-905e7f561341"
+                },
+                {
+                    "description": "J308 的參考欄位",
+                    "pos": {
+                        "x": 29.5,
+                        "y": 110.0
+                    },
+                    "uuid": "e4b92ab7-6fc4-48c1-a241-e556354a33d6"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 '+12V B.Cu'",
+                    "pos": {
+                        "x": 47.0,
+                        "y": 42.0
+                    },
+                    "uuid": "d4eba123-7419-4819-8c8e-4cfe67b87cbb"
+                },
+                {
+                    "description": "R308 的參考欄位",
+                    "pos": {
+                        "x": 49.75,
+                        "y": 42.05
+                    },
+                    "uuid": "e355b27a-f9ff-46e9-ad12-94892729ad4f"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0810 mm)",
+            "items": [
+                {
+                    "description": "C307 的參考欄位",
+                    "pos": {
+                        "x": 58.0,
+                        "y": 51.55
+                    },
+                    "uuid": "e5ba3a9d-adb1-418c-a59d-0f77760387d0"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 R306",
+                    "pos": {
+                        "x": 53.2,
+                        "y": 48.75
+                    },
+                    "uuid": "fb4cd2a7-fbac-4346-9ea8-0a2e701a05c5"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0905 mm)",
+            "items": [
+                {
+                    "description": "U304 的參考欄位",
+                    "pos": {
+                        "x": 62.0,
+                        "y": 24.5
+                    },
+                    "uuid": "56f05177-655c-4c38-acd1-33c79515e5e4"
+                },
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'MUTE R'",
+                    "pos": {
+                        "x": 62.0,
+                        "y": 27.0
+                    },
+                    "uuid": "8aad98d4-0282-41d9-83e9-a9039ef69480"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0905 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'MUTE L'",
+                    "pos": {
+                        "x": 50.0,
+                        "y": 27.0
+                    },
+                    "uuid": "13abc0fc-f27d-44ce-b52c-ae440936cfd5"
+                },
+                {
+                    "description": "U303 的參考欄位",
+                    "pos": {
+                        "x": 50.0,
+                        "y": 24.5
+                    },
+                    "uuid": "4da24d79-31bc-4e26-b219-559b8b407a54"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0310 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 矩形 R315",
+                    "pos": {
+                        "x": 45.2,
+                        "y": 113.25
+                    },
+                    "uuid": "000f393b-aee9-46a6-a2bb-9e88c449e82f"
+                },
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'PLACEMENT DRAFT - NOT FOR FAB'",
+                    "pos": {
+                        "x": 35.0,
+                        "y": 116.0
+                    },
+                    "uuid": "8a812c8a-b7ce-4d01-818f-2644fea27e10"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "R315 的參考欄位",
+                    "pos": {
+                        "x": 47.75,
+                        "y": 117.0
+                    },
+                    "uuid": "2d29b97d-830e-494a-a5d4-518e7c93d11e"
+                },
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'PLACEMENT DRAFT - NOT FOR FAB'",
+                    "pos": {
+                        "x": 35.0,
+                        "y": 116.0
+                    },
+                    "uuid": "8a812c8a-b7ce-4d01-818f-2644fea27e10"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0357 mm)",
+            "items": [
+                {
+                    "description": "R313 的參考欄位",
+                    "pos": {
+                        "x": 49.25,
+                        "y": 104.3
+                    },
+                    "uuid": "32f0535f-ba5d-4982-866b-eb9aa0b0b8f7"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 R313",
+                    "pos": {
+                        "x": 46.7,
+                        "y": 104.75
+                    },
+                    "uuid": "6461f742-8220-4e25-90b1-395a64c02ae9"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1091 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 弧線 U305",
+                    "pos": {
+                        "x": 40.54,
+                        "y": 106.5
+                    },
+                    "uuid": "09c76d51-0067-4e5e-a754-bcaee579f03a"
+                },
+                {
+                    "description": "U305 的參考欄位",
+                    "pos": {
+                        "x": 41.0,
+                        "y": 103.8
+                    },
+                    "uuid": "7fe61413-9950-4b75-88c4-f2403f4824a5"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1052 mm)",
+            "items": [
+                {
+                    "description": "U305 的參考欄位",
+                    "pos": {
+                        "x": 41.0,
+                        "y": 103.8
+                    },
+                    "uuid": "7fe61413-9950-4b75-88c4-f2403f4824a5"
+                },
+                {
+                    "description": "F.Silkscreen 上的 弧線 U305",
+                    "pos": {
+                        "x": 40.54,
+                        "y": 106.5
+                    },
+                    "uuid": "caf1bfa9-e353-4775-b91d-4f891df550bf"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1073 mm)",
+            "items": [
+                {
+                    "description": "J306 的參考欄位",
+                    "pos": {
+                        "x": 61.5,
+                        "y": 101.5
+                    },
+                    "uuid": "62864156-6435-4a91-b8ec-f015912e9af1"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J306",
+                    "pos": {
+                        "x": 62.0,
+                        "y": 113.5
+                    },
+                    "uuid": "f02331ec-763a-4c51-9878-96fc075906ec"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "C304 的參考欄位",
+                    "pos": {
+                        "x": 60.0,
+                        "y": 92.0
+                    },
+                    "uuid": "25d48792-568f-46fa-a7ce-c7a1155c21c4"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 C304",
+                    "pos": {
+                        "x": 61.5,
+                        "y": 90.0
+                    },
+                    "uuid": "4412c2fa-9869-4fce-adb3-ec5d970d215f"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "C301 的參考欄位",
+                    "pos": {
+                        "x": 58.0,
+                        "y": 80.0
+                    },
+                    "uuid": "6bea7ce9-006c-4042-936f-08b531e76580"
+                },
+                {
+                    "description": "F.Silkscreen 上的 圓形 C301",
+                    "pos": {
+                        "x": 54.0,
+                        "y": 85.5
+                    },
+                    "uuid": "e3ee8f9f-99e0-4ac5-9c5f-79e22c481626"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "C301 的參考欄位",
+                    "pos": {
+                        "x": 58.0,
+                        "y": 80.0
+                    },
+                    "uuid": "6bea7ce9-006c-4042-936f-08b531e76580"
+                },
+                {
+                    "description": "F.Silkscreen 上的 線段 C301",
+                    "pos": {
+                        "x": 50.625,
+                        "y": 80.5
+                    },
+                    "uuid": "b54f7444-e5e7-4a0f-b332-483d804b5365"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0548 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 矩形 R314",
+                    "pos": {
+                        "x": 46.7,
+                        "y": 108.75
+                    },
+                    "uuid": "03c80633-a9aa-4795-89ed-ee7eaee47643"
+                },
+                {
+                    "description": "R314 的參考欄位",
+                    "pos": {
+                        "x": 49.25,
+                        "y": 112.0
+                    },
+                    "uuid": "5ad8e374-c24d-4743-b4f0-6959d377a533"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "D306 的參考欄位",
+                    "pos": {
+                        "x": 49.0,
+                        "y": 64.0
+                    },
+                    "uuid": "278a86f0-3339-4268-8e65-bd831ad108dd"
+                },
+                {
+                    "description": "F.Silkscreen 上的 線段 U302",
+                    "pos": {
+                        "x": 48.51,
+                        "y": 64.35
+                    },
+                    "uuid": "7bce28e1-4d84-4b2a-b586-889610f3793e"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 線段 U302",
+                    "pos": {
+                        "x": 48.51,
+                        "y": 67.59
+                    },
+                    "uuid": "6e07ae54-9616-4346-a485-4aebec47db8b"
+                },
+                {
+                    "description": "D307 的參考欄位",
+                    "pos": {
+                        "x": 49.0,
+                        "y": 68.0
+                    },
+                    "uuid": "78f8e0b8-d0d8-412c-bc43-01110c8878b3"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1108 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 線段 U302",
+                    "pos": {
+                        "x": 48.51,
+                        "y": 67.59
+                    },
+                    "uuid": "494b2629-acfb-42de-b39d-6f51f6c532b4"
+                },
+                {
+                    "description": "D307 的參考欄位",
+                    "pos": {
+                        "x": 49.0,
+                        "y": 68.0
+                    },
+                    "uuid": "78f8e0b8-d0d8-412c-bc43-01110c8878b3"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1407 mm)",
+            "items": [
+                {
+                    "description": "D306 的參考欄位",
+                    "pos": {
+                        "x": 49.0,
+                        "y": 64.0
+                    },
+                    "uuid": "278a86f0-3339-4268-8e65-bd831ad108dd"
+                },
+                {
+                    "description": "F.Silkscreen 上的 線段 U302",
+                    "pos": {
+                        "x": 48.51,
+                        "y": 64.35
+                    },
+                    "uuid": "d8022549-3479-45c3-b955-0f2222be8d9d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "R311 的參考欄位",
+                    "pos": {
+                        "x": 28.95,
+                        "y": 102.25
+                    },
+                    "uuid": "5ce32c80-52be-4598-a8f3-5f52096064b2"
+                },
+                {
+                    "description": "1 的非金屬化焊盤 [+12V] D305",
+                    "pos": {
+                        "x": 30.0,
+                        "y": 101.5
+                    },
+                    "uuid": "609434a9-b79a-4169-a9ce-58aa16d1aaf9"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "J305 的參考欄位",
+                    "pos": {
+                        "x": 58.5,
+                        "y": 10.5
+                    },
+                    "uuid": "b1769573-6fed-4e9a-a54c-441cc6a002b5"
+                },
+                {
+                    "description": "E 的非金屬化焊盤 [VEE_R] U304",
+                    "pos": {
+                        "x": 58.54,
+                        "y": 11.38
+                    },
+                    "uuid": "c7c0227d-48dc-4c8d-84d5-b6b68130bab5"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'PLACEMENT DRAFT - NOT FOR FAB'",
+                    "pos": {
+                        "x": 35.0,
+                        "y": 116.0
+                    },
+                    "uuid": "8a812c8a-b7ce-4d01-818f-2644fea27e10"
+                },
+                {
+                    "description": "1 的非金屬化焊盤 [TMR] R315",
+                    "pos": {
+                        "x": 44.0,
+                        "y": 114.5
+                    },
+                    "uuid": "ce2a9014-41b6-48c1-ad9e-d56b97d3cd4c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "J304 的參考欄位",
+                    "pos": {
+                        "x": 46.5,
+                        "y": 10.5
+                    },
+                    "uuid": "053a563e-5c7c-42ba-acaf-4afe2b71699d"
+                },
+                {
+                    "description": "E 的非金屬化焊盤 [VEE_L] U303",
+                    "pos": {
+                        "x": 46.54,
+                        "y": 11.38
+                    },
+                    "uuid": "d5168109-75f6-4f65-af88-6eb4808794b5"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        }
+    ]
+}

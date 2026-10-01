@@ -98,6 +98,23 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 
 **V0.4 三塊板都畫完了（放大板 C、放大板 D、電源板）**，等使用者看圖選 C 或 D。之後才做：V0.4 的 `current-budget`／`analyze` 對照、3D 與導讀圖、系統並排圖；V0.3 檔案與雜湊全部未動。
 
+## PCB V0.6 控制／保護板 CTRL 與市電板 MAINS（2026-10-01 深夜，新板）
+
+**兩塊新板，電路來自 `electrical/control-v01`／`mains-v01`（2026-10-01 第一版原理圖）。** CTRL 70×120（UPC1237 保護、7812 輔助電源、G2RL-1-E ×2、SFH617A 光耦靜音 ×2、TL431 旁通計時、底層整面接地），MAINS 70×100（SL22 10005 NTC、K_BYP、K_TRIG；市電側與低壓側銅箔最小距離 7.25 mm ≥ 6.4）。兩板 KiCad 10.0.6 DRC **0 錯誤、0 未連通**（只剩絲印重疊警告），`validation-v06-ctrl.json` 通過。放大板與電源板的 V0.6（80×90／87×120，IC 貼板邊）**尚未畫**，等 IC 三個數字與機殼內寬。
+
+> ⚠️ 工程草稿，不可送製。繼電器／SIP／DIP／TO／二極體封裝取自 KiCad 10 函式庫（焊盤編號改成原理圖腳名，3D 模型保留），NTC 與小電解是暫定外框；全部零件未到貨。繼電器腳位（G2RL IEC 編號 11＝COM、14＝NO）到貨要核對。
+
+![PCB V0.6 CTRL＋MAINS](preview/ctrl-mains-layout-v06.png)
+
+| 項目 | CTRL 70×120 | MAINS 70×100 |
+|---|---|---|
+| 可編輯 PCB | [ctrl-layout-v06.kicad_pcb](ctrl-layout-v06.kicad_pcb) | [mains-layout-v06.kicad_pcb](mains-layout-v06.kicad_pcb) |
+| 封裝假設 | [清單](ctrl-layout-v06-footprints.csv) | [清單](mains-layout-v06-footprints.csv) |
+| 原生 DRC | [0 錯誤、0 未連通](ctrl-v06-drc.json) | [0 錯誤、0 未連通](mains-v06-drc.json) |
+| 驗證摘要 | [validation-v06-ctrl.json](validation-v06-ctrl.json)（兩板共用；含市電／低壓距離檢查） | 同左 |
+
+機箱 3D 配置（弘宙 102，散熱器內置、變壓器前排）：[docs/diagrams/chassis_102_v06_3d.png](../docs/diagrams/chassis_102_v06_3d.png)，由 `tools/draw_chassis_scene_v06.py`（pyvista）用 kicad-cli 匯出的 STL 畫；放大板與電源板在圖中是 V0.6 目標外形示意。生成器與流程見 [tools/README](../tools/README.md)。
+
 ## PCB V0.5.1（整流橋上板，2026-10-01，現行）
 
 > ⚠️ **工程草稿，不可送製。** 只改電源板：BR1／BR2 由「4 位端子接機殼上的 KBPC2510」改為 **GBJ2510 直立裝在板上**，電路、零件、網路、板尺寸 125×130 與其他零件位置全部不變；放大板 D 沿用 V0.5 板檔（`mono-layout-v05d`）。電源板 KiCad 10.0.6 **0 DRC 違規、0 未連通**，50 焊盤網路與原理圖相符（[validation-v051.json](validation-v051.json)）。**2026-10-01 使用者看過預覽後選定併入 main。** 3D／正反面／零件核對見 [inspection-v051](inspection-v051/README.md)。

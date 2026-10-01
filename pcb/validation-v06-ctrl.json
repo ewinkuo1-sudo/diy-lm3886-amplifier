@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "checked_on": "2026-10-01",
+  "boards": {
+    "ctrl-layout-v06": {
+      "size_mm": [
+        70,
+        120
+      ],
+      "parts": 49,
+      "pad_net_count": 116,
+      "native_DRC_errors": 0,
+      "native_DRC_warnings": 29,
+      "native_DRC_unconnected": 0,
+      "tracks": 131,
+      "vias": 2,
+      "gnd_pour_regions": [
+        1
+      ]
+    },
+    "mains-layout-v06": {
+      "size_mm": [
+        70,
+        100
+      ],
+      "parts": 11,
+      "pad_net_count": 26,
+      "native_DRC_errors": 0,
+      "native_DRC_warnings": 2,
+      "native_DRC_unconnected": 0,
+      "tracks": 50,
+      "vias": 0,
+      "mains_to_lowvoltage_min_mm": 7.25,
+      "mains_to_lowvoltage_pair": [
+        [
+          "L_IN",
+          "pad"
+        ],
+        [
+          "TRIG_P",
+          "track"
+        ]
+      ]
+    }
+  },
+  "sha256": {
+    "pcb/ctrl-layout-v06.kicad_pcb": "df6c381187648071acf4f2d2aaae74fa8e07393789bebd624758d544492c4ab3",
+    "pcb/ctrl-layout-v06.kicad_pro": "6259fe311c3444bdbf57d6fc60a0890ed9b7e42eb2c45ae02fe0f7e190cf0006",
+    "pcb/ctrl-v06-drc.json": "76be171bc217602889842a42a885eeef3ab7e613f0a4e5a7f30df0c261ceaec0",
+    "pcb/mains-layout-v06.kicad_pcb": "30f49745fb68069018aa2902036d88e6f171538a719a08ca05aa5373bd061ef6",
+    "pcb/mains-layout-v06.kicad_pro": "8dd951c366dbe0965d99874f4c57c6fe129ab170cbb482b70acd49289d30efee",
+    "pcb/mains-v06-drc.json": "034e2bd34d383c17b37be717a7e4469f682a13a086b9780fb3aba2a09fdd0dc3",
+    "electrical/control-v01.kicad_sch": "69457f6c1edde75ac93294c7bb070d0fba4f97f58d3ffd07a018867005b5cfd0",
+    "electrical/mains-v01.kicad_sch": "7639b39c2f1be2d7f53284d591b6211f6dc865884403859daa9480d8e4a4b5b4"
+  },
+  "kicad_version": "10.0.6",
+  "limits": "Draft only. Relay / UPC1237 / NTC footprints from the KiCad library or datasheets, no part in hand; creepage check is copper-to-copper on the PCB only (connector bodies, wiring and chassis not included); no electrical, thermal or safety test."
+}
