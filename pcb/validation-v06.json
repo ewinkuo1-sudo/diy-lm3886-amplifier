@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "checked_on": "2026-10-01",
+  "boards": {
+    "mono-layout-v06": {
+      "size_mm": [
+        90,
+        80
+      ],
+      "parts": 22,
+      "pad_net_count": 54,
+      "native_DRC_errors": 0,
+      "native_DRC_warnings": 9,
+      "native_DRC_unconnected": 0,
+      "tracks": 57,
+      "vias": 0,
+      "gnd_pour_regions": [
+        1
+      ],
+      "u1_tab_back_y_mm": -0.29,
+      "u1_odd_row_y_mm": 9.58
+    },
+    "psu-layout-v06": {
+      "size_mm": [
+        92,
+        120
+      ],
+      "parts": 16,
+      "pad_net_count": 38,
+      "native_DRC_errors": 0,
+      "native_DRC_warnings": 14,
+      "native_DRC_unconnected": 0,
+      "tracks": 69,
+      "vias": 0,
+      "bridges": {
+        "BR1": {
+          "body_mm": [
+            3.0,
+            87.5,
+            34.0,
+            92.5
+          ],
+          "heatsink_envelope_mm": [
+            3.0,
+            92.5,
+            34.0,
+            102.5
+          ],
+          "gap_to_fuse_body_mm": 0.5
+        },
+        "BR2": {
+          "body_mm": [
+            58.0,
+            87.5,
+            89.0,
+            92.5
+          ],
+          "heatsink_envelope_mm": [
+            58.0,
+            92.5,
+            89.0,
+            102.5
+          ],
+          "gap_to_fuse_body_mm": 0.5
+        }
+      },
+      "snubber_provisions_placed": false,
+      "unplaced_schematic_parts": [
+        "C207",
+        "C208",
+        "C209",
+        "C210",
+        "R203",
+        "R204"
+      ]
+    }
+  },
+  "sha256": {
+    "pcb/mono-layout-v06.kicad_pcb": "af6e5a4768979aad755dcb4121be1abdfee1f766d017a52e1f0672028293d63f",
+    "pcb/mono-layout-v06.kicad_pro": "002b75586ace84b5dfc6012216eb6675c11d638a2b0e2b46ce6f9ee7487b9635",
+    "pcb/mono-v06-drc.json": "4e680cc7cb39a89e7e46cef92131c1027052dcf883578d2578d5e1b35147a90e",
+    "pcb/psu-layout-v06.kicad_pcb": "53163150175d64cf3353448ab04eb761f251546d6fcb373ecf7ff8f7bb67b5a8",
+    "pcb/psu-layout-v06.kicad_pro": "b98bb8015c54914475bd3f6aba9251b740126a485c842b36242301a5e429c860",
+    "pcb/psu-v06-drc.json": "eb00d9b2ae900b6a47c023ebcba6893720bdd0965daaa5ca50d66044ab5a89cf"
+  },
+  "kicad_version": "10.0.6",
+  "limits": "Draft only. U1 uses the KiCad library TO-220-11 geometry (tab back 9.58 mm behind the odd pin row), not the ICs in hand; PSU snubber provisions C207-C210/R203/R204 are not placed; no electrical, thermal or enclosure test."
+}

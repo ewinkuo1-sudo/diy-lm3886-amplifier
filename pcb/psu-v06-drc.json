@@ -1,0 +1,360 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-01T23:59:27",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "psu-layout-v06.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 92.0,
+                        "y": 120.0
+                    },
+                    "uuid": "6627767e-eeb7-4d09-b1de-6a9e524ed266"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J201",
+                    "pos": {
+                        "x": 9.5,
+                        "y": 112.0
+                    },
+                    "uuid": "6b71457e-cade-4e5d-ab7e-b6879bf4372d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "7f6957f6-4495-4569-b8d1-b854e6eb76d6"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J204",
+                    "pos": {
+                        "x": 65.34,
+                        "y": 0.0
+                    },
+                    "uuid": "76df87f2-c58b-4403-a34b-24480c960caa"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "7f6957f6-4495-4569-b8d1-b854e6eb76d6"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J203",
+                    "pos": {
+                        "x": 9.5,
+                        "y": 0.0
+                    },
+                    "uuid": "48127f5e-2950-4264-8888-2012fe0f0b5a"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 92.0,
+                        "y": 120.0
+                    },
+                    "uuid": "6627767e-eeb7-4d09-b1de-6a9e524ed266"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J202",
+                    "pos": {
+                        "x": 72.42,
+                        "y": 112.0
+                    },
+                    "uuid": "ba12faf6-cb14-4ca6-9390-56072cc1b259"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1428 mm)",
+            "items": [
+                {
+                    "description": "J201 的參考欄位",
+                    "pos": {
+                        "x": 14.5,
+                        "y": 111.3
+                    },
+                    "uuid": "22757fca-836c-4d1e-aa95-1dd42c116c19"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J201",
+                    "pos": {
+                        "x": 9.5,
+                        "y": 112.0
+                    },
+                    "uuid": "6b71457e-cade-4e5d-ab7e-b6879bf4372d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0779 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 圓形 C204",
+                    "pos": {
+                        "x": 71.0,
+                        "y": 69.0
+                    },
+                    "uuid": "a856f413-c793-4195-890d-02d16586ce03"
+                },
+                {
+                    "description": "封裝 BR2 (~),",
+                    "pos": {
+                        "x": 68.5,
+                        "y": 86.4
+                    },
+                    "uuid": "e48f89ea-5cc1-44f2-aae5-953e500c83b0"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1428 mm)",
+            "items": [
+                {
+                    "description": "J202 的參考欄位",
+                    "pos": {
+                        "x": 77.5,
+                        "y": 111.3
+                    },
+                    "uuid": "3f2da068-a699-416f-a3fc-8bb50cc0ceff"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J202",
+                    "pos": {
+                        "x": 72.42,
+                        "y": 112.0
+                    },
+                    "uuid": "ba12faf6-cb14-4ca6-9390-56072cc1b259"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0643 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'L AMP'",
+                    "pos": {
+                        "x": 17.0,
+                        "y": 11.0
+                    },
+                    "uuid": "0c1472d8-8c4e-44cc-8358-142ecc29e026"
+                },
+                {
+                    "description": "J203 的參考欄位",
+                    "pos": {
+                        "x": 17.0,
+                        "y": 10.5
+                    },
+                    "uuid": "62d36b9e-3ba9-4faa-9c20-9790d2890520"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1119 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 矩形 R201",
+                    "pos": {
+                        "x": 46.5,
+                        "y": 32.5
+                    },
+                    "uuid": "0d5835ea-26ff-44da-9758-f1a991c0de4d"
+                },
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 '2x22VAC'",
+                    "pos": {
+                        "x": 46.0,
+                        "y": 47.5
+                    },
+                    "uuid": "43616b0a-60f4-45d3-91c3-07236d5171eb"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'R AMP'",
+                    "pos": {
+                        "x": 72.0,
+                        "y": 11.0
+                    },
+                    "uuid": "a9e89b9d-efee-4957-9e4c-b33ec7eb76bc"
+                },
+                {
+                    "description": "J204 的參考欄位",
+                    "pos": {
+                        "x": 73.0,
+                        "y": 10.5
+                    },
+                    "uuid": "d275f52f-c13b-4d1f-a768-9c7fd1b990dc"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "封裝 BR1 (~),",
+                    "pos": {
+                        "x": 21.0,
+                        "y": 86.4
+                    },
+                    "uuid": "dc7cf2b6-723f-4da5-9e7f-04ab126d5a1e"
+                },
+                {
+                    "description": "F.Silkscreen 上的 圓形 C202",
+                    "pos": {
+                        "x": 21.0,
+                        "y": 69.0
+                    },
+                    "uuid": "fc3ef79f-e5ce-4ccd-843d-8ac8bf4d5bf1"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 矩形 R202",
+                    "pos": {
+                        "x": 52.5,
+                        "y": 56.5
+                    },
+                    "uuid": "b100ee80-a597-4d04-9a60-44faf4bcce35"
+                },
+                {
+                    "description": "R202 的參考欄位",
+                    "pos": {
+                        "x": 53.0,
+                        "y": 64.0
+                    },
+                    "uuid": "fadbdde3-8a6f-44a2-95f4-c725bafe2b4a"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 矩形 R201",
+                    "pos": {
+                        "x": 46.5,
+                        "y": 32.5
+                    },
+                    "uuid": "0d5835ea-26ff-44da-9758-f1a991c0de4d"
+                },
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'V0.6'",
+                    "pos": {
+                        "x": 46.0,
+                        "y": 44.0
+                    },
+                    "uuid": "64e0ff35-403e-444d-b067-23006f1f99fa"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 矩形 R201",
+                    "pos": {
+                        "x": 46.5,
+                        "y": 32.5
+                    },
+                    "uuid": "0d5835ea-26ff-44da-9758-f1a991c0de4d"
+                },
+                {
+                    "description": "R201 的參考欄位",
+                    "pos": {
+                        "x": 41.0,
+                        "y": 40.0
+                    },
+                    "uuid": "b62ea245-3e82-441e-96eb-b3edc2093e1c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        }
+    ]
+}

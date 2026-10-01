@@ -42,17 +42,21 @@ python3 tools/rebuild.py
 
 DRC 不再有專用腳本（v03 的 `run_pcb_drc_v03.py` 之後直接用 `kicad-cli pcb drc`），完整指令順序見 HANDOFF「V0.5.1 重建流程」。
 
-## PCB V0.6 控制板／市電板（2026-10-01 深夜；需 KiCad Python 環境與 `py -3.13`）
+## PCB V0.6（現行五板，2026-10-01 深夜～10-02 凌晨；需 KiCad Python 環境與 `py -3.13`）
 
 | 腳本 | 用途 |
 |---|---|
+| `pcb_layout_v06.py` | 放大板 90×80（U1 用函式庫 TO-220-11，背板貼板邊 y=0）與電源板 92×120 的位置與走線定義；檔頭列出與 V0.5／V0.5.1 的差異 |
+| `build_pcb_v06.py` | 一次建放大板＋電源板；借 `build_pcb_v06_ctrl.import_std` 複製 TO-220-11 封裝成 `LM3886T_TO220-11`（3D 模型保留），GBJ 封裝來自 `build_pcb_v051` |
+| `verify_pcb_v06.py` | DRC 0 錯誤、焊盤網路對照、焊盤在板內、放大板鋪銅單一連通區、U1 背板在板邊、GBJ 本體與 10 mm 散熱片包絡（+y 側）不撞件、列出未上板的 snubber 零件 → `pcb/validation-v06.json` |
+| `render_pcb_v06.py` | `pcb/preview/mono-layout-v06.png`、`psu-layout-v06.png`、五板同比例 `system-layout-v06.png` |
 | `pcb_layout_v06_ctrl.py` | CTRL 70×120 與 MAINS 70×100 的位置與走線定義（檔頭有樓層圖；CTRL 底層 GND 鋪銅、+12V 走底層 x=50 兩個過孔；MAINS 市電側 x≥32、低壓側 x≤24） |
 | `build_pcb_v06_ctrl.py` | 一次建兩板。`import_std()` 把 KiCad 函式庫封裝（G2RL-1-E、SIP-8、DIP-4、TO-92 wide、TO-220、DO-41、DO-35）複製進 `pcb/DraftV03.pretty` 並把焊盤編號改成原理圖腳名；另做 `NTC_D22_P10`、`CP_D5_P2`、`CP_D6.3_P2.5` 暫定外框。跑完 `git checkout -- pcb/DraftV03.pretty` 只還原既有檔（新封裝檔要保留） |
 | `verify_pcb_v06_ctrl.py` | DRC 0 錯誤、焊盤網路對照、焊盤在板內、CTRL 鋪銅單一連通區、**MAINS 市電網路與低壓網路銅箔最小距離 ≥6.4 mm** → `pcb/validation-v06-ctrl.json` |
 | `render_pcb_v06_ctrl.py` | 畫 `pcb/preview/ctrl-mains-layout-v06.png`（兩板並排，頂視） |
-| `draw_chassis_scene_v06.py` | 弘宙 102 機箱內部 3D（pyvista／VTK 離屏算圖）：吃 `kicad-cli pcb export stl --subst-models --include-pads` 匯出的 CTRL／MAINS STL，沒有模型的零件照板檔 JSON 補方塊／圓柱；散熱器、變壓器、放大板與電源板目標外形為示意 → `docs/diagrams/chassis_102_v06_3d.png`（另輸出 .gltf 給 Blender，不入版控） |
+| `draw_chassis_scene_v06.py` | 弘宙 102 機箱內部 3D（pyvista／VTK 離屏算圖）：吃 `kicad-cli pcb export stl --subst-models --include-pads` 匯出的五塊板 STL（`place_board(name, origin, rot)` 以純旋轉放進機殼，右聲道放大板＝左板轉 180°），沒有模型的零件照板檔 JSON 補方塊／圓柱；散熱器、變壓器為估算尺寸 → `docs/diagrams/chassis_102_v06_3d.png`（另輸出 .gltf 給 Blender，不入版控） |
 
-流程：`kicad-cli sch export netlist`（control-v01、mains-v01）→ KiCad python `build_pcb_v06_ctrl.py` → `kicad-cli pcb drc --format json --severity-all --exit-code-violations`（兩板）→ `py -3.13 verify_pcb_v06_ctrl.py` → `render_pcb_v06_ctrl.py` → （選）`kicad-cli pcb export stl` ×2 → `draw_chassis_scene_v06.py <stl 目錄>`。
+流程：`kicad-cli sch export netlist`（四份原理圖）→ KiCad python `build_pcb_v06.py`、`build_pcb_v06_ctrl.py` → `kicad-cli pcb drc --format json --severity-all --exit-code-violations`（四板）→ `py -3.13 verify_pcb_v06.py`、`verify_pcb_v06_ctrl.py` → `render_pcb_v06.py`、`render_pcb_v06_ctrl.py` → `kicad-cli pcb export stl` ×4 → `draw_chassis_scene_v06.py <stl 目錄>`。跑完 `git checkout -- pcb/DraftV03.pretty` 還原既有封裝的 UUID（新封裝檔保留）。
 
 ## 歷史家族（保留，不再改）
 

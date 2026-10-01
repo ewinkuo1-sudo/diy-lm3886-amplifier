@@ -98,22 +98,32 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 
 **V0.4 三塊板都畫完了（放大板 C、放大板 D、電源板）**，等使用者看圖選 C 或 D。之後才做：V0.4 的 `current-budget`／`analyze` 對照、3D 與導讀圖、系統並排圖；V0.3 檔案與雜湊全部未動。
 
-## PCB V0.6 控制／保護板 CTRL 與市電板 MAINS（2026-10-01 深夜，新板）
+## PCB V0.6（2026-10-02 凌晨，現行：五板）
 
-**兩塊新板，電路來自 `electrical/control-v01`／`mains-v01`（2026-10-01 第一版原理圖）。** CTRL 70×120（UPC1237 保護、7812 輔助電源、G2RL-1-E ×2、SFH617A 光耦靜音 ×2、TL431 旁通計時、底層整面接地），MAINS 70×100（SL22 10005 NTC、K_BYP、K_TRIG；市電側與低壓側銅箔最小距離 7.25 mm ≥ 6.4）。兩板 KiCad 10.0.6 DRC **0 錯誤、0 未連通**（只剩絲印重疊警告），`validation-v06-ctrl.json` 通過。放大板與電源板的 V0.6（80×90／87×120，IC 貼板邊）**尚未畫**，等 IC 三個數字與機殼內寬。
+**V0.6 是為弘宙 102 機殼（散熱器內置兩側）重排的一整套：放大板 90×80 ×2、電源板 92×120、控制板 CTRL 70×120、市電板 MAINS 70×100。** 四種板 KiCad 10.0.6 DRC **0 錯誤、0 未連通**（剩絲印重疊警告），`validation-v06.json`（放大板／電源板）與 `validation-v06-ctrl.json`（CTRL／MAINS）通過。
 
-> ⚠️ 工程草稿，不可送製。繼電器／SIP／DIP／TO／二極體封裝取自 KiCad 10 函式庫（焊盤編號改成原理圖腳名，3D 模型保留），NTC 與小電解是暫定外框；全部零件未到貨。繼電器腳位（G2RL IEC 編號 11＝COM、14＝NO）到貨要核對。
+![PCB V0.6 五板](preview/system-layout-v06.png)
+
+- **放大板 `mono-layout-v06` 90×80**：V0.5 D 的電路與大部分擺位，**U1 改用 KiCad 函式庫 TO-220-11 直立封裝並放在 y=9.58，背板與板邊齊平，直接鎖散熱器底板**（使用者方案 B；型錄幾何，未對實物）。IC 上方不再走線：Kelvin 回授改走底層 y=17.5、靜音線從腳 7／9 之間下來走 y=12、pin 1／5 的 V+ 以底層短線在兩排腳之間相連。板高 90→80，輸出端子、電源端子、靜音零件上移 10，C2 站立電容移到 y=52。**同一塊板左右聲道共用**：右聲道板轉 180° 讓 IC 貼右側散熱器，RCA 端子因此在前側，輸入線要沿板邊拉約 90 mm。
+- **電源板 `psu-layout-v06` 92×120**：四顆 381LX 兩欄（正欄 x=21、負欄 x=71），洩放電阻立在兩欄之間，GBJ2510 ×2 轉 180° 放前段（金屬背朝保險絲，10 mm 散熱片包絡 y 92–102），保險絲與 AC 端子沿前緣朝變壓器，兩組 3P 直流輸出沿後緣朝放大板。GND 星點是底層 y=78 的連線。**snubber 預留位 C207–C210／R203／R204 放不下、未上板**（原理圖仍有；需要時改接在變壓器端子）。
+- **CTRL 70×120**：UPC1237 保護、7812 輔助電源、G2RL-1-E ×2、SFH617A 光耦靜音 ×2、TL431 旁通計時、底層整面接地。**MAINS 70×100**：SL22 10005 NTC、K_BYP、K_TRIG；市電側與低壓側銅箔最小距離 7.25 mm ≥ 6.4。電路來自 `electrical/control-v01`／`mains-v01`。
+
+> ⚠️ 工程草稿，不可送製。U1、繼電器、SIP／DIP／TO、二極體封裝取自 KiCad 10 函式庫（焊盤編號改成原理圖腳名，3D 模型保留）；電解、端子、GBJ、NTC、C2 站立腳距 15 是暫定外框或型錄值，全部未對實物。G2RL 腳位（IEC 11＝COM、14＝NO）到貨要核對。
+
+![PCB V0.6 放大板](preview/mono-layout-v06.png)
+
+![PCB V0.6 電源板](preview/psu-layout-v06.png)
 
 ![PCB V0.6 CTRL＋MAINS](preview/ctrl-mains-layout-v06.png)
 
-| 項目 | CTRL 70×120 | MAINS 70×100 |
-|---|---|---|
-| 可編輯 PCB | [ctrl-layout-v06.kicad_pcb](ctrl-layout-v06.kicad_pcb) | [mains-layout-v06.kicad_pcb](mains-layout-v06.kicad_pcb) |
-| 封裝假設 | [清單](ctrl-layout-v06-footprints.csv) | [清單](mains-layout-v06-footprints.csv) |
-| 原生 DRC | [0 錯誤、0 未連通](ctrl-v06-drc.json) | [0 錯誤、0 未連通](mains-v06-drc.json) |
-| 驗證摘要 | [validation-v06-ctrl.json](validation-v06-ctrl.json)（兩板共用；含市電／低壓距離檢查） | 同左 |
+| 項目 | 放大板 90×80 ×2 | 電源板 92×120 | CTRL 70×120 | MAINS 70×100 |
+|---|---|---|---|---|
+| 可編輯 PCB | [mono-layout-v06.kicad_pcb](mono-layout-v06.kicad_pcb) | [psu-layout-v06.kicad_pcb](psu-layout-v06.kicad_pcb) | [ctrl-layout-v06.kicad_pcb](ctrl-layout-v06.kicad_pcb) | [mains-layout-v06.kicad_pcb](mains-layout-v06.kicad_pcb) |
+| 封裝假設 | [清單](mono-layout-v06-footprints.csv) | [清單](psu-layout-v06-footprints.csv) | [清單](ctrl-layout-v06-footprints.csv) | [清單](mains-layout-v06-footprints.csv) |
+| 原生 DRC | [0 錯誤](mono-v06-drc.json) | [0 錯誤](psu-v06-drc.json) | [0 錯誤](ctrl-v06-drc.json) | [0 錯誤](mains-v06-drc.json) |
+| 驗證摘要 | [validation-v06.json](validation-v06.json)（含 IC 背板貼邊、GBJ 散熱片包絡） | 同左 | [validation-v06-ctrl.json](validation-v06-ctrl.json)（含市電／低壓距離） | 同左 |
 
-機箱 3D 配置（弘宙 102，散熱器內置、變壓器前排）：[docs/diagrams/chassis_102_v06_3d.png](../docs/diagrams/chassis_102_v06_3d.png)，由 `tools/draw_chassis_scene_v06.py`（pyvista）用 kicad-cli 匯出的 STL 畫；放大板與電源板在圖中是 V0.6 目標外形示意。生成器與流程見 [tools/README](../tools/README.md)。
+機箱 3D 配置（弘宙 102，散熱器內置、變壓器前排）：[docs/diagrams/chassis_102_v06_3d.png](../docs/diagrams/chassis_102_v06_3d.png)，由 `tools/draw_chassis_scene_v06.py`（pyvista）用 kicad-cli 匯出的五塊板 STL 畫。生成器與流程見 [tools/README](../tools/README.md)。V0.5.1 三板（放大板 D 90×90＋電源板 125×130）自 V0.6 起為歷史。
 
 ## PCB V0.5.1（整流橋上板，2026-10-01，現行）
 

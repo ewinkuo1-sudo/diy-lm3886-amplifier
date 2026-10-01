@@ -10,7 +10,7 @@
 
 - **方向改為「先挑殼、散熱器放殼內、以現有零件重排 PCB＝V0.6」**。機殼改選台灣現貨 **弘宙 102**（型錄 b420 前面板寬、d395 機身寬、c285 深不含把手、e105 高 → 內尺寸估 **393×273×100**，賣家未確認；BZ4312A2 留給下一台）。配置：後排「放大板 L｜電源板｜放大板 R」、前排變壓器居中、左前控制板、右前市電板；散熱器 **150×90×30 鋁擠 ×2 內置兩側**（鰭片朝牆、底板朝板、上蓋底板開通風孔；規格依 8 Ω 連續正弦 θSA ≤1.2 °C/W）。3D 配置：[chassis_102_v06_3d.png](docs/diagrams/chassis_102_v06_3d.png)。下單前問賣家內寬、通風孔、後面板是否空白。
 - **控制／保護板 CTRL 與市電板 MAINS 第一版原理圖＋PCB V0.6 已畫**（2026-10-01 深夜）：CTRL 70×120（UPC1237 保護、7812 輔助電源、G2RL-1-E 喇叭繼電器 ×2、SFH617A 光耦靜音、TL431 旁通計時）、MAINS 70×100（SL22 10005 NTC、K_BYP、K_TRIG）。ERC 0、DRC 0 錯誤，市電／低壓銅箔距離 7.25 mm。繼電器 DC 分斷取 30 VDC 等級（使用者接受）。見 [docs/14](docs/14-V0.4-控制與保護板設計草案.md) 狀態列、[pcb/README「PCB V0.6」](pcb/README.md)。
-- **放大板與電源板現行仍是 V0.5.1**（放大板 D 90×90＋電源板 125×130，GBJ2510 直立上板，DRC 0）；**V0.6 版（放大板 80×90 IC 貼板邊、電源板 87×120）尚未畫**，等 LM3886T 三個實量尺寸與機殼內寬。詳見 [pcb/README](pcb/README.md)、[inspection-v051](pcb/inspection-v051/README.md)；V0.5／V0.4／V0.3 為歷史。**全部仍是工程草稿，不可送製。**
+- **放大板與電源板 V0.6 也畫了（2026-10-02 凌晨，以型錄幾何先畫）**：放大板 **90×80**，U1 用 KiCad 函式庫 TO-220-11 直立封裝、背板貼板邊直接鎖散熱器；電源板 **92×120**，兩欄 381LX、GBJ 朝前、AC 端子朝變壓器、DC 端子朝放大板（snubber 預留位未上板）。**V0.6 五板皆 DRC 0 錯誤**，機箱 3D 已換成真板。IC 幾何、C2 腳距、繼電器腳位到貨要核對。詳見 [pcb/README](pcb/README.md)；V0.5.1／V0.5／V0.4／V0.3 為歷史。**全部仍是工程草稿，不可送製。**
 - **目標喇叭 Usher Be-718**（標稱 8 Ω、實測低中音 >6 Ω、約 85 dB）：匹配估算見 [docs/01](docs/01-設計規格.md)；功率／散熱討論以 6–8 Ω 為準。
 - **已到貨**：環形變壓器、yosontw 40 件電阻／WIMA／CDE／ROE（2026-09-22）、LM3886T 拆機品 ×4（2026-09-29，T 封裝、NS 打標）。已付 NT$4,821，整機估 10.9k–16.2k（[採購總表 §5](docs/00-採購總表.md)）。
 - **2026-10-01 已量變壓器電氣**（採購總表 §1）：標籤 22V 4.2A×2＋12V 1A ≈ **197 VA**；兩組 22V 空載各 22.29 Vac（DCR 0.25／0.2 Ω）、串接 44.6 Vac 同相；12V 12.27 Vac；一次側約 2 Ω；市電 110 V。最壞軌電壓 **±33.5 V**，帶載推估連續 30–32 W／8 Ω。保險絲提案：一次側 T2.5A（有軟啟動）／T3.15A、22V 各 T5A、12V T1.25A。**未量：帶載電壓、絕緣、溫升。**
@@ -71,7 +71,7 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 | [BOM 草案](electrical/bom-draft.csv) | 由 KiCad netlist 匯出，含選型條件 |
 | [驗證紀錄](electrical/validation.md) | ERC、網路核對與未驗證事項 |
 | [原理圖說明](electrical/README.md) | 放大板與電源次級 KiCad 圖、看圖與重建方式 |
-| [PCB](pcb/README.md) | **V0.6 新板 CTRL 70×120＋MAINS 70×100（DRC 0）**；放大板／電源板現行 V0.5.1（放大板 D 90×90、電源板 125×130 整流橋上板）；V0.5／V0.4／V0.3 歷史：板檔、DRC、審查結論與載流計算表 |
+| [PCB](pcb/README.md) | **V0.6 現行五板（放大板 90×80 ×2、電源板 92×120、CTRL 70×120、MAINS 70×100，皆 DRC 0）**；V0.5.1／V0.5／V0.4／V0.3 歷史：板檔、DRC、審查結論與載流計算表 |
 | [機箱 3D 配置](docs/diagrams/chassis_102_v06_3d.png) | 弘宙 102 內部等角＋俯視（`tools/draw_chassis_scene_v06.py`，pyvista；CTRL／MAINS 為真板 3D，放大板與電源板為 V0.6 目標外形示意） |
 | [PCB 看圖資料](pcb/inspection-v051/README.md) | V0.5.1（放大板 D＋電源板）正反面銅箔、組裝、3D 預覽與零件核對表；[V0.5](pcb/inspection-v05/README.md)／[V0.4](pcb/inspection-v04/README.md)／[V0.3](pcb/inspection-v03/README.md) 版保留 |
 | [工具說明](tools/README.md) | 各腳本用途與執行順序 |
@@ -92,11 +92,9 @@ TI 列出 ±35V、8Ω 下 50W 的元件性能條件；這不是本機實測規�
 
 ![市電板 MAINS 原理圖 V0.6 第一版](electrical/preview/mains-v01.png)
 
-![PCB V0.6：CTRL 70×120 ＋ MAINS 70×100](pcb/preview/ctrl-mains-layout-v06.png)
+![PCB V0.6 五板（現行）：放大板 90×80 ×2、電源板 92×120、控制板 70×120、市電板 70×100](pcb/preview/system-layout-v06.png)
 
-![弘宙 102 機箱內部 3D 配置（V0.6）](docs/diagrams/chassis_102_v06_3d.png)
-
-![PCB V0.5.1（放大板與電源板現行：兩片放大板 D＋整流橋上板的電源板；V0.6 版未畫）](pcb/preview/system-layout-v051.png)
+![弘宙 102 機箱內部 3D 配置（V0.6 五板）](docs/diagrams/chassis_102_v06_3d.png)
 
 ## 重建與下一步
 

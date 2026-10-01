@@ -22,8 +22,8 @@ GAP, FIN, BASE, ICZ = 10, 30, 5, 10     # 側牆→空氣通道→鰭片→底�
 HS = GAP + FIN + BASE + ICZ             # 55
 HSL, HS_Y0 = 150, 10
 REAR = 15
-AMP_W, AMP_D = 80, 90                   # 放大板：離牆 80 × 沿牆 90（V0.6 目標）
-PSU_W, PSU_D = 87, 120
+AMP_W, AMP_D = 80, 90                   # 放大板 V0.6：離牆 80（板 y）× 沿牆 90（板 x）
+PSU_W, PSU_D = 92, 120
 Z0 = 8                                  # 銅柱高：板底離殼底
 PCB_T = 1.6
 COL = dict(pcb='#1f6b3a', pcb_edge='#2e8b57', cap='#1b2a4a', cap_blue='#2d4f8a', ic='#101010', hs='#3a3f45', fin='#4b5158',
@@ -73,41 +73,7 @@ for side in (0, 1):
     for k in range(10):
         yy = HS_Y0 + 2 + k * (HSL - 4 - 1.5) / 9
         box(min(f0, f1), yy, 3, max(f0, f1), yy + 1.5, 3 + 90, COL['fin'])          # 10 片鰭
-    # IC（LM3886T 20×4.5×22）貼在底板上
-    ic0 = b1; ic1 = b1 + sgn * 4.5
-    yc = REAR + AMP_D / 2
-    box(min(ic0, ic1), yc - 10, Z0 + PCB_T + 2, max(ic0, ic1), yc + 10, Z0 + PCB_T + 24, COL['ic'])
-
-# ---------- 放大板 ×2（V0.6 目標外形示意） ----------
-def amp(side):
-    if side == 0:
-        X = lambda away: HS + away; x0, x1 = HS, HS + AMP_W
-    else:
-        X = lambda away: W - HS - away; x0, x1 = W - HS - AMP_W, W - HS
-    Y = lambda along: REAR + along
-    box(min(x0, x1), REAR, Z0, max(x0, x1), REAR + AMP_D, Z0 + PCB_T, COL['pcb'], edges=True)
-    top = Z0 + PCB_T
-    for along, away in ((36, 23.5), (36, 43)):                               # C7/C6 470u D12.5
-        cyl(X(away), Y(along), top, 6.25, 25, COL['cap'])
-    cyl(X(41), Y(77), top, 10, 42, COL['cap_blue'])                           # C2 EGW 47u 站立 D20 h42
-    cyl(X(34), Y(9.5), top, 5, 14, '#8a5a2b')                                 # L1 空心電感
-    box(min(X(60), X(66.5)), Y(5), top, max(X(60), X(66.5)), Y(25), top + 15, COL['film_y'])   # C1 薄膜
-    for along, away in ((10, 65), (45.7, 66), (85, 19)):                      # J2 / J5 / J1 端子
-        box(min(X(away), X(away + 10)), Y(along) - 4, top, max(X(away), X(away + 10)), Y(along) + 4, top + 12, COL['term'])
-amp(0); amp(1)
-
-# ---------- 電源板 87×120（V0.6 目標外形示意） ----------
-px0 = (W - PSU_W) / 2; py0 = REAR
-box(px0, py0, Z0, px0 + PSU_W, py0 + PSU_D, Z0 + PCB_T, COL['pcb'], edges=True)
-top = Z0 + PCB_T
-for dx, dy in ((24, 32), (63, 32), (24, 70), (63, 70)):
-    cyl(px0 + dx, py0 + dy, top, 17.5, 50, COL['cap'])                        # 381LX 10000u D35×50
-for dx in (8, 49):
-    box(px0 + dx, py0 + 96, top, px0 + dx + 30, py0 + 100, top + 20, COL['ic'])      # GBJ2510 直立
-    box(px0 + dx, py0 + 100, top, px0 + dx + 30, py0 + 110, top + 30, COL['hs'])     # 小散熱片
-for dx in (10, 40, 70):
-    box(px0 + dx, py0 + 113, top, px0 + dx + 12.7, py0 + 118, top + 12, COL['term'])
-
+# ---------- 放大板 ×2 與電源板：V0.6 真板（kicad-cli STL ＋ JSON 補零件），見下方 place_board ----------
 # ---------- 變壓器 Ø120×50 ＋ 壓碟 ----------
 tx, ty = W / 2, REAR + PSU_D + 5 + 60
 cyl(tx, ty, 0, 60, 50, COL['tr'])
@@ -116,47 +82,63 @@ cyl(tx, ty, 50, 50, 3, COL['disc'])
 cyl(tx, ty, 53, 4, 14, '#777777')
 
 # ---------- CTRL／MAINS：KiCad STL ＋ 補零件 ----------
-HEIGHT = {'Relay_G2RL-1-E': 15.7, 'Terminal2_P5.08': 12, 'CP_D12.5_P5': 25, 'CP_D5_P2': 11, 'CP_D6.3_P2.5': 11, 'Film_P5': 6.5,
-          'R_P7.5': 2.5, 'NTC_D22_P10': 22}
-COLOR = {'Relay_G2RL-1-E': COL['relay'], 'Terminal2_P5.08': COL['term'], 'CP_D12.5_P5': COL['cap'], 'CP_D5_P2': COL['cap'],
-         'CP_D6.3_P2.5': COL['cap'], 'Film_P5': COL['film'], 'R_P7.5': COL['res'], 'NTC_D22_P10': COL['ntc']}
+HEIGHT = {'Relay_G2RL-1-E': 15.7, 'Terminal2_P5.08': 12, 'Terminal3_P5.08': 12, 'Header2_P2.54': 6, 'CP_D12.5_P5': 25, 'CP_D5_P2': 11,
+          'CP_D6.3_P2.5': 11, 'CP_D35_P10': 50, 'BP_Axial_Vert_D20_P15': 42, 'Film_P5': 6.5, 'Film_P15': 15, 'R_P7.5': 2.5, 'R_2W_P20': 5,
+          'AirCoil_P20': 14, 'Fuse5x20_P25': 10, 'GBJ_Upright_P10_7.5_7.5': 20, 'NTC_D22_P10': 22}
+COLOR = {'Relay_G2RL-1-E': COL['relay'], 'Terminal2_P5.08': COL['term'], 'Terminal3_P5.08': COL['term'], 'Header2_P2.54': COL['ic'],
+         'CP_D12.5_P5': COL['cap'], 'CP_D5_P2': COL['cap'], 'CP_D6.3_P2.5': COL['cap'], 'CP_D35_P10': COL['cap'], 'BP_Axial_Vert_D20_P15': COL['cap_blue'],
+         'Film_P5': COL['film'], 'Film_P15': COL['film_y'], 'R_P7.5': COL['res'], 'R_2W_P20': COL['res'], 'AirCoil_P20': '#8a5a2b',
+         'Fuse5x20_P25': '#555555', 'GBJ_Upright_P10_7.5_7.5': COL['ic'], 'NTC_D22_P10': COL['ntc']}
 
 
-def place_board(name, x0, y0):
-    """STL from kicad-cli: X = board x, Y = -board y. Mirror Y so board y=0 (rear edge) lands at chassis y0."""
+def place_board(name, origin, rot):
+    """Put a KiCad board into the chassis. Board coords (bx, by) -> chassis (x, y) = origin + R(rot)*(bx, by), rot in degrees,
+    a proper rotation (same handedness), so every board is the real, component-side-up PCB. kicad-cli STL has
+    X = bx, Y = -by, board top at z = 0. The scene then mirrors x (MX) like every other object."""
     m = pv.read(str(STL / f'{name}.stl'))
-    b = m.bounds
-    if b[2] < -1:                                                             # Y negative -> flipped export
-        m = m.transform(np.array([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], float), inplace=False)
-    m = m.transform(np.array([[-1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], float), inplace=False)   # 與 box/cyl 同樣鏡射 x
-    b = m.bounds; bw = b[1] - b[0]
-    m = m.translate((MX(x0 + bw) - b[0], y0 - b[2], Z0 + PCB_T), inplace=False)   # KiCad STL: board top at z=0, bottom at -1.6
+    m = m.transform(np.array([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], float), inplace=False)   # Y = +by
+    c, sn = math.cos(math.radians(rot)), math.sin(math.radians(rot))
+    T = np.array([[c, -sn, 0, origin[0]], [sn, c, 0, origin[1]], [0, 0, 1, Z0 + PCB_T], [0, 0, 0, 1]], float)
+    M = np.array([[-1, 0, 0, W], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], float)          # scene x-mirror (MX)
+    m = m.transform(M @ T, inplace=False)
     m = m.compute_normals(auto_orient_normals=True, inplace=False)
     pl.add_mesh(m, color=COL['pcb_edge'], smooth_shading=True)
     data = json.loads((R / 'pcb' / f'{name}.json').read_text(encoding='utf-8'))
-    for c in data['parts']:
-        fp = c['footprint']
+    def to_chassis(bx, by): return (origin[0] + c * bx - sn * by, origin[1] + sn * bx + c * by)
+    for part in data['parts']:
+        fp = part['footprint']
         if fp not in HEIGHT: continue
-        bx0, by0, bx1, by1 = c['body']; a = math.radians(c['angle'])
-        pts = [(c['x'] + x * math.cos(a) + y * math.sin(a), c['y'] - x * math.sin(a) + y * math.cos(a)) for x, y in ((bx0, by0), (bx1, by0), (bx1, by1), (bx0, by1))]
-        xs = [x0 + p[0] for p in pts]; ys = [y0 + p[1] for p in pts]
-        zt = Z0 + PCB_T
-        if fp.startswith('CP_'):
-            cyl((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2, zt, (max(xs) - min(xs)) / 2, HEIGHT[fp], COLOR[fp])
+        bx0, by0, bx1, by1 = part['body']; a = math.radians(part['angle'])
+        pts = [to_chassis(part['x'] + x * math.cos(a) + y * math.sin(a), part['y'] - x * math.sin(a) + y * math.cos(a))
+               for x, y in ((bx0, by0), (bx1, by0), (bx1, by1), (bx0, by1))]
+        xs = [q[0] for q in pts]; ys = [q[1] for q in pts]; zt = Z0 + PCB_T
+        cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
+        if fp.startswith('CP_') or fp.startswith('BP_'):
+            cyl(cx, cy, zt, (max(xs) - min(xs)) / 2, HEIGHT[fp], COLOR[fp])
         elif fp == 'NTC_D22_P10':
-            cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
-            box(cx - 11, cy - 2.5, zt + 2, cx + 11, cy + 2.5, zt + 24, COLOR[fp])       # 圓盤立著
+            box(cx - 11, cy - 2.5, zt + 2, cx + 11, cy + 2.5, zt + 24, COLOR[fp])
+        elif fp == 'GBJ_Upright_P10_7.5_7.5':
+            box(min(xs), min(ys), zt, max(xs), max(ys), zt + HEIGHT[fp], COLOR[fp])
+            # 10 mm heatsink on the metal-back side (+by for rotation 180 on the PSU)
+            hx0, hy0 = to_chassis(part['x'] - 27.5, part['y'] + 2); hx1, hy1 = to_chassis(part['x'] + 2.5, part['y'] + 12)
+            box(min(hx0, hx1), min(hy0, hy1), zt, max(hx0, hx1), max(hy0, hy1), zt + 30, COL['hs'])
         else:
             box(min(xs), min(ys), zt, max(xs), max(ys), zt + HEIGHT[fp], COLOR[fp])
 
 
+# amplifier L: IC edge (by = 0) against the left heatsink base, board x along the wall with the RCA end (bx = 85) at the rear
+place_board('mono-layout-v06', (HS, REAR + AMP_D), -90)            # (bx,by) -> (HS + by, REAR + AMP_D - bx)
+# amplifier R: the SAME board turned so its IC edge faces the right heatsink; its RCA end therefore lands at the front
+place_board('mono-layout-v06', (W - HS, REAR), 90)                 # (bx,by) -> (W - HS - by, REAR + bx)
+# PSU: DC outputs (by = 0) toward the rear / amplifier boards, AC side toward the transformer
+place_board('psu-layout-v06', ((W - PSU_W) / 2, REAR), 0)
 CTRL_X0, CTRL_Y0 = HS, REAR + PSU_D + 5
 MAINS_X0, MAINS_Y0 = W - HS - 70, REAR + PSU_D + 5
-place_board('ctrl-layout-v06', CTRL_X0, CTRL_Y0)
-place_board('mains-layout-v06', MAINS_X0, MAINS_Y0)
+place_board('ctrl-layout-v06', (CTRL_X0, CTRL_Y0), 0)
+place_board('mains-layout-v06', (MAINS_X0, MAINS_Y0), 0)
 
 # ---------- 標籤（ASCII，VTK 字型）----------
-labels = {'AMP L (80x90)': (HS + 40, REAR + 45, 50), 'AMP R (80x90)': (W - HS - 40, REAR + 45, 50), 'PSU (87x120)': (W / 2, REAR + 60, 75),
+labels = {'AMP L (90x80)': (HS + 40, REAR + 45, 50), 'AMP R (90x80)': (W - HS - 40, REAR + 45, 50), 'PSU (92x120)': (W / 2, REAR + 60, 75),
           'T1 toroid D120': (tx, ty, 75), 'CTRL (70x120)': (CTRL_X0 + 35, CTRL_Y0 + 60, 40), 'MAINS (70x100)': (MAINS_X0 + 35, MAINS_Y0 + 50, 40),
           'HEATSINK 150x90x30': (HS / 2, HS_Y0 + 75, 100), 'HEATSINK 150x90x30 ': (W - HS / 2, HS_Y0 + 75, 100)}
 pts = pv.PolyData(np.array([(MX(x), y, z) for x, y, z in labels.values()], float))
@@ -182,7 +164,7 @@ top_im = top_im.resize((int(top_im.width * 0.46), int(top_im.height * 0.46)))
 canvas = Image.new('RGB', (iso_im.width, iso_im.height + 260), 'white')
 canvas.paste(iso_im, (0, 170)); canvas.paste(top_im, (iso_im.width - top_im.width - 30, 190))
 d = ImageDraw.Draw(canvas)
-d.text((40, 30), f'弘宙 102 機箱內部 3D 配置（V0.6）：內尺寸估 {W}×{D}×{H}，散熱器內置兩側，變壓器前排', font=F(40, True), fill='#1F242B')
-d.text((40, 90), 'CTRL／MAINS 為 KiCad 板檔匯出的 3D（函式庫模型；繼電器、電解、端子、NTC 以方塊／圓柱補）；放大板與電源板是 V0.6 目標外形示意（尚未畫板），大件照 V0.5 位置縮放。', font=F(20), fill='#6B7480')
+d.text((40, 30), f'弘宙 102 機箱內部 3D 配置（V0.6 五板）：內尺寸估 {W}×{D}×{H}，散熱器內置兩側，變壓器前排', font=F(40, True), fill='#1F242B')
+d.text((40, 90), '五塊板都是 V0.6 KiCad 板檔匯出的 3D（函式庫模型：IC、繼電器、二極體、TO 封裝；電解、端子、NTC、GBJ 等暫定封裝以方塊／圓柱補）。右聲道放大板與左聲道同一塊板轉向，RCA 端因此在前。', font=F(20), fill='#6B7480')
 d.text((40, 122), '上蓋拿掉、側牆半透明。右上小圖＝俯視。所有尺寸為估算／目標值，無任何實測。tools/draw_chassis_scene_v06.py（pyvista）產生；同名 .gltf 可用 Blender 開。', font=F(20), fill='#6B7480')
 canvas.save(OUT / 'chassis_102_v06_3d.png'); print(OUT / 'chassis_102_v06_3d.png')
