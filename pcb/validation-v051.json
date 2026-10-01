@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "limits": "Draft only. GBJ footprint from datasheet, part not in hand; heating of the bridge next to 105 C capacitors, heatsink choice, enclosure and harness unverified. Amplifier board unchanged (V0.5).",
+  "board": {
+    "size_mm": [
+      125,
+      130
+    ],
+    "pad_net_count": 50,
+    "native_DRC_violations": 0,
+    "native_DRC_unconnected": 0,
+    "tracks": 83,
+    "vias": 0
+  },
+  "bridges": {
+    "BR1": {
+      "body_mm": [
+        16.0,
+        20.5,
+        47.0,
+        25.5
+      ],
+      "heatsink_envelope_mm": [
+        16.0,
+        10.5,
+        47.0,
+        20.5
+      ],
+      "gap_to_fuse_body_mm": 1.0,
+      "gap_to_capacitor_courtyard_mm": 1.5
+    },
+    "BR2": {
+      "body_mm": [
+        78.0,
+        20.5,
+        109.0,
+        25.5
+      ],
+      "heatsink_envelope_mm": [
+        78.0,
+        10.5,
+        109.0,
+        20.5
+      ],
+      "gap_to_fuse_body_mm": 1.0,
+      "gap_to_capacitor_courtyard_mm": 1.5
+    }
+  },
+  "kicad_version": "10.0.6",
+  "checked_on": "2026-10-01",
+  "minimum_copper_clearance_mm": 0.3,
+  "sha256": {
+    "pcb/psu-layout-v051.kicad_pcb": "f47a9e0f9243553c35edd0561c77ebc47617056bd0372f742bdf24155f268440",
+    "pcb/psu-layout-v051.kicad_pro": "fe1ba7f3be6c79f0b3e4c1606df294398d76f1d076b360b5edf2498f03f118c2",
+    "pcb/psu-v051-drc.json": "bb362b485e1d5dccf58566cede62ae3786be49f0a529430da7b17307022f8e38",
+    "electrical/internal-psu-v02.kicad_sch": "9236a91c56c8df3484d3e006f5511c988fbac097c8b10edcf94ab7bc516bdf35"
+  }
+}
