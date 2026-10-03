@@ -1,0 +1,972 @@
+{
+  "assumptions": {
+    "Vrail": 30,
+    "load_ohm": 8,
+    "sizing_output_W": 40,
+    "Iq_per_rail_A": 0.085,
+    "rho25_ohm_mm": 1.7e-05,
+    "alpha_per_C": 0.0039,
+    "copper_thickness_mm": [
+      0.0348,
+      0.0696
+    ],
+    "charge_duty": 0.15,
+    "note": "Centreline copper only; 1 oz nominal; 85 C and 2 oz are input sensitivities, not predictions. No thermal rise, inductance, pad, via, solder, connector, wire or ESR terms."
+  },
+  "current_cases": {
+    "output": {
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795
+    },
+    "rail1": {
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795
+    },
+    "rail2": {
+      "rms_A": 3.2731295856750044,
+      "peak_A": 6.494555320336759
+    },
+    "ground2": {
+      "rms_A": 4.47213595499958,
+      "peak_A": 6.324555320336759
+    },
+    "charge": {
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545
+    }
+  },
+  "paths": [
+    {
+      "name": "放大板 IC 腳 3→L1",
+      "board": "mono",
+      "net": "L_OUT",
+      "from": "U1.3",
+      "to": "L1.1",
+      "current_model": "output",
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 54.39734529445471,
+            "sum_length_over_width": 19.989901111241284,
+            "min_width_mm": 2.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.009765181577330513,
+          "R_2oz_25C_ohm": 0.004882590788665256,
+          "R_1oz_85C_ohm": 0.012050234066425853,
+          "peak_drop_V": 0.0308802155494801,
+          "heat_W": 0.04882590788665257
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 53.93062030043328,
+            "sum_length_over_width": 16.59631832132835,
+            "min_width_mm": 1.8,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.008107396881108677,
+          "R_2oz_25C_ohm": 0.004053698440554338,
+          "R_1oz_85C_ohm": 0.010004527751288107,
+          "peak_drop_V": 0.025637840039248763,
+          "heat_W": 0.04053698440554339
+        }
+      }
+    },
+    {
+      "name": "放大板 L1→喇叭端子",
+      "board": "mono",
+      "net": "L_SPK",
+      "from": "L1.2",
+      "to": "J2.1",
+      "current_model": "output",
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 9.013878188659973,
+            "sum_length_over_width": 3.0046260628866577,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.001467777099686011,
+          "R_2oz_25C_ohm": 0.0007338885498430055,
+          "R_1oz_85C_ohm": 0.0018112369410125376,
+          "peak_drop_V": 0.004641518732443809,
+          "heat_W": 0.007338885498430056
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 9.013878188659973,
+            "sum_length_over_width": 2.2534695471649933,
+            "min_width_mm": 4.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0011008328247645084,
+          "R_2oz_25C_ohm": 0.0005504164123822542,
+          "R_1oz_85C_ohm": 0.0013584277057594033,
+          "peak_drop_V": 0.003481139049332857,
+          "heat_W": 0.005504164123822543
+        }
+      }
+    },
+    {
+      "name": "放大板 正電源端子→U1 腳 1",
+      "board": "mono",
+      "net": "VCC",
+      "from": "J5.1",
+      "to": "U1.1",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 60.987619140856495,
+            "sum_length_over_width": 24.579793750908905,
+            "min_width_mm": 2.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.012007370510501478,
+          "R_2oz_25C_ohm": 0.006003685255250739,
+          "R_1oz_85C_ohm": 0.014817095209958824,
+          "peak_drop_V": 0.038991266016116036,
+          "heat_W": 0.032159872618808726
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 60.987619140856495,
+            "sum_length_over_width": 17.372198470525827,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.008486418793072962,
+          "R_2oz_25C_ohm": 0.004243209396536481,
+          "R_1oz_85C_ohm": 0.010472240790652036,
+          "peak_drop_V": 0.027557758161578932,
+          "heat_W": 0.022729551581372215
+        }
+      }
+    },
+    {
+      "name": "放大板 正電源端子→U1 腳 5",
+      "board": "mono",
+      "net": "VCC",
+      "from": "J5.1",
+      "to": "U1.5",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 72.94761914085649,
+            "sum_length_over_width": 36.5397937509089,
+            "min_width_mm": 1.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.017849899246133658,
+          "R_2oz_25C_ohm": 0.008924949623066829,
+          "R_1oz_85C_ohm": 0.022026775669728934,
+          "peak_drop_V": 0.057963579058226224,
+          "heat_W": 0.047808176279075576
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 72.94761914085649,
+            "sum_length_over_width": 23.352198470525824,
+            "min_width_mm": 2.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.011407683160889052,
+          "R_2oz_25C_ohm": 0.005703841580444526,
+          "R_1oz_85C_ohm": 0.01407708102053709,
+          "peak_drop_V": 0.03704391468263402,
+          "heat_W": 0.03055370341150564
+        }
+      }
+    },
+    {
+      "name": "放大板 負電源端子→U1 腳 4",
+      "board": "mono",
+      "net": "VEE",
+      "from": "J5.3",
+      "to": "U1.4",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 75.00475033400528,
+            "sum_length_over_width": 60.95627449906567,
+            "min_width_mm": 0.5,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.02977749041621024,
+          "R_2oz_25C_ohm": 0.01488874520810512,
+          "R_1oz_85C_ohm": 0.036745423173603436,
+          "peak_drop_V": 0.09669577940443753,
+          "heat_W": 0.07975437235451177
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 75.00475033400528,
+            "sum_length_over_width": 37.95363056273229,
+            "min_width_mm": 0.9,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.018540566654208307,
+          "R_2oz_25C_ohm": 0.009270283327104153,
+          "R_1oz_85C_ohm": 0.02287905925129305,
+          "peak_drop_V": 0.06020636790307343,
+          "heat_W": 0.049658021409299334
+        }
+      }
+    },
+    {
+      "name": "放大板 470µF C7→U1 腳 1",
+      "board": "mono",
+      "net": "VCC",
+      "from": "C7.1",
+      "to": "U1.1",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 25.50352422374044,
+            "sum_length_over_width": 12.75176211187022,
+            "min_width_mm": 2.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.006229309077637751,
+          "R_2oz_25C_ohm": 0.0031146545388188755,
+          "R_1oz_85C_ohm": 0.0076869674018049845,
+          "peak_drop_V": 0.020228296206097163,
+          "heat_W": 0.016684234592811962
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 25.50352422374044,
+            "sum_length_over_width": 8.501174741246812,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.004152872718425168,
+          "R_2oz_25C_ohm": 0.002076436359212584,
+          "R_1oz_85C_ohm": 0.005124644934536657,
+          "peak_drop_V": 0.013485530804064776,
+          "heat_W": 0.011122823061874641
+        }
+      }
+    },
+    {
+      "name": "放大板 470µF C6→U1 腳 4",
+      "board": "mono",
+      "net": "VEE",
+      "from": "C6.2",
+      "to": "U1.4",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 41.771099996926964,
+            "sum_length_over_width": 49.8783910533729,
+            "min_width_mm": 0.5,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.02436588068699251,
+          "R_2oz_25C_ohm": 0.012182940343496255,
+          "R_1oz_85C_ohm": 0.03006749676774876,
+          "peak_drop_V": 0.07912278002519894,
+          "heat_W": 0.06526021816795294
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 41.771099996926964,
+            "sum_length_over_width": 28.458301894995635,
+            "min_width_mm": 0.9,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.013902044029164536,
+          "R_2oz_25C_ohm": 0.006951022014582268,
+          "R_1oz_85C_ohm": 0.01715512233198904,
+          "peak_drop_V": 0.045143797006583206,
+          "heat_W": 0.037234460677963176
+        }
+      }
+    },
+    {
+      "name": "電源板 正軌 電容→L 輸出",
+      "board": "psu",
+      "net": "VCC",
+      "from": "C202.1",
+      "to": "J203.1",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 79.0,
+            "sum_length_over_width": 26.333333333333332,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.012863984674329502,
+          "R_2oz_25C_ohm": 0.006431992337164751,
+          "R_1oz_85C_ohm": 0.015874157088122606,
+          "peak_drop_V": 0.0417729300536986,
+          "heat_W": 0.034454180299918674
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 79.0,
+            "sum_length_over_width": 15.799999999999999,
+            "min_width_mm": 5.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0077183908045977,
+          "R_2oz_25C_ohm": 0.00385919540229885,
+          "R_1oz_85C_ohm": 0.009524494252873562,
+          "peak_drop_V": 0.025063758032219156,
+          "heat_W": 0.020672508179951202
+        }
+      }
+    },
+    {
+      "name": "電源板 正軌 電容→R 輸出",
+      "board": "psu",
+      "net": "VCC",
+      "from": "C202.1",
+      "to": "J204.1",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 106.84,
+            "sum_length_over_width": 35.61333333333334,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.017397318007662838,
+          "R_2oz_25C_ohm": 0.008698659003831419,
+          "R_1oz_85C_ohm": 0.02146829042145594,
+          "peak_drop_V": 0.05649392211312859,
+          "heat_W": 0.04659600788915585
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 106.84,
+            "sum_length_over_width": 21.368000000000002,
+            "min_width_mm": 5.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.010438390804597701,
+          "R_2oz_25C_ohm": 0.005219195402298851,
+          "R_1oz_85C_ohm": 0.012880974252873564,
+          "peak_drop_V": 0.033896353267877155,
+          "heat_W": 0.027957604733493503
+        }
+      }
+    },
+    {
+      "name": "電源板 負軌 電容→L 輸出",
+      "board": "psu",
+      "net": "VEE",
+      "from": "C204.2",
+      "to": "J203.3",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 108.84,
+            "sum_length_over_width": 41.00266666666667,
+            "min_width_mm": 2.5,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.020030038314176248,
+          "R_2oz_25C_ohm": 0.010015019157088124,
+          "R_1oz_85C_ohm": 0.02471706727969349,
+          "peak_drop_V": 0.06504309594994123,
+          "heat_W": 0.05364733937129616
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 108.84,
+            "sum_length_over_width": 25.310000000000002,
+            "min_width_mm": 4.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.012364080459770116,
+          "R_2oz_25C_ohm": 0.006182040229885058,
+          "R_1oz_85C_ohm": 0.015257275287356322,
+          "peak_drop_V": 0.040149602265535884,
+          "heat_W": 0.03311526468573196
+        }
+      }
+    },
+    {
+      "name": "電源板 負軌 電容→R 輸出",
+      "board": "psu",
+      "net": "VEE",
+      "from": "C204.2",
+      "to": "J204.3",
+      "current_model": "rail1",
+      "rms_A": 1.6365647928375022,
+      "peak_A": 3.2472776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 77.0,
+            "sum_length_over_width": 28.266666666666666,
+            "min_width_mm": 2.5,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.013808429118773948,
+          "R_2oz_25C_ohm": 0.006904214559386974,
+          "R_1oz_85C_ohm": 0.01703960153256705,
+          "peak_drop_V": 0.04483980339941318,
+          "heat_W": 0.036983727714343086
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 77.0,
+            "sum_length_over_width": 17.35,
+            "min_width_mm": 4.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.00847557471264368,
+          "R_2oz_25C_ohm": 0.00423778735632184,
+          "R_1oz_85C_ohm": 0.010458859195402301,
+          "peak_drop_V": 0.027522544421455852,
+          "heat_W": 0.022700507400136297
+        }
+      }
+    },
+    {
+      "name": "電源板 地 STAR→L 輸出",
+      "board": "psu",
+      "net": "GND",
+      "from": "STAR",
+      "to": "J203.2",
+      "current_model": "output",
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 104.27297162322806,
+            "sum_length_over_width": 34.75765720774269,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.016979315302632924,
+          "R_2oz_25C_ohm": 0.008489657651316462,
+          "R_1oz_85C_ohm": 0.020952475083449027,
+          "peak_drop_V": 0.053693309466471204,
+          "heat_W": 0.08489657651316464
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 104.14323545070758,
+            "sum_length_over_width": 23.864411816902525,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.011657902324348934,
+          "R_2oz_25C_ohm": 0.005828951162174467,
+          "R_1oz_85C_ohm": 0.014385851468246585,
+          "peak_drop_V": 0.03686552408471366,
+          "heat_W": 0.05828951162174468
+        }
+      }
+    },
+    {
+      "name": "電源板 地 STAR→R 輸出",
+      "board": "psu",
+      "net": "GND",
+      "from": "STAR",
+      "to": "J204.2",
+      "current_model": "output",
+      "rms_A": 2.23606797749979,
+      "peak_A": 3.1622776601683795,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 105.10139874797424,
+            "sum_length_over_width": 35.033799582658084,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.017114212439804235,
+          "R_2oz_25C_ohm": 0.008557106219902117,
+          "R_1oz_85C_ohm": 0.021118938150718424,
+          "peak_drop_V": 0.05411989166976871,
+          "heat_W": 0.08557106219902119
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 105.10139874797424,
+            "sum_length_over_width": 24.317132915991415,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.011879059183099255,
+          "R_2oz_25C_ohm": 0.005939529591549628,
+          "R_1oz_85C_ohm": 0.01465875903194448,
+          "peak_drop_V": 0.03756488347853282,
+          "heat_W": 0.05939529591549629
+        }
+      }
+    },
+    {
+      "name": "電源板 正橋→第一顆電容",
+      "board": "psu",
+      "net": "VCC",
+      "from": "BR1.P",
+      "to": "C202.1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 23.40312423743285,
+            "sum_length_over_width": 7.801041412477616,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.003810853563566652,
+          "R_2oz_25C_ohm": 0.001905426781783326,
+          "R_1oz_85C_ohm": 0.004702593297441248,
+          "peak_drop_V": 0.05546490265201189,
+          "heat_W": 0.12108922744795528
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 23.40312423743285,
+            "sum_length_over_width": 4.68062484748657,
+            "min_width_mm": 5.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0022865121381399913,
+          "R_2oz_25C_ohm": 0.0011432560690699956,
+          "R_1oz_85C_ohm": 0.0028215559784647492,
+          "peak_drop_V": 0.03327894159120714,
+          "heat_W": 0.07265353646877316
+        }
+      }
+    },
+    {
+      "name": "電源板 正橋充電回地",
+      "board": "psu",
+      "net": "GND",
+      "from": "C202.2",
+      "to": "BR1.N",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 31.0,
+            "sum_length_over_width": 10.333333333333334,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.005047892720306513,
+          "R_2oz_25C_ohm": 0.0025239463601532566,
+          "R_1oz_85C_ohm": 0.006229099616858237,
+          "peak_drop_V": 0.07346933532328141,
+          "heat_W": 0.16039593743140226
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 31.0,
+            "sum_length_over_width": 6.65,
+            "min_width_mm": 4.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0032485632183908053,
+          "R_2oz_25C_ohm": 0.0016242816091954027,
+          "R_1oz_85C_ohm": 0.004008727011494254,
+          "peak_drop_V": 0.047281072248369825,
+          "heat_W": 0.10322254683085406
+        }
+      }
+    },
+    {
+      "name": "電源板 負橋→第一顆電容",
+      "board": "psu",
+      "net": "VEE",
+      "from": "BR2.N",
+      "to": "C204.2",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 23.40312423743285,
+            "sum_length_over_width": 7.801041412477616,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.003810853563566652,
+          "R_2oz_25C_ohm": 0.001905426781783326,
+          "R_1oz_85C_ohm": 0.004702593297441248,
+          "peak_drop_V": 0.05546490265201189,
+          "heat_W": 0.12108922744795528
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 23.40312423743285,
+            "sum_length_over_width": 4.68062484748657,
+            "min_width_mm": 5.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0022865121381399913,
+          "R_2oz_25C_ohm": 0.0011432560690699956,
+          "R_1oz_85C_ohm": 0.0028215559784647492,
+          "peak_drop_V": 0.03327894159120714,
+          "heat_W": 0.07265353646877316
+        }
+      }
+    },
+    {
+      "name": "電源板 負橋充電回地",
+      "board": "psu",
+      "net": "GND",
+      "from": "C204.1",
+      "to": "BR2.P",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 31.0,
+            "sum_length_over_width": 10.333333333333334,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.005047892720306513,
+          "R_2oz_25C_ohm": 0.0025239463601532566,
+          "R_1oz_85C_ohm": 0.006229099616858237,
+          "peak_drop_V": 0.07346933532328141,
+          "heat_W": 0.16039593743140226
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 31.0,
+            "sum_length_over_width": 6.65,
+            "min_width_mm": 4.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0032485632183908053,
+          "R_2oz_25C_ohm": 0.0016242816091954027,
+          "R_1oz_85C_ohm": 0.004008727011494254,
+          "peak_drop_V": 0.047281072248369825,
+          "heat_W": 0.10322254683085406
+        }
+      }
+    },
+    {
+      "name": "電源板 AC 端子→保險絲（+）",
+      "board": "psu",
+      "net": "POS_AC1",
+      "from": "J201.1",
+      "to": "F201.1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 11.15685424949238,
+            "sum_length_over_width": 3.71895141649746,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0018167291402430123,
+          "R_2oz_25C_ohm": 0.0009083645701215061,
+          "R_1oz_85C_ohm": 0.0022418437590598773,
+          "peak_drop_V": 0.02644150535512687,
+          "heat_W": 0.05772626116557596
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 11.15685424949238,
+            "sum_length_over_width": 2.231370849898476,
+            "min_width_mm": 5.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0010900374841458073,
+          "R_2oz_25C_ohm": 0.0005450187420729036,
+          "R_1oz_85C_ohm": 0.001345106255435926,
+          "peak_drop_V": 0.01586490321307612,
+          "heat_W": 0.03463575669934557
+        }
+      }
+    },
+    {
+      "name": "電源板 保險絲→正橋",
+      "board": "psu",
+      "net": "POS_AC_FUSED",
+      "from": "F201.2",
+      "to": "BR1.AC1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 22.230446831456966,
+            "sum_length_over_width": 7.410148943818989,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.003619900346118472,
+          "R_2oz_25C_ohm": 0.001809950173059236,
+          "R_1oz_85C_ohm": 0.004466957027110195,
+          "peak_drop_V": 0.05268568234344164,
+          "heat_W": 0.11502172125969314
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 22.230446831456966,
+            "sum_length_over_width": 4.446089366291393,
+            "min_width_mm": 5.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0021719402076710833,
+          "R_2oz_25C_ohm": 0.0010859701038355416,
+          "R_1oz_85C_ohm": 0.0026801742162661166,
+          "peak_drop_V": 0.03161140940606499,
+          "heat_W": 0.06901303275581588
+        }
+      }
+    },
+    {
+      "name": "電源板 AC 回線（+）",
+      "board": "psu",
+      "net": "POS_AC2",
+      "from": "BR1.AC2",
+      "to": "J201.2",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 27.506635596885396,
+            "sum_length_over_width": 9.168878532295132,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.00447904985773038,
+          "R_2oz_25C_ohm": 0.00223952492886519,
+          "R_1oz_85C_ohm": 0.005527147524439289,
+          "peak_drop_V": 0.06519013658977038,
+          "heat_W": 0.14232105168214232
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 26.986873406610428,
+            "sum_length_over_width": 6.328957802203476,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0030917322596971004,
+          "R_2oz_25C_ohm": 0.0015458661298485502,
+          "R_1oz_85C_ohm": 0.003815197608466222,
+          "peak_drop_V": 0.04499848287261148,
+          "heat_W": 0.09823926964337555
+        }
+      }
+    },
+    {
+      "name": "電源板 AC 端子→保險絲（−）",
+      "board": "psu",
+      "net": "NEG_AC1",
+      "from": "J202.1",
+      "to": "F202.1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 25.369747468305835,
+            "sum_length_over_width": 8.456582489435279,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.004131089147137924,
+          "R_2oz_25C_ohm": 0.002065544573568962,
+          "R_1oz_85C_ohm": 0.005097764007568199,
+          "peak_drop_V": 0.06012575754244941,
+          "heat_W": 0.13126465895409226
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 25.369747468305835,
+            "sum_length_over_width": 5.073949493661167,
+            "min_width_mm": 5.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.002478653488282754,
+          "R_2oz_25C_ohm": 0.001239326744141377,
+          "R_1oz_85C_ohm": 0.0030586584045409182,
+          "peak_drop_V": 0.03607545452546963,
+          "heat_W": 0.07875879537245534
+        }
+      }
+    },
+    {
+      "name": "電源板 保險絲→負橋",
+      "board": "psu",
+      "net": "NEG_AC_FUSED",
+      "from": "F202.2",
+      "to": "BR2.AC1",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 18.27269903474535,
+            "sum_length_over_width": 6.09089967824845,
+            "min_width_mm": 3.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0029754394979949325,
+          "R_2oz_25C_ohm": 0.0014877197489974662,
+          "R_1oz_85C_ohm": 0.0036716923405257468,
+          "peak_drop_V": 0.0433059049240357,
+          "heat_W": 0.09454408680902773
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 18.27269903474535,
+            "sum_length_over_width": 3.65453980694907,
+            "min_width_mm": 5.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0017852636987969598,
+          "R_2oz_25C_ohm": 0.0008926318493984799,
+          "R_1oz_85C_ohm": 0.0022030154043154483,
+          "peak_drop_V": 0.025983542954421426,
+          "heat_W": 0.05672645208541665
+        }
+      }
+    },
+    {
+      "name": "電源板 AC 回線（−）",
+      "board": "psu",
+      "net": "NEG_AC2",
+      "from": "BR2.AC2",
+      "to": "J202.2",
+      "current_model": "charge",
+      "rms_A": 5.636916787461348,
+      "peak_A": 14.554456561196545,
+      "versions": {
+        "06": {
+          "geometry": {
+            "length_mm": 31.253998459891903,
+            "sum_length_over_width": 15.626999229945952,
+            "min_width_mm": 2.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.007633878934169,
+          "R_2oz_25C_ohm": 0.0038169394670845,
+          "R_1oz_85C_ohm": 0.009420206604764546,
+          "peak_drop_V": 0.11110695934079609,
+          "heat_W": 0.24256521200583703
+        },
+        "061": {
+          "geometry": {
+            "length_mm": 31.253998459891903,
+            "sum_length_over_width": 7.813499614972976,
+            "min_width_mm": 4.0,
+            "via_transitions": 0
+          },
+          "R_1oz_25C_ohm": 0.0038169394670845,
+          "R_2oz_25C_ohm": 0.00190846973354225,
+          "R_1oz_85C_ohm": 0.004710103302382273,
+          "peak_drop_V": 0.055553479670398045,
+          "heat_W": 0.12128260600291851
+        }
+      }
+    }
+  ],
+  "feedback_lengths": {
+    "06": {
+      "sense_mm": 35.46974746830583,
+      "inverting_mm": 16.520609733428362
+    },
+    "061": {
+      "sense_mm": 35.46974746830583,
+      "inverting_mm": 16.520609733428362
+    }
+  },
+  "projected_coupling_screen": {
+    "06": {
+      "load": {
+        "minimum_projected_trace_edge_gap_mm": 9.025000000000002,
+        "closest": {
+          "quiet_net": "L_INV",
+          "power_net": "L_OUT",
+          "quiet_layer": "B.Cu",
+          "power_layer": "F.Cu"
+        }
+      },
+      "supply": {
+        "minimum_projected_trace_edge_gap_mm": 2.325,
+        "closest": {
+          "quiet_net": "L_FB_AC",
+          "power_net": "VEE",
+          "quiet_layer": "F.Cu",
+          "power_layer": "F.Cu"
+        }
+      }
+    },
+    "061": {
+      "load": {
+        "minimum_projected_trace_edge_gap_mm": 9.125000000000004,
+        "closest": {
+          "quiet_net": "L_INV",
+          "power_net": "L_OUT",
+          "quiet_layer": "B.Cu",
+          "power_layer": "F.Cu"
+        }
+      },
+      "supply": {
+        "minimum_projected_trace_edge_gap_mm": 2.075,
+        "closest": {
+          "quiet_net": "L_FB_AC",
+          "power_net": "VEE",
+          "quiet_layer": "F.Cu",
+          "power_layer": "F.Cu"
+        }
+      }
+    }
+  },
+  "sha256": {
+    "pcb/mono-layout-v06.json": "a324a0e72d33feedd642e926b6702704bfb3f71b46bfbce0b604383826ea3cc7",
+    "pcb/psu-layout-v06.json": "746d1d8b830d33e6b57101f98cfaac77baf301ea73b70456895eed0dfe6761b9",
+    "pcb/mono-layout-v061.json": "b8cb0286921e3ece9af36a9530dcddb530dca527e65f8ed1bad1634f52b953bd",
+    "pcb/psu-layout-v061.json": "bd67812769201257c893ef4ae391199f56a8b8c02b9e797a9aa2008fc6e6b0e4"
+  }
+}

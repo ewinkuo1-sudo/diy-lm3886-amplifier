@@ -1,0 +1,245 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-03T12:30:29",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "mono-layout-v061.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0500 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "8f9d5af5-6795-4da0-9548-d58f5c22f61c"
+                },
+                {
+                    "description": "F.Silkscreen 上的 線段 U1",
+                    "pos": {
+                        "x": 37.29,
+                        "y": -0.11
+                    },
+                    "uuid": "f0b0edc0-7948-466a-8e06-690468f3bd78"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "8f9d5af5-6795-4da0-9548-d58f5c22f61c"
+                },
+                {
+                    "description": "F.Silkscreen 上的 線段 U1",
+                    "pos": {
+                        "x": 37.29,
+                        "y": 5.11
+                    },
+                    "uuid": "74a83ba5-6e71-4cb2-bc53-c2fa50d56f77"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "8f9d5af5-6795-4da0-9548-d58f5c22f61c"
+                },
+                {
+                    "description": "F.Silkscreen 上的 線段 U1",
+                    "pos": {
+                        "x": 45.65,
+                        "y": -0.11
+                    },
+                    "uuid": "fb6db640-524b-48ba-b478-9c6390c16c24"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "8f9d5af5-6795-4da0-9548-d58f5c22f61c"
+                },
+                {
+                    "description": "F.Silkscreen 上的 線段 U1",
+                    "pos": {
+                        "x": 49.35,
+                        "y": -0.11
+                    },
+                    "uuid": "2d39b0b2-d269-44c9-b49e-baccce91de78"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "被板邊截斷的絲印 (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "Edge.Cuts 上的 線段",
+                    "pos": {
+                        "x": 0.0,
+                        "y": 0.0
+                    },
+                    "uuid": "8f9d5af5-6795-4da0-9548-d58f5c22f61c"
+                },
+                {
+                    "description": "F.Silkscreen 上的 線段 U1",
+                    "pos": {
+                        "x": 57.71,
+                        "y": -0.11
+                    },
+                    "uuid": "0a6334cb-c8c9-4779-b359-3614cce67315"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'TEST OUT'",
+                    "pos": {
+                        "x": 19.0,
+                        "y": 71.0
+                    },
+                    "uuid": "4ea3e892-ec58-481b-a8e8-c9533ae1bb38"
+                },
+                {
+                    "description": "F.Silkscreen 上的 矩形 J2",
+                    "pos": {
+                        "x": 7.5,
+                        "y": 70.0
+                    },
+                    "uuid": "c9f78fc8-347d-474c-8ebc-3945ec95569c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.1164 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 PCB文字 'RUN'",
+                    "pos": {
+                        "x": 84.0,
+                        "y": 61.0
+                    },
+                    "uuid": "1c5ac543-4507-4a4c-b2e9-27ba2b6dbc51"
+                },
+                {
+                    "description": "F.Silkscreen 上的 圓形 C2",
+                    "pos": {
+                        "x": 77.0,
+                        "y": 52.0
+                    },
+                    "uuid": "492ad43e-3780-4b84-a120-c24c251af993"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 圓形 C2",
+                    "pos": {
+                        "x": 77.0,
+                        "y": 52.0
+                    },
+                    "uuid": "492ad43e-3780-4b84-a120-c24c251af993"
+                },
+                {
+                    "description": "JP1 的參考欄位",
+                    "pos": {
+                        "x": 80.0,
+                        "y": 60.5
+                    },
+                    "uuid": "5bf99594-5faf-41ff-83e3-b93f032ac4ac"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance (電路板設定中的 \"絲印\" 約束 間隙 0.1500 mm; 實際 0.0000 mm)",
+            "items": [
+                {
+                    "description": "F.Silkscreen 上的 矩形 R6",
+                    "pos": {
+                        "x": 66.3,
+                        "y": 9.25
+                    },
+                    "uuid": "a8eeb9e6-1358-4881-8f99-2ecb82fca370"
+                },
+                {
+                    "description": "U1 的參考欄位",
+                    "pos": {
+                        "x": 62.0,
+                        "y": 7.0
+                    },
+                    "uuid": "e7a8ad0b-ef75-4be8-8c16-a7eb74d69def"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        }
+    ]
+}

@@ -42,6 +42,16 @@ python3 tools/rebuild.py
 
 DRC 不再有專用腳本（v03 的 `run_pcb_drc_v03.py` 之後直接用 `kicad-cli pcb drc`），完整指令順序見 HANDOFF「V0.5.1 重建流程」。
 
+## PCB V0.6.1（走線加寬候選，2026-10-03，分支 `v061-layout`）
+
+| 腳本 | 用途 |
+|---|---|
+| `pcb_layout_v061.py` | 匯入 `pcb_layout_v06` 的 AMP_V06／PSU_V06，依 (網路, 群組, 原寬) 表與逐條覆寫改走線寬度、替換輸出主幹兩個轉折點與三條進端子走線；檔頭列出每項寬度的限制來源。零件位置不動 |
+| `build_pcb_v061.py`／`verify_pcb_v061.py`／`render_pcb_v061.py` | 由 v06 三支 sed 衍生（板名 v061、`validation-v061.json`、`preview/*-v061.png`；系統圖的 CTRL／MAINS 仍讀 v06） |
+| `analyze_pcb_v061.py` | 載流路徑銅箔電阻對照 V0.6 vs V0.6.1（重用 `analyze_pcb_v03` 的 path／resistance／coupling_screen；1 oz／2 oz、25／85 °C 敏感度）→ `pcb/current-budget-v061.json`，並印出 pcb/README 用的 Markdown 表 |
+
+流程同 V0.6（netlist → KiCad python `build_pcb_v061.py` → DRC 兩板 → `verify_pcb_v061.py` → `render_pcb_v061.py` → `analyze_pcb_v061.py`），跑完 `git checkout -- pcb/DraftV03.pretty`。
+
 ## PCB V0.6（現行五板，2026-10-01 深夜～10-02 凌晨；需 KiCad Python 環境與 `py -3.13`）
 
 | 腳本 | 用途 |
