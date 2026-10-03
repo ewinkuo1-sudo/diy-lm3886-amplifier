@@ -1,8 +1,8 @@
 # PCB
 
-**現行版本是 V0.5.1**（2026-10-01 使用者選定併入 main：電源板的整流橋改為 GBJ2510 直立上板，取代 KBPC2510 鎖機殼＋Faston 線；放大板 D 90×90 與 V0.5 相同），兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.5.1」節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v051](inspection-v051/README.md)。**V0.5 電源板（`psu-layout-v05`）自 2026-10-01 起為歷史**，板檔與 [inspection-v05](inspection-v05/README.md) 保留。**V0.4 自 2026-09-29 起為歷史版本**（放大板 D／C 與電源板板檔、DRC、[inspection-v04](inspection-v04/README.md) 保留）。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
+**現行版本：放大板與電源板 V0.6.1（2026-10-03 使用者選定併入 main，V0.6 擺位不動、載流走線加寬，見「PCB V0.6.1」節），CTRL／MAINS V0.6。** V0.6 放大板／電源板自同日起為歷史（板檔保留）。**V0.5.1 自 2026-10-02 起為歷史**（2026-10-01 使用者選定併入 main：電源板的整流橋改為 GBJ2510 直立上板，取代 KBPC2510 鎖機殼＋Faston 線；放大板 D 90×90 與 V0.5 相同），兩板 KiCad 10.0.6 DRC 0 違規、0 未連通，見下方「PCB V0.5.1」節；正反面銅箔、組裝極性、3D 預覽與零件核對表在 [inspection-v051](inspection-v051/README.md)。**V0.5 電源板（`psu-layout-v05`）自 2026-10-01 起為歷史**，板檔與 [inspection-v05](inspection-v05/README.md) 保留。**V0.4 自 2026-09-29 起為歷史版本**（放大板 D／C 與電源板板檔、DRC、[inspection-v04](inspection-v04/README.md) 保留）。**V0.3 自 2026-09-24 起為歷史版本**：板檔、DRC、雜湊綁定與審查結論原樣保留供對照，不再修改。
 
-![PCB V0.5.1（現行三板）](preview/system-layout-v051.png)
+![PCB 現行五板（放大板／電源板 V0.6.1，CTRL／MAINS V0.6）](preview/system-layout-v061.png)
 
 ---
 
@@ -98,7 +98,7 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 
 **V0.4 三塊板都畫完了（放大板 C、放大板 D、電源板）**，等使用者看圖選 C 或 D。之後才做：V0.4 的 `current-budget`／`analyze` 對照、3D 與導讀圖、系統並排圖；V0.3 檔案與雜湊全部未動。
 
-## PCB V0.6.1（走線加寬候選，2026-10-03，分支 `v061-layout`，未併 main）
+## PCB V0.6.1（2026-10-03，現行：放大板與電源板）
 
 **V0.6.1 = V0.6 放大板與電源板，零件、位置、網路、板尺寸、機殼（弘宙 102）與散熱器（150×90×30 內置）全部不動，只把載流路徑的銅箔加寬到 0.3 mm 間距規則與鄰近焊盤允許的上限。** CTRL／MAINS 不在此版（沿用 V0.6）。兩板 KiCad 10.0.6 DRC **0 錯誤、0 未連通**，[validation-v061.json](validation-v061.json) 通過（同 V0.6 的檢查：焊盤網路、IC 背板貼邊、GBJ 散熱片包絡、鋪銅單一連通區）。
 
@@ -162,9 +162,9 @@ AC 進線、保險絲、橋堆端子、四顆 10,000µF、洩放電阻的位置�
 | 驗證摘要／電阻對照 | [validation-v061.json](validation-v061.json)／[current-budget-v061.json](current-budget-v061.json) | 同左 |
 | 五板同比例圖 | [system-layout-v061.png](preview/system-layout-v061.png)（CTRL／MAINS 為 V0.6） | 同左 |
 
-生成器：`tools/pcb_layout_v061.py`（匯入 V0.6 的定義，只覆寫寬度與兩個轉折點，檔頭列出每項限制）、`build_pcb_v061.py`、`verify_pcb_v061.py`、`render_pcb_v061.py`、`analyze_pcb_v061.py`。**待使用者看圖決定是否併入 main 取代 V0.6。**
+生成器：`tools/pcb_layout_v061.py`（匯入 V0.6 的定義，只覆寫寬度與兩個轉折點，檔頭列出每項限制）、`build_pcb_v061.py`、`verify_pcb_v061.py`、`render_pcb_v061.py`、`analyze_pcb_v061.py`。**2026-10-03 使用者看圖後「沒問題就併入 main」→ 已 fast-forward 併入，V0.6.1 為放大板／電源板現行版，V0.6 兩板退為歷史。** 機箱 3D 圖仍由 V0.6 板檔 STL 畫（外形、零件、擺位相同，銅箔不入 STL）。
 
-## PCB V0.6（2026-10-02 凌晨，現行：五板）
+## PCB V0.6（2026-10-02 凌晨；CTRL／MAINS 現行，放大板／電源板自 2026-10-03 起由 V0.6.1 取代）
 
 **V0.6 是為弘宙 102 機殼（散熱器內置兩側）重排的一整套：放大板 90×80 ×2、電源板 92×120、控制板 CTRL 70×120、市電板 MAINS 70×100。** 四種板 KiCad 10.0.6 DRC **0 錯誤、0 未連通**（剩絲印重疊警告），`validation-v06.json`（放大板／電源板）與 `validation-v06-ctrl.json`（CTRL／MAINS）通過。
 

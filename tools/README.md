@@ -42,7 +42,7 @@ python3 tools/rebuild.py
 
 DRC 不再有專用腳本（v03 的 `run_pcb_drc_v03.py` 之後直接用 `kicad-cli pcb drc`），完整指令順序見 HANDOFF「V0.5.1 重建流程」。
 
-## PCB V0.6.1（走線加寬候選，2026-10-03，分支 `v061-layout`）
+## PCB V0.6.1（放大板／電源板現行，2026-10-03 併入 main）
 
 | 腳本 | 用途 |
 |---|---|
