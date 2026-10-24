@@ -1,0 +1,245 @@
+{
+ "side_rear_R": {
+  "group": "print",
+  "volume_cm3": 59.8,
+  "size_mm": [
+   57.0,
+   162.0,
+   87.0
+  ]
+ },
+ "side_front_R": {
+  "group": "print",
+  "volume_cm3": 71.4,
+  "size_mm": [
+   57.0,
+   142.0,
+   87.0
+  ]
+ },
+ "side_rear_L": {
+  "group": "print",
+  "volume_cm3": 59.8,
+  "size_mm": [
+   57.0,
+   162.0,
+   87.0
+  ]
+ },
+ "side_front_L": {
+  "group": "print",
+  "volume_cm3": 71.4,
+  "size_mm": [
+   57.0,
+   142.0,
+   87.0
+  ]
+ },
+ "rear_panel": {
+  "group": "print",
+  "volume_cm3": 77.8,
+  "size_mm": [
+   216.0,
+   10.0,
+   87.0
+  ]
+ },
+ "front_panel": {
+  "group": "print",
+  "volume_cm3": 83.4,
+  "size_mm": [
+   216.0,
+   10.0,
+   87.0
+  ]
+ },
+ "feet": {
+  "group": "print",
+  "volume_cm3": 12.1,
+  "size_mm": [
+   270.0,
+   260.0,
+   8.0
+  ]
+ },
+ "plate_bottom": {
+  "group": "alu",
+  "volume_cm3": 157.3,
+  "size_mm": [
+   289.4,
+   279.4,
+   2.0
+  ]
+ },
+ "plate_top": {
+  "group": "alu",
+  "volume_cm3": 151.5,
+  "size_mm": [
+   289.4,
+   279.4,
+   2.0
+  ]
+ },
+ "tile_bottom_0": {
+  "group": "tileA",
+  "volume_cm3": 64.9,
+  "size_mm": [
+   152.7,
+   147.7,
+   7.0
+  ]
+ },
+ "tile_bottom_1": {
+  "group": "tileA",
+  "volume_cm3": 64.9,
+  "size_mm": [
+   152.7,
+   147.7,
+   7.0
+  ]
+ },
+ "tile_bottom_2": {
+  "group": "tileA",
+  "volume_cm3": 73.8,
+  "size_mm": [
+   152.7,
+   147.7,
+   7.0
+  ]
+ },
+ "tile_bottom_3": {
+  "group": "tileA",
+  "volume_cm3": 73.8,
+  "size_mm": [
+   152.7,
+   147.7,
+   7.0
+  ]
+ },
+ "tile_top_0": {
+  "group": "tileA",
+  "volume_cm3": 50.8,
+  "size_mm": [
+   152.7,
+   147.7,
+   3.0
+  ]
+ },
+ "tile_top_1": {
+  "group": "tileA",
+  "volume_cm3": 50.8,
+  "size_mm": [
+   152.7,
+   147.7,
+   3.0
+  ]
+ },
+ "tile_top_2": {
+  "group": "tileA",
+  "volume_cm3": 50.8,
+  "size_mm": [
+   152.7,
+   147.7,
+   3.0
+  ]
+ },
+ "tile_top_3": {
+  "group": "tileA",
+  "volume_cm3": 50.8,
+  "size_mm": [
+   152.7,
+   147.7,
+   3.0
+  ]
+ },
+ "heatsink_R": {
+  "group": "hs",
+  "volume_cm3": 110.8,
+  "size_mm": [
+   33.0,
+   176.0,
+   60.0
+  ]
+ },
+ "heatsink_L": {
+  "group": "hs",
+  "volume_cm3": 110.8,
+  "size_mm": [
+   33.0,
+   176.0,
+   60.0
+  ]
+ },
+ "amp_R": {
+  "group": "int",
+  "volume_cm3": 31.4,
+  "size_mm": [
+   80.0,
+   90.0,
+   41.6
+  ]
+ },
+ "amp_L": {
+  "group": "int",
+  "volume_cm3": 31.4,
+  "size_mm": [
+   80.0,
+   90.0,
+   41.6
+  ]
+ },
+ "psu": {
+  "group": "int",
+  "volume_cm3": 211.1,
+  "size_mm": [
+   92.0,
+   120.0,
+   51.6
+  ]
+ },
+ "ctrl": {
+  "group": "int",
+  "volume_cm3": 35.7,
+  "size_mm": [
+   70.0,
+   120.0,
+   17.6
+  ]
+ },
+ "mains": {
+  "group": "int",
+  "volume_cm3": 23.0,
+  "size_mm": [
+   70.0,
+   100.0,
+   21.6
+  ]
+ },
+ "transformer": {
+  "group": "int",
+  "volume_cm3": 583.0,
+  "size_mm": [
+   120.0,
+   120.0,
+   61.0
+  ]
+ },
+ "connectors": {
+  "group": "int",
+  "volume_cm3": 17.9,
+  "size_mm": [
+   273.0,
+   303.0,
+   49.5
+  ]
+ },
+ "foot": {
+  "group": "print",
+  "volume_cm3": 2.4,
+  "size_mm": [
+   20.0,
+   20.0,
+   8.0
+  ]
+ }
+}
