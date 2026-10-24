@@ -1,0 +1,167 @@
+{
+ "tub": {
+  "group": "print",
+  "volume_cm3": 720.4,
+  "size_mm": [
+   298.0,
+   288.0,
+   81.0
+  ],
+  "watertight": true,
+  "qty": 1,
+  "fits_H2D": true,
+  "mass_g_solid": 771
+ },
+ "lid": {
+  "group": "print",
+  "volume_cm3": 323.9,
+  "size_mm": [
+   298.0,
+   288.0,
+   15.0
+  ],
+  "watertight": true,
+  "qty": 1,
+  "fits_H2D": true,
+  "mass_g_solid": 347
+ },
+ "mains_cover": {
+  "group": "print",
+  "volume_cm3": 35.2,
+  "size_mm": [
+   64.0,
+   119.0,
+   40.0
+  ],
+  "watertight": true,
+  "qty": 1,
+  "fits_H2D": true,
+  "mass_g_solid": 38
+ },
+ "feet": {
+  "group": "print",
+  "volume_cm3": 17.4,
+  "size_mm": [
+   280.0,
+   270.0,
+   8.0
+  ],
+  "watertight": true
+ },
+ "heatsink_R": {
+  "group": "hs",
+  "volume_cm3": 110.8,
+  "size_mm": [
+   33.0,
+   176.0,
+   60.0
+  ],
+  "watertight": true
+ },
+ "heatsink_L": {
+  "group": "hs",
+  "volume_cm3": 110.8,
+  "size_mm": [
+   33.0,
+   176.0,
+   60.0
+  ],
+  "watertight": true
+ },
+ "amp_R": {
+  "group": "int",
+  "volume_cm3": 32.7,
+  "size_mm": [
+   80.5,
+   90.0,
+   48.0
+  ],
+  "watertight": true
+ },
+ "amp_L": {
+  "group": "int",
+  "volume_cm3": 32.7,
+  "size_mm": [
+   80.5,
+   90.0,
+   48.0
+  ],
+  "watertight": true
+ },
+ "psu": {
+  "group": "int",
+  "volume_cm3": 212.1,
+  "size_mm": [
+   92.0,
+   120.0,
+   51.6
+  ],
+  "watertight": true
+ },
+ "softstart": {
+  "group": "int",
+  "volume_cm3": 43.8,
+  "size_mm": [
+   58.0,
+   95.0,
+   30.0
+  ],
+  "watertight": true
+ },
+ "protect": {
+  "group": "int",
+  "volume_cm3": 11.1,
+  "size_mm": [
+   31.0,
+   52.0,
+   22.0
+  ],
+  "watertight": true
+ },
+ "transformer": {
+  "group": "int",
+  "volume_cm3": 475.8,
+  "size_mm": [
+   120.0,
+   120.0,
+   54.0
+  ],
+  "watertight": true
+ },
+ "connectors": {
+  "group": "int",
+  "volume_cm3": 76.5,
+  "size_mm": [
+   270.0,
+   305.0,
+   48.5
+  ],
+  "watertight": true
+ },
+ "foot": {
+  "group": "print",
+  "volume_cm3": 2.9,
+  "size_mm": [
+   22.0,
+   22.0,
+   8.0
+  ],
+  "watertight": true,
+  "qty": 4,
+  "fits_H2D": true,
+  "mass_g_solid": 12
+ },
+ "foot_center": {
+  "group": "print",
+  "volume_cm3": 5.9,
+  "size_mm": [
+   32.0,
+   32.0,
+   8.0
+  ],
+  "watertight": true,
+  "qty": 1,
+  "fits_H2D": true,
+  "mass_g_solid": 6
+ }
+}

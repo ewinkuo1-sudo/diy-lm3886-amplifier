@@ -1,0 +1,157 @@
+{
+ "assumptions": {
+  "E_XY": 2450.0,
+  "E_Z": 2120.0,
+  "E_design": 1960.0,
+  "strength_XY": 37.0,
+  "strength_Z": 31.0,
+  "allow_short": 10.3,
+  "allow_long": 4.0,
+  "allow_hot": 3.0,
+  "dyn_factor": 2,
+  "source": "Bambu ASA Technical Data Sheet V2.0（強度取舊版低值）",
+  "method": "格狀梁（tools/grillage.py）＋梁公式"
+ },
+ "mass_kg": {
+  "變壓器（未秤，200 VA 環形常見值）": 2.2,
+  "散熱片 ×2（外形估算）": 0.6,
+  "電源板（4×10000 µF/63 V＋橋）": 0.4,
+  "放大板 ×2": 0.2,
+  "軟啟動板＋保護板": 0.17,
+  "端子、線材、螺絲": 0.35,
+  "列印外殼（STL 體積×1.07，實心估）": 1.17
+ },
+ "mass_total_kg": 5.09,
+ "baseline_before_fix": {
+  "floor_rib6_carry": {
+   "stress_MPa": 5.27,
+   "deflection_mm": 2.07
+  },
+  "lid_rib6_point5kg": {
+   "stress_MPa": 11.78,
+   "deflection_mm": 3.37
+  }
+ },
+ "cases": [
+  {
+   "case": "搬運：變壓器重量壓底板（×2 衝擊）",
+   "stress_MPa": 4.23,
+   "allow_MPa": 10.3,
+   "stress_ratio": 0.41,
+   "deflection_mm": 1.32,
+   "deflection_allow_mm": 1.87,
+   "ok": true,
+   "note": "短時；中央機腳離地時變壓器只能靠底板；牆邊固定時 σ=3.9 MPa、δ=0.38 mm",
+   "k_N_per_mm": 33,
+   "stress_fixed": 3.92,
+   "deflection_fixed": 0.38
+  },
+  {
+   "case": "站著放：中央機腳沒碰到地（最壞）",
+   "stress_MPa": 2.12,
+   "allow_MPa": 4.0,
+   "stress_ratio": 0.53,
+   "deflection_mm": 0.66,
+   "deflection_allow_mm": 0.93,
+   "ok": true,
+   "note": "長期；正常情況變壓器重量經中心螺栓直接到中央機腳，底板幾乎不受力；牆邊固定時 σ=2.0 MPa、δ=0.19 mm",
+   "k_N_per_mm": 33,
+   "stress_fixed": 1.96,
+   "deflection_fixed": 0.19
+  },
+  {
+   "case": "上蓋放 10 kg（均布）",
+   "stress_MPa": 2.94,
+   "allow_MPa": 10.3,
+   "stress_ratio": 0.28,
+   "deflection_mm": 0.66,
+   "deflection_allow_mm": 0.97,
+   "ok": true,
+   "note": "8 顆螺絲＋定位框，介於簡支與固定之間；固定時 δ=0.14 mm",
+   "stress_fixed": 1.5,
+   "deflection_fixed": 0.14
+  },
+  {
+   "case": "上蓋中央手壓 5 kg（集中）",
+   "stress_MPa": 5.12,
+   "allow_MPa": 10.3,
+   "stress_ratio": 0.5,
+   "deflection_mm": 0.92,
+   "deflection_allow_mm": 0.97,
+   "ok": true,
+   "note": "8 顆螺絲＋定位框，介於簡支與固定之間；固定時 δ=0.32 mm",
+   "stress_fixed": 3.65,
+   "deflection_fixed": 0.32
+  },
+  {
+   "case": "搬運：兩側抬起，前後牆當梁（×2）",
+   "stress_MPa": 0.43,
+   "allow_MPa": 10.3,
+   "stress_ratio": 0.04,
+   "deflection_mm": 0.05,
+   "deflection_allow_mm": 1.99,
+   "ok": true,
+   "note": "只算牆，底板與上蓋翼板不計"
+  },
+  {
+   "case": "拿散熱片當把手（×2）",
+   "stress_MPa": 0.27,
+   "allow_MPa": 10.3,
+   "stress_ratio": 0.03,
+   "deflection_mm": 0,
+   "deflection_allow_mm": 1,
+   "ok": true,
+   "note": "垂直力壓在凹槽下緣 0.06 MPa；上排螺絲各受拉約 15 N"
+  },
+  {
+   "case": "散熱片螺絲長期夾緊：Ø7 一般華司",
+   "stress_MPa": 10.2,
+   "allow_MPa": 3.0,
+   "stress_ratio": 3.4,
+   "deflection_mm": 0,
+   "deflection_allow_mm": 1,
+   "ok": false,
+   "note": "熱區 60–75 °C；超過會慢慢壓陷鬆掉"
+  },
+  {
+   "case": "散熱片螺絲長期夾緊：Ø9 大華司",
+   "stress_MPa": 5.5,
+   "allow_MPa": 3.0,
+   "stress_ratio": 1.83,
+   "deflection_mm": 0,
+   "deflection_allow_mm": 1,
+   "ok": false,
+   "note": "熱區 60–75 °C；超過會慢慢壓陷鬆掉"
+  },
+  {
+   "case": "散熱片螺絲長期夾緊：直立鋁條 10×50×1.5（每端一條、蓋 2 顆）",
+   "stress_MPa": 1.2,
+   "allow_MPa": 3.0,
+   "stress_ratio": 0.4,
+   "deflection_mm": 0,
+   "deflection_allow_mm": 1,
+   "ok": true,
+   "note": "熱區 60–75 °C；超過會慢慢壓陷鬆掉"
+  },
+  {
+   "case": "變壓器中心螺栓夾緊：底板承環（長期）",
+   "stress_MPa": 0.39,
+   "allow_MPa": 4.0,
+   "stress_ratio": 0.1,
+   "deflection_mm": 0,
+   "deflection_allow_mm": 1,
+   "ok": true,
+   "note": "M6 手鎖中等，約 1500 N；橡膠墊攤開"
+  },
+  {
+   "case": "變壓器中心螺栓夾緊：中央機腳（長期）",
+   "stress_MPa": 2.15,
+   "allow_MPa": 4.0,
+   "stress_ratio": 0.54,
+   "deflection_mm": 0,
+   "deflection_allow_mm": 1,
+   "ok": true,
+   "note": "機腳 Ø32、底下六角螺帽槽"
+  }
+ ]
+}

@@ -1,0 +1,270 @@
+<title>LM3886 列印機殼 v0.2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 版面：左邊大塊 3D 檢視（像列印平台），右邊尺寸與零件表；窄螢幕上下疊。顏色照機殼本身：灰白 PETG、黑陽極散熱片、鋁板 */
+:root {
+  --bg: #eceeea; --panel: #ffffff; --fg: #1c211e; --muted: #5c6661;
+  --line: #d2d8d3; --accent: #b4561c; --bed: #dde1dc; --grid: #b5bdb7;
+  --print: #d9d4c8; --alu: #b4bac2; --hs: #2b2f34; --mains: #c9533b; --ok: #2f7d4f; --ng: #b3261e;
+  --sans: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121513; --panel: #1a1e1b; --fg: #e7ebe8; --muted: #97a19b;
+  --line: #2b322e; --accent: #e98a4a; --bed: #1e2320; --grid: #343c37;
+  --print: #cfc9bc; --alu: #9ea4ab; --hs: #3a3f45; --mains: #e0705a; --ok: #6cc58f; --ng: #f2867c; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121513; --panel: #1a1e1b; --fg: #e7ebe8; --muted: #97a19b;
+  --line: #2b322e; --accent: #e98a4a; --bed: #1e2320; --grid: #343c37;
+  --print: #cfc9bc; --alu: #9ea4ab; --hs: #3a3f45; --mains: #e0705a; --ok: #6cc58f; --ng: #f2867c; color-scheme: dark }
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px; box-sizing: border-box; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-bottom: 14px; }
+h1 { font-size: 26px; font-weight: 700; margin: 0; text-wrap: balance; }
+.sub { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; }
+@media (max-width: 860px) { main { grid-template-columns: minmax(0, 1fr); } }
+.view { position: relative; background: var(--bed); border: 1px solid var(--line); border-radius: 6px; min-height: 420px; height: 70vh; overflow: hidden; }
+.view canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.hint { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); pointer-events: none; }
+.loading[hidden] { display: none; }
+.loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 14px; }
+.toggles { position: absolute; bottom: 10px; left: 12px; right: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+.toggles button { font: 500 13px var(--sans); color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.toggles button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.toggles button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.toggles .sep { width: 1px; background: var(--line); margin: 2px 2px; }
+aside { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+h2 { font-size: 13px; color: var(--accent); margin: 0 0 6px; letter-spacing: .08em; }
+dl { margin: 0; display: grid; grid-template-columns: 1fr auto; }
+dt, dd { margin: 0; padding: 7px 0; border-bottom: 1px solid var(--line); }
+dt { color: var(--muted); }
+dd { font-family: var(--mono); font-size: 13.5px; text-align: right; font-variant-numeric: tabular-nums; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { padding: 6px 4px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+td.n, th.n { font-family: var(--mono); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+th { color: var(--muted); font-weight: 500; }
+tfoot td { font-weight: 700; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; border: 1px solid var(--line); }
+ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; line-height: 1.6; }
+.note { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+.warn { border-left: 3px solid var(--accent); padding-left: 10px; }
+.pill { font: 500 11.5px var(--mono); padding: 1px 6px; border-radius: 3px; border: 1px solid currentColor; white-space: nowrap; }
+.pill.ok { color: var(--ok); } .pill.ng { color: var(--ng); }
+.tw { overflow-x: auto; }
+</style>
+
+<header>
+  <h1>LM3886 列印機殼 v0.2</h1>
+  <span class="sub">Bambu Lab H2D · ASA · 底殼一體＋上蓋一片 · 1:1</span>
+</header>
+<main>
+  <div class="view" id="view">
+    <span class="hint">拖曳旋轉 · 滾輪縮放 · 右鍵平移</span>
+    <div class="loading" id="loading">正在解開 STL…</div>
+    <div class="toggles">
+      <button id="btnLid" aria-pressed="true">上蓋</button>
+      <button id="btnCov" aria-pressed="true">市電護罩</button>
+      <button id="btnInt" aria-pressed="true">機內零件</button>
+      <button id="btnHs" aria-pressed="true">散熱片</button>
+      <button id="btnEx" aria-pressed="false">爆炸圖</button>
+    </div>
+  </div>
+  <aside>
+    <section>
+      <h2>尺寸</h2>
+      <dl>
+        <dt>底殼外形</dt><dd>298 × 288 × 81 mm</dd>
+        <dt>含上蓋、機腳</dt><dd>298 × 288 × 92 mm</dd>
+        <dt>含鰭片總寬</dt><dd>354 mm</dd>
+        <dt>內部</dt><dd>290 × 280 × 78 mm</dd>
+        <dt>H2D 單噴頭範圍</dt><dd>325 × 320 × 325 mm</dd>
+        <dt>估計總重</dt><dd id="mass">—</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>列印件</h2>
+      <div class="tw"><table>
+        <thead><tr><th>件</th><th class="n">數</th><th class="n">外形 mm</th><th class="n">g（實心估）</th></tr></thead>
+        <tbody id="parts"></tbody>
+        <tfoot><tr><td>合計 ASA</td><td class="n"></td><td class="n"></td><td class="n" id="tot"></td></tr></tfoot>
+      </table></div>
+      <p class="note">全部放得進 H2D 單噴頭，底殼四周還有 14–16 mm 可加 brim。重量是 100% 實心估，實際切片會少一些。</p>
+    </section>
+    <section>
+      <h2>剛性檢查（估算）</h2>
+      <div class="tw"><table>
+        <thead><tr><th>情況</th><th class="n">應力／容許 MPa</th><th class="n">撓度／容許 mm</th><th></th></tr></thead>
+        <tbody id="stiff"></tbody>
+      </table></div>
+      <p class="note">格狀梁＋梁公式的手算，不是有限元素；ASA 取 Bambu 資料表低值再打 8 折。變壓器沒秤過，用 2.2 kg。兩種華司那兩列是「不要這樣做」的對照，設計用鋁條壓板。</p>
+    </section>
+    <section>
+      <h2>還沒確認的事</h2>
+      <ul class="warn">
+        <li>變壓器重量（廚房秤秤一下就好）、散熱片底板厚度（模型 5 mm）。</li>
+        <li>保護板的固定孔位置，模型先假設離邊 3 mm。</li>
+        <li>LM3886T 背板和板邊的實際距離；放大板銅柱底下是長孔，可前後調 ±2.5 mm。</li>
+        <li>列印時間要在 Bambu Studio 切片才知道。</li>
+      </ul>
+    </section>
+  </aside>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+<script>
+const STL = __STL_JSON__;      // {名稱: base64 二進位 STL}
+const META = __META_JSON__;    // {名稱: {group, volume_cm3, size_mm}}
+const W = 290, D = 280, H = 78;
+const STIFF = __STIFF_JSON__;
+const host = document.getElementById('view');
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+host.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(32, 1, 1, 5000);
+camera.position.set(430, 330, 520);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 40, 0);
+controls.enableDamping = true;
+controls.minDistance = 150; controls.maxDistance = 1800;
+controls.maxPolarAngle = Math.PI * 0.49;
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x4a5048, 0.8));
+const sun = new THREE.DirectionalLight(0xffffff, 0.8);
+sun.position.set(250, 420, 300);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -320, right: 320, top: 320, bottom: -320, near: 10, far: 1200 });
+scene.add(sun);
+
+// 平台與格線（10 mm 一格）
+const bedMat = new THREE.MeshStandardMaterial({ roughness: 0.95 });
+const bed = new THREE.Mesh(new THREE.CircleGeometry(520, 96), bedMat);
+bed.rotation.x = -Math.PI / 2; bed.position.y = -0.1; bed.receiveShadow = true;
+scene.add(bed);
+let grid;
+function makeGrid() {
+  if (grid) scene.remove(grid);
+  grid = new THREE.GridHelper(800, 80, css('--grid'), css('--grid'));
+  grid.position.y = 0.05; grid.material.transparent = true; grid.material.opacity = 0.5;
+  scene.add(grid);
+}
+
+// 材質：列印件、鋁板、散熱片、PCB、變壓器、端子
+const mats = {
+  print: new THREE.MeshStandardMaterial({ roughness: 0.75, metalness: 0.0 }),
+  alu: new THREE.MeshStandardMaterial({ roughness: 0.4, metalness: 0.65 }),
+  hs: new THREE.MeshStandardMaterial({ roughness: 0.7, metalness: 0.35 }),
+  pcb: new THREE.MeshStandardMaterial({ color: 0x1f6b3a, roughness: 0.6 }),
+  tr: new THREE.MeshStandardMaterial({ color: 0x5a6068, roughness: 0.6, metalness: 0.2 }),
+  conn: new THREE.MeshStandardMaterial({ color: 0x3a3a3a, roughness: 0.5, metalness: 0.4 }),
+  feet: new THREE.MeshStandardMaterial({ color: 0x8c8780, roughness: 0.8 }),
+  mains: new THREE.MeshStandardMaterial({ roughness: 0.7 }),
+  board: new THREE.MeshStandardMaterial({ color: 0x2a5d8f, roughness: 0.6 }),
+};
+const matOf = n => n === 'feet' ? mats.feet : n === 'transformer' ? mats.tr : n === 'connectors' ? mats.conn
+  : n === 'mains_cover' ? mats.mains : (n === 'softstart' || n === 'protect') ? mats.board
+  : META[n].group === 'int' ? mats.pcb : META[n].group === 'hs' ? mats.hs : mats.print;
+
+// 爆炸方向（機殼座標 x 右／y 前／z 上，mm）
+const SHIFT = { lid: [0, 0, 90], mains_cover: [0, 0, 70], feet: [0, 0, -60], heatsink_R: [-110, 0, 0], heatsink_L: [110, 0, 0] };
+
+// 機殼座標 → three.js（y 向上）：x→x、z→y、y→-z（前面板朝 +z，也就是朝鏡頭）
+const root = new THREE.Group();
+root.rotation.x = -Math.PI / 2;            // z 上 → y 上
+root.position.set(-W / 2, 3 + 8, D / 2);  // 置中；底板下表面在平台上方 8 mm（機腳高）
+scene.add(root);
+const meshes = {};
+const loader = new THREE.STLLoader();
+function b64buf(s) { const b = atob(s), a = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a.buffer; }
+for (const [n, b64] of Object.entries(STL)) {
+  const g = loader.parse(b64buf(b64));
+  g.computeVertexNormals();
+  const m = new THREE.Mesh(g, matOf(n));
+  m.castShadow = m.receiveShadow = true;
+  m.userData.base = new THREE.Vector3(0, 0, 0);
+  meshes[n] = m; root.add(m);
+}
+document.getElementById('loading').hidden = true;
+
+// 狀態與開關
+const st = { lid: true, cov: true, int: true, hs: true, ex: false };
+function apply() {
+  for (const [n, m] of Object.entries(meshes)) {
+    const g = META[n].group;
+    let v = true;
+    if (g === 'int' && !st.int) v = false;
+    if (g === 'hs' && !st.hs) v = false;
+    if (n === 'lid' && !st.lid) v = false;
+    if (n === 'mains_cover' && !st.cov) v = false;
+    m.visible = v;
+    const s = SHIFT[n]; const k = st.ex ? 1 : 0;
+    m.position.set(s ? s[0] * k : 0, s ? s[1] * k : 0, s ? s[2] * k : 0);
+  }
+}
+const toggle = (id, fn) => {
+  const b = document.getElementById(id);
+  b.addEventListener('click', () => {
+    const on = b.getAttribute('aria-pressed') !== 'true';
+    b.setAttribute('aria-pressed', on); fn(on); apply();
+  });
+};
+toggle('btnLid', on => { st.lid = on; });
+toggle('btnCov', on => { st.cov = on; });
+toggle('btnInt', on => { st.int = on; });
+toggle('btnHs', on => { st.hs = on; });
+toggle('btnEx', on => { st.ex = on; });
+apply();
+
+// 列印件表
+const ROWS = [['底殼（底板＋四牆一體）', 'tub', 'print'], ['上蓋（翻面印）', 'lid', 'print'], ['市電護罩', 'mains_cover', 'mains'], ['機腳', 'foot', 'print'], ['中央機腳（M6）', 'foot_center', 'print']];
+let tot = 0; const tb = document.getElementById('parts');
+for (const [label, n, c] of ROWS) {
+  const r = META[n]; const q = r.qty || 1; const gram = r.mass_g_solid; tot += gram;
+  const sz = r.size_mm.map(x => Math.round(x)).join('×');
+  tb.insertAdjacentHTML('beforeend', `<tr><td><span class="sw" style="background:var(--${c})"></span>${label}</td><td class="n">${q}</td><td class="n">${sz}</td><td class="n">${gram}</td></tr>`);
+}
+document.getElementById('tot').textContent = `${tot} g`;
+if (STIFF.mass_total_kg) document.getElementById('mass').textContent = `約 ${STIFF.mass_total_kg} kg`;
+const sb = document.getElementById('stiff');
+for (const c of (STIFF.cases || [])) {
+  const d = c.deflection_allow_mm === 1 ? '—' : `${c.deflection_mm} / ${c.deflection_allow_mm}`;
+  sb.insertAdjacentHTML('beforeend', `<tr><td>${c.case}</td><td class="n">${c.stress_MPa} / ${c.allow_MPa}</td><td class="n">${d}</td><td><span class="pill ${c.ok ? 'ok' : 'ng'}">${c.ok ? '過' : '不過'}</span></td></tr>`);
+}
+
+function applyTheme() {
+  scene.background = new THREE.Color(css('--bed'));
+  bedMat.color.set(css('--bg'));
+  mats.print.color.set(css('--print'));
+  mats.alu.color.set(css('--alu'));
+  mats.mains.color.set(css('--mains'));
+  mats.hs.color.set(css('--hs'));
+  makeGrid();
+}
+applyTheme();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+function resize() {
+  const w = host.clientWidth, h = host.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(host);
+resize();
+
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+controls.autoRotate = !still; controls.autoRotateSpeed = 0.6;
+renderer.domElement.addEventListener('pointerdown', () => { controls.autoRotate = false; });
+(function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
+</script>
