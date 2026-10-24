@@ -1,29 +1,29 @@
 {
  "tub": {
   "group": "print",
-  "volume_cm3": 720.5,
+  "volume_cm3": 764.8,
   "size_mm": [
    298.0,
-   288.0,
+   313.0,
    81.0
   ],
   "watertight": true,
   "qty": 1,
   "fits_H2D": true,
-  "mass_g_solid": 771
+  "mass_g_solid": 818
  },
  "lid": {
   "group": "print",
-  "volume_cm3": 323.9,
+  "volume_cm3": 363.5,
   "size_mm": [
    298.0,
-   288.0,
-   15.0
+   313.0,
+   16.0
   ],
   "watertight": true,
   "qty": 1,
   "fits_H2D": true,
-  "mass_g_solid": 347
+  "mass_g_solid": 389
  },
  "mains_cover": {
   "group": "print",
@@ -43,7 +43,7 @@
   "volume_cm3": 17.4,
   "size_mm": [
    280.0,
-   270.0,
+   295.0,
    8.0
   ],
   "watertight": true
@@ -133,7 +133,7 @@
   "volume_cm3": 76.5,
   "size_mm": [
    270.0,
-   305.0,
+   330.0,
    48.5
   ],
   "watertight": true

@@ -19,69 +19,69 @@
   "放大板 ×2": 0.2,
   "軟啟動板＋保護板": 0.17,
   "端子、線材、螺絲": 0.35,
-  "列印外殼（STL 體積×1.07，實心估）": 1.17
+  "列印外殼（STL 體積×1.07，實心估）": 1.26
  },
- "mass_total_kg": 5.09,
+ "mass_total_kg": 5.18,
  "baseline_before_fix": {
   "floor_rib6_carry": {
-   "stress_MPa": 5.27,
-   "deflection_mm": 2.07
+   "stress_MPa": 6.31,
+   "deflection_mm": 1.83
   },
   "lid_rib6_point5kg": {
-   "stress_MPa": 11.78,
-   "deflection_mm": 3.37
+   "stress_MPa": 12.03,
+   "deflection_mm": 3.76
   }
  },
  "cases": [
   {
    "case": "搬運：變壓器重量壓底板（×2 衝擊）",
-   "stress_MPa": 4.23,
+   "stress_MPa": 4.06,
    "allow_MPa": 10.3,
-   "stress_ratio": 0.41,
-   "deflection_mm": 1.32,
-   "deflection_allow_mm": 1.87,
+   "stress_ratio": 0.39,
+   "deflection_mm": 1.14,
+   "deflection_allow_mm": 2.03,
    "ok": true,
-   "note": "短時；中央機腳離地時變壓器只能靠底板；牆邊固定時 σ=3.9 MPa、δ=0.38 mm",
-   "k_N_per_mm": 33,
-   "stress_fixed": 3.92,
-   "deflection_fixed": 0.38
+   "note": "短時；中央機腳離地時變壓器只能靠底板；牆邊固定時 σ=3.8 MPa、δ=0.28 mm",
+   "k_N_per_mm": 38,
+   "stress_fixed": 3.81,
+   "deflection_fixed": 0.28
   },
   {
    "case": "站著放：中央機腳沒碰到地（最壞）",
-   "stress_MPa": 2.12,
+   "stress_MPa": 2.03,
    "allow_MPa": 4.0,
-   "stress_ratio": 0.53,
-   "deflection_mm": 0.66,
-   "deflection_allow_mm": 0.93,
+   "stress_ratio": 0.51,
+   "deflection_mm": 0.57,
+   "deflection_allow_mm": 1.02,
    "ok": true,
-   "note": "長期；正常情況變壓器重量經中心螺栓直接到中央機腳，底板幾乎不受力；牆邊固定時 σ=2.0 MPa、δ=0.19 mm",
-   "k_N_per_mm": 33,
-   "stress_fixed": 1.96,
-   "deflection_fixed": 0.19
-  },
-  {
-   "case": "上蓋放 10 kg（均布）",
-   "stress_MPa": 2.94,
-   "allow_MPa": 10.3,
-   "stress_ratio": 0.28,
-   "deflection_mm": 0.66,
-   "deflection_allow_mm": 0.97,
-   "ok": true,
-   "note": "8 顆螺絲＋定位框，介於簡支與固定之間；固定時 δ=0.14 mm",
-   "stress_fixed": 1.5,
+   "note": "長期；正常情況變壓器重量經中心螺栓直接到中央機腳，底板幾乎不受力；牆邊固定時 σ=1.9 MPa、δ=0.14 mm",
+   "k_N_per_mm": 38,
+   "stress_fixed": 1.9,
    "deflection_fixed": 0.14
   },
   {
-   "case": "上蓋中央手壓 5 kg（集中）",
-   "stress_MPa": 5.12,
+   "case": "上蓋放 10 kg（均布）",
+   "stress_MPa": 4.03,
    "allow_MPa": 10.3,
-   "stress_ratio": 0.5,
-   "deflection_mm": 0.92,
+   "stress_ratio": 0.39,
+   "deflection_mm": 0.62,
    "deflection_allow_mm": 0.97,
    "ok": true,
-   "note": "8 顆螺絲＋定位框，介於簡支與固定之間；固定時 δ=0.32 mm",
-   "stress_fixed": 3.65,
-   "deflection_fixed": 0.32
+   "note": "8 顆螺絲＋定位框，介於簡支與固定之間；固定時 δ=0.13 mm",
+   "stress_fixed": 1.35,
+   "deflection_fixed": 0.13
+  },
+  {
+   "case": "上蓋中央手壓 5 kg（集中）",
+   "stress_MPa": 4.8,
+   "allow_MPa": 10.3,
+   "stress_ratio": 0.46,
+   "deflection_mm": 0.86,
+   "deflection_allow_mm": 0.97,
+   "ok": true,
+   "note": "8 顆螺絲＋定位框，介於簡支與固定之間；固定時 δ=0.30 mm",
+   "stress_fixed": 3.32,
+   "deflection_fixed": 0.3
   },
   {
    "case": "搬運：兩側抬起，前後牆當梁（×2）",

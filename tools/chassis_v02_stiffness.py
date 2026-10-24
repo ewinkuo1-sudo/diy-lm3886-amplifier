@@ -37,11 +37,11 @@ ALLOW_LONG = 4.0
 ALLOW_HOT = 0.75 * ALLOW_LONG
 
 # 幾何（和 chassis_print_v02.scad 一致）
-W, D, H, T, FT, LT = 290, 280, 78, 4, 3, 3
+W, D, H, T, FT, LT = 290, 305, 78, 4, 3, 3
 RIBH, RIBH2, RIBW, RIBP = 6, 10, 2.4, 40
-ZONE = (72, 225, 145)              # 加高區 x0、x1、y≥
-LRIBH, LRIBP = 12, 40
-TX, TY, TD = W / 2, 210, 120
+ZONE = (72, 225, 170)              # 加高區 x0、x1、y≥
+LRIBH, LRIBP = 13, 40
+TX, TY, TD = W / 2, 235, 120
 
 # 重量
 hs_vol = (176 * 60 * 5 + 23 * 1.5 * 28 * 60) / 1000

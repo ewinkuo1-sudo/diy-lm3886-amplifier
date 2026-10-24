@@ -76,10 +76,10 @@ ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; line-height: 1.6; }
     <section>
       <h2>尺寸</h2>
       <dl>
-        <dt>底殼外形</dt><dd>298 × 288 × 81 mm</dd>
-        <dt>含上蓋、機腳</dt><dd>298 × 288 × 92 mm</dd>
+        <dt>底殼外形</dt><dd>298 × 313 × 81 mm</dd>
+        <dt>含上蓋、機腳</dt><dd>298 × 313 × 92 mm</dd>
         <dt>含鰭片總寬</dt><dd>354 mm</dd>
-        <dt>內部</dt><dd>290 × 280 × 78 mm</dd>
+        <dt>內部</dt><dd>290 × 305 × 78 mm</dd>
         <dt>H2D 單噴頭範圍</dt><dd>325 × 320 × 325 mm</dd>
         <dt>估計總重</dt><dd id="mass">—</dd>
       </dl>
@@ -91,7 +91,7 @@ ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; line-height: 1.6; }
         <tbody id="parts"></tbody>
         <tfoot><tr><td>合計 ASA</td><td class="n"></td><td class="n"></td><td class="n" id="tot"></td></tr></tfoot>
       </table></div>
-      <p class="note">全部放得進 H2D 單噴頭，底殼四周還有 14–16 mm 可加 brim。重量是 100% 實心估，實際切片會少一些。</p>
+      <p class="note">全部放得進 H2D 單噴頭，底殼長邊順著 325 方向放，四周還有 6–11 mm 可加 brim。重量是 100% 實心估，實際切片會少一些。</p>
     </section>
     <section>
       <h2>剛性檢查（估算）</h2>
@@ -119,7 +119,7 @@ ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; line-height: 1.6; }
 <script>
 const STL = __STL_JSON__;      // {名稱: base64 二進位 STL}
 const META = __META_JSON__;    // {名稱: {group, volume_cm3, size_mm}}
-const W = 290, D = 280, H = 78;
+const W = 290, D = 305, H = 78;
 const STIFF = __STIFF_JSON__;
 const host = document.getElementById('view');
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();

@@ -24,7 +24,7 @@ STL = MECH / 'stl'; STL.mkdir(exist_ok=True)
 OUT = R / 'docs/diagrams'; OUT.mkdir(exist_ok=True)
 OPENSCAD = Path(r'C:\Program Files\OpenSCAD\openscad.com')
 FONT = r'C:\Windows\Fonts\msjh.ttc'
-W, D, H, T, FT, LT = 290, 280, 78, 4, 3, 3
+W, D, H, T, FT, LT = 290, 305, 78, 4, 3, 3
 H2D = (325, 320, 325)          # 單噴頭列印範圍（官方規格）
 DENS = 1.07                     # ASA g/cm³
 
@@ -172,8 +172,8 @@ def render():
     def put(x, y, s):
         px = top.width - 30 - (x + T + 28) * sx; py = 30 + (y + T) * sx
         d.text((px, py), s, font=f, fill='#ffffff', anchor='mm', stroke_width=3, stroke_fill='#1d2320', align='center')
-    put(42, 100, '放大板 R\n80×90'); put(W - 42, 88, '放大板 L\n80×90'); put(145, 80, '電源板\n92×120')
-    put(54, 38, '保護板 52×31'); put(39, 217, '軟啟動板\n95×58'); put(145, 210, '變壓器\nØ120')
+    put(42, 100, '放大板 R\n80×90'); put(W - 42, 88, '放大板 L\n80×90'); put(145, 105, '電源板\n92×120')
+    put(54, 38, '保護板 52×31'); put(39, 242, '軟啟動板\n95×58'); put(145, 235, '變壓器\nØ120')
     top = label(top, '俯視（後牆在上；從正面看右聲道在右）—— 兩片現成板取代自製 CTRL／MAINS 板')
     top.save(OUT / 'chassis_print_v02_layout.png')
 
@@ -233,6 +233,7 @@ def bed_fit():
         x0, y0 = pad, pad + 70
         d.rectangle([x0, y0, x0 + H2D[0] * s, y0 + H2D[1] * s], outline='#5a6068', width=3, fill='#f8f9fa')
         px, py, pz = rows[n]['size_mm']
+        px, py = max(px, py), min(px, py)      # 長邊放在 H2D 的 325 方向
         ox = x0 + (H2D[0] - px) / 2 * s; oy = y0 + (H2D[1] - py) / 2 * s
         d.rounded_rectangle([ox, oy, ox + px * s, oy + py * s], radius=12, outline='#1d2320', width=3, fill='#d9d4c8')
         d.text((x0, 15), f'{title} {px:.0f}×{py:.0f}×{pz:.0f} mm', font=f, fill='#1d2320')
