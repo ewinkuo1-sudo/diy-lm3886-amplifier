@@ -162,7 +162,7 @@ SEC = [(W / 2, -600, 40), (W / 2, 94, 35), (0, 0, 1)]
 
 def render():
     a = label(crop(shot(scene(), ISO)), '組好：底殼一體＋上蓋一片，散熱片當左右側牆')
-    b = label(crop(shot(scene(lid=False), ISO)), '掀開上蓋：前排變壓器、軟啟動板（紅色護罩）、保護板')
+    b = label(crop(shot(scene(lid=False), ISO)), '掀開上蓋：前排變壓器、軟啟動板（紅色護罩）；保護板在右後')
     stack([a, b], True).save(OUT / 'chassis_print_v02_overview.png')
 
     top = crop(shot(scene(lid=False, hide=('mains_cover',)), TOP, parallel=True))
@@ -173,12 +173,12 @@ def render():
         px = top.width - 30 - (x + T + 28) * sx; py = 30 + (y + T) * sx
         d.text((px, py), s, font=f, fill='#ffffff', anchor='mm', stroke_width=3, stroke_fill='#1d2320', align='center')
     put(42, 100, '放大板 R\n80×90'); put(W - 42, 88, '放大板 L\n80×90'); put(145, 80, '電源板\n92×120')
-    put(254, 201, '保護板\n52×31'); put(39, 217, '軟啟動板\n95×58'); put(145, 210, '變壓器\nØ120')
+    put(54, 38, '保護板 52×31'); put(39, 217, '軟啟動板\n95×58'); put(145, 210, '變壓器\nØ120')
     top = label(top, '俯視（後牆在上；從正面看右聲道在右）—— 兩片現成板取代自製 CTRL／MAINS 板')
     top.save(OUT / 'chassis_print_v02_layout.png')
 
     ex = label(crop(shot(scene(explode=1.0, internals=False), ISO)), '爆炸圖：列印件只有底殼、上蓋、市電護罩、5 顆機腳')
-    rear = label(crop(shot(scene(), REAR, parallel=True)), '後視：XLR＋RCA（兩側）、喇叭端子 ×4、IEC 電源座')
+    rear = label(crop(shot(scene(), REAR, parallel=True)), '後視：XLR＋RCA（兩側）、喇叭端子 2×2 集中在保護板後面（下排 R、上排 L）、IEC')
     stack([ex, rear], False).save(OUT / 'chassis_print_v02_exploded.png')
 
     section_fig()

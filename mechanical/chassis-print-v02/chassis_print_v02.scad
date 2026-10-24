@@ -44,8 +44,11 @@ AY0L = HSC - 51;                  // 43：左聲道板 y 起點（板順時針�
 PX0 = 99; PY0 = 20; PZ0 = 10;
 // 軟啟動板（才嘉 AC110V）：95×58，孔距 84×47（商品圖），長邊沿 y；放右前（靠電源開關）
 SSX0 = 10; SSY0 = 170; SSW = 58; SSL = 95; SSZ0 = 8;
-// 保護板（BB 音研 UPC1237）：約 52×31（商品圖），孔位未知，暫設離邊 3；放左前
-PRX0 = 239; PRY0 = 175; PRW = 31; PRL = 52; PRZ0 = 8; PRIN = 3;
+// 保護板（BB 音研 UPC1237）：約 52×31（商品圖），孔位未知，暫設離邊 3。
+// 放右後、放大板 R 正後方（喇叭端子內側），長邊沿 x：右聲道輸出端子 J2 就在旁邊，四顆喇叭端子集中在它後面
+PRX0 = 28; PRY0 = 23; PRW = 52; PRL = 31; PRZ0 = 8; PRIN = 3;
+// 喇叭端子：四顆集中成 2×2，右聲道下排、左聲道上排（XLR 在旁邊的 x=22）
+SPKX = [60, 79]; SPKZ = [30, 58];
 // 變壓器：Ø120×50（含出線鼓起），中心孔，置於底板肋上加 3 mm 橡膠墊
 TX = W / 2; TY = 210; TD = 120; TH = 50; TZ0 = RIBH2 + 3;
 // 上蓋螺柱位置
@@ -148,7 +151,10 @@ module rear_cuts() {     // 後牆：XLR＋RCA（左右）、喇叭端子 ×4、
     cyl_y(-T - 1, 1, x + 9.5, 64, 3.2); cyl_y(-T - 1, 1, x - 9.5, 40, 3.2);
     cyl_y(-T - 1, 1, x, 20, 9.5);
   }
-  for (x = [60, 79, W - 79, W - 60]) cyl_y(-T - 1, 1, x, 30, 8.5);
+  for (x = SPKX) for (z = SPKZ) cyl_y(-T - 1, 1, x, z, 8.5);
+  // 後牆外側刻字（深 0.6）
+  for (t = [["R", SPKZ[0]], ["L", SPKZ[1]]]) translate([SPKX[1] + 13, -T + 0.6, t[1] - 4]) rotate([90, 0, 0]) linear_extrude(1) text(t[0], size = 8, halign = "center", font = "Liberation Sans:style=Bold");
+  translate([SPKX[0] - 13, -T + 0.6, (SPKZ[0] + SPKZ[1]) / 2 - 3]) rotate([90, 0, 0]) linear_extrude(1) text("SPK", size = 5, halign = "center", font = "Liberation Sans:style=Bold");
   bx(W / 2 - 23.75, -T - 1, 34 - 13.75, W / 2 + 23.75, 1, 34 + 13.75);       // IEC C14 含保險絲 47.5×27.5
   for (x = [W / 2 - 20, W / 2 + 20]) cyl_y(-T - 1, 1, x, 34, 3.2);
 }
@@ -286,7 +292,7 @@ module softstart() {
 }
 module protect() {
   bx(PRX0, PRY0, PRZ0, PRX0 + PRW, PRY0 + PRL, PRZ0 + 1.6);
-  bx(PRX0 + 6, PRY0 + 18, PRZ0 + 1.6, PRX0 + 25, PRY0 + 40, PRZ0 + 22);         // 歐姆龍繼電器
+  bx(PRX0 + 18, PRY0 + 6, PRZ0 + 1.6, PRX0 + 40, PRY0 + 25, PRZ0 + 22);         // 歐姆龍繼電器
 }
 module transformer() {
   translate([TX, TY, TZ0]) { difference() { cylinder(h = TH - 5, d = TD, $fn = 64); translate([0, 0, -1]) cylinder(h = TH, d = 40); }
@@ -294,7 +300,7 @@ module transformer() {
 }
 module connectors() {
   for (x = [22, W - 22]) { cyl_y(-14, -T, x, 52, 24); cyl_y(5, 25, x, 52, 20); cyl_y(-16, -T, x, 20, 9); cyl_y(0, 12, x, 20, 9); }
-  for (x = [60, 79, W - 79, W - 60]) { cyl_y(-18, -T, x, 30, 10); cyl_y(0, 22, x, 30, 6); }
+  for (x = SPKX) for (z = SPKZ) { cyl_y(-18, -T, x, z, 10); cyl_y(0, 22, x, z, 6); }
   bx(W / 2 - 25, -T - 3, 19, W / 2 + 25, -T, 49); bx(W / 2 - 22, 0, 21, W / 2 + 22, 30, 47);
   cyl_y(D + T, D + T + 3, SWX, 39, 18); cyl_y(D - 30, D, SWX, 39, 15); cyl_y(D - 10, D + T + 2, LEDX, 39, 5);
 }

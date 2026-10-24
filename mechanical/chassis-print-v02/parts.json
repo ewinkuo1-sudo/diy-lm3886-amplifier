@@ -1,7 +1,7 @@
 {
  "tub": {
   "group": "print",
-  "volume_cm3": 720.4,
+  "volume_cm3": 720.5,
   "size_mm": [
    298.0,
    288.0,
@@ -112,8 +112,8 @@
   "group": "int",
   "volume_cm3": 11.1,
   "size_mm": [
-   31.0,
    52.0,
+   31.0,
    22.0
   ],
   "watertight": true
