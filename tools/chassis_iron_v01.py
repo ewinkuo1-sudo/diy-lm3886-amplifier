@@ -213,3 +213,41 @@ if __name__ == '__main__':
     fig_top_section(parts, rep)
     fig_3d(parts)
     print('ok')
+
+
+# ---- 3D 網頁 ----
+def shell_meshes():
+    t = 1.0
+    box = lambda x0, x1, y0, y1, z0, z1: trimesh.creation.box(bounds=[[x0, y0, z0], [x1, y1, z1]])
+    return {
+        'floor': box(-t, WI + t, -t, DI + t, -t, 0),
+        'rear': box(-t, WI + t, -t, 0, 0, HI),
+        'side_R': box(-t, 0, 0, DI + t, 0, HI),
+        'side_L': box(WI, WI + t, 0, DI + t, 0, HI),
+        'front': box(-8, WI + 8, DI + t, DI + t + 8, -t, HI + 6),
+        'lid': box(-t, WI + t, -t, DI + t, HI, HI + t),
+    }
+
+
+def viewer(parts, rep):
+    import base64
+    sd = JOUT / 'stl'; sd.mkdir(exist_ok=True)
+    allm = dict(parts); allm.update(shell_meshes())
+    stl, meta = {}, {}
+    for n, m in allm.items():
+        p = sd / f'{n}.stl'; m.export(p)
+        stl[n] = base64.b64encode(p.read_bytes()).decode()
+        g = 'hs' if n.startswith('heatsink') else 'int' if n in PLACE else ('lid' if n == 'lid' else 'front' if n == 'front' else 'shell')
+        meta[n] = {'group': g, 'label': LABEL.get(n, n).replace('\n', ' '), 'color': COLORS.get(n, '')}
+    tpl = (JOUT / 'viewer_template.html').read_text(encoding='utf8')
+    html = (tpl.replace('__STL_JSON__', json.dumps(stl)).replace('__META_JSON__', json.dumps(meta, ensure_ascii=False))
+               .replace('__REP_JSON__', json.dumps(rep, ensure_ascii=False))
+               .replace('__WI__', str(WI)).replace('__DI__', str(DI)).replace('__HI__', str(HI)))
+    out = ROOT / 'output' / 'chassis_iron_v01_viewer.html'
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(html, encoding='utf8')
+    print('viewer', out, round(out.stat().st_size / 1e6, 2), 'MB')
+
+
+if __name__ == '__main__':
+    viewer(load(), json.loads((JOUT / 'layout.json').read_text(encoding='utf8')))

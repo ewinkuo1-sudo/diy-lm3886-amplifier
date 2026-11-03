@@ -1,0 +1,225 @@
+<title>LM3886 舊鐵殼配置</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 版面：左邊大塊 3D 檢視，右邊尺寸、零件、待量清單；窄螢幕上下疊。顏色照實物：鐵殼灰藍、黑散熱片、綠 PCB */
+:root {
+  --bg: #eceeef; --panel: #ffffff; --fg: #1b1f23; --muted: #5d656d;
+  --line: #d3d8dd; --accent: #b4561c; --bed: #dfe3e6; --grid: #b6bec5;
+  --iron: #8d98a3; --hs: #2b2f34; --ok: #2f7d4f; --ng: #b3261e;
+  --sans: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121416; --panel: #1a1d20; --fg: #e6e9ec; --muted: #98a1a9;
+  --line: #2c3237; --accent: #e98a4a; --bed: #1d2125; --grid: #353c42;
+  --iron: #7d8893; --hs: #3a3f45; --ok: #6cc58f; --ng: #f2867c; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121416; --panel: #1a1d20; --fg: #e6e9ec; --muted: #98a1a9;
+  --line: #2c3237; --accent: #e98a4a; --bed: #1d2125; --grid: #353c42;
+  --iron: #7d8893; --hs: #3a3f45; --ok: #6cc58f; --ng: #f2867c; color-scheme: dark }
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px; box-sizing: border-box; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-bottom: 14px; }
+h1 { font-size: 26px; font-weight: 700; margin: 0; text-wrap: balance; }
+.sub { font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; }
+@media (max-width: 860px) { main { grid-template-columns: minmax(0, 1fr); } }
+.view { position: relative; background: var(--bed); border: 1px solid var(--line); border-radius: 6px; min-height: 420px; height: 70vh; overflow: hidden; }
+.view canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.hint { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); pointer-events: none; }
+.toggles { position: absolute; bottom: 10px; left: 12px; right: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+.toggles button { font: 500 13px var(--sans); color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.toggles button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.toggles button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+aside { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+h2 { font-size: 13px; color: var(--accent); margin: 0 0 6px; letter-spacing: .08em; }
+dl { margin: 0; display: grid; grid-template-columns: 1fr auto; }
+dt, dd { margin: 0; padding: 7px 0; border-bottom: 1px solid var(--line); }
+dt { color: var(--muted); }
+dd { font-family: var(--mono); font-size: 13.5px; text-align: right; font-variant-numeric: tabular-nums; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { padding: 6px 4px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+td.n { font-family: var(--mono); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+th { color: var(--muted); font-weight: 500; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; border: 1px solid var(--line); }
+ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; line-height: 1.6; }
+.warn { border-left: 3px solid var(--accent); padding-left: 10px; }
+.est { font: 500 11px var(--mono); color: var(--accent); margin-left: 4px; }
+.tw { overflow-x: auto; }
+</style>
+
+<header>
+  <h1>LM3886 舊鐵殼配置 v0.1</h1>
+  <span class="sub">SHENG-LIN 鐵殼 · 散熱片內置 · V0.6.1 板 · 1:1 mm</span>
+</header>
+<main>
+  <div class="view" id="view">
+    <span class="hint">拖曳旋轉 · 滾輪縮放 · 右鍵平移</span>
+    <div class="toggles">
+      <button id="btnLid" aria-pressed="false">上蓋</button>
+      <button id="btnFront" aria-pressed="true">前飾板</button>
+      <button id="btnShell" aria-pressed="true">側牆</button>
+      <button id="btnHs" aria-pressed="true">散熱片</button>
+      <button id="btnTop" aria-pressed="false">俯視</button>
+    </div>
+  </div>
+  <aside>
+    <section>
+      <h2>鐵殼內部</h2>
+      <dl>
+        <dt>內寬</dt><dd>__WI__ mm<span class="est">估</span></dd>
+        <dt>內深</dt><dd>__DI__ mm<span class="est">估</span></dd>
+        <dt>內高</dt><dd>__HI__ mm</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>餘裕</h2>
+      <dl id="margins"></dl>
+    </section>
+    <section>
+      <h2>零件</h2>
+      <div class="tw"><table>
+        <thead><tr><th>件</th><th>位置</th></tr></thead>
+        <tbody id="parts"></tbody>
+      </table></div>
+    </section>
+    <section>
+      <h2>還要量、還要做</h2>
+      <ul class="warn">
+        <li>內寬、內深、前飾板厚度：圖上是由外部 420×340 推的。</li>
+        <li>上蓋有沒有通風孔：散熱片在殼內，正上方一定要有孔。</li>
+        <li>後板要自己開 IEC 電源座孔；舊 RCA、喇叭端子孔能不能用要看照片。</li>
+        <li>板子用 8 mm 尼龍柱（或銅柱＋上下尼龍華司），鐵殼和散熱片接 PE。</li>
+        <li>散熱片用角碼鎖底板，底板厚度到貨再量。</li>
+      </ul>
+    </section>
+  </aside>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+<script>
+const STL = __STL_JSON__;
+const META = __META_JSON__;
+const REP = __REP_JSON__;
+const W = __WI__, D = __DI__, H = __HI__;
+const host = document.getElementById('view');
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+host.prepend(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(32, 1, 1, 6000);
+const HOME = [380, 420, 620];
+camera.position.set(...HOME);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 30, 0);
+controls.enableDamping = true;
+controls.minDistance = 150; controls.maxDistance = 2000;
+controls.maxPolarAngle = Math.PI * 0.49;
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x4a5058, 0.8));
+const sun = new THREE.DirectionalLight(0xffffff, 0.75);
+sun.position.set(250, 480, 300); sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -350, right: 350, top: 350, bottom: -350, near: 10, far: 1400 });
+scene.add(sun);
+
+const bedMat = new THREE.MeshStandardMaterial({ roughness: 0.95 });
+const bed = new THREE.Mesh(new THREE.CircleGeometry(600, 96), bedMat);
+bed.rotation.x = -Math.PI / 2; bed.position.y = -0.1; bed.receiveShadow = true;
+scene.add(bed);
+let grid;
+function makeGrid() {
+  if (grid) scene.remove(grid);
+  grid = new THREE.GridHelper(900, 90, css('--grid'), css('--grid'));
+  grid.position.y = 0.05; grid.material.transparent = true; grid.material.opacity = 0.5;
+  scene.add(grid);
+}
+
+const iron = new THREE.MeshStandardMaterial({ roughness: 0.55, metalness: 0.5, transparent: true, opacity: 0.45, side: THREE.DoubleSide, depthWrite: false });
+const lidMat = new THREE.MeshStandardMaterial({ roughness: 0.55, metalness: 0.5, transparent: true, opacity: 0.35, depthWrite: false });
+const frontMat = new THREE.MeshStandardMaterial({ color: 0xb59a5a, roughness: 0.5, metalness: 0.4, transparent: true, opacity: 0.3, depthWrite: false });
+const hsMat = new THREE.MeshStandardMaterial({ roughness: 0.7, metalness: 0.35 });
+const matOf = n => {
+  const g = META[n].group;
+  if (g === 'shell') return iron; if (g === 'lid') return lidMat; if (g === 'front') return frontMat; if (g === 'hs') return hsMat;
+  return new THREE.MeshStandardMaterial({ color: META[n].color, roughness: 0.6, metalness: 0.1 });
+};
+
+// 機殼座標（x=從正面看的右側內牆、y=後→前、z=上）→ three.js：x→x、z→y、y→-z，再把 x 反轉讓右側在畫面右邊
+const root = new THREE.Group();
+root.rotation.x = -Math.PI / 2;
+root.scale.x = -1;
+root.position.set(W / 2, 1, D / 2);
+scene.add(root);
+const meshes = {};
+const loader = new THREE.STLLoader();
+function b64buf(s) { const b = atob(s), a = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a.buffer; }
+for (const [n, b64] of Object.entries(STL)) {
+  const g = loader.parse(b64buf(b64)); g.computeVertexNormals();
+  const m = new THREE.Mesh(g, matOf(n));
+  m.material.side = THREE.DoubleSide;
+  m.castShadow = META[n].group === 'int' || META[n].group === 'hs';
+  m.receiveShadow = true;
+  meshes[n] = m; root.add(m);
+}
+
+const st = { lid: false, front: true, shell: true, hs: true };
+function apply() {
+  for (const [n, m] of Object.entries(meshes)) {
+    const g = META[n].group;
+    m.visible = !((g === 'lid' && !st.lid) || (g === 'front' && !st.front) || (g === 'shell' && !st.shell) || (g === 'hs' && !st.hs));
+  }
+}
+function bind(id, fn) {
+  const b = document.getElementById(id);
+  b.addEventListener('click', () => { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', on); fn(on); apply(); });
+}
+bind('btnLid', on => st.lid = on);
+bind('btnFront', on => st.front = on);
+bind('btnShell', on => st.shell = on);
+bind('btnHs', on => st.hs = on);
+bind('btnTop', on => {
+  controls.autoRotate = false;
+  if (on) { camera.position.set(0, 820, 1); } else { camera.position.set(...HOME); }
+  controls.target.set(0, 30, 0);
+});
+apply();
+
+const md = document.getElementById('margins');
+for (const [k, v] of Object.entries(REP.margins || {})) md.insertAdjacentHTML('beforeend', `<dt>${k.replace('(y)', '').replace('(x)', '')}</dt><dd>${typeof v === 'number' ? v + ' mm' : v}</dd>`);
+md.insertAdjacentHTML('beforeend', `<dt>零件碰撞</dt><dd>${(REP.clash || []).length ? REP.clash.join('、') : '無'}</dd>`);
+const WHERE = { heatsink_R: '右牆內側，鰭片朝牆', heatsink_L: '左牆內側，鰭片朝牆', amp_R: '散熱片 R 內側', amp_L: '散熱片 L 內側',
+  psu: '後排中間', transformer: '前排中間', protect: '右後', softstart: '右前' };
+const tb = document.getElementById('parts');
+for (const [n, w] of Object.entries(WHERE)) {
+  if (!META[n]) continue;
+  tb.insertAdjacentHTML('beforeend', `<tr><td><span class="sw" style="background:${META[n].color}"></span>${META[n].label}</td><td>${w}</td></tr>`);
+}
+
+function applyTheme() {
+  scene.background = new THREE.Color(css('--bed'));
+  bedMat.color.set(css('--bg'));
+  iron.color.set(css('--iron')); lidMat.color.set(css('--iron'));
+  hsMat.color.set(css('--hs'));
+  makeGrid();
+}
+applyTheme();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+function resize() { const w = host.clientWidth, h = host.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+new ResizeObserver(resize).observe(host); resize();
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+controls.autoRotate = !still; controls.autoRotateSpeed = 0.6;
+renderer.domElement.addEventListener('pointerdown', () => { controls.autoRotate = false; });
+(function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
+</script>
